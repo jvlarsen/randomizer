@@ -25,7 +25,7 @@ namespace Randomizer
         {
             //var eventSoundUrl = GetFiredEventSoundUrl();
             GetEventPlayer();
-            soundPlayer = new SoundPlayer(@"D:\Dropbox\Arbejde\Randomizer\RandomizerSounds\1000dollars.wav");
+            soundPlayer = new SoundPlayer(@"D:\Arbejde\randomizer\Randomizer\RandomizerSounds\1000dollars.wav");
             soundPlayer.Play();
         }
 

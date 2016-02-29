@@ -16,3 +16,12 @@ D:\Dropbox\Arbejde\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.csprojR
 D:\Dropbox\Arbejde\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.Form1.resources
 D:\Dropbox\Arbejde\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.Properties.Resources.resources
 D:\Dropbox\Arbejde\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.csproj.GenerateResource.Cache
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\bin\Debug\Randomizer.exe.config
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.exe
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.pdb
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\bin\Debug\Randomizer.exe
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\bin\Debug\Randomizer.pdb
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.csprojResolveAssemblyReference.cache
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.Form1.resources
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.Properties.Resources.resources
+D:\Arbejde\randomizer\Randomizer\Randomizer\Randomizer\obj\Debug\Randomizer.csproj.GenerateResource.Cache
