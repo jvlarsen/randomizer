@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="DbFacade.cs" />
     <Compile Include="Entities\Event.cs" />
+    <Compile Include="Entities\Participant.cs" />
+    <Compile Include="Entities\Player.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +62,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RandomDbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RandomizerEngine.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,8 +89,8 @@
     </None>
     <None Include="RandomDbDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>RandomDbDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>RandomDbDataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="RandomDbDataSet.xss">
       <DependentUpon>RandomDbDataSet.xsd</DependentUpon>

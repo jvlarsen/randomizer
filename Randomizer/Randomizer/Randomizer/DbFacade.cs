@@ -28,5 +28,23 @@ namespace Randomizer
             return events;
         }
 
+        public Participant GetOwnerFromPlayerName(string playerName)
+        {
+            var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
+            var p = new Participant() { Name = "Faccio" };
+            return p;
+        }
+
+        public List<Participant> GetOwners()
+        {
+            var owners = new List<Participant>();
+            var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
+            var ownersTable = sql.GetData();
+            foreach (var owner in ownersTable)
+            {
+                owners.Add(new Participant() { Name = owner.Name }); //TODO: Make the SQL extract join Owners with Participants to get the P.Name
+            }
+        }
+
     }
 }
