@@ -18,7 +18,7 @@ namespace Randomizer
 
         public Form1()
         {
-            DbFacade dbFacade = new DbFacade();
+            dbFacade = DbFacade.GetInstance();
             InitializeComponent();
             engine = new RandomizerEngine();
         }
@@ -28,6 +28,7 @@ namespace Randomizer
             //var eventSoundUrl = GetFiredEventSoundUrl();
             var triggerPlayerName = GetPlayerTriggeringEvent();
             var eventFired = GetEventFired();
+            dbFacade.GetEvents();
             engine.Randomize(triggerPlayerName, eventFired);
             soundPlayer = new SoundPlayer(@"D:\Arbejde\randomizer\Randomizer\RandomizerSounds\1000dollars.wav");
             soundPlayer.Play();

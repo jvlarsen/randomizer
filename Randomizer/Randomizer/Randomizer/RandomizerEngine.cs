@@ -14,7 +14,7 @@ namespace Randomizer
 
         public RandomizerEngine()
         {
-            dbFacade = new DbFacade();
+            dbFacade = DbFacade.GetInstance();
             EventOutcome = new Dictionary<Participant, Event>();
         }
 

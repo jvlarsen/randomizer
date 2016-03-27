@@ -4,33 +4,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Randomizer
 {
     public class DbFacade
     {
         private string connectionString;
+        private SqlConnection conn;
+        private static DbFacade dbFacade;
 
-        public DbFacade()
-        { }
+        private DbFacade()
+        { 
+            connectionString = @"Data Source=JVL\SQLEXPRESS;Initial Catalog=RandomDb;Integrated Security=True";
+            conn = new SqlConnection(connectionString);
+        }
+
+        public static DbFacade GetInstance()
+        {
+            if (dbFacade == null)
+                dbFacade = new DbFacade();
+
+            return dbFacade;
+        }
+
+        public void OpenConn()
+        {
+            conn.Open();
+        }
+
+        public void CloseConn()
+        {
+            conn.Close();
+        }
 
         public List<Event> GetEvents()
         {
             var events = new List<Event>();
-            var sql = new RandomDbDataSetTableAdapters.EventsTableAdapter();
-            var eventsTable = sql.GetData();
-            
-            foreach (var drinkEvent in eventsTable)
-            {
-                var soundUrl = string.IsNullOrEmpty(drinkEvent.SoundClipUrl) ? "" : drinkEvent.SoundClipUrl;
-                events.Add(new Event(drinkEvent.EventNumber, drinkEvent.EventName, drinkEvent.NumberOfSips, soundUrl));    
-            }
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM Events";
+
+            var reader = cmd.ExecuteReader();
+            CloseConn();
+            //foreach (var drinkEvent in eventsTable)
+            //{
+            //    var soundUrl = string.IsNullOrEmpty(drinkEvent.SoundClipUrl) ? "" : drinkEvent.SoundClipUrl;
+            //    events.Add(new Event(drinkEvent.EventNumber, drinkEvent.EventName, drinkEvent.NumberOfSips, soundUrl));    
+            //}
             return events;
         }
 
         public Participant GetOwnerFromPlayerName(string playerName)
         {
-            var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
+            //var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
             var p = new Participant() { Name = "Faccio" };
             return p;
         }
@@ -38,12 +65,13 @@ namespace Randomizer
         public List<Participant> GetOwners()
         {
             var owners = new List<Participant>();
-            var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
-            var ownersTable = sql.GetData();
-            foreach (var owner in ownersTable)
-            {
-                owners.Add(new Participant() { Name = owner.Name }); //TODO: Make the SQL extract join Owners with Participants to get the P.Name
-            }
+            //var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
+            //var ownersTable = sql.GetData();
+            //foreach (var owner in ownersTable)
+            //{
+            //    owners.Add(new Participant() { Name = owner.Name }); //TODO: Make the SQL extract join Owners with Participants to get the P.Name
+            //}
+            return owners;
         }
 
     }
