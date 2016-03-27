@@ -24,7 +24,7 @@ CREATE TABLE Players
 CREATE TABLE Events
 (
 	EventName VARCHAR(20) PRIMARY KEY,
-	NumberOfSips INT,
+	Measure VARCHAR(20),
 	SoundClipUrl VARCHAR(300) DEFAULT ''
 )
 --ALTER TABLE Events ADD CONSTRAINT DefaultSoundClipUrlEmpty DEFAULT '' FOR SoundClipUrl
@@ -46,4 +46,12 @@ CREATE TABLE MatchLog
 	EventName VARCHAR(20) REFERENCES dbo.Events (EventName)
 )
 
+CREATE TABLE Distribution
+(
+	Measure VARCHAR(20),
+	Small INT,
+	Medium INT,
+	Large INT,
+	Walter INT
+)
 

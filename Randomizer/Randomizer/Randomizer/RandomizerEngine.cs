@@ -11,16 +11,19 @@ namespace Randomizer
     {
         public Dictionary<Participant, Event> EventOutcome;
         private DbFacade dbFacade;
+        private List<Event> events;
 
         public RandomizerEngine()
         {
             dbFacade = DbFacade.GetInstance();
+            events = dbFacade.GetEvents();
             EventOutcome = new Dictionary<Participant, Event>();
         }
 
-        public void Randomize(string triggerPlayerName, string eventFired)
+        public void Randomize(string triggerPlayerName, string eventNameFired)
         {
             Participant winner = GetOwnerFromPlayerName(triggerPlayerName);
+            Event eventFired = events.FirstOrDefault(x => x.Name == eventNameFired);
             List<Participant> owners = dbFacade.GetOwners();
 
             foreach (var loser in owners)

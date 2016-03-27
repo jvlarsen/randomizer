@@ -302,6 +302,7 @@ namespace Randomizer
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "radioButton3";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton13
             // 
@@ -324,6 +325,7 @@ namespace Randomizer
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "radioButton2";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton12
             // 
@@ -346,6 +348,7 @@ namespace Randomizer
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "radioButton1";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // groupBox4
             // 
@@ -489,6 +492,7 @@ namespace Randomizer
             this.radioButton25.TabStop = true;
             this.radioButton25.Text = "radioButton25";
             this.radioButton25.UseVisualStyleBackColor = true;
+            this.radioButton25.CheckedChanged += new System.EventHandler(this.radioButton25_CheckedChanged);
             // 
             // radioButton24
             // 

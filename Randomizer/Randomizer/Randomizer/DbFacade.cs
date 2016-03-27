@@ -46,12 +46,13 @@ namespace Randomizer
             cmd.CommandText = "SELECT * FROM Events";
 
             var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                events.Add(new Event((string)reader["EventName"], (string)reader["Measure"], (string)reader["SoundClipUrl"]));
+            }
+            reader.Close();
             CloseConn();
-            //foreach (var drinkEvent in eventsTable)
-            //{
-            //    var soundUrl = string.IsNullOrEmpty(drinkEvent.SoundClipUrl) ? "" : drinkEvent.SoundClipUrl;
-            //    events.Add(new Event(drinkEvent.EventNumber, drinkEvent.EventName, drinkEvent.NumberOfSips, soundUrl));    
-            //}
             return events;
         }
 

@@ -8,18 +8,16 @@ namespace Randomizer.Entities
 {
     public class Event
     {
-        int EventNumber { get; set; }
-        string Name { get; set; }
-        int Sips { get; set; }
-        string SoundUrl { get; set; }
+        public string Name { get; set; }
+        public string Measure { get; set; }
+        public string SoundUrl { get; set; }
 
         public Event() { }
 
-        public Event(int number, string name, int sips, string soundUrl = "")
+        public Event(string name, string measure, string soundUrl)
         {
-            EventNumber = number;
             Name = name;
-            Sips = sips;
+            Measure = measure;
             SoundUrl = soundUrl;
         }
     }
