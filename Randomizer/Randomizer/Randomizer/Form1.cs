@@ -17,8 +17,8 @@ namespace Randomizer
         SoundPlayer soundPlayer;
         RandomizerEngine engine;
         List<Event> events;
-        string playerSelected;
-        string eventFired;
+        string playerSelected = "";
+        string eventFired = "";
 
         public Form1()
         {
@@ -28,7 +28,8 @@ namespace Randomizer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //var eventSoundUrl = GetFiredEventSoundUrl();
+            var playerSelected = GetTriggerPlayer();
+            var eventFired = GetEvent();
             engine.Randomize(playerSelected, eventFired);
             //TODO: Move this to the return value from the engine
             //soundPlayer = new SoundPlayer(@"D:\Arbejde\randomizer\Randomizer\RandomizerSounds\1000dollars.wav");
@@ -57,28 +58,20 @@ namespace Randomizer
             return "hello";
         }
 
-        private void radioButton25_CheckedChanged(object sender, EventArgs e)
+        private string GetTriggerPlayer()
         {
-            if (radioButton25.Checked)
-                eventFired = radioButton25.Text;
+            var selected = "";
+            selected = groupBox3.Controls.OfType<RadioButton>().First(x => x.Checked).Text;
+            
+            return selected;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private string GetEvent()
         {
-            if (radioButton1.Checked)
-                playerSelected = radioButton1.Text;
-        }
+            var selected = "";
+            selected = groupBox4.Controls.OfType<RadioButton>().First(x => x.Checked).Text;
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton2.Checked)
-                playerSelected = radioButton2.Text;
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton3.Checked)
-                playerSelected = radioButton3.Text;
+            return selected;
         }
     }
 }
