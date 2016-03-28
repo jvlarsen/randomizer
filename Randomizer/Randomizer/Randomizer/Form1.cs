@@ -24,32 +24,48 @@ namespace Randomizer
         {
             InitializeComponent();
             engine = new RandomizerEngine();
+            PlayerRadiosInit();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             var playerSelected = GetTriggerPlayer();
             var eventFired = GetEvent();
-            engine.Randomize(playerSelected, eventFired);
+            
+            if (ValidateInput(playerSelected, eventFired))
+                engine.Randomize(playerSelected, eventFired);
             //TODO: Move this to the return value from the engine
             //soundPlayer = new SoundPlayer(@"D:\Arbejde\randomizer\Randomizer\RandomizerSounds\1000dollars.wav");
             //soundPlayer.Play();
-
-
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private bool ValidateInput(string player, string eventFired)
         {
-            if (button2.Text == "START HALVLEG")
+            return !(string.IsNullOrEmpty(player) || (string.IsNullOrEmpty(eventFired)));
+        }
+
+        private void TimerInit()
+        {
+            this.timer1.Enabled = true;
+            this.timer1.Start();
+            this.timer1.Interval = 1000;
+        }
+
+        private void TimerStop()
+        {
+            this.timer1.Stop();
+        }
+
+        private void PlayerRadiosInit()
+        {
+            var rdoBtn = "radioButton";
+            for (int i = 1; i < 12; i++)
             {
-                button2.Text = "STOP HALVLEG";
-                button2.BackColor = Color.Red;
+                this.playerEditComboBox.Items.Add(new ComboItem("Home " + i, rdoBtn + i));
             }
-            else
+            for (int i = 1; i < 12; i++)
             {
-                button2.Text = "START HALVLEG";
-                button2.BackColor = Color.Green;
+                this.playerEditComboBox.Items.Add(new ComboItem("Away " + i, rdoBtn + (i+11)));
             }
         }
 
@@ -61,7 +77,7 @@ namespace Randomizer
         private string GetTriggerPlayer()
         {
             var selected = "";
-            selected = groupBox3.Controls.OfType<RadioButton>().First(x => x.Checked).Text;
+            selected = teamBox.Controls.OfType<RadioButton>().First(x => x.Checked).Name;
             
             return selected;
         }
@@ -69,9 +85,62 @@ namespace Randomizer
         private string GetEvent()
         {
             var selected = "";
-            selected = groupBox4.Controls.OfType<RadioButton>().First(x => x.Checked).Text;
+            try
+            {
+                selected = eventBox.Controls.OfType<RadioButton>().First(x => x.Checked).Text;                
+            }
+            catch (Exception)
+            {
+            
+            }
 
             return selected;
+        }
+
+        #region EventHandlers
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (button2.Text == "START HALVLEG")
+            {
+                button2.Text = "STOP HALVLEG";
+                button2.BackColor = Color.Red;
+                TimerInit();
+            }
+            else
+            {
+                button2.Text = "START HALVLEG";
+                button2.BackColor = Color.Green;
+                TimerStop();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (progressBar.Value != 45)
+            {
+                progressBar.Value++;
+            }
+            else
+            {
+                timer1.Stop();
+            }
+        }
+
+        private void richTextButton1_TextChanged(object sender, EventArgs e)
+        {
+            var playerAffected = (ComboItem)this.playerEditComboBox.SelectedItem;
+            var playerAffectedValue = playerAffected.Value;
+            playerAffectedValue = string.IsNullOrEmpty(playerAffectedValue) ? "" : playerAffectedValue;
+            var updateRadio = teamBox.Controls.OfType<RadioButton>().First(x => x.Name == playerAffectedValue);
+            updateRadio.Text = this.richTextBox1.Text;
+        }
+
+        #endregion    
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Distributing the teams and setting the color of each radio button according to their respective owner
         }
     }
 }

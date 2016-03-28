@@ -29,6 +29,7 @@ CREATE TABLE Events
 )
 --ALTER TABLE Events ADD CONSTRAINT DefaultSoundClipUrlEmpty DEFAULT '' FOR SoundClipUrl
 
+ALTER TABLE Events DROP CONSTRAINT DefaultSoundClipUrlEmpty
 CREATE TABLE Matches
 (
 	MatchId INT NOT NULL PRIMARY KEY,
@@ -55,3 +56,5 @@ CREATE TABLE Distribution
 	Walter INT
 )
 
+DROP TABLE MatchLog
+DROP TABLE Events
