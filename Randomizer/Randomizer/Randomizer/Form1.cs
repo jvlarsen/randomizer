@@ -19,12 +19,16 @@ namespace Randomizer
         List<Event> events;
         string playerSelected = "";
         string eventFired = "";
+        List<string> participants;
+        List<string> players;
+        Dictionary<string, string> playersAndOwners;
 
         public Form1()
         {
             InitializeComponent();
             engine = new RandomizerEngine();
             PlayerRadiosInit();
+            playersAndOwners = new Dictionary<string, string>();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -140,7 +144,33 @@ namespace Randomizer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //Distributing the teams and setting the color of each radio button according to their respective owner
+            var countParticipants = 0;
+            participants = new List<string>();
+            players = new List<string>();
+
+            foreach (var participantTextBox in this.participantNamePanel.Controls.OfType<TextBox>())
+            {
+                participants.Add(participantTextBox.Text);
+            }
+
+            foreach (var playerRadio in this.teamBox.Controls.OfType<RadioButton>())
+            {
+                players.Add(playerRadio.Text);
+            }
+
+            countParticipants = participants.Count;
+
+            var playersRemaining = playersAndOwners.Keys.ToList<string>();
+            var random = new Random();
+
+            for (int j = 0; j < 22; j++)
+            {
+                var currentParticipant = participants.ElementAt(j % 7);
+                var index = random.Next(players.Count - 1);
+                var selectedPlayer = players.ElementAt(index);
+                playersAndOwners.Add(selectedPlayer, currentParticipant);
+                players.Remove(selectedPlayer);
+            }
         }
     }
 }

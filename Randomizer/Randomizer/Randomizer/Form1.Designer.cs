@@ -72,7 +72,7 @@ namespace Randomizer
             this.radioButton23 = new System.Windows.Forms.RadioButton();
             this.randomizeButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.participantNamePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -95,7 +95,7 @@ namespace Randomizer
             this.teamDistributionButton = new System.Windows.Forms.Button();
             this.teamBox.SuspendLayout();
             this.eventBox.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.participantNamePanel.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -587,19 +587,19 @@ namespace Randomizer
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // flowLayoutPanel1
+            // participantNamePanel
             // 
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
-            this.flowLayoutPanel1.Controls.Add(this.textBox2);
-            this.flowLayoutPanel1.Controls.Add(this.textBox3);
-            this.flowLayoutPanel1.Controls.Add(this.textBox4);
-            this.flowLayoutPanel1.Controls.Add(this.textBox5);
-            this.flowLayoutPanel1.Controls.Add(this.textBox6);
-            this.flowLayoutPanel1.Controls.Add(this.textBox7);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(411, 447);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(107, 254);
-            this.flowLayoutPanel1.TabIndex = 4;
+            this.participantNamePanel.Controls.Add(this.textBox1);
+            this.participantNamePanel.Controls.Add(this.textBox2);
+            this.participantNamePanel.Controls.Add(this.textBox3);
+            this.participantNamePanel.Controls.Add(this.textBox4);
+            this.participantNamePanel.Controls.Add(this.textBox5);
+            this.participantNamePanel.Controls.Add(this.textBox6);
+            this.participantNamePanel.Controls.Add(this.textBox7);
+            this.participantNamePanel.Location = new System.Drawing.Point(411, 447);
+            this.participantNamePanel.Name = "participantNamePanel";
+            this.participantNamePanel.Size = new System.Drawing.Size(107, 254);
+            this.participantNamePanel.TabIndex = 4;
             // 
             // textBox1
             // 
@@ -782,7 +782,7 @@ namespace Randomizer
             this.Controls.Add(this.playerEditComboBox);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.participantNamePanel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.randomizeButton);
             this.Controls.Add(this.eventBox);
@@ -792,8 +792,8 @@ namespace Randomizer
             this.teamBox.PerformLayout();
             this.eventBox.ResumeLayout(false);
             this.eventBox.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.participantNamePanel.ResumeLayout(false);
+            this.participantNamePanel.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -841,7 +841,7 @@ namespace Randomizer
         private System.Windows.Forms.RadioButton radioButton23;
         private System.Windows.Forms.Button randomizeButton;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel participantNamePanel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
