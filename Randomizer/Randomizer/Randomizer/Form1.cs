@@ -35,10 +35,12 @@ namespace Randomizer
         {
             var playerSelected = GetTriggerPlayer();
             var eventFired = GetEvent();
-            
+
             if (ValidateInput(playerSelected, eventFired))
+            {
                 engine.Randomize(playerSelected, eventFired);
-            //TODO: Move this to the return value from the engine
+            }
+                //TODO: Move this to the return value from the engine
             //soundPlayer = new SoundPlayer(@"D:\Arbejde\randomizer\Randomizer\RandomizerSounds\1000dollars.wav");
             //soundPlayer.Play();
         }

@@ -35,7 +35,9 @@ CREATE TABLE Matches
 	MatchId INT NOT NULL PRIMARY KEY,
 	Home VARCHAR(100),
 	Away VARCHAR(100),
-	Result VARCHAR(5)
+	Result VARCHAR(5),
+	Description VARCHAR(100),
+	Created DATETIME
 )
 
 CREATE TABLE MatchLog

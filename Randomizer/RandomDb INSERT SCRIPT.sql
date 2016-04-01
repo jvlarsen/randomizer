@@ -31,6 +31,9 @@ INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Other_
 INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Other_2', 20, 30, 30, 20)
 INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Other_3', 15, 25, 30, 30)
 
+UPDATE Events SET SoundClipUrl = 'D:\Arbejde\randomizer\Randomizer\RandomizerSounds\silly_farts_wav.wav'
+
+
 
 
 

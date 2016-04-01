@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace Randomizer
 {
@@ -23,8 +24,15 @@ namespace Randomizer
         public void Randomize(string triggerPlayerName, string eventNameFired)
         {
             Participant winner = GetOwnerFromPlayerName(triggerPlayerName);
-            Event eventFired = events.FirstOrDefault(x => x.Name == eventNameFired);
+            Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
             List<Participant> owners = dbFacade.GetOwners();
+
+            var soundPlayer = new SoundPlayer(eventFired.SoundUrl);
+            //var soundPlayer = new SoundPlayer(@"D:\Arbejde\randomizer\Randomizer\RandomizerSounds\silly_farts_wav.wav");
+
+            soundPlayer.Play();
+
+
 
             foreach (var loser in owners)
             {
