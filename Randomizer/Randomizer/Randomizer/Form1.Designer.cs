@@ -31,28 +31,28 @@ namespace Randomizer
         {
             this.components = new System.ComponentModel.Container();
             this.teamBox = new System.Windows.Forms.GroupBox();
-            this.radioButton22 = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton20 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton19 = new System.Windows.Forms.RadioButton();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
-            this.radioButton18 = new System.Windows.Forms.RadioButton();
-            this.radioButton17 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer11 = new System.Windows.Forms.RadioButton();
+            this.homePlayer11 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer10 = new System.Windows.Forms.RadioButton();
+            this.homePlayer10 = new System.Windows.Forms.RadioButton();
+            this.homePlayer9 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer9 = new System.Windows.Forms.RadioButton();
+            this.homePlayer8 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer8 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer5 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer7 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer6 = new System.Windows.Forms.RadioButton();
+            this.homePlayer7 = new System.Windows.Forms.RadioButton();
+            this.homePlayer6 = new System.Windows.Forms.RadioButton();
+            this.homePlayer5 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer4 = new System.Windows.Forms.RadioButton();
+            this.homePlayer4 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer3 = new System.Windows.Forms.RadioButton();
+            this.homePlayer3 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer2 = new System.Windows.Forms.RadioButton();
+            this.homePlayer2 = new System.Windows.Forms.RadioButton();
+            this.awayPlayer1 = new System.Windows.Forms.RadioButton();
+            this.homePlayer1 = new System.Windows.Forms.RadioButton();
             this.eventBox = new System.Windows.Forms.GroupBox();
             this.radioButton36 = new System.Windows.Forms.RadioButton();
             this.radioButton35 = new System.Windows.Forms.RadioButton();
@@ -105,28 +105,28 @@ namespace Randomizer
             // 
             // teamBox
             // 
-            this.teamBox.Controls.Add(this.radioButton22);
-            this.teamBox.Controls.Add(this.radioButton11);
-            this.teamBox.Controls.Add(this.radioButton21);
-            this.teamBox.Controls.Add(this.radioButton10);
-            this.teamBox.Controls.Add(this.radioButton9);
-            this.teamBox.Controls.Add(this.radioButton20);
-            this.teamBox.Controls.Add(this.radioButton8);
-            this.teamBox.Controls.Add(this.radioButton19);
-            this.teamBox.Controls.Add(this.radioButton16);
-            this.teamBox.Controls.Add(this.radioButton18);
-            this.teamBox.Controls.Add(this.radioButton17);
-            this.teamBox.Controls.Add(this.radioButton7);
-            this.teamBox.Controls.Add(this.radioButton6);
-            this.teamBox.Controls.Add(this.radioButton5);
-            this.teamBox.Controls.Add(this.radioButton15);
-            this.teamBox.Controls.Add(this.radioButton4);
-            this.teamBox.Controls.Add(this.radioButton14);
-            this.teamBox.Controls.Add(this.radioButton3);
-            this.teamBox.Controls.Add(this.radioButton13);
-            this.teamBox.Controls.Add(this.radioButton2);
-            this.teamBox.Controls.Add(this.radioButton12);
-            this.teamBox.Controls.Add(this.radioButton1);
+            this.teamBox.Controls.Add(this.awayPlayer11);
+            this.teamBox.Controls.Add(this.homePlayer11);
+            this.teamBox.Controls.Add(this.awayPlayer10);
+            this.teamBox.Controls.Add(this.homePlayer10);
+            this.teamBox.Controls.Add(this.homePlayer9);
+            this.teamBox.Controls.Add(this.awayPlayer9);
+            this.teamBox.Controls.Add(this.homePlayer8);
+            this.teamBox.Controls.Add(this.awayPlayer8);
+            this.teamBox.Controls.Add(this.awayPlayer5);
+            this.teamBox.Controls.Add(this.awayPlayer7);
+            this.teamBox.Controls.Add(this.awayPlayer6);
+            this.teamBox.Controls.Add(this.homePlayer7);
+            this.teamBox.Controls.Add(this.homePlayer6);
+            this.teamBox.Controls.Add(this.homePlayer5);
+            this.teamBox.Controls.Add(this.awayPlayer4);
+            this.teamBox.Controls.Add(this.homePlayer4);
+            this.teamBox.Controls.Add(this.awayPlayer3);
+            this.teamBox.Controls.Add(this.homePlayer3);
+            this.teamBox.Controls.Add(this.awayPlayer2);
+            this.teamBox.Controls.Add(this.homePlayer2);
+            this.teamBox.Controls.Add(this.awayPlayer1);
+            this.teamBox.Controls.Add(this.homePlayer1);
             this.teamBox.Location = new System.Drawing.Point(12, 22);
             this.teamBox.Name = "teamBox";
             this.teamBox.Size = new System.Drawing.Size(169, 589);
@@ -134,249 +134,248 @@ namespace Randomizer
             this.teamBox.TabStop = false;
             this.teamBox.Text = "TeamBox";
             // 
-            // radioButton22
+            // awayPlayer11
             // 
-            this.radioButton22.AutoSize = true;
-            this.radioButton22.Location = new System.Drawing.Point(7, 563);
-            this.radioButton22.Name = "radioButton22";
-            this.radioButton22.Size = new System.Drawing.Size(91, 17);
-            this.radioButton22.TabIndex = 10;
-            this.radioButton22.TabStop = true;
-            this.radioButton22.Text = "radioButton22";
-            this.radioButton22.UseVisualStyleBackColor = true;
+            this.awayPlayer11.AutoSize = true;
+            this.awayPlayer11.Location = new System.Drawing.Point(7, 563);
+            this.awayPlayer11.Name = "awayPlayer11";
+            this.awayPlayer11.Size = new System.Drawing.Size(96, 17);
+            this.awayPlayer11.TabIndex = 10;
+            this.awayPlayer11.TabStop = true;
+            this.awayPlayer11.Text = "Away Team 11";
+            this.awayPlayer11.UseVisualStyleBackColor = true;
             // 
-            // radioButton11
+            // homePlayer11
             // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(7, 260);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(91, 17);
-            this.radioButton11.TabIndex = 10;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "radioButton11";
-            this.radioButton11.UseVisualStyleBackColor = true;
+            this.homePlayer11.AutoSize = true;
+            this.homePlayer11.Location = new System.Drawing.Point(7, 260);
+            this.homePlayer11.Name = "homePlayer11";
+            this.homePlayer11.Size = new System.Drawing.Size(98, 17);
+            this.homePlayer11.TabIndex = 10;
+            this.homePlayer11.TabStop = true;
+            this.homePlayer11.Text = "Home Team 11";
+            this.homePlayer11.UseVisualStyleBackColor = true;
             // 
-            // radioButton21
+            // awayPlayer10
             // 
-            this.radioButton21.AutoSize = true;
-            this.radioButton21.BackColor = System.Drawing.Color.Magenta;
-            this.radioButton21.Location = new System.Drawing.Point(6, 540);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(91, 17);
-            this.radioButton21.TabIndex = 9;
-            this.radioButton21.TabStop = true;
-            this.radioButton21.Text = "radioButton21";
-            this.radioButton21.UseVisualStyleBackColor = false;
+            this.awayPlayer10.AutoSize = true;
+            this.awayPlayer10.Location = new System.Drawing.Point(6, 540);
+            this.awayPlayer10.Name = "awayPlayer10";
+            this.awayPlayer10.Size = new System.Drawing.Size(96, 17);
+            this.awayPlayer10.TabIndex = 9;
+            this.awayPlayer10.TabStop = true;
+            this.awayPlayer10.Text = "Away Team 10";
+            this.awayPlayer10.UseVisualStyleBackColor = false;
             // 
-            // radioButton10
+            // homePlayer10
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(7, 236);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(91, 17);
-            this.radioButton10.TabIndex = 9;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "radioButton10";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.homePlayer10.AutoSize = true;
+            this.homePlayer10.Location = new System.Drawing.Point(7, 236);
+            this.homePlayer10.Name = "homePlayer10";
+            this.homePlayer10.Size = new System.Drawing.Size(98, 17);
+            this.homePlayer10.TabIndex = 9;
+            this.homePlayer10.TabStop = true;
+            this.homePlayer10.Text = "Home Team 10";
+            this.homePlayer10.UseVisualStyleBackColor = true;
             // 
-            // radioButton9
+            // homePlayer9
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(7, 212);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(85, 17);
-            this.radioButton9.TabIndex = 8;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "radioButton9";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.homePlayer9.AutoSize = true;
+            this.homePlayer9.Location = new System.Drawing.Point(7, 212);
+            this.homePlayer9.Name = "homePlayer9";
+            this.homePlayer9.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer9.TabIndex = 8;
+            this.homePlayer9.TabStop = true;
+            this.homePlayer9.Text = "Home Team 9";
+            this.homePlayer9.UseVisualStyleBackColor = true;
             // 
-            // radioButton20
+            // awayPlayer9
             // 
-            this.radioButton20.AutoSize = true;
-            this.radioButton20.Location = new System.Drawing.Point(6, 517);
-            this.radioButton20.Name = "radioButton20";
-            this.radioButton20.Size = new System.Drawing.Size(91, 17);
-            this.radioButton20.TabIndex = 8;
-            this.radioButton20.TabStop = true;
-            this.radioButton20.Text = "radioButton20";
-            this.radioButton20.UseVisualStyleBackColor = true;
+            this.awayPlayer9.AutoSize = true;
+            this.awayPlayer9.Location = new System.Drawing.Point(6, 517);
+            this.awayPlayer9.Name = "awayPlayer9";
+            this.awayPlayer9.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer9.TabIndex = 8;
+            this.awayPlayer9.TabStop = true;
+            this.awayPlayer9.Text = "Away Team 9";
+            this.awayPlayer9.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // homePlayer8
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(7, 188);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(85, 17);
-            this.radioButton8.TabIndex = 7;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "radioButton8";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.homePlayer8.AutoSize = true;
+            this.homePlayer8.Location = new System.Drawing.Point(7, 188);
+            this.homePlayer8.Name = "homePlayer8";
+            this.homePlayer8.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer8.TabIndex = 7;
+            this.homePlayer8.TabStop = true;
+            this.homePlayer8.Text = "Home Team 8";
+            this.homePlayer8.UseVisualStyleBackColor = true;
             // 
-            // radioButton19
+            // awayPlayer8
             // 
-            this.radioButton19.AutoSize = true;
-            this.radioButton19.Location = new System.Drawing.Point(7, 494);
-            this.radioButton19.Name = "radioButton19";
-            this.radioButton19.Size = new System.Drawing.Size(91, 17);
-            this.radioButton19.TabIndex = 7;
-            this.radioButton19.TabStop = true;
-            this.radioButton19.Text = "radioButton19";
-            this.radioButton19.UseVisualStyleBackColor = true;
+            this.awayPlayer8.AutoSize = true;
+            this.awayPlayer8.Location = new System.Drawing.Point(7, 494);
+            this.awayPlayer8.Name = "awayPlayer8";
+            this.awayPlayer8.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer8.TabIndex = 7;
+            this.awayPlayer8.TabStop = true;
+            this.awayPlayer8.Text = "Away Team 8";
+            this.awayPlayer8.UseVisualStyleBackColor = true;
             // 
-            // radioButton16
+            // awayPlayer5
             // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Location = new System.Drawing.Point(7, 425);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(91, 17);
-            this.radioButton16.TabIndex = 4;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "radioButton16";
-            this.radioButton16.UseVisualStyleBackColor = true;
+            this.awayPlayer5.AutoSize = true;
+            this.awayPlayer5.Location = new System.Drawing.Point(7, 425);
+            this.awayPlayer5.Name = "awayPlayer5";
+            this.awayPlayer5.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer5.TabIndex = 4;
+            this.awayPlayer5.TabStop = true;
+            this.awayPlayer5.Text = "Away Team 5";
+            this.awayPlayer5.UseVisualStyleBackColor = true;
             // 
-            // radioButton18
+            // awayPlayer7
             // 
-            this.radioButton18.AutoSize = true;
-            this.radioButton18.Location = new System.Drawing.Point(6, 471);
-            this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(91, 17);
-            this.radioButton18.TabIndex = 6;
-            this.radioButton18.TabStop = true;
-            this.radioButton18.Text = "radioButton18";
-            this.radioButton18.UseVisualStyleBackColor = true;
+            this.awayPlayer7.AutoSize = true;
+            this.awayPlayer7.Location = new System.Drawing.Point(6, 471);
+            this.awayPlayer7.Name = "awayPlayer7";
+            this.awayPlayer7.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer7.TabIndex = 6;
+            this.awayPlayer7.TabStop = true;
+            this.awayPlayer7.Text = "Away Team 7";
+            this.awayPlayer7.UseVisualStyleBackColor = true;
             // 
-            // radioButton17
+            // awayPlayer6
             // 
-            this.radioButton17.AutoSize = true;
-            this.radioButton17.Location = new System.Drawing.Point(7, 448);
-            this.radioButton17.Name = "radioButton17";
-            this.radioButton17.Size = new System.Drawing.Size(91, 17);
-            this.radioButton17.TabIndex = 5;
-            this.radioButton17.TabStop = true;
-            this.radioButton17.Text = "radioButton17";
-            this.radioButton17.UseVisualStyleBackColor = true;
+            this.awayPlayer6.AutoSize = true;
+            this.awayPlayer6.Location = new System.Drawing.Point(7, 448);
+            this.awayPlayer6.Name = "awayPlayer6";
+            this.awayPlayer6.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer6.TabIndex = 5;
+            this.awayPlayer6.TabStop = true;
+            this.awayPlayer6.Text = "Away Team 6";
+            this.awayPlayer6.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // homePlayer7
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(7, 164);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(85, 17);
-            this.radioButton7.TabIndex = 6;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "radioButton7";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.homePlayer7.AutoSize = true;
+            this.homePlayer7.Location = new System.Drawing.Point(7, 164);
+            this.homePlayer7.Name = "homePlayer7";
+            this.homePlayer7.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer7.TabIndex = 6;
+            this.homePlayer7.TabStop = true;
+            this.homePlayer7.Text = "Home Team 7";
+            this.homePlayer7.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // homePlayer6
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(7, 140);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(85, 17);
-            this.radioButton6.TabIndex = 5;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "radioButton6";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.homePlayer6.AutoSize = true;
+            this.homePlayer6.Location = new System.Drawing.Point(7, 140);
+            this.homePlayer6.Name = "homePlayer6";
+            this.homePlayer6.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer6.TabIndex = 5;
+            this.homePlayer6.TabStop = true;
+            this.homePlayer6.Text = "Home Team 6";
+            this.homePlayer6.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // homePlayer5
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(7, 116);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(85, 17);
-            this.radioButton5.TabIndex = 4;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "radioButton5";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.homePlayer5.AutoSize = true;
+            this.homePlayer5.Location = new System.Drawing.Point(7, 116);
+            this.homePlayer5.Name = "homePlayer5";
+            this.homePlayer5.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer5.TabIndex = 4;
+            this.homePlayer5.TabStop = true;
+            this.homePlayer5.Text = "Home Team 5";
+            this.homePlayer5.UseVisualStyleBackColor = true;
             // 
-            // radioButton15
+            // awayPlayer4
             // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(6, 402);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(91, 17);
-            this.radioButton15.TabIndex = 3;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "radioButton15";
-            this.radioButton15.UseVisualStyleBackColor = true;
+            this.awayPlayer4.AutoSize = true;
+            this.awayPlayer4.Location = new System.Drawing.Point(6, 402);
+            this.awayPlayer4.Name = "awayPlayer4";
+            this.awayPlayer4.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer4.TabIndex = 3;
+            this.awayPlayer4.TabStop = true;
+            this.awayPlayer4.Text = "Away Team 4";
+            this.awayPlayer4.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // homePlayer4
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(7, 92);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(85, 17);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.homePlayer4.AutoSize = true;
+            this.homePlayer4.Location = new System.Drawing.Point(7, 92);
+            this.homePlayer4.Name = "homePlayer4";
+            this.homePlayer4.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer4.TabIndex = 3;
+            this.homePlayer4.TabStop = true;
+            this.homePlayer4.Text = "Home Team 4";
+            this.homePlayer4.UseVisualStyleBackColor = true;
             // 
-            // radioButton14
+            // awayPlayer3
             // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(6, 379);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(91, 17);
-            this.radioButton14.TabIndex = 2;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "radioButton14";
-            this.radioButton14.UseVisualStyleBackColor = true;
+            this.awayPlayer3.AutoSize = true;
+            this.awayPlayer3.Location = new System.Drawing.Point(6, 379);
+            this.awayPlayer3.Name = "awayPlayer3";
+            this.awayPlayer3.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer3.TabIndex = 2;
+            this.awayPlayer3.TabStop = true;
+            this.awayPlayer3.Text = "Away Team 3";
+            this.awayPlayer3.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // homePlayer3
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(7, 68);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.homePlayer3.AutoSize = true;
+            this.homePlayer3.Location = new System.Drawing.Point(7, 68);
+            this.homePlayer3.Name = "homePlayer3";
+            this.homePlayer3.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer3.TabIndex = 2;
+            this.homePlayer3.TabStop = true;
+            this.homePlayer3.Text = "Home Team 3";
+            this.homePlayer3.UseVisualStyleBackColor = true;
             // 
-            // radioButton13
+            // awayPlayer2
             // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(6, 356);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(91, 17);
-            this.radioButton13.TabIndex = 1;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "radioButton13";
-            this.radioButton13.UseVisualStyleBackColor = true;
+            this.awayPlayer2.AutoSize = true;
+            this.awayPlayer2.Location = new System.Drawing.Point(6, 356);
+            this.awayPlayer2.Name = "awayPlayer2";
+            this.awayPlayer2.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer2.TabIndex = 1;
+            this.awayPlayer2.TabStop = true;
+            this.awayPlayer2.Text = "Away Team 2";
+            this.awayPlayer2.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // homePlayer2
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 44);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.homePlayer2.AutoSize = true;
+            this.homePlayer2.Location = new System.Drawing.Point(7, 44);
+            this.homePlayer2.Name = "homePlayer2";
+            this.homePlayer2.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer2.TabIndex = 1;
+            this.homePlayer2.TabStop = true;
+            this.homePlayer2.Text = "Home Team 2";
+            this.homePlayer2.UseVisualStyleBackColor = true;
             // 
-            // radioButton12
+            // awayPlayer1
             // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(6, 333);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(91, 17);
-            this.radioButton12.TabIndex = 0;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "radioButton12";
-            this.radioButton12.UseVisualStyleBackColor = true;
+            this.awayPlayer1.AutoSize = true;
+            this.awayPlayer1.Location = new System.Drawing.Point(6, 333);
+            this.awayPlayer1.Name = "awayPlayer1";
+            this.awayPlayer1.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer1.TabIndex = 0;
+            this.awayPlayer1.TabStop = true;
+            this.awayPlayer1.Text = "Away Team 1";
+            this.awayPlayer1.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // homePlayer1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.SystemColors.Control;
-            this.radioButton1.Location = new System.Drawing.Point(7, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = false;
+            this.homePlayer1.AutoSize = true;
+            this.homePlayer1.BackColor = System.Drawing.SystemColors.Control;
+            this.homePlayer1.Location = new System.Drawing.Point(7, 20);
+            this.homePlayer1.Name = "homePlayer1";
+            this.homePlayer1.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer1.TabIndex = 0;
+            this.homePlayer1.TabStop = true;
+            this.homePlayer1.Text = "Home Team 1";
+            this.homePlayer1.UseVisualStyleBackColor = false;
             // 
             // eventBox
             // 
@@ -819,20 +818,20 @@ namespace Randomizer
             // currentGameNameLabel
             // 
             this.currentGameNameLabel.AutoSize = true;
+            this.currentGameNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.currentGameNameLabel.Location = new System.Drawing.Point(482, 13);
             this.currentGameNameLabel.Name = "currentGameNameLabel";
-            this.currentGameNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.currentGameNameLabel.Size = new System.Drawing.Size(0, 25);
             this.currentGameNameLabel.TabIndex = 14;
-            this.currentGameNameLabel.Text = "label1";
             // 
-            // label1
+            // infoLabel
             // 
             this.infoLabel.AutoSize = true;
+            this.infoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.infoLabel.Location = new System.Drawing.Point(887, 666);
-            this.infoLabel.Name = "label1";
-            this.infoLabel.Size = new System.Drawing.Size(35, 13);
+            this.infoLabel.Name = "infoLabel";
+            this.infoLabel.Size = new System.Drawing.Size(0, 25);
             this.infoLabel.TabIndex = 15;
-            this.infoLabel.Text = "label1";
             // 
             // Form1
             // 
@@ -870,28 +869,28 @@ namespace Randomizer
         #endregion
 
         private System.Windows.Forms.GroupBox teamBox;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton22;
-        private System.Windows.Forms.RadioButton radioButton21;
-        private System.Windows.Forms.RadioButton radioButton20;
-        private System.Windows.Forms.RadioButton radioButton19;
-        private System.Windows.Forms.RadioButton radioButton18;
-        private System.Windows.Forms.RadioButton radioButton17;
-        private System.Windows.Forms.RadioButton radioButton16;
-        private System.Windows.Forms.RadioButton radioButton15;
-        private System.Windows.Forms.RadioButton radioButton14;
-        private System.Windows.Forms.RadioButton radioButton13;
-        private System.Windows.Forms.RadioButton radioButton12;
+        private System.Windows.Forms.RadioButton homePlayer11;
+        private System.Windows.Forms.RadioButton homePlayer10;
+        private System.Windows.Forms.RadioButton homePlayer9;
+        private System.Windows.Forms.RadioButton homePlayer8;
+        private System.Windows.Forms.RadioButton homePlayer7;
+        private System.Windows.Forms.RadioButton homePlayer6;
+        private System.Windows.Forms.RadioButton homePlayer5;
+        private System.Windows.Forms.RadioButton homePlayer4;
+        private System.Windows.Forms.RadioButton homePlayer3;
+        private System.Windows.Forms.RadioButton homePlayer2;
+        private System.Windows.Forms.RadioButton homePlayer1;
+        private System.Windows.Forms.RadioButton awayPlayer11;
+        private System.Windows.Forms.RadioButton awayPlayer10;
+        private System.Windows.Forms.RadioButton awayPlayer9;
+        private System.Windows.Forms.RadioButton awayPlayer8;
+        private System.Windows.Forms.RadioButton awayPlayer7;
+        private System.Windows.Forms.RadioButton awayPlayer6;
+        private System.Windows.Forms.RadioButton awayPlayer5;
+        private System.Windows.Forms.RadioButton awayPlayer4;
+        private System.Windows.Forms.RadioButton awayPlayer3;
+        private System.Windows.Forms.RadioButton awayPlayer2;
+        private System.Windows.Forms.RadioButton awayPlayer1;
         private System.Windows.Forms.GroupBox eventBox;
         private System.Windows.Forms.RadioButton radioButton35;
         private System.Windows.Forms.RadioButton radioButton34;

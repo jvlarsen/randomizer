@@ -64,7 +64,7 @@ namespace Randomizer
             }
             for (int i = 1; i < 12; i++)
             {
-                this.playerEditComboBox.Items.Add(new ComboItem("Away " + i, rdoBtn + (i+11)));
+                this.playerEditComboBox.Items.Add(new ComboItem("Away " + i, rdoBtn + (i + 11)));
             }
         }
 
@@ -77,7 +77,7 @@ namespace Randomizer
         {
             var selected = "";
             selected = teamBox.Controls.OfType<RadioButton>().First(x => x.Checked).Name;
-            
+
             return selected;
         }
 
@@ -86,11 +86,11 @@ namespace Randomizer
             var selected = "";
             try
             {
-                selected = eventBox.Controls.OfType<RadioButton>().First(x => x.Checked).Text;                
+                selected = eventBox.Controls.OfType<RadioButton>().First(x => x.Checked).Text;
             }
             catch (Exception)
             {
-            
+
             }
 
             return selected;
@@ -135,13 +135,19 @@ namespace Randomizer
             updateRadio.Text = this.richTextBox1.Text;
         }
 
-        #endregion    
+        #endregion
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.infoLabel.Text = "";
+            SetInfoLabelText("", 0);
             participants = new List<string>();
             players = new List<string>();
+
+            if (string.IsNullOrEmpty(this.currentGameNameLabel.Text))
+            {
+                SetInfoLabelText("Kampen skal oprettes først", 1);
+                return;
+            }
 
             foreach (var participantTextBox in this.participantNamePanel.Controls.OfType<TextBox>())
             {
@@ -161,13 +167,37 @@ namespace Randomizer
             }
             else
             {
-                this.infoLabel.Text = "Husk at angive deltagerne";
+                SetInfoLabelText("Husk at angive deltagerne", 1);
+                return;
             }
         }
 
         private void createNewGameButton_Click(object sender, EventArgs e)
         {
+            this.currentGameNameLabel.Text = this.newGameNameTextBox.Text;
+            this.newGameNameTextBox.Text = "";
+            //engine.CreateNewGame(this.currentGameNameLabel.Text);
+        }
 
+
+        private void SetInfoLabelText(string message, int type)
+        {
+            switch(type)
+            {
+                case(1): //Error
+                    this.infoLabel.BackColor = Color.Red;
+                    break;
+                case(2): //Warning
+                    this.infoLabel.BackColor = Color.Yellow;
+                    break;
+                case(3): //info
+                    this.infoLabel.BackColor = Color.Green;
+                    break;
+                default:
+                    this.infoLabel.BackColor = Color.White;
+                    break;
+            }
+            this.infoLabel.Text = message;
         }
     }
 }
