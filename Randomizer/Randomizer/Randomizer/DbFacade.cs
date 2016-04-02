@@ -80,5 +80,10 @@ namespace Randomizer
 
         }
 
+        public void SaveParticipants(List<string> participantNames)
+        {
+
+        }
+
     }
 }

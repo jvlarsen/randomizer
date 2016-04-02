@@ -58,7 +58,6 @@ namespace Randomizer
             }
 
             //Call dbFacade here to store the playersAndOwners mapping
-
             return playersAndOwners;
         }
 
@@ -69,6 +68,11 @@ namespace Randomizer
                 Name = "Jesper"
             };
             return p;
+        }
+
+        public void SaveParticipants(List<string> participantNames)
+        {
+            dbFacade.SaveParticipants(participantNames);
         }
 
         public void SaveDistribution(Dictionary<string, string> playersAndOwners, string gameName)

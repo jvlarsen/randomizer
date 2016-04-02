@@ -91,12 +91,15 @@ namespace Randomizer
             this.playerEditComboBox = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.teamDistributionButton = new System.Windows.Forms.Button();
-            this.newGameNameTextBox = new System.Windows.Forms.TextBox();
+            this.homeTeamTextBox = new System.Windows.Forms.TextBox();
             this.loadGameComboBox = new System.Windows.Forms.ComboBox();
             this.createNewGameButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.currentGameNameLabel = new System.Windows.Forms.Label();
+            this.gameNameLabel = new System.Windows.Forms.Label();
             this.infoLabel = new System.Windows.Forms.Label();
+            this.awayTeamTextBox = new System.Windows.Forms.TextBox();
+            this.homeTeamLabel = new System.Windows.Forms.Label();
+            this.awayTeamLabel = new System.Windows.Forms.Label();
             this.teamBox.SuspendLayout();
             this.eventBox.SuspendLayout();
             this.participantNamePanel.SuspendLayout();
@@ -779,11 +782,11 @@ namespace Randomizer
             // 
             // newGameNameTextBox
             // 
-            this.newGameNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.newGameNameTextBox.Location = new System.Drawing.Point(748, 54);
-            this.newGameNameTextBox.Name = "newGameNameTextBox";
-            this.newGameNameTextBox.Size = new System.Drawing.Size(291, 30);
-            this.newGameNameTextBox.TabIndex = 10;
+            this.homeTeamTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.homeTeamTextBox.Location = new System.Drawing.Point(748, 54);
+            this.homeTeamTextBox.Name = "newGameNameTextBox";
+            this.homeTeamTextBox.Size = new System.Drawing.Size(139, 30);
+            this.homeTeamTextBox.TabIndex = 10;
             // 
             // loadGameComboBox
             // 
@@ -817,12 +820,12 @@ namespace Randomizer
             // 
             // currentGameNameLabel
             // 
-            this.currentGameNameLabel.AutoSize = true;
-            this.currentGameNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.currentGameNameLabel.Location = new System.Drawing.Point(482, 13);
-            this.currentGameNameLabel.Name = "currentGameNameLabel";
-            this.currentGameNameLabel.Size = new System.Drawing.Size(0, 25);
-            this.currentGameNameLabel.TabIndex = 14;
+            this.gameNameLabel.AutoSize = true;
+            this.gameNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.gameNameLabel.Location = new System.Drawing.Point(482, 13);
+            this.gameNameLabel.Name = "currentGameNameLabel";
+            this.gameNameLabel.Size = new System.Drawing.Size(0, 25);
+            this.gameNameLabel.TabIndex = 14;
             // 
             // infoLabel
             // 
@@ -833,15 +836,44 @@ namespace Randomizer
             this.infoLabel.Size = new System.Drawing.Size(0, 25);
             this.infoLabel.TabIndex = 15;
             // 
+            // textBox15
+            // 
+            this.awayTeamTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.awayTeamTextBox.Location = new System.Drawing.Point(894, 54);
+            this.awayTeamTextBox.Name = "textBox15";
+            this.awayTeamTextBox.Size = new System.Drawing.Size(145, 30);
+            this.awayTeamTextBox.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.homeTeamLabel.AutoSize = true;
+            this.homeTeamLabel.Location = new System.Drawing.Point(748, 35);
+            this.homeTeamLabel.Name = "homeTeamLabel";
+            this.homeTeamLabel.Size = new System.Drawing.Size(35, 13);
+            this.homeTeamLabel.TabIndex = 17;
+            this.homeTeamLabel.Text = "Home Team";
+            // 
+            // label2
+            // 
+            this.awayTeamLabel.AutoSize = true;
+            this.awayTeamLabel.Location = new System.Drawing.Point(894, 35);
+            this.awayTeamLabel.Name = "awayTeamLabel";
+            this.awayTeamLabel.Size = new System.Drawing.Size(35, 13);
+            this.awayTeamLabel.TabIndex = 18;
+            this.awayTeamLabel.Text = "Away Team";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1176, 774);
+            this.Controls.Add(this.awayTeamLabel);
+            this.Controls.Add(this.homeTeamLabel);
+            this.Controls.Add(this.awayTeamTextBox);
             this.Controls.Add(this.infoLabel);
-            this.Controls.Add(this.currentGameNameLabel);
+            this.Controls.Add(this.gameNameLabel);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.createNewGameButton);
             this.Controls.Add(this.loadGameComboBox);
-            this.Controls.Add(this.newGameNameTextBox);
+            this.Controls.Add(this.homeTeamTextBox);
             this.Controls.Add(this.teamDistributionButton);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.playerEditComboBox);
@@ -929,12 +961,15 @@ namespace Randomizer
         private System.Windows.Forms.ComboBox playerEditComboBox;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button teamDistributionButton;
-        private System.Windows.Forms.TextBox newGameNameTextBox;
+        private System.Windows.Forms.TextBox homeTeamTextBox;
         private System.Windows.Forms.ComboBox loadGameComboBox;
         private System.Windows.Forms.Button createNewGameButton;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label currentGameNameLabel;
+        private System.Windows.Forms.Label gameNameLabel;
         private System.Windows.Forms.Label infoLabel;
+        private System.Windows.Forms.TextBox awayTeamTextBox;
+        private System.Windows.Forms.Label homeTeamLabel;
+        private System.Windows.Forms.Label awayTeamLabel;
 
     }
 }

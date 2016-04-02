@@ -18,6 +18,7 @@ namespace Randomizer
         List<string> participants;
         List<string> players;
         Dictionary<string, string> playersAndOwners;
+        int currentGamId;
 
         public Form1()
         {
@@ -66,11 +67,6 @@ namespace Randomizer
             {
                 this.playerEditComboBox.Items.Add(new ComboItem("Away " + i, rdoBtn + (i + 11)));
             }
-        }
-
-        private string GetFiredEventSoundUrl(string eventName)
-        {
-            return "hello";
         }
 
         private string GetTriggerPlayer()
@@ -139,11 +135,11 @@ namespace Randomizer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            SetInfoLabelText("", 0);
+            ClearInfoLabel();
             participants = new List<string>();
             players = new List<string>();
 
-            if (string.IsNullOrEmpty(this.currentGameNameLabel.Text))
+            if (string.IsNullOrEmpty(this.gameNameLabel.Text))
             {
                 SetInfoLabelText("Kampen skal oprettes først", 1);
                 return;
@@ -163,7 +159,8 @@ namespace Randomizer
             if (participants.Count > 0)
             {
                 playersAndOwners = engine.DistributeTeams(players, participants);
-                engine.SaveDistribution(playersAndOwners, this.currentGameNameLabel.Text);
+                engine.SaveParticipants(participants);
+                engine.SaveDistribution(playersAndOwners, this.gameNameLabel.Text);
             }
             else
             {
@@ -174,9 +171,19 @@ namespace Randomizer
 
         private void createNewGameButton_Click(object sender, EventArgs e)
         {
-            this.currentGameNameLabel.Text = this.newGameNameTextBox.Text;
-            this.newGameNameTextBox.Text = "";
-            //engine.CreateNewGame(this.currentGameNameLabel.Text);
+            ClearInfoLabel();
+            var homeTeam = this.homeTeamTextBox.Text;
+            var awayTeam = this.awayTeamTextBox.Text;
+            if (string.IsNullOrEmpty(homeTeam)  || (string.IsNullOrEmpty(awayTeam)))
+            {
+                SetInfoLabelText("Name both teams", 1);
+                return;
+            }
+
+            this.gameNameLabel.Text = homeTeam + " - " + awayTeam;
+            this.homeTeamTextBox.Text = "";
+            this.awayTeamTextBox.Text = "";
+            //currentGameId = engine.CreateNewGame(this.currentGameNameLabel.Text);
         }
 
 
@@ -198,6 +205,11 @@ namespace Randomizer
                     break;
             }
             this.infoLabel.Text = message;
+        }
+
+        private void ClearInfoLabel()
+        {
+            SetInfoLabelText("", 0); //Use this to keep manipulation of the backColor in one place.
         }
     }
 }
