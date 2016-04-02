@@ -14,11 +14,7 @@ namespace Randomizer
 {
     public partial class Form1 : Form
     {
-        SoundPlayer soundPlayer;
         RandomizerEngine engine;
-        List<Event> events;
-        string playerSelected = "";
-        string eventFired = "";
         List<string> participants;
         List<string> players;
         Dictionary<string, string> playersAndOwners;
@@ -40,9 +36,6 @@ namespace Randomizer
             {
                 engine.Randomize(playerSelected, eventFired);
             }
-                //TODO: Move this to the return value from the engine
-            //soundPlayer = new SoundPlayer(@"D:\Arbejde\randomizer\Randomizer\RandomizerSounds\1000dollars.wav");
-            //soundPlayer.Play();
         }
 
         private bool ValidateInput(string player, string eventFired)
@@ -146,12 +139,14 @@ namespace Randomizer
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.infoLabel.Text = "";
             participants = new List<string>();
             players = new List<string>();
 
             foreach (var participantTextBox in this.participantNamePanel.Controls.OfType<TextBox>())
             {
-                participants.Add(participantTextBox.Text);
+                if (!string.IsNullOrEmpty(participantTextBox.Text))
+                    participants.Add(participantTextBox.Text);
             }
 
             foreach (var playerRadio in this.teamBox.Controls.OfType<RadioButton>())
@@ -159,7 +154,20 @@ namespace Randomizer
                 players.Add(playerRadio.Text);
             }
 
-            playersAndOwners = engine.DistributeTeams(participants, players);
+            if (participants.Count > 0)
+            {
+                playersAndOwners = engine.DistributeTeams(players, participants);
+                engine.SaveDistribution(playersAndOwners, this.currentGameNameLabel.Text);
+            }
+            else
+            {
+                this.infoLabel.Text = "Husk at angive deltagerne";
+            }
+        }
+
+        private void createNewGameButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

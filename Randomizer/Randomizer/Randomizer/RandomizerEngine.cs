@@ -26,13 +26,10 @@ namespace Randomizer
             Participant winner = GetOwnerFromPlayerName(triggerPlayerName);
             Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
             List<Participant> owners = dbFacade.GetOwners();
+            owners.Remove(winner);
 
             var soundPlayer = new SoundPlayer(eventFired.SoundUrl);
-            //var soundPlayer = new SoundPlayer(@"D:\Arbejde\randomizer\Randomizer\RandomizerSounds\silly_farts_wav.wav");
-
             soundPlayer.Play();
-
-
 
             foreach (var loser in owners)
             {
@@ -48,7 +45,7 @@ namespace Randomizer
             var index = 0;
             for (int j = 0; j < 22; j++)
             {
-                var currentParticipant = participants.ElementAt(j % 7);
+                var currentParticipant = participants.ElementAt(j % participants.Count);
                 if (players.Count == 1)
                     index = 0;
                 else
@@ -72,6 +69,11 @@ namespace Randomizer
                 Name = "Jesper"
             };
             return p;
+        }
+
+        public void SaveDistribution(Dictionary<string, string> playersAndOwners, string gameName)
+        {
+            dbFacade.SaveDistribution(playersAndOwners, gameName);
         }
 
 

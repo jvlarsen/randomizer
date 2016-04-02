@@ -75,5 +75,10 @@ namespace Randomizer
             return owners;
         }
 
+        public void SaveDistribution(Dictionary<string, string> playersAndOwners, string gameName)
+        {
+
+        }
+
     }
 }

@@ -2,9 +2,7 @@
 namespace Randomizer
 {
     partial class Form1
-    {
-        DbFacade dbFacade;
-        
+    {        
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -93,10 +91,12 @@ namespace Randomizer
             this.playerEditComboBox = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.teamDistributionButton = new System.Windows.Forms.Button();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.newGameNameTextBox = new System.Windows.Forms.TextBox();
+            this.loadGameComboBox = new System.Windows.Forms.ComboBox();
+            this.createNewGameButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.currentGameNameLabel = new System.Windows.Forms.Label();
+            this.infoLabel = new System.Windows.Forms.Label();
             this.teamBox.SuspendLayout();
             this.eventBox.SuspendLayout();
             this.participantNamePanel.SuspendLayout();
@@ -778,46 +778,71 @@ namespace Randomizer
             this.teamDistributionButton.UseVisualStyleBackColor = true;
             this.teamDistributionButton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox15
+            // newGameNameTextBox
             // 
-            this.textBox15.Location = new System.Drawing.Point(748, 54);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(291, 20);
-            this.textBox15.TabIndex = 10;
+            this.newGameNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.newGameNameTextBox.Location = new System.Drawing.Point(748, 54);
+            this.newGameNameTextBox.Name = "newGameNameTextBox";
+            this.newGameNameTextBox.Size = new System.Drawing.Size(291, 30);
+            this.newGameNameTextBox.TabIndex = 10;
             // 
-            // comboBox1
+            // loadGameComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(748, 108);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(291, 21);
-            this.comboBox1.TabIndex = 11;
+            this.loadGameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.loadGameComboBox.FormattingEnabled = true;
+            this.loadGameComboBox.Location = new System.Drawing.Point(748, 108);
+            this.loadGameComboBox.Name = "loadGameComboBox";
+            this.loadGameComboBox.Size = new System.Drawing.Size(291, 33);
+            this.loadGameComboBox.TabIndex = 11;
             // 
-            // button1
+            // createNewGameButton
             // 
-            this.button1.Location = new System.Drawing.Point(1046, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Ny kamp";
-            this.button1.UseVisualStyleBackColor = true;
+            this.createNewGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.createNewGameButton.Location = new System.Drawing.Point(1046, 54);
+            this.createNewGameButton.Name = "createNewGameButton";
+            this.createNewGameButton.Size = new System.Drawing.Size(118, 30);
+            this.createNewGameButton.TabIndex = 12;
+            this.createNewGameButton.Text = "Ny kamp";
+            this.createNewGameButton.UseVisualStyleBackColor = true;
+            this.createNewGameButton.Click += new System.EventHandler(this.createNewGameButton_Click);
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.button3.Location = new System.Drawing.Point(1046, 108);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 23);
+            this.button3.Size = new System.Drawing.Size(118, 33);
             this.button3.TabIndex = 13;
             this.button3.Text = "Indlæs kamp";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // currentGameNameLabel
+            // 
+            this.currentGameNameLabel.AutoSize = true;
+            this.currentGameNameLabel.Location = new System.Drawing.Point(482, 13);
+            this.currentGameNameLabel.Name = "currentGameNameLabel";
+            this.currentGameNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.currentGameNameLabel.TabIndex = 14;
+            this.currentGameNameLabel.Text = "label1";
+            // 
+            // label1
+            // 
+            this.infoLabel.AutoSize = true;
+            this.infoLabel.Location = new System.Drawing.Point(887, 666);
+            this.infoLabel.Name = "label1";
+            this.infoLabel.Size = new System.Drawing.Size(35, 13);
+            this.infoLabel.TabIndex = 15;
+            this.infoLabel.Text = "label1";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1176, 774);
+            this.Controls.Add(this.infoLabel);
+            this.Controls.Add(this.currentGameNameLabel);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox15);
+            this.Controls.Add(this.createNewGameButton);
+            this.Controls.Add(this.loadGameComboBox);
+            this.Controls.Add(this.newGameNameTextBox);
             this.Controls.Add(this.teamDistributionButton);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.playerEditComboBox);
@@ -905,10 +930,12 @@ namespace Randomizer
         private System.Windows.Forms.ComboBox playerEditComboBox;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button teamDistributionButton;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox newGameNameTextBox;
+        private System.Windows.Forms.ComboBox loadGameComboBox;
+        private System.Windows.Forms.Button createNewGameButton;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label currentGameNameLabel;
+        private System.Windows.Forms.Label infoLabel;
 
     }
 }
