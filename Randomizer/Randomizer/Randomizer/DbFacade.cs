@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace Randomizer
 {
@@ -80,7 +81,7 @@ namespace Randomizer
 
         }
 
-        public void SaveParticipants(List<string> participantNames)
+        public void SaveParticipants(Dictionary<string, Color> participantNames)
         {
 
         }

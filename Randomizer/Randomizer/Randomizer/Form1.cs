@@ -15,8 +15,8 @@ namespace Randomizer
     public partial class Form1 : Form
     {
         RandomizerEngine engine;
-        List<string> participants;
-        List<string> players;
+        Dictionary<string, Color> participants;
+        Dictionary<string, Color> players;
         Dictionary<string, string> playersAndOwners;
         int currentGamId;
 
@@ -134,13 +134,11 @@ namespace Randomizer
             }
         }
 
-        #endregion
-
-        private void button3_Click(object sender, EventArgs e)
+        private void distributeTeamsButton_Click(object sender, EventArgs e)
         {
             ClearInfoLabel();
-            participants = new List<string>();
-            players = new List<string>();
+            participants = new Dictionary<string, Color>();
+            players = new Dictionary<string, Color>();
 
             if (string.IsNullOrEmpty(this.gameNameLabel.Text))
             {
@@ -151,17 +149,17 @@ namespace Randomizer
             foreach (var participantTextBox in this.participantNamePanel.Controls.OfType<TextBox>())
             {
                 if (!string.IsNullOrEmpty(participantTextBox.Text))
-                    participants.Add(participantTextBox.Text);
+                    participants.Add(participantTextBox.Text, participantTextBox.BackColor);
             }
 
             foreach (var playerRadio in this.teamBox.Controls.OfType<RadioButton>())
             {
-                players.Add(playerRadio.Text);
+                players.Add(playerRadio.Text, Color.White);
             }
 
             if (participants.Count > 0)
             {
-                playersAndOwners = engine.DistributeTeams(players, participants);
+                playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>());
                 engine.SaveParticipants(participants);
                 engine.SaveDistribution(playersAndOwners, this.gameNameLabel.Text);
             }
@@ -170,6 +168,7 @@ namespace Randomizer
                 SetInfoLabelText("Husk at angive deltagerne", 1);
                 return;
             }
+            UpdatePlayerColorsFromOwners(playersAndOwners);
         }
 
         private void createNewGameButton_Click(object sender, EventArgs e)
@@ -186,9 +185,17 @@ namespace Randomizer
             this.gameNameLabel.Text = homeTeam + " - " + awayTeam;
             this.homeTeamTextBox.Text = "";
             this.awayTeamTextBox.Text = "";
-            //currentGameId = engine.CreateNewGame(this.currentGameNameLabel.Text);
         }
 
+        #endregion
+
+        private void UpdatePlayerColorsFromOwners(Dictionary<string, string> playersAndOwners)
+        {
+            foreach (var player in playersAndOwners.Keys)
+            {
+                this.teamBox.Controls.OfType<RadioButton>().First(x => x.Text == player).BackColor = participants[playersAndOwners[player]];
+            }
+        }
 
         private void SetInfoLabelText(string message, int type)
         {

@@ -50,8 +50,8 @@ namespace Randomizer
             this.awayPlayer3 = new System.Windows.Forms.RadioButton();
             this.homePlayer3 = new System.Windows.Forms.RadioButton();
             this.awayPlayer2 = new System.Windows.Forms.RadioButton();
-            this.homePlayer2 = new System.Windows.Forms.RadioButton();
             this.awayPlayer1 = new System.Windows.Forms.RadioButton();
+            this.homePlayer2 = new System.Windows.Forms.RadioButton();
             this.homePlayer1 = new System.Windows.Forms.RadioButton();
             this.eventBox = new System.Windows.Forms.GroupBox();
             this.radioButton36 = new System.Windows.Forms.RadioButton();
@@ -346,17 +346,6 @@ namespace Randomizer
             this.awayPlayer2.Text = "Away Team 2";
             this.awayPlayer2.UseVisualStyleBackColor = true;
             // 
-            // homePlayer2
-            // 
-            this.homePlayer2.AutoSize = true;
-            this.homePlayer2.Location = new System.Drawing.Point(7, 44);
-            this.homePlayer2.Name = "homePlayer2";
-            this.homePlayer2.Size = new System.Drawing.Size(92, 17);
-            this.homePlayer2.TabIndex = 1;
-            this.homePlayer2.TabStop = true;
-            this.homePlayer2.Text = "Home Team 2";
-            this.homePlayer2.UseVisualStyleBackColor = true;
-            // 
             // awayPlayer1
             // 
             this.awayPlayer1.AutoSize = true;
@@ -367,6 +356,17 @@ namespace Randomizer
             this.awayPlayer1.TabStop = true;
             this.awayPlayer1.Text = "Away Team 1";
             this.awayPlayer1.UseVisualStyleBackColor = true;
+            // 
+            // homePlayer2
+            // 
+            this.homePlayer2.AutoSize = true;
+            this.homePlayer2.Location = new System.Drawing.Point(7, 44);
+            this.homePlayer2.Name = "homePlayer2";
+            this.homePlayer2.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer2.TabIndex = 1;
+            this.homePlayer2.TabStop = true;
+            this.homePlayer2.Text = "Home Team 2";
+            this.homePlayer2.UseVisualStyleBackColor = true;
             // 
             // homePlayer1
             // 
@@ -784,7 +784,7 @@ namespace Randomizer
             this.teamDistributionButton.TabIndex = 9;
             this.teamDistributionButton.Text = "Fordel holdene";
             this.teamDistributionButton.UseVisualStyleBackColor = true;
-            this.teamDistributionButton.Click += new System.EventHandler(this.button3_Click);
+            this.teamDistributionButton.Click += new System.EventHandler(this.distributeTeamsButton_Click);
             // 
             // homeTeamTextBox
             // 

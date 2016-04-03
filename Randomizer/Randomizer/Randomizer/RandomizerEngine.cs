@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Media;
+using System.Drawing;
 
 namespace Randomizer
 {
@@ -70,7 +71,7 @@ namespace Randomizer
             return p;
         }
 
-        public void SaveParticipants(List<string> participantNames)
+        public void SaveParticipants(Dictionary<string, Color> participantNames)
         {
             dbFacade.SaveParticipants(participantNames);
         }
