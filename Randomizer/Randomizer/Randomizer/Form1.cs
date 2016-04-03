@@ -32,10 +32,20 @@ namespace Randomizer
         {
             var playerSelected = GetTriggerPlayer();
             var eventFired = GetEvent();
+            var randomizerOutcome = new Dictionary<string, string>();
 
             if (ValidateInput(playerSelected, eventFired))
             {
-                engine.Randomize(playerSelected, eventFired);
+                //returned Dictionary<string, string> with <loserName, measure>
+                randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners);
+            }
+
+            foreach (var loser in randomizerOutcome.Keys)
+            {
+                var currentParticipantTextBox = this.participantNamePanel.Controls.OfType<TextBox>().First(x => x.Text == loser);
+                var index = currentParticipantTextBox.Text.Substring(18);
+                var currentMeasureTextBox = this.flowLayoutPanel2.Controls.OfType<TextBox>().First(x => x.Name == "measureTextBox" + index);
+                currentMeasureTextBox.Text = randomizerOutcome[loser];
             }
         }
 
@@ -159,7 +169,7 @@ namespace Randomizer
 
             if (participants.Count > 0)
             {
-                playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>());
+                playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>(), this.gameNameLabel.Text);
                 engine.SaveParticipants(participants);
                 engine.SaveDistribution(playersAndOwners, this.gameNameLabel.Text);
             }

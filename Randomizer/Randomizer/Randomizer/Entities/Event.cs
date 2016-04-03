@@ -9,12 +9,12 @@ namespace Randomizer.Entities
     public class Event
     {
         public string Name { get; set; }
-        public string Measure { get; set; }
+        public Measure Measure { get; set; }
         public string SoundUrl { get; set; }
 
         public Event() { }
 
-        public Event(string name, string measure, string soundUrl)
+        public Event(string name, Measure measure, string soundUrl)
         {
             Name = name;
             Measure = measure;

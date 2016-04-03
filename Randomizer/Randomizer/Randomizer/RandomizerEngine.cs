@@ -14,31 +14,63 @@ namespace Randomizer
         public Dictionary<Participant, Event> EventOutcome;
         private DbFacade dbFacade;
         private List<Event> events;
+        private List<Measure> measures;
 
         public RandomizerEngine()
         {
             dbFacade = DbFacade.GetInstance();
             events = dbFacade.GetEvents();
             EventOutcome = new Dictionary<Participant, Event>();
+            measures = dbFacade.GetMeasures();
         }
 
-        public void Randomize(string triggerPlayerName, string eventNameFired)
+        public Dictionary<string, string> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners)
         {
-            Participant winner = GetOwnerFromPlayerName(triggerPlayerName);
+            Participant winner = dbFacade.GetOwnerFromPlayerName(triggerPlayerName);
             Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
             List<Participant> owners = dbFacade.GetOwners();
             owners.Remove(winner);
 
+            Dictionary<string, string> randomizerOutcome = new Dictionary<string, string>();
+
             var soundPlayer = new SoundPlayer(eventFired.SoundUrl);
             soundPlayer.Play();
 
+            var random = new Random();
+            int outcomeIndex = 0;
+            var outcomeMeasure = "";
+
+            var smallRangeTop = eventFired.Measure.Small;
+            var mediumRangeTop = eventFired.Measure.Medium + smallRangeTop;
+            var largeRangeTop = eventFired.Measure.Large + mediumRangeTop;
+            var walterRangeTop = eventFired.Measure.Walter + largeRangeTop;
+
             foreach (var loser in owners)
             {
-                
+                outcomeIndex = random.Next(1, 101);
+
+                    if (1 <= outcomeIndex && outcomeIndex <= smallRangeTop)
+                    {
+                        outcomeMeasure = "Small";
+                    }
+                    else if (smallRangeTop < outcomeIndex && outcomeIndex <= mediumRangeTop)
+                    {
+                        outcomeMeasure = "Memmel";
+                    }
+                    else if (mediumRangeTop < outcomeIndex && outcomeIndex <= largeRangeTop)
+                    {
+                        outcomeMeasure = "Large";
+                    }
+                    else if (largeRangeTop < outcomeIndex && outcomeIndex <= walterRangeTop)
+                    {
+                        outcomeMeasure = "Walter";
+                    }
+                    randomizerOutcome.Add(loser.Name, outcomeMeasure);
             }
+            return randomizerOutcome;
         }
 
-        public Dictionary<string, string> DistributeTeams(List<string> players, List<string> participants)
+        public Dictionary<string, string> DistributeTeams(List<string> players, List<string> participants, string gameName)
         {
             var countParticipants = participants.Count;
             var playersAndOwners = new Dictionary<string, string>();
@@ -58,16 +90,15 @@ namespace Randomizer
                 players.Remove(selectedPlayer);
             }
 
-            //Call dbFacade here to store the playersAndOwners mapping
+            dbFacade.SaveDistribution(playersAndOwners, gameName);
             return playersAndOwners;
         }
 
         private Participant GetOwnerFromPlayerName(string triggerPlayerName)
         {
             dbFacade.GetOwnerFromPlayerName(triggerPlayerName);
-            var p = new Participant(){
-                Name = "Jesper"
-            };
+            var p = new Participant("Jesper");
+
             return p;
         }
 

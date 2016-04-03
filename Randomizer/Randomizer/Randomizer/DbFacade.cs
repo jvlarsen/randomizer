@@ -14,11 +14,13 @@ namespace Randomizer
         private string connectionString;
         private SqlConnection conn;
         private static DbFacade dbFacade;
+        public List<Measure> measures;
 
         private DbFacade()
         { 
             connectionString = @"Data Source=JVL\SQLEXPRESS;Initial Catalog=RandomDb;Integrated Security=True";
             conn = new SqlConnection(connectionString);
+            GetMeasures();
         }
 
         public static DbFacade GetInstance()
@@ -50,17 +52,35 @@ namespace Randomizer
 
             while (reader.Read())
             {
-                events.Add(new Event((string)reader["EventName"], (string)reader["Measure"], (string)reader["SoundClipUrl"]));
+                var currentMeasure = measures.First(x => x.Name == (string)reader["Measure"]);
+                events.Add(new Event((string)reader["EventName"], currentMeasure, (string)reader["SoundClipUrl"]));
             }
             reader.Close();
             CloseConn();
             return events;
         }
 
+        public List<Measure> GetMeasures()
+        {
+            measures = new List<Measure>();
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT Measure, Small, Medium, Large, Walter FROM Measures";
+
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                measures.Add(new Measure((string)reader["Measure"], (int)reader["Small"], (int)reader["Medium"], (int)reader["Large"], (int)reader["Walter"]));
+            }
+            CloseConn();
+            return measures;
+        }
+
         public Participant GetOwnerFromPlayerName(string playerName)
         {
             //var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
-            var p = new Participant() { Name = "Faccio" };
+            var p = new Participant("Faccio");
             return p;
         }
 
@@ -76,9 +96,30 @@ namespace Randomizer
             return owners;
         }
 
+        public List<Participant> GetParticipants()
+        {
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT ParticipantId, Name FROM Participant";
+
+            var participants = new List<Participant>();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                participants.Add(new Participant((string)reader["Name"]));
+            }
+            return participants;
+        }
+
+        public Participant GetParticipantFromName(string participantName)
+        {
+            var participants = GetParticipants();
+            return participants.First(x => x.Name == participantName);
+        }
+
         public void SaveDistribution(Dictionary<string, string> playersAndOwners, string gameName)
         {
-
+            //TODO: Make the mapping here from playersAndOwners to find database records representing the entities Player and Participant and map them in the table Owners
         }
 
         public void SaveParticipants(Dictionary<string, Color> participantNames)

@@ -71,22 +71,22 @@ namespace Randomizer
             this.randomizeButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.participantNamePanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.participantTextBox1 = new System.Windows.Forms.TextBox();
+            this.participantTextBox2 = new System.Windows.Forms.TextBox();
+            this.participantTextBox3 = new System.Windows.Forms.TextBox();
+            this.participantTextBox4 = new System.Windows.Forms.TextBox();
+            this.participantTextBox5 = new System.Windows.Forms.TextBox();
+            this.participantTextBox6 = new System.Windows.Forms.TextBox();
+            this.participantTextBox7 = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.measureTextBox1 = new System.Windows.Forms.TextBox();
+            this.measureTextBox2 = new System.Windows.Forms.TextBox();
+            this.measureTextBox3 = new System.Windows.Forms.TextBox();
+            this.measureTextBox4 = new System.Windows.Forms.TextBox();
+            this.measureTextBox5 = new System.Windows.Forms.TextBox();
+            this.measureTextBox6 = new System.Windows.Forms.TextBox();
+            this.measureTextBox7 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.playerEditComboBox = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -594,80 +594,80 @@ namespace Randomizer
             // 
             // participantNamePanel
             // 
-            this.participantNamePanel.Controls.Add(this.textBox1);
-            this.participantNamePanel.Controls.Add(this.textBox2);
-            this.participantNamePanel.Controls.Add(this.textBox3);
-            this.participantNamePanel.Controls.Add(this.textBox4);
-            this.participantNamePanel.Controls.Add(this.textBox5);
-            this.participantNamePanel.Controls.Add(this.textBox6);
-            this.participantNamePanel.Controls.Add(this.textBox7);
+            this.participantNamePanel.Controls.Add(this.participantTextBox1);
+            this.participantNamePanel.Controls.Add(this.participantTextBox2);
+            this.participantNamePanel.Controls.Add(this.participantTextBox3);
+            this.participantNamePanel.Controls.Add(this.participantTextBox4);
+            this.participantNamePanel.Controls.Add(this.participantTextBox5);
+            this.participantNamePanel.Controls.Add(this.participantTextBox6);
+            this.participantNamePanel.Controls.Add(this.participantTextBox7);
             this.participantNamePanel.Location = new System.Drawing.Point(411, 447);
             this.participantNamePanel.Name = "participantNamePanel";
             this.participantNamePanel.Size = new System.Drawing.Size(107, 254);
             this.participantNamePanel.TabIndex = 4;
             // 
-            // textBox1
+            // participantTextBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 30);
-            this.textBox1.TabIndex = 0;
+            this.participantTextBox1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.participantTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.participantTextBox1.Location = new System.Drawing.Point(3, 3);
+            this.participantTextBox1.Name = "participantTextBox1";
+            this.participantTextBox1.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox1.TabIndex = 0;
             // 
-            // textBox2
+            // participantTextBox2
             // 
-            this.textBox2.BackColor = System.Drawing.Color.MediumOrchid;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(3, 39);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 30);
-            this.textBox2.TabIndex = 1;
+            this.participantTextBox2.BackColor = System.Drawing.Color.MediumOrchid;
+            this.participantTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox2.Location = new System.Drawing.Point(3, 39);
+            this.participantTextBox2.Name = "participantTextBox2";
+            this.participantTextBox2.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox2.TabIndex = 1;
             // 
-            // textBox3
+            // participantTextBox3
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Magenta;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(3, 75);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 30);
-            this.textBox3.TabIndex = 2;
+            this.participantTextBox3.BackColor = System.Drawing.Color.Magenta;
+            this.participantTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox3.Location = new System.Drawing.Point(3, 75);
+            this.participantTextBox3.Name = "participantTextBox3";
+            this.participantTextBox3.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox3.TabIndex = 2;
             // 
-            // textBox4
+            // participantTextBox4
             // 
-            this.textBox4.BackColor = System.Drawing.Color.YellowGreen;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(3, 111);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 30);
-            this.textBox4.TabIndex = 3;
+            this.participantTextBox4.BackColor = System.Drawing.Color.YellowGreen;
+            this.participantTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox4.Location = new System.Drawing.Point(3, 111);
+            this.participantTextBox4.Name = "participantTextBox4";
+            this.participantTextBox4.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox4.TabIndex = 3;
             // 
-            // textBox5
+            // participantTextBox5
             // 
-            this.textBox5.BackColor = System.Drawing.Color.Turquoise;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(3, 147);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 30);
-            this.textBox5.TabIndex = 4;
+            this.participantTextBox5.BackColor = System.Drawing.Color.Turquoise;
+            this.participantTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox5.Location = new System.Drawing.Point(3, 147);
+            this.participantTextBox5.Name = "participantTextBox5";
+            this.participantTextBox5.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox5.TabIndex = 4;
             // 
-            // textBox6
+            // participantTextBox6
             // 
-            this.textBox6.BackColor = System.Drawing.Color.SlateGray;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(3, 183);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 30);
-            this.textBox6.TabIndex = 5;
+            this.participantTextBox6.BackColor = System.Drawing.Color.SlateGray;
+            this.participantTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox6.Location = new System.Drawing.Point(3, 183);
+            this.participantTextBox6.Name = "participantTextBox6";
+            this.participantTextBox6.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox6.TabIndex = 5;
             // 
-            // textBox7
+            // participantTextBox7
             // 
-            this.textBox7.BackColor = System.Drawing.Color.Orange;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(3, 219);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 30);
-            this.textBox7.TabIndex = 6;
+            this.participantTextBox7.BackColor = System.Drawing.Color.Orange;
+            this.participantTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox7.Location = new System.Drawing.Point(3, 219);
+            this.participantTextBox7.Name = "participantTextBox7";
+            this.participantTextBox7.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox7.TabIndex = 6;
             // 
             // progressBar
             // 
@@ -679,80 +679,80 @@ namespace Randomizer
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.textBox8);
-            this.flowLayoutPanel2.Controls.Add(this.textBox9);
-            this.flowLayoutPanel2.Controls.Add(this.textBox10);
-            this.flowLayoutPanel2.Controls.Add(this.textBox11);
-            this.flowLayoutPanel2.Controls.Add(this.textBox12);
-            this.flowLayoutPanel2.Controls.Add(this.textBox13);
-            this.flowLayoutPanel2.Controls.Add(this.textBox14);
+            this.flowLayoutPanel2.Controls.Add(this.measureTextBox1);
+            this.flowLayoutPanel2.Controls.Add(this.measureTextBox2);
+            this.flowLayoutPanel2.Controls.Add(this.measureTextBox3);
+            this.flowLayoutPanel2.Controls.Add(this.measureTextBox4);
+            this.flowLayoutPanel2.Controls.Add(this.measureTextBox5);
+            this.flowLayoutPanel2.Controls.Add(this.measureTextBox6);
+            this.flowLayoutPanel2.Controls.Add(this.measureTextBox7);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(556, 447);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(107, 254);
             this.flowLayoutPanel2.TabIndex = 6;
             // 
-            // textBox8
+            // measureTextBox1
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(3, 3);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(100, 30);
-            this.textBox8.TabIndex = 0;
+            this.measureTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measureTextBox1.Location = new System.Drawing.Point(3, 3);
+            this.measureTextBox1.Name = "measureTextBox1";
+            this.measureTextBox1.ReadOnly = true;
+            this.measureTextBox1.Size = new System.Drawing.Size(100, 30);
+            this.measureTextBox1.TabIndex = 0;
             // 
-            // textBox9
+            // measureTextBox2
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(3, 39);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(100, 30);
-            this.textBox9.TabIndex = 1;
+            this.measureTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measureTextBox2.Location = new System.Drawing.Point(3, 39);
+            this.measureTextBox2.Name = "measureTextBox2";
+            this.measureTextBox2.ReadOnly = true;
+            this.measureTextBox2.Size = new System.Drawing.Size(100, 30);
+            this.measureTextBox2.TabIndex = 1;
             // 
-            // textBox10
+            // measureTextBox3
             // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(3, 75);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(100, 30);
-            this.textBox10.TabIndex = 2;
+            this.measureTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measureTextBox3.Location = new System.Drawing.Point(3, 75);
+            this.measureTextBox3.Name = "measureTextBox3";
+            this.measureTextBox3.ReadOnly = true;
+            this.measureTextBox3.Size = new System.Drawing.Size(100, 30);
+            this.measureTextBox3.TabIndex = 2;
             // 
-            // textBox11
+            // measureTextBox4
             // 
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(3, 111);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(100, 30);
-            this.textBox11.TabIndex = 3;
+            this.measureTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measureTextBox4.Location = new System.Drawing.Point(3, 111);
+            this.measureTextBox4.Name = "measureTextBox4";
+            this.measureTextBox4.ReadOnly = true;
+            this.measureTextBox4.Size = new System.Drawing.Size(100, 30);
+            this.measureTextBox4.TabIndex = 3;
             // 
-            // textBox12
+            // measureTextBox5
             // 
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(3, 147);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(100, 30);
-            this.textBox12.TabIndex = 4;
+            this.measureTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measureTextBox5.Location = new System.Drawing.Point(3, 147);
+            this.measureTextBox5.Name = "measureTextBox5";
+            this.measureTextBox5.ReadOnly = true;
+            this.measureTextBox5.Size = new System.Drawing.Size(100, 30);
+            this.measureTextBox5.TabIndex = 4;
             // 
-            // textBox13
+            // measureTextBox6
             // 
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(3, 183);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(100, 30);
-            this.textBox13.TabIndex = 5;
+            this.measureTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measureTextBox6.Location = new System.Drawing.Point(3, 183);
+            this.measureTextBox6.Name = "measureTextBox6";
+            this.measureTextBox6.ReadOnly = true;
+            this.measureTextBox6.Size = new System.Drawing.Size(100, 30);
+            this.measureTextBox6.TabIndex = 5;
             // 
-            // textBox14
+            // measureTextBox7
             // 
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(3, 219);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(100, 30);
-            this.textBox14.TabIndex = 6;
+            this.measureTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measureTextBox7.Location = new System.Drawing.Point(3, 219);
+            this.measureTextBox7.Name = "measureTextBox7";
+            this.measureTextBox7.ReadOnly = true;
+            this.measureTextBox7.Size = new System.Drawing.Size(100, 30);
+            this.measureTextBox7.TabIndex = 6;
             // 
             // timer1
             // 
@@ -946,22 +946,22 @@ namespace Randomizer
         private System.Windows.Forms.Button randomizeButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.FlowLayoutPanel participantNamePanel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox participantTextBox1;
+        private System.Windows.Forms.TextBox participantTextBox2;
+        private System.Windows.Forms.TextBox participantTextBox3;
+        private System.Windows.Forms.TextBox participantTextBox4;
+        private System.Windows.Forms.TextBox participantTextBox5;
+        private System.Windows.Forms.TextBox participantTextBox6;
+        private System.Windows.Forms.TextBox participantTextBox7;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox measureTextBox1;
+        private System.Windows.Forms.TextBox measureTextBox2;
+        private System.Windows.Forms.TextBox measureTextBox3;
+        private System.Windows.Forms.TextBox measureTextBox4;
+        private System.Windows.Forms.TextBox measureTextBox5;
+        private System.Windows.Forms.TextBox measureTextBox6;
+        private System.Windows.Forms.TextBox measureTextBox7;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RadioButton radioButton36;
         private System.Windows.Forms.ComboBox playerEditComboBox;

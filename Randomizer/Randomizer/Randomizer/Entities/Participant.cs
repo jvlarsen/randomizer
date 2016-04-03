@@ -9,5 +9,10 @@ namespace Randomizer.Entities
     public class Participant
     {
         public string Name { get; set; }
+
+        public Participant(string name)
+        {
+            this.Name = name;
+        }
     }
 }
