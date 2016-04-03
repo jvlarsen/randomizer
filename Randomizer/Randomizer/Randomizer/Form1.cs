@@ -125,10 +125,13 @@ namespace Randomizer
         private void richTextButton1_TextChanged(object sender, EventArgs e)
         {
             var playerAffected = (ComboItem)this.playerEditComboBox.SelectedItem;
-            var playerAffectedValue = playerAffected.Value;
-            playerAffectedValue = string.IsNullOrEmpty(playerAffectedValue) ? "" : playerAffectedValue;
-            var updateRadio = teamBox.Controls.OfType<RadioButton>().First(x => x.Name == playerAffectedValue);
-            updateRadio.Text = this.richTextBox1.Text;
+            if (playerAffected != null)
+            {
+                var playerAffectedValue = playerAffected.Value;
+                playerAffectedValue = string.IsNullOrEmpty(playerAffectedValue) ? "" : playerAffectedValue;
+                var updateRadio = teamBox.Controls.OfType<RadioButton>().First(x => x.Name == playerAffectedValue);
+                updateRadio.Text = this.richTextBox1.Text;
+            }
         }
 
         #endregion
