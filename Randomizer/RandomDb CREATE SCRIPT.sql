@@ -13,12 +13,22 @@ CREATE TABLE Teams
 	JerseyColor VARCHAR(10)
 )
 
+CREATE TABLE Matches
+(
+	Description VARCHAR(100) PRIMARY KEY,
+	Home VARCHAR(100),
+	Away VARCHAR(100),
+	Result VARCHAR(5),
+	Created DATETIME
+)
+
 CREATE TABLE Players
 (
-	PlayerId INT PRIMARY KEY,
+	PlayerId INT IDENTITY PRIMARY KEY,
 	Name VARCHAR(100),
 	Number INT,
-	TeamName VARCHAR(100) REFERENCES dbo.Teams (TeamName)
+	TeamName VARCHAR(100) REFERENCES dbo.Teams (TeamName),
+	GameName VARCHAR(100) REFERENCES dbo.Matches (Description)
 )
 
 CREATE TABLE Events
@@ -29,34 +39,29 @@ CREATE TABLE Events
 )
 --ALTER TABLE Events ADD CONSTRAINT DefaultSoundClipUrlEmpty DEFAULT '' FOR SoundClipUrl
 
-ALTER TABLE Events DROP CONSTRAINT DefaultSoundClipUrlEmpty
-CREATE TABLE Matches
-(
-	MatchId INT NOT NULL PRIMARY KEY,
-	Home VARCHAR(100),
-	Away VARCHAR(100),
-	Result VARCHAR(5),
-	Description VARCHAR(100),
-	Created DATETIME
-)
-
 CREATE TABLE MatchLog
 (
 	LogId INT IDENTITY,
-	MatchId INT REFERENCES dbo.Matches (MatchId),
+	Description VARCHAR(100) REFERENCES dbo.Matches (Description),
 	PlayerId INT REFERENCES dbo.Players (PlayerId),
 	ParticipantId INT REFERENCES dbo.Participants (ParticipantId),
 	EventName VARCHAR(20) REFERENCES dbo.Events (EventName)
 )
 
-CREATE TABLE Distribution
+CREATE TABLE Measures
 (
-	Measure VARCHAR(20),
+	Measure VARCHAR(20) PRIMARY KEY,
 	Small INT,
 	Medium INT,
 	Large INT,
 	Walter INT
 )
 
-DROP TABLE MatchLog
-DROP TABLE Events
+--DROP TABLE Measures
+--DROP TABLE MatchLog
+--DROP TABLE Matches
+--DROP TABLE Events
+--DROP TABLE Owners
+--DROP TABLE Players
+--DROP TABLE Teams
+--DROP TABLE Participants

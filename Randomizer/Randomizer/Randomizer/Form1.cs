@@ -71,11 +71,11 @@ namespace Randomizer
             var rdoBtn = "radioButton";
             for (int i = 1; i < 12; i++)
             {
-                this.playerEditComboBox.Items.Add(new ComboItem("Home " + i, rdoBtn + i));
+                this.playerEditComboBox.Items.Add(new ComboItem("Home Team " + i, rdoBtn + i));
             }
             for (int i = 1; i < 12; i++)
             {
-                this.playerEditComboBox.Items.Add(new ComboItem("Away " + i, rdoBtn + (i + 11)));
+                this.playerEditComboBox.Items.Add(new ComboItem("Away Team " + i, rdoBtn + (i + 11)));
             }
         }
 
@@ -137,11 +137,16 @@ namespace Randomizer
             var playerAffected = (ComboItem)this.playerEditComboBox.SelectedItem;
             if (playerAffected != null)
             {
-                var playerAffectedValue = playerAffected.Value;
+                var playerAffectedValue = playerAffected.Presentation;
                 playerAffectedValue = string.IsNullOrEmpty(playerAffectedValue) ? "" : playerAffectedValue;
                 var updateRadio = teamBox.Controls.OfType<RadioButton>().First(x => x.Name == playerAffectedValue);
                 updateRadio.Text = this.richTextBox1.Text;
             }
+        }
+
+        private void submitNewPlayerName(object sender, EventArgs e)
+        {
+            this.richTextBox1.Text = "";
         }
 
         private void distributeTeamsButton_Click(object sender, EventArgs e)
@@ -171,7 +176,6 @@ namespace Randomizer
             {
                 playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>(), this.gameNameLabel.Text);
                 engine.SaveParticipants(participants);
-                engine.SaveDistribution(playersAndOwners, this.gameNameLabel.Text);
             }
             else
             {
@@ -195,6 +199,7 @@ namespace Randomizer
             this.gameNameLabel.Text = homeTeam + " - " + awayTeam;
             this.homeTeamTextBox.Text = "";
             this.awayTeamTextBox.Text = "";
+            engine.SaveNewGame(this.gameNameLabel.Text, DateTime.Now);
         }
 
         #endregion

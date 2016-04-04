@@ -112,6 +112,10 @@ namespace Randomizer
             dbFacade.SaveDistribution(playersAndOwners, gameName);
         }
 
+        public void SaveNewGame(string gameName, DateTime gameDate)
+        {
+            dbFacade.SaveNewGame(gameName, gameDate);
+        }
 
     }
 }

@@ -141,7 +141,7 @@ namespace Randomizer
             // 
             this.awayPlayer11.AutoSize = true;
             this.awayPlayer11.Location = new System.Drawing.Point(7, 563);
-            this.awayPlayer11.Name = "awayPlayer11";
+            this.awayPlayer11.Name = "Away Team 11";
             this.awayPlayer11.Size = new System.Drawing.Size(96, 17);
             this.awayPlayer11.TabIndex = 21;
             this.awayPlayer11.TabStop = true;
@@ -152,7 +152,7 @@ namespace Randomizer
             // 
             this.homePlayer11.AutoSize = true;
             this.homePlayer11.Location = new System.Drawing.Point(7, 260);
-            this.homePlayer11.Name = "homePlayer11";
+            this.homePlayer11.Name = "Home Team 11";
             this.homePlayer11.Size = new System.Drawing.Size(98, 17);
             this.homePlayer11.TabIndex = 10;
             this.homePlayer11.TabStop = true;
@@ -163,7 +163,7 @@ namespace Randomizer
             // 
             this.awayPlayer10.AutoSize = true;
             this.awayPlayer10.Location = new System.Drawing.Point(7, 540);
-            this.awayPlayer10.Name = "awayPlayer10";
+            this.awayPlayer10.Name = "Away Team 10";
             this.awayPlayer10.Size = new System.Drawing.Size(96, 17);
             this.awayPlayer10.TabIndex = 20;
             this.awayPlayer10.TabStop = true;
@@ -174,7 +174,7 @@ namespace Randomizer
             // 
             this.homePlayer10.AutoSize = true;
             this.homePlayer10.Location = new System.Drawing.Point(7, 236);
-            this.homePlayer10.Name = "homePlayer10";
+            this.homePlayer10.Name = "Home Team 10";
             this.homePlayer10.Size = new System.Drawing.Size(98, 17);
             this.homePlayer10.TabIndex = 9;
             this.homePlayer10.TabStop = true;
@@ -185,7 +185,7 @@ namespace Randomizer
             // 
             this.homePlayer9.AutoSize = true;
             this.homePlayer9.Location = new System.Drawing.Point(7, 212);
-            this.homePlayer9.Name = "homePlayer9";
+            this.homePlayer9.Name = "Home Team 9";
             this.homePlayer9.Size = new System.Drawing.Size(92, 17);
             this.homePlayer9.TabIndex = 8;
             this.homePlayer9.TabStop = true;
@@ -196,7 +196,7 @@ namespace Randomizer
             // 
             this.awayPlayer9.AutoSize = true;
             this.awayPlayer9.Location = new System.Drawing.Point(7, 517);
-            this.awayPlayer9.Name = "awayPlayer9";
+            this.awayPlayer9.Name = "Away Team 9";
             this.awayPlayer9.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer9.TabIndex = 19;
             this.awayPlayer9.TabStop = true;
@@ -207,7 +207,7 @@ namespace Randomizer
             // 
             this.homePlayer8.AutoSize = true;
             this.homePlayer8.Location = new System.Drawing.Point(7, 188);
-            this.homePlayer8.Name = "homePlayer8";
+            this.homePlayer8.Name = "Home Team 8";
             this.homePlayer8.Size = new System.Drawing.Size(92, 17);
             this.homePlayer8.TabIndex = 7;
             this.homePlayer8.TabStop = true;
@@ -218,7 +218,7 @@ namespace Randomizer
             // 
             this.awayPlayer8.AutoSize = true;
             this.awayPlayer8.Location = new System.Drawing.Point(7, 494);
-            this.awayPlayer8.Name = "awayPlayer8";
+            this.awayPlayer8.Name = "Away Team 8";
             this.awayPlayer8.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer8.TabIndex = 18;
             this.awayPlayer8.TabStop = true;
@@ -229,7 +229,7 @@ namespace Randomizer
             // 
             this.awayPlayer5.AutoSize = true;
             this.awayPlayer5.Location = new System.Drawing.Point(7, 425);
-            this.awayPlayer5.Name = "awayPlayer5";
+            this.awayPlayer5.Name = "Away Team 5";
             this.awayPlayer5.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer5.TabIndex = 15;
             this.awayPlayer5.TabStop = true;
@@ -240,7 +240,7 @@ namespace Randomizer
             // 
             this.awayPlayer7.AutoSize = true;
             this.awayPlayer7.Location = new System.Drawing.Point(7, 471);
-            this.awayPlayer7.Name = "awayPlayer7";
+            this.awayPlayer7.Name = "Away Team 7";
             this.awayPlayer7.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer7.TabIndex = 17;
             this.awayPlayer7.TabStop = true;
@@ -251,7 +251,7 @@ namespace Randomizer
             // 
             this.awayPlayer6.AutoSize = true;
             this.awayPlayer6.Location = new System.Drawing.Point(7, 448);
-            this.awayPlayer6.Name = "awayPlayer6";
+            this.awayPlayer6.Name = "Away Team 6";
             this.awayPlayer6.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer6.TabIndex = 16;
             this.awayPlayer6.TabStop = true;
@@ -262,7 +262,7 @@ namespace Randomizer
             // 
             this.homePlayer7.AutoSize = true;
             this.homePlayer7.Location = new System.Drawing.Point(7, 164);
-            this.homePlayer7.Name = "homePlayer7";
+            this.homePlayer7.Name = "Home Team 7";
             this.homePlayer7.Size = new System.Drawing.Size(92, 17);
             this.homePlayer7.TabIndex = 6;
             this.homePlayer7.TabStop = true;
@@ -273,7 +273,7 @@ namespace Randomizer
             // 
             this.homePlayer6.AutoSize = true;
             this.homePlayer6.Location = new System.Drawing.Point(7, 140);
-            this.homePlayer6.Name = "homePlayer6";
+            this.homePlayer6.Name = "Home Team 6";
             this.homePlayer6.Size = new System.Drawing.Size(92, 17);
             this.homePlayer6.TabIndex = 5;
             this.homePlayer6.TabStop = true;
@@ -284,7 +284,7 @@ namespace Randomizer
             // 
             this.homePlayer5.AutoSize = true;
             this.homePlayer5.Location = new System.Drawing.Point(7, 116);
-            this.homePlayer5.Name = "homePlayer5";
+            this.homePlayer5.Name = "Home Team 5";
             this.homePlayer5.Size = new System.Drawing.Size(92, 17);
             this.homePlayer5.TabIndex = 4;
             this.homePlayer5.TabStop = true;
@@ -295,7 +295,7 @@ namespace Randomizer
             // 
             this.awayPlayer4.AutoSize = true;
             this.awayPlayer4.Location = new System.Drawing.Point(7, 402);
-            this.awayPlayer4.Name = "awayPlayer4";
+            this.awayPlayer4.Name = "Away Team 4";
             this.awayPlayer4.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer4.TabIndex = 14;
             this.awayPlayer4.TabStop = true;
@@ -306,7 +306,7 @@ namespace Randomizer
             // 
             this.homePlayer4.AutoSize = true;
             this.homePlayer4.Location = new System.Drawing.Point(7, 92);
-            this.homePlayer4.Name = "homePlayer4";
+            this.homePlayer4.Name = "Home Team 4";
             this.homePlayer4.Size = new System.Drawing.Size(92, 17);
             this.homePlayer4.TabIndex = 3;
             this.homePlayer4.TabStop = true;
@@ -317,7 +317,7 @@ namespace Randomizer
             // 
             this.awayPlayer3.AutoSize = true;
             this.awayPlayer3.Location = new System.Drawing.Point(7, 379);
-            this.awayPlayer3.Name = "awayPlayer3";
+            this.awayPlayer3.Name = "Away Team 3";
             this.awayPlayer3.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer3.TabIndex = 13;
             this.awayPlayer3.TabStop = true;
@@ -328,7 +328,7 @@ namespace Randomizer
             // 
             this.homePlayer3.AutoSize = true;
             this.homePlayer3.Location = new System.Drawing.Point(7, 68);
-            this.homePlayer3.Name = "homePlayer3";
+            this.homePlayer3.Name = "Home Team 3";
             this.homePlayer3.Size = new System.Drawing.Size(92, 17);
             this.homePlayer3.TabIndex = 2;
             this.homePlayer3.TabStop = true;
@@ -339,7 +339,7 @@ namespace Randomizer
             // 
             this.awayPlayer2.AutoSize = true;
             this.awayPlayer2.Location = new System.Drawing.Point(7, 356);
-            this.awayPlayer2.Name = "awayPlayer2";
+            this.awayPlayer2.Name = "Away Team 2";
             this.awayPlayer2.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer2.TabIndex = 12;
             this.awayPlayer2.TabStop = true;
@@ -350,7 +350,7 @@ namespace Randomizer
             // 
             this.awayPlayer1.AutoSize = true;
             this.awayPlayer1.Location = new System.Drawing.Point(7, 333);
-            this.awayPlayer1.Name = "awayPlayer1";
+            this.awayPlayer1.Name = "Away Team 1";
             this.awayPlayer1.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer1.TabIndex = 11;
             this.awayPlayer1.TabStop = true;
@@ -361,7 +361,7 @@ namespace Randomizer
             // 
             this.homePlayer2.AutoSize = true;
             this.homePlayer2.Location = new System.Drawing.Point(7, 44);
-            this.homePlayer2.Name = "homePlayer2";
+            this.homePlayer2.Name = "Home Team 2";
             this.homePlayer2.Size = new System.Drawing.Size(92, 17);
             this.homePlayer2.TabIndex = 1;
             this.homePlayer2.TabStop = true;
@@ -372,7 +372,7 @@ namespace Randomizer
             // 
             this.homePlayer1.AutoSize = true;
             this.homePlayer1.Location = new System.Drawing.Point(7, 20);
-            this.homePlayer1.Name = "homePlayer1";
+            this.homePlayer1.Name = "Home Team 1";
             this.homePlayer1.Size = new System.Drawing.Size(92, 17);
             this.homePlayer1.TabIndex = 0;
             this.homePlayer1.TabStop = true;
@@ -573,9 +573,10 @@ namespace Randomizer
             // randomizeButton
             // 
             this.randomizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.randomizeButton.Location = new System.Drawing.Point(458, 254);
+            this.randomizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.randomizeButton.Location = new System.Drawing.Point(414, 254);
             this.randomizeButton.Name = "randomizeButton";
-            this.randomizeButton.Size = new System.Drawing.Size(138, 185);
+            this.randomizeButton.Size = new System.Drawing.Size(245, 149);
             this.randomizeButton.TabIndex = 2;
             this.randomizeButton.Text = "RANDOMIZE!";
             this.randomizeButton.UseVisualStyleBackColor = false;
@@ -584,9 +585,10 @@ namespace Randomizer
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Green;
-            this.button2.Location = new System.Drawing.Point(458, 54);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.button2.Location = new System.Drawing.Point(414, 54);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 41);
+            this.button2.Size = new System.Drawing.Size(245, 41);
             this.button2.TabIndex = 3;
             this.button2.Text = "START HALVLEG";
             this.button2.UseVisualStyleBackColor = false;
@@ -601,7 +603,7 @@ namespace Randomizer
             this.participantNamePanel.Controls.Add(this.participantTextBox5);
             this.participantNamePanel.Controls.Add(this.participantTextBox6);
             this.participantNamePanel.Controls.Add(this.participantTextBox7);
-            this.participantNamePanel.Location = new System.Drawing.Point(411, 447);
+            this.participantNamePanel.Location = new System.Drawing.Point(414, 447);
             this.participantNamePanel.Name = "participantNamePanel";
             this.participantNamePanel.Size = new System.Drawing.Size(107, 254);
             this.participantNamePanel.TabIndex = 4;
@@ -671,10 +673,10 @@ namespace Randomizer
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(458, 108);
+            this.progressBar.Location = new System.Drawing.Point(414, 108);
             this.progressBar.Maximum = 2700;
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(138, 23);
+            this.progressBar.Size = new System.Drawing.Size(245, 23);
             this.progressBar.TabIndex = 5;
             // 
             // flowLayoutPanel2
@@ -686,7 +688,7 @@ namespace Randomizer
             this.flowLayoutPanel2.Controls.Add(this.measureTextBox5);
             this.flowLayoutPanel2.Controls.Add(this.measureTextBox6);
             this.flowLayoutPanel2.Controls.Add(this.measureTextBox7);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(556, 447);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(552, 447);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(107, 254);
             this.flowLayoutPanel2.TabIndex = 6;
@@ -760,17 +762,19 @@ namespace Randomizer
             // 
             // playerEditComboBox
             // 
+            this.playerEditComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.playerEditComboBox.FormattingEnabled = true;
-            this.playerEditComboBox.Location = new System.Drawing.Point(12, 621);
+            this.playerEditComboBox.Location = new System.Drawing.Point(12, 627);
             this.playerEditComboBox.Name = "playerEditComboBox";
-            this.playerEditComboBox.Size = new System.Drawing.Size(121, 21);
+            this.playerEditComboBox.Size = new System.Drawing.Size(169, 33);
             this.playerEditComboBox.TabIndex = 7;
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(139, 621);
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.richTextBox1.Location = new System.Drawing.Point(187, 627);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(166, 21);
+            this.richTextBox1.Size = new System.Drawing.Size(166, 33);
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextButton1_TextChanged);

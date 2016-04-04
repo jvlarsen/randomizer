@@ -1,12 +1,12 @@
 use RandomDb
 
-INSERT INTO Participants (ParticipantId, Name) VALUES (1, 'Tarzan')
-INSERT INTO Participants (ParticipantId, Name) VALUES (2, 'Faccio')
-INSERT INTO Participants (ParticipantId, Name) VALUES (3, 'Trusser')
-INSERT INTO Participants (ParticipantId, Name) VALUES (4, 'Nosser')
-INSERT INTO Participants (ParticipantId, Name) VALUES (5, 'Leffo')
-INSERT INTO Participants (ParticipantId, Name) VALUES (6, 'Tennedz')
-INSERT INTO Participants (ParticipantId, Name) VALUES (7, 'Aallex')
+INSERT INTO Participants (Name) VALUES ('Tarzan')
+INSERT INTO Participants (Name) VALUES ('Faccio')
+INSERT INTO Participants (Name) VALUES ('Trusser')
+INSERT INTO Participants (Name) VALUES ('Nosser')
+INSERT INTO Participants (Name) VALUES ('Leffo')
+INSERT INTO Participants (Name) VALUES ('Tennedz')
+INSERT INTO Participants (Name) VALUES ('Aallex')
 
 INSERT INTO dbo.Events (EventName, Measure, SoundClipUrl) VALUES ('GOAL!!!', 'Other_3', 'D:\Arbejde\randomizer\Randomizer\RandomizerSounds\1000dollars.wav')
 INSERT INTO dbo.Events (EventName, Measure, SoundClipUrl) VALUES ('Assist', 'Other_2', 'D:\Arbejde\randomizer\Randomizer\RandomizerSounds\are_you_ready_for_some_football.wav')
@@ -24,15 +24,20 @@ INSERT INTO dbo.Events (EventName, Measure, SoundClipUrl) VALUES ('Penalty Misse
 INSERT INTO dbo.Events (EventName, Measure, SoundClipUrl) VALUES ('Red card', 'Own_3', 'D:\Arbejde\randomizer\Randomizer\RandomizerSounds\REDCARD_turn_out_the_lights.wav')
 
 
-INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Own_1', 50, 30, 15, 5)
-INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Own_2', 30, 30, 25, 15)
-INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Own_3', 15, 25, 35, 25)
-INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Other_1', 40, 30, 20, 10)
-INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Other_2', 20, 30, 30, 20)
-INSERT INTO Distribution (Measure, Small, Medium, Large, Walter) VALUES ('Other_3', 15, 25, 30, 30)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_1', 50, 30, 15, 5)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_2', 30, 30, 25, 15)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_3', 15, 25, 35, 25)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_1', 40, 30, 20, 10)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_2', 20, 30, 30, 20)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_3', 15, 25, 30, 30)
 
-UPDATE Events SET SoundClipUrl = 'D:\Arbejde\randomizer\Randomizer\RandomizerSounds\goalCelebration.wav' where EventName LIKE 'GOAL%'
 
+select * from Participants
+select * from Events
+select * from Measures
+
+
+select * from matches
 
 
 

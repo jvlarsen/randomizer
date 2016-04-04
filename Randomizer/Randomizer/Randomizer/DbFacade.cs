@@ -108,6 +108,7 @@ namespace Randomizer
             {
                 participants.Add(new Participant((string)reader["Name"]));
             }
+            CloseConn();
             return participants;
         }
 
@@ -120,11 +121,34 @@ namespace Randomizer
         public void SaveDistribution(Dictionary<string, string> playersAndOwners, string gameName)
         {
             //TODO: Make the mapping here from playersAndOwners to find database records representing the entities Player and Participant and map them in the table Owners
+
+            foreach (var player in playersAndOwners.Keys)
+            {
+                SavePlayer(player, gameName);
+            }
         }
 
         public void SaveParticipants(Dictionary<string, Color> participantNames)
         {
 
+        }
+
+        public void SavePlayer(string playerName, string gameName)
+        {
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "INSERT INTO Players (Name, GameName) VALUES (\'" + playerName + "\', " + "\'" + gameName + "\')";
+            cmd.ExecuteNonQuery();
+            CloseConn();
+        }
+
+        public void SaveNewGame(string gameName, DateTime gameDate)
+        {
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "INSERT INTO Matches (Description, Created) VALUES (\'" + gameName + "\', \'" + String.Format("{0:yyyy-MM-dd}", gameDate) + "\')";
+            cmd.ExecuteNonQuery();
+            CloseConn();
         }
 
     }
