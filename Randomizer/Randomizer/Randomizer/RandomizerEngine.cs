@@ -76,7 +76,10 @@ namespace Randomizer
             var playersAndOwners = new Dictionary<string, string>();
             var random = new Random();
             var index = 0;
-            for (int j = 0; j < 22; j++)
+            
+            //TODO: Implement a way to randomize the sorting of participants, to support bug 1
+
+            for (int j = 0; j < 20; j++)
             {
                 var currentParticipant = participants.ElementAt(j % participants.Count);
                 if (players.Count == 1)
@@ -92,6 +95,17 @@ namespace Randomizer
 
             dbFacade.SaveDistribution(playersAndOwners, gameName);
             return playersAndOwners;
+        }
+
+        private Dictionary<string, string> ShuffleParticipants(List<string> participants)
+        {
+            var shuffledList = new Dictionary<string, string>();
+
+
+
+
+
+            return shuffledList;
         }
 
         private Participant GetOwnerFromPlayerName(string triggerPlayerName)

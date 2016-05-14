@@ -42,9 +42,9 @@ namespace Randomizer
 
             foreach (var loser in randomizerOutcome.Keys)
             {
-                var currentParticipantTextBox = this.participantNamePanel.Controls.OfType<TextBox>().First(x => x.Text == loser);
+                var currentParticipantTextBox = this.participantPanel1.Controls.OfType<TextBox>().First(x => x.Text == loser);
                 var index = currentParticipantTextBox.Text.Substring(18);
-                var currentMeasureTextBox = this.flowLayoutPanel2.Controls.OfType<TextBox>().First(x => x.Name == "measureTextBox" + index);
+                var currentMeasureTextBox = this.participantPanel3.Controls.OfType<TextBox>().First(x => x.Name == "measureTextBox" + index);
                 currentMeasureTextBox.Text = randomizerOutcome[loser];
             }
         }
@@ -161,7 +161,9 @@ namespace Randomizer
                 return;
             }
 
-            foreach (var participantTextBox in this.participantNamePanel.Controls.OfType<TextBox>())
+            participants = GetParticipants();
+
+            foreach (var participantTextBox in this.participantsPanel.Controls.OfType<TextBox>())
             {
                 if (!string.IsNullOrEmpty(participantTextBox.Text))
                     participants.Add(participantTextBox.Text, participantTextBox.BackColor);
@@ -183,6 +185,23 @@ namespace Randomizer
                 return;
             }
             UpdatePlayerColorsFromOwners(playersAndOwners);
+            this.teamDistributionButton.Enabled = false;
+        }
+
+        private Dictionary<string, Color> GetParticipants()
+        {
+            var enteredParticipants = new Dictionary<string, Color>();
+            foreach (var currPanel in this.participantsPanel.Controls.OfType<FlowLayoutPanel>())
+            {
+                var currBox = currPanel.Controls.OfType<TextBox>().First();
+                if (!string.IsNullOrEmpty(currBox.Text))
+                {
+                    var name = currBox.Text;
+                    var color = currBox.BackColor;
+                    enteredParticipants.Add(name, color);
+                }
+            }
+            return enteredParticipants;
         }
 
         private void createNewGameButton_Click(object sender, EventArgs e)
@@ -200,6 +219,7 @@ namespace Randomizer
             this.homeTeamTextBox.Text = "";
             this.awayTeamTextBox.Text = "";
             engine.SaveNewGame(this.gameNameLabel.Text, DateTime.Now);
+            this.teamDistributionButton.Enabled = true;
         }
 
         #endregion

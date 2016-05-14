@@ -1,0 +1,27 @@
+kun 10 spillere per hold
+tiden bruges som x-akse
+Overvej overtid, om det går på 45+x, eller hvordan...
+Alle skal have samme antal spillere, så vidt muligt. 6 deltagere - 
+BUG 1: Det skal randomizes hvilken deltager, der får tildelt spiller først, så det ikke altid er den samme, der får flest/max antal spillere (pt er det altid den/de øverste) (RandomizerEngine.cs - DistributeTeams())
+Overvej hvad der er af muligheder for at arbejde med udskiftning af spillere i fht. stats
+Bedre visuel opdeling af spillere/ejere
+MVP stats på spillere. Hvor meget har hver spiller kostet i EGEN, og vundet i ANDRE.
+Vedligeholdes i label lige ved siden af spillerne. EGEN skal måles i 1xstraf, mens ANDRE skal måles i samlet antal tåre uddelt.
+Banken skal vedligeholdes ved: Deltager -> mængde -> giv/tag.
+Ved at tage sin straf i banken, skal der markeres per type, og ikke for den akkumulerede.
+Knap med navn -> type -> træk fra
+
+Dropdown med spiller
+Dropdown med straf
+radio med retning
+knap med registrér
+TODO: Lav en database-bank
+
+Når banken tømmes, skal der spilles "Mark it 0"
+Events kunne visuelt repræsenteres på grafen, evt. som en lodret linie med angivelse af event på x-aksen. 
+Kan events MÅSKE vises på x-aksen ved brug af ikoner???
+Lav en grøn og en rød knap ud for straffelterne til hhv. Drikkes nu og Sæt i banken.
+Lav et baggrundsbillede til hele UI.
+"Start halvleg" skal måske laves om til Start 1. og Start 2. (altså to knapper)
+Mötley Crue - Doctor Feelgood "he's the real doctor feelgood, he's the one that makes you feel alright"
+Der skal være mulighed for at annullere en handling. Lav det som en StoredProcedure, der sletter de rigtige tabeller. Find ud af at kalde den fra programmet, så grafen også kan opdateres korrekt.

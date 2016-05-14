@@ -30,9 +30,11 @@ namespace Randomizer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.teamBox = new System.Windows.Forms.GroupBox();
-            this.awayPlayer11 = new System.Windows.Forms.RadioButton();
-            this.homePlayer11 = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.awayPlayer10 = new System.Windows.Forms.RadioButton();
             this.homePlayer10 = new System.Windows.Forms.RadioButton();
             this.homePlayer9 = new System.Windows.Forms.RadioButton();
@@ -70,23 +72,16 @@ namespace Randomizer
             this.radioButton23 = new System.Windows.Forms.RadioButton();
             this.randomizeButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.participantNamePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.participantPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.participantTextBox1 = new System.Windows.Forms.TextBox();
-            this.participantTextBox2 = new System.Windows.Forms.TextBox();
+            this.green1 = new System.Windows.Forms.Button();
+            this.bank1 = new System.Windows.Forms.Button();
             this.participantTextBox3 = new System.Windows.Forms.TextBox();
             this.participantTextBox4 = new System.Windows.Forms.TextBox();
             this.participantTextBox5 = new System.Windows.Forms.TextBox();
             this.participantTextBox6 = new System.Windows.Forms.TextBox();
             this.participantTextBox7 = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.measureTextBox1 = new System.Windows.Forms.TextBox();
-            this.measureTextBox2 = new System.Windows.Forms.TextBox();
-            this.measureTextBox3 = new System.Windows.Forms.TextBox();
-            this.measureTextBox4 = new System.Windows.Forms.TextBox();
-            this.measureTextBox5 = new System.Windows.Forms.TextBox();
-            this.measureTextBox6 = new System.Windows.Forms.TextBox();
-            this.measureTextBox7 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.playerEditComboBox = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -100,16 +95,52 @@ namespace Randomizer
             this.awayTeamTextBox = new System.Windows.Forms.TextBox();
             this.homeTeamLabel = new System.Windows.Forms.Label();
             this.awayTeamLabel = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.participantTextBox2 = new System.Windows.Forms.TextBox();
+            this.participantPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.participantPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.participantPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.participantPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.participantPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.participantPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.participantsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.teamBox.SuspendLayout();
             this.eventBox.SuspendLayout();
-            this.participantNamePanel.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.participantPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.participantPanel2.SuspendLayout();
+            this.participantPanel3.SuspendLayout();
+            this.participantPanel4.SuspendLayout();
+            this.participantPanel5.SuspendLayout();
+            this.participantPanel6.SuspendLayout();
+            this.participantPanel7.SuspendLayout();
+            this.participantsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // teamBox
             // 
-            this.teamBox.Controls.Add(this.awayPlayer11);
-            this.teamBox.Controls.Add(this.homePlayer11);
+            this.teamBox.Controls.Add(this.label1);
             this.teamBox.Controls.Add(this.awayPlayer10);
             this.teamBox.Controls.Add(this.homePlayer10);
             this.teamBox.Controls.Add(this.homePlayer9);
@@ -130,40 +161,27 @@ namespace Randomizer
             this.teamBox.Controls.Add(this.awayPlayer1);
             this.teamBox.Controls.Add(this.homePlayer2);
             this.teamBox.Controls.Add(this.homePlayer1);
-            this.teamBox.Location = new System.Drawing.Point(12, 22);
+            this.teamBox.Location = new System.Drawing.Point(12, 105);
             this.teamBox.Name = "teamBox";
-            this.teamBox.Size = new System.Drawing.Size(169, 589);
+            this.teamBox.Size = new System.Drawing.Size(341, 283);
             this.teamBox.TabIndex = 0;
             this.teamBox.TabStop = false;
             this.teamBox.Text = "TeamBox";
             // 
-            // awayPlayer11
+            // label1
             // 
-            this.awayPlayer11.AutoSize = true;
-            this.awayPlayer11.Location = new System.Drawing.Point(7, 563);
-            this.awayPlayer11.Name = "Away Team 11";
-            this.awayPlayer11.Size = new System.Drawing.Size(96, 17);
-            this.awayPlayer11.TabIndex = 21;
-            this.awayPlayer11.TabStop = true;
-            this.awayPlayer11.Text = "Away Team 11";
-            this.awayPlayer11.UseVisualStyleBackColor = true;
-            // 
-            // homePlayer11
-            // 
-            this.homePlayer11.AutoSize = true;
-            this.homePlayer11.Location = new System.Drawing.Point(7, 260);
-            this.homePlayer11.Name = "Home Team 11";
-            this.homePlayer11.Size = new System.Drawing.Size(98, 17);
-            this.homePlayer11.TabIndex = 10;
-            this.homePlayer11.TabStop = true;
-            this.homePlayer11.Text = "Home Team 11";
-            this.homePlayer11.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(106, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "6/10";
             // 
             // awayPlayer10
             // 
             this.awayPlayer10.AutoSize = true;
-            this.awayPlayer10.Location = new System.Drawing.Point(7, 540);
-            this.awayPlayer10.Name = "Away Team 10";
+            this.awayPlayer10.Location = new System.Drawing.Point(175, 235);
+            this.awayPlayer10.Name = "awayPlayer10";
             this.awayPlayer10.Size = new System.Drawing.Size(96, 17);
             this.awayPlayer10.TabIndex = 20;
             this.awayPlayer10.TabStop = true;
@@ -174,7 +192,7 @@ namespace Randomizer
             // 
             this.homePlayer10.AutoSize = true;
             this.homePlayer10.Location = new System.Drawing.Point(7, 236);
-            this.homePlayer10.Name = "Home Team 10";
+            this.homePlayer10.Name = "homePlayer10";
             this.homePlayer10.Size = new System.Drawing.Size(98, 17);
             this.homePlayer10.TabIndex = 9;
             this.homePlayer10.TabStop = true;
@@ -185,7 +203,7 @@ namespace Randomizer
             // 
             this.homePlayer9.AutoSize = true;
             this.homePlayer9.Location = new System.Drawing.Point(7, 212);
-            this.homePlayer9.Name = "Home Team 9";
+            this.homePlayer9.Name = "homePlayer9";
             this.homePlayer9.Size = new System.Drawing.Size(92, 17);
             this.homePlayer9.TabIndex = 8;
             this.homePlayer9.TabStop = true;
@@ -195,8 +213,8 @@ namespace Randomizer
             // awayPlayer9
             // 
             this.awayPlayer9.AutoSize = true;
-            this.awayPlayer9.Location = new System.Drawing.Point(7, 517);
-            this.awayPlayer9.Name = "Away Team 9";
+            this.awayPlayer9.Location = new System.Drawing.Point(175, 212);
+            this.awayPlayer9.Name = "awayPlayer9";
             this.awayPlayer9.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer9.TabIndex = 19;
             this.awayPlayer9.TabStop = true;
@@ -207,7 +225,7 @@ namespace Randomizer
             // 
             this.homePlayer8.AutoSize = true;
             this.homePlayer8.Location = new System.Drawing.Point(7, 188);
-            this.homePlayer8.Name = "Home Team 8";
+            this.homePlayer8.Name = "homePlayer8";
             this.homePlayer8.Size = new System.Drawing.Size(92, 17);
             this.homePlayer8.TabIndex = 7;
             this.homePlayer8.TabStop = true;
@@ -217,8 +235,8 @@ namespace Randomizer
             // awayPlayer8
             // 
             this.awayPlayer8.AutoSize = true;
-            this.awayPlayer8.Location = new System.Drawing.Point(7, 494);
-            this.awayPlayer8.Name = "Away Team 8";
+            this.awayPlayer8.Location = new System.Drawing.Point(175, 188);
+            this.awayPlayer8.Name = "awayPlayer8";
             this.awayPlayer8.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer8.TabIndex = 18;
             this.awayPlayer8.TabStop = true;
@@ -228,8 +246,8 @@ namespace Randomizer
             // awayPlayer5
             // 
             this.awayPlayer5.AutoSize = true;
-            this.awayPlayer5.Location = new System.Drawing.Point(7, 425);
-            this.awayPlayer5.Name = "Away Team 5";
+            this.awayPlayer5.Location = new System.Drawing.Point(175, 116);
+            this.awayPlayer5.Name = "awayPlayer5";
             this.awayPlayer5.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer5.TabIndex = 15;
             this.awayPlayer5.TabStop = true;
@@ -239,8 +257,8 @@ namespace Randomizer
             // awayPlayer7
             // 
             this.awayPlayer7.AutoSize = true;
-            this.awayPlayer7.Location = new System.Drawing.Point(7, 471);
-            this.awayPlayer7.Name = "Away Team 7";
+            this.awayPlayer7.Location = new System.Drawing.Point(175, 164);
+            this.awayPlayer7.Name = "awayPlayer7";
             this.awayPlayer7.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer7.TabIndex = 17;
             this.awayPlayer7.TabStop = true;
@@ -250,8 +268,8 @@ namespace Randomizer
             // awayPlayer6
             // 
             this.awayPlayer6.AutoSize = true;
-            this.awayPlayer6.Location = new System.Drawing.Point(7, 448);
-            this.awayPlayer6.Name = "Away Team 6";
+            this.awayPlayer6.Location = new System.Drawing.Point(175, 140);
+            this.awayPlayer6.Name = "awayPlayer6";
             this.awayPlayer6.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer6.TabIndex = 16;
             this.awayPlayer6.TabStop = true;
@@ -262,7 +280,7 @@ namespace Randomizer
             // 
             this.homePlayer7.AutoSize = true;
             this.homePlayer7.Location = new System.Drawing.Point(7, 164);
-            this.homePlayer7.Name = "Home Team 7";
+            this.homePlayer7.Name = "homePlayer7";
             this.homePlayer7.Size = new System.Drawing.Size(92, 17);
             this.homePlayer7.TabIndex = 6;
             this.homePlayer7.TabStop = true;
@@ -273,7 +291,7 @@ namespace Randomizer
             // 
             this.homePlayer6.AutoSize = true;
             this.homePlayer6.Location = new System.Drawing.Point(7, 140);
-            this.homePlayer6.Name = "Home Team 6";
+            this.homePlayer6.Name = "homePlayer6";
             this.homePlayer6.Size = new System.Drawing.Size(92, 17);
             this.homePlayer6.TabIndex = 5;
             this.homePlayer6.TabStop = true;
@@ -284,7 +302,7 @@ namespace Randomizer
             // 
             this.homePlayer5.AutoSize = true;
             this.homePlayer5.Location = new System.Drawing.Point(7, 116);
-            this.homePlayer5.Name = "Home Team 5";
+            this.homePlayer5.Name = "homePlayer5";
             this.homePlayer5.Size = new System.Drawing.Size(92, 17);
             this.homePlayer5.TabIndex = 4;
             this.homePlayer5.TabStop = true;
@@ -294,8 +312,8 @@ namespace Randomizer
             // awayPlayer4
             // 
             this.awayPlayer4.AutoSize = true;
-            this.awayPlayer4.Location = new System.Drawing.Point(7, 402);
-            this.awayPlayer4.Name = "Away Team 4";
+            this.awayPlayer4.Location = new System.Drawing.Point(175, 92);
+            this.awayPlayer4.Name = "awayPlayer4";
             this.awayPlayer4.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer4.TabIndex = 14;
             this.awayPlayer4.TabStop = true;
@@ -306,7 +324,7 @@ namespace Randomizer
             // 
             this.homePlayer4.AutoSize = true;
             this.homePlayer4.Location = new System.Drawing.Point(7, 92);
-            this.homePlayer4.Name = "Home Team 4";
+            this.homePlayer4.Name = "homePlayer4";
             this.homePlayer4.Size = new System.Drawing.Size(92, 17);
             this.homePlayer4.TabIndex = 3;
             this.homePlayer4.TabStop = true;
@@ -316,8 +334,8 @@ namespace Randomizer
             // awayPlayer3
             // 
             this.awayPlayer3.AutoSize = true;
-            this.awayPlayer3.Location = new System.Drawing.Point(7, 379);
-            this.awayPlayer3.Name = "Away Team 3";
+            this.awayPlayer3.Location = new System.Drawing.Point(175, 68);
+            this.awayPlayer3.Name = "awayPlayer3";
             this.awayPlayer3.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer3.TabIndex = 13;
             this.awayPlayer3.TabStop = true;
@@ -328,7 +346,7 @@ namespace Randomizer
             // 
             this.homePlayer3.AutoSize = true;
             this.homePlayer3.Location = new System.Drawing.Point(7, 68);
-            this.homePlayer3.Name = "Home Team 3";
+            this.homePlayer3.Name = "homePlayer3";
             this.homePlayer3.Size = new System.Drawing.Size(92, 17);
             this.homePlayer3.TabIndex = 2;
             this.homePlayer3.TabStop = true;
@@ -338,8 +356,8 @@ namespace Randomizer
             // awayPlayer2
             // 
             this.awayPlayer2.AutoSize = true;
-            this.awayPlayer2.Location = new System.Drawing.Point(7, 356);
-            this.awayPlayer2.Name = "Away Team 2";
+            this.awayPlayer2.Location = new System.Drawing.Point(175, 44);
+            this.awayPlayer2.Name = "awayPlayer2";
             this.awayPlayer2.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer2.TabIndex = 12;
             this.awayPlayer2.TabStop = true;
@@ -349,8 +367,8 @@ namespace Randomizer
             // awayPlayer1
             // 
             this.awayPlayer1.AutoSize = true;
-            this.awayPlayer1.Location = new System.Drawing.Point(7, 333);
-            this.awayPlayer1.Name = "Away Team 1";
+            this.awayPlayer1.Location = new System.Drawing.Point(175, 20);
+            this.awayPlayer1.Name = "awayPlayer1";
             this.awayPlayer1.Size = new System.Drawing.Size(90, 17);
             this.awayPlayer1.TabIndex = 11;
             this.awayPlayer1.TabStop = true;
@@ -361,7 +379,7 @@ namespace Randomizer
             // 
             this.homePlayer2.AutoSize = true;
             this.homePlayer2.Location = new System.Drawing.Point(7, 44);
-            this.homePlayer2.Name = "Home Team 2";
+            this.homePlayer2.Name = "homePlayer2";
             this.homePlayer2.Size = new System.Drawing.Size(92, 17);
             this.homePlayer2.TabIndex = 1;
             this.homePlayer2.TabStop = true;
@@ -371,9 +389,10 @@ namespace Randomizer
             // homePlayer1
             // 
             this.homePlayer1.AutoSize = true;
+            this.homePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.homePlayer1.Location = new System.Drawing.Point(7, 20);
-            this.homePlayer1.Name = "Home Team 1";
-            this.homePlayer1.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer1.Name = "homePlayer1";
+            this.homePlayer1.Size = new System.Drawing.Size(127, 24);
             this.homePlayer1.TabIndex = 0;
             this.homePlayer1.TabStop = true;
             this.homePlayer1.Text = "Home Team 1";
@@ -395,9 +414,9 @@ namespace Randomizer
             this.eventBox.Controls.Add(this.radioButton25);
             this.eventBox.Controls.Add(this.radioButton24);
             this.eventBox.Controls.Add(this.radioButton23);
-            this.eventBox.Location = new System.Drawing.Point(187, 162);
+            this.eventBox.Location = new System.Drawing.Point(399, 105);
             this.eventBox.Name = "eventBox";
-            this.eventBox.Size = new System.Drawing.Size(218, 394);
+            this.eventBox.Size = new System.Drawing.Size(199, 384);
             this.eventBox.TabIndex = 1;
             this.eventBox.TabStop = false;
             this.eventBox.Text = "groupBox4";
@@ -418,7 +437,7 @@ namespace Randomizer
             // 
             this.radioButton35.AutoSize = true;
             this.radioButton35.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton35.Location = new System.Drawing.Point(7, 308);
+            this.radioButton35.Location = new System.Drawing.Point(7, 307);
             this.radioButton35.Name = "radioButton35";
             this.radioButton35.Size = new System.Drawing.Size(162, 29);
             this.radioButton35.TabIndex = 12;
@@ -429,7 +448,7 @@ namespace Randomizer
             // radioButton34
             // 
             this.radioButton34.AutoSize = true;
-            this.radioButton34.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton34.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(4)));
             this.radioButton34.Location = new System.Drawing.Point(7, 284);
             this.radioButton34.Name = "radioButton34";
             this.radioButton34.Size = new System.Drawing.Size(113, 29);
@@ -574,9 +593,9 @@ namespace Randomizer
             // 
             this.randomizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.randomizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.randomizeButton.Location = new System.Drawing.Point(414, 254);
+            this.randomizeButton.Location = new System.Drawing.Point(399, 531);
             this.randomizeButton.Name = "randomizeButton";
-            this.randomizeButton.Size = new System.Drawing.Size(245, 149);
+            this.randomizeButton.Size = new System.Drawing.Size(164, 72);
             this.randomizeButton.TabIndex = 2;
             this.randomizeButton.Text = "RANDOMIZE!";
             this.randomizeButton.UseVisualStyleBackColor = false;
@@ -586,7 +605,7 @@ namespace Randomizer
             // 
             this.button2.BackColor = System.Drawing.Color.Green;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button2.Location = new System.Drawing.Point(414, 54);
+            this.button2.Location = new System.Drawing.Point(655, 13);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(245, 41);
             this.button2.TabIndex = 3;
@@ -594,167 +613,96 @@ namespace Randomizer
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // participantNamePanel
+            // participantPanel1
             // 
-            this.participantNamePanel.Controls.Add(this.participantTextBox1);
-            this.participantNamePanel.Controls.Add(this.participantTextBox2);
-            this.participantNamePanel.Controls.Add(this.participantTextBox3);
-            this.participantNamePanel.Controls.Add(this.participantTextBox4);
-            this.participantNamePanel.Controls.Add(this.participantTextBox5);
-            this.participantNamePanel.Controls.Add(this.participantTextBox6);
-            this.participantNamePanel.Controls.Add(this.participantTextBox7);
-            this.participantNamePanel.Location = new System.Drawing.Point(414, 447);
-            this.participantNamePanel.Name = "participantNamePanel";
-            this.participantNamePanel.Size = new System.Drawing.Size(107, 254);
-            this.participantNamePanel.TabIndex = 4;
+            this.participantPanel1.Controls.Add(this.participantTextBox1);
+            this.participantPanel1.Controls.Add(this.label2);
+            this.participantPanel1.Controls.Add(this.green1);
+            this.participantPanel1.Controls.Add(this.bank1);
+            this.participantPanel1.Location = new System.Drawing.Point(3, 3);
+            this.participantPanel1.Name = "participantPanel1";
+            this.participantPanel1.Size = new System.Drawing.Size(300, 30);
+            this.participantPanel1.TabIndex = 4;
             // 
             // participantTextBox1
             // 
-            this.participantTextBox1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.participantTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.participantTextBox1.BackColor = System.Drawing.Color.DimGray;
+            this.participantTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.participantTextBox1.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox1.Name = "participantTextBox1";
-            this.participantTextBox1.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox1.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox1.TabIndex = 0;
             // 
-            // participantTextBox2
+            // green1
             // 
-            this.participantTextBox2.BackColor = System.Drawing.Color.MediumOrchid;
-            this.participantTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.participantTextBox2.Location = new System.Drawing.Point(3, 39);
-            this.participantTextBox2.Name = "participantTextBox2";
-            this.participantTextBox2.Size = new System.Drawing.Size(100, 30);
-            this.participantTextBox2.TabIndex = 1;
+            this.green1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.green1.Location = new System.Drawing.Point(156, 3);
+            this.green1.Name = "green1";
+            this.green1.Size = new System.Drawing.Size(36, 23);
+            this.green1.TabIndex = 7;
+            this.green1.UseVisualStyleBackColor = false;
+            // 
+            // bank1
+            // 
+            this.bank1.BackColor = System.Drawing.Color.Red;
+            this.bank1.Location = new System.Drawing.Point(198, 3);
+            this.bank1.Name = "bank1";
+            this.bank1.Size = new System.Drawing.Size(37, 23);
+            this.bank1.TabIndex = 8;
+            this.bank1.UseVisualStyleBackColor = false;
             // 
             // participantTextBox3
             // 
-            this.participantTextBox3.BackColor = System.Drawing.Color.Magenta;
-            this.participantTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.participantTextBox3.Location = new System.Drawing.Point(3, 75);
+            this.participantTextBox3.BackColor = System.Drawing.Color.DarkRed;
+            this.participantTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox3.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox3.Name = "participantTextBox3";
-            this.participantTextBox3.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox3.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox3.TabIndex = 2;
             // 
             // participantTextBox4
             // 
             this.participantTextBox4.BackColor = System.Drawing.Color.YellowGreen;
-            this.participantTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.participantTextBox4.Location = new System.Drawing.Point(3, 111);
+            this.participantTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox4.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox4.Name = "participantTextBox4";
-            this.participantTextBox4.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox4.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox4.TabIndex = 3;
             // 
             // participantTextBox5
             // 
             this.participantTextBox5.BackColor = System.Drawing.Color.Turquoise;
-            this.participantTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.participantTextBox5.Location = new System.Drawing.Point(3, 147);
+            this.participantTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox5.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox5.Name = "participantTextBox5";
-            this.participantTextBox5.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox5.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox5.TabIndex = 4;
             // 
             // participantTextBox6
             // 
-            this.participantTextBox6.BackColor = System.Drawing.Color.SlateGray;
-            this.participantTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.participantTextBox6.Location = new System.Drawing.Point(3, 183);
+            this.participantTextBox6.BackColor = System.Drawing.Color.Blue;
+            this.participantTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox6.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox6.Name = "participantTextBox6";
-            this.participantTextBox6.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox6.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox6.TabIndex = 5;
             // 
             // participantTextBox7
             // 
             this.participantTextBox7.BackColor = System.Drawing.Color.Orange;
-            this.participantTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.participantTextBox7.Location = new System.Drawing.Point(3, 219);
+            this.participantTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox7.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox7.Name = "participantTextBox7";
-            this.participantTextBox7.Size = new System.Drawing.Size(100, 30);
+            this.participantTextBox7.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox7.TabIndex = 6;
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(414, 108);
-            this.progressBar.Maximum = 2700;
+            this.progressBar.Location = new System.Drawing.Point(966, 492);
+            this.progressBar.Maximum = 45;
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(245, 23);
+            this.progressBar.Size = new System.Drawing.Size(916, 24);
             this.progressBar.TabIndex = 5;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.measureTextBox1);
-            this.flowLayoutPanel2.Controls.Add(this.measureTextBox2);
-            this.flowLayoutPanel2.Controls.Add(this.measureTextBox3);
-            this.flowLayoutPanel2.Controls.Add(this.measureTextBox4);
-            this.flowLayoutPanel2.Controls.Add(this.measureTextBox5);
-            this.flowLayoutPanel2.Controls.Add(this.measureTextBox6);
-            this.flowLayoutPanel2.Controls.Add(this.measureTextBox7);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(552, 447);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(107, 254);
-            this.flowLayoutPanel2.TabIndex = 6;
-            // 
-            // measureTextBox1
-            // 
-            this.measureTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measureTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.measureTextBox1.Name = "measureTextBox1";
-            this.measureTextBox1.ReadOnly = true;
-            this.measureTextBox1.Size = new System.Drawing.Size(100, 30);
-            this.measureTextBox1.TabIndex = 0;
-            // 
-            // measureTextBox2
-            // 
-            this.measureTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measureTextBox2.Location = new System.Drawing.Point(3, 39);
-            this.measureTextBox2.Name = "measureTextBox2";
-            this.measureTextBox2.ReadOnly = true;
-            this.measureTextBox2.Size = new System.Drawing.Size(100, 30);
-            this.measureTextBox2.TabIndex = 1;
-            // 
-            // measureTextBox3
-            // 
-            this.measureTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measureTextBox3.Location = new System.Drawing.Point(3, 75);
-            this.measureTextBox3.Name = "measureTextBox3";
-            this.measureTextBox3.ReadOnly = true;
-            this.measureTextBox3.Size = new System.Drawing.Size(100, 30);
-            this.measureTextBox3.TabIndex = 2;
-            // 
-            // measureTextBox4
-            // 
-            this.measureTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measureTextBox4.Location = new System.Drawing.Point(3, 111);
-            this.measureTextBox4.Name = "measureTextBox4";
-            this.measureTextBox4.ReadOnly = true;
-            this.measureTextBox4.Size = new System.Drawing.Size(100, 30);
-            this.measureTextBox4.TabIndex = 3;
-            // 
-            // measureTextBox5
-            // 
-            this.measureTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measureTextBox5.Location = new System.Drawing.Point(3, 147);
-            this.measureTextBox5.Name = "measureTextBox5";
-            this.measureTextBox5.ReadOnly = true;
-            this.measureTextBox5.Size = new System.Drawing.Size(100, 30);
-            this.measureTextBox5.TabIndex = 4;
-            // 
-            // measureTextBox6
-            // 
-            this.measureTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measureTextBox6.Location = new System.Drawing.Point(3, 183);
-            this.measureTextBox6.Name = "measureTextBox6";
-            this.measureTextBox6.ReadOnly = true;
-            this.measureTextBox6.Size = new System.Drawing.Size(100, 30);
-            this.measureTextBox6.TabIndex = 5;
-            // 
-            // measureTextBox7
-            // 
-            this.measureTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measureTextBox7.Location = new System.Drawing.Point(3, 219);
-            this.measureTextBox7.Name = "measureTextBox7";
-            this.measureTextBox7.ReadOnly = true;
-            this.measureTextBox7.Size = new System.Drawing.Size(100, 30);
-            this.measureTextBox7.TabIndex = 6;
             // 
             // timer1
             // 
@@ -764,7 +712,7 @@ namespace Randomizer
             // 
             this.playerEditComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.playerEditComboBox.FormattingEnabled = true;
-            this.playerEditComboBox.Location = new System.Drawing.Point(12, 627);
+            this.playerEditComboBox.Location = new System.Drawing.Point(12, 394);
             this.playerEditComboBox.Name = "playerEditComboBox";
             this.playerEditComboBox.Size = new System.Drawing.Size(169, 33);
             this.playerEditComboBox.TabIndex = 7;
@@ -772,7 +720,7 @@ namespace Randomizer
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.richTextBox1.Location = new System.Drawing.Point(187, 627);
+            this.richTextBox1.Location = new System.Drawing.Point(187, 394);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(166, 33);
             this.richTextBox1.TabIndex = 8;
@@ -782,7 +730,7 @@ namespace Randomizer
             // teamDistributionButton
             // 
             this.teamDistributionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamDistributionButton.Location = new System.Drawing.Point(748, 594);
+            this.teamDistributionButton.Location = new System.Drawing.Point(9, 751);
             this.teamDistributionButton.Name = "teamDistributionButton";
             this.teamDistributionButton.Size = new System.Drawing.Size(291, 48);
             this.teamDistributionButton.TabIndex = 9;
@@ -793,7 +741,7 @@ namespace Randomizer
             // homeTeamTextBox
             // 
             this.homeTeamTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.homeTeamTextBox.Location = new System.Drawing.Point(748, 54);
+            this.homeTeamTextBox.Location = new System.Drawing.Point(9, 54);
             this.homeTeamTextBox.Name = "homeTeamTextBox";
             this.homeTeamTextBox.Size = new System.Drawing.Size(139, 30);
             this.homeTeamTextBox.TabIndex = 10;
@@ -802,7 +750,7 @@ namespace Randomizer
             // 
             this.loadGameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.loadGameComboBox.FormattingEnabled = true;
-            this.loadGameComboBox.Location = new System.Drawing.Point(748, 108);
+            this.loadGameComboBox.Location = new System.Drawing.Point(12, 10);
             this.loadGameComboBox.Name = "loadGameComboBox";
             this.loadGameComboBox.Size = new System.Drawing.Size(291, 33);
             this.loadGameComboBox.TabIndex = 13;
@@ -810,7 +758,7 @@ namespace Randomizer
             // createNewGameButton
             // 
             this.createNewGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.createNewGameButton.Location = new System.Drawing.Point(1046, 54);
+            this.createNewGameButton.Location = new System.Drawing.Point(327, 54);
             this.createNewGameButton.Name = "createNewGameButton";
             this.createNewGameButton.Size = new System.Drawing.Size(118, 30);
             this.createNewGameButton.TabIndex = 12;
@@ -821,7 +769,7 @@ namespace Randomizer
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.button3.Location = new System.Drawing.Point(1046, 108);
+            this.button3.Location = new System.Drawing.Point(327, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(118, 33);
             this.button3.TabIndex = 14;
@@ -849,7 +797,7 @@ namespace Randomizer
             // awayTeamTextBox
             // 
             this.awayTeamTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.awayTeamTextBox.Location = new System.Drawing.Point(894, 54);
+            this.awayTeamTextBox.Location = new System.Drawing.Point(167, 54);
             this.awayTeamTextBox.Name = "awayTeamTextBox";
             this.awayTeamTextBox.Size = new System.Drawing.Size(145, 30);
             this.awayTeamTextBox.TabIndex = 11;
@@ -857,7 +805,7 @@ namespace Randomizer
             // homeTeamLabel
             // 
             this.homeTeamLabel.AutoSize = true;
-            this.homeTeamLabel.Location = new System.Drawing.Point(748, 35);
+            this.homeTeamLabel.Location = new System.Drawing.Point(16, 38);
             this.homeTeamLabel.Name = "homeTeamLabel";
             this.homeTeamLabel.Size = new System.Drawing.Size(65, 13);
             this.homeTeamLabel.TabIndex = 18;
@@ -866,15 +814,310 @@ namespace Randomizer
             // awayTeamLabel
             // 
             this.awayTeamLabel.AutoSize = true;
-            this.awayTeamLabel.Location = new System.Drawing.Point(894, 35);
+            this.awayTeamLabel.Location = new System.Drawing.Point(214, 38);
             this.awayTeamLabel.Name = "awayTeamLabel";
             this.awayTeamLabel.Size = new System.Drawing.Size(63, 13);
             this.awayTeamLabel.TabIndex = 19;
             this.awayTeamLabel.Text = "Away Team";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(655, 523);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 20;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(966, 46);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(916, 446);
+            this.chart1.TabIndex = 21;
+            this.chart1.Text = "chart1";
+            // 
+            // participantTextBox2
+            // 
+            this.participantTextBox2.BackColor = System.Drawing.Color.MediumOrchid;
+            this.participantTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.participantTextBox2.Location = new System.Drawing.Point(3, 3);
+            this.participantTextBox2.Name = "participantTextBox2";
+            this.participantTextBox2.Size = new System.Drawing.Size(100, 23);
+            this.participantTextBox2.TabIndex = 1;
+            // 
+            // participantPanel2
+            // 
+            this.participantPanel2.Controls.Add(this.participantTextBox2);
+            this.participantPanel2.Controls.Add(this.label3);
+            this.participantPanel2.Controls.Add(this.button1);
+            this.participantPanel2.Controls.Add(this.button4);
+            this.participantPanel2.Location = new System.Drawing.Point(3, 39);
+            this.participantPanel2.Name = "participantPanel2";
+            this.participantPanel2.Size = new System.Drawing.Size(300, 30);
+            this.participantPanel2.TabIndex = 22;
+            // 
+            // participantPanel3
+            // 
+            this.participantPanel3.Controls.Add(this.participantTextBox3);
+            this.participantPanel3.Controls.Add(this.label4);
+            this.participantPanel3.Controls.Add(this.button5);
+            this.participantPanel3.Controls.Add(this.button10);
+            this.participantPanel3.Location = new System.Drawing.Point(3, 75);
+            this.participantPanel3.Name = "participantPanel3";
+            this.participantPanel3.Size = new System.Drawing.Size(300, 30);
+            this.participantPanel3.TabIndex = 23;
+            // 
+            // participantPanel4
+            // 
+            this.participantPanel4.Controls.Add(this.participantTextBox4);
+            this.participantPanel4.Controls.Add(this.label5);
+            this.participantPanel4.Controls.Add(this.button6);
+            this.participantPanel4.Controls.Add(this.button11);
+            this.participantPanel4.Location = new System.Drawing.Point(3, 111);
+            this.participantPanel4.Name = "participantPanel4";
+            this.participantPanel4.Size = new System.Drawing.Size(300, 30);
+            this.participantPanel4.TabIndex = 24;
+            // 
+            // participantPanel5
+            // 
+            this.participantPanel5.Controls.Add(this.participantTextBox5);
+            this.participantPanel5.Controls.Add(this.label6);
+            this.participantPanel5.Controls.Add(this.button7);
+            this.participantPanel5.Controls.Add(this.button12);
+            this.participantPanel5.Location = new System.Drawing.Point(3, 147);
+            this.participantPanel5.Name = "participantPanel5";
+            this.participantPanel5.Size = new System.Drawing.Size(300, 30);
+            this.participantPanel5.TabIndex = 25;
+            // 
+            // participantPanel6
+            // 
+            this.participantPanel6.Controls.Add(this.participantTextBox6);
+            this.participantPanel6.Controls.Add(this.label7);
+            this.participantPanel6.Controls.Add(this.button8);
+            this.participantPanel6.Controls.Add(this.button13);
+            this.participantPanel6.Location = new System.Drawing.Point(3, 183);
+            this.participantPanel6.Name = "participantPanel6";
+            this.participantPanel6.Size = new System.Drawing.Size(300, 30);
+            this.participantPanel6.TabIndex = 26;
+            // 
+            // participantPanel7
+            // 
+            this.participantPanel7.Controls.Add(this.participantTextBox7);
+            this.participantPanel7.Controls.Add(this.label8);
+            this.participantPanel7.Controls.Add(this.button9);
+            this.participantPanel7.Controls.Add(this.button14);
+            this.participantPanel7.Location = new System.Drawing.Point(3, 219);
+            this.participantPanel7.Name = "participantPanel7";
+            this.participantPanel7.Size = new System.Drawing.Size(300, 30);
+            this.participantPanel7.TabIndex = 27;
+            // 
+            // participantsPanel
+            // 
+            this.participantsPanel.Controls.Add(this.participantPanel1);
+            this.participantsPanel.Controls.Add(this.participantPanel2);
+            this.participantsPanel.Controls.Add(this.participantPanel3);
+            this.participantsPanel.Controls.Add(this.participantPanel4);
+            this.participantsPanel.Controls.Add(this.participantPanel5);
+            this.participantsPanel.Controls.Add(this.participantPanel6);
+            this.participantsPanel.Controls.Add(this.participantPanel7);
+            this.participantsPanel.Location = new System.Drawing.Point(12, 437);
+            this.participantsPanel.Name = "participantsPanel";
+            this.participantsPanel.Size = new System.Drawing.Size(310, 254);
+            this.participantsPanel.TabIndex = 28;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(109, 0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.label2.Size = new System.Drawing.Size(41, 29);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Walter!";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(109, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button1.Location = new System.Drawing.Point(115, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(37, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(158, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(37, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(109, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "label4";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(109, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "label5";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(109, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "label6";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(109, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "label7";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(109, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "label8";
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button5.Location = new System.Drawing.Point(150, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(37, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button6.Location = new System.Drawing.Point(150, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(37, 23);
+            this.button6.TabIndex = 6;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button7.Location = new System.Drawing.Point(150, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(37, 23);
+            this.button7.TabIndex = 7;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button8.Location = new System.Drawing.Point(150, 3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(37, 23);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button9.Location = new System.Drawing.Point(150, 3);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(37, 23);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "button9";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.Red;
+            this.button10.Location = new System.Drawing.Point(193, 3);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(37, 23);
+            this.button10.TabIndex = 10;
+            this.button10.UseVisualStyleBackColor = false;
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.Red;
+            this.button11.Location = new System.Drawing.Point(193, 3);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(37, 23);
+            this.button11.TabIndex = 11;
+            this.button11.UseVisualStyleBackColor = false;
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Red;
+            this.button12.Location = new System.Drawing.Point(193, 3);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(37, 23);
+            this.button12.TabIndex = 12;
+            this.button12.UseVisualStyleBackColor = false;
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.Red;
+            this.button13.Location = new System.Drawing.Point(193, 3);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(37, 23);
+            this.button13.TabIndex = 13;
+            this.button13.UseVisualStyleBackColor = false;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Red;
+            this.button14.Location = new System.Drawing.Point(193, 3);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(37, 23);
+            this.button14.TabIndex = 14;
+            this.button14.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(1176, 774);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1916, 1053);
+            this.Controls.Add(this.participantsPanel);
+            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.awayTeamLabel);
             this.Controls.Add(this.homeTeamLabel);
             this.Controls.Add(this.awayTeamTextBox);
@@ -887,9 +1130,7 @@ namespace Randomizer
             this.Controls.Add(this.teamDistributionButton);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.playerEditComboBox);
-            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.participantNamePanel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.randomizeButton);
             this.Controls.Add(this.eventBox);
@@ -899,10 +1140,23 @@ namespace Randomizer
             this.teamBox.PerformLayout();
             this.eventBox.ResumeLayout(false);
             this.eventBox.PerformLayout();
-            this.participantNamePanel.ResumeLayout(false);
-            this.participantNamePanel.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
+            this.participantPanel1.ResumeLayout(false);
+            this.participantPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.participantPanel2.ResumeLayout(false);
+            this.participantPanel2.PerformLayout();
+            this.participantPanel3.ResumeLayout(false);
+            this.participantPanel3.PerformLayout();
+            this.participantPanel4.ResumeLayout(false);
+            this.participantPanel4.PerformLayout();
+            this.participantPanel5.ResumeLayout(false);
+            this.participantPanel5.PerformLayout();
+            this.participantPanel6.ResumeLayout(false);
+            this.participantPanel6.PerformLayout();
+            this.participantPanel7.ResumeLayout(false);
+            this.participantPanel7.PerformLayout();
+            this.participantsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -911,7 +1165,6 @@ namespace Randomizer
         #endregion
 
         private System.Windows.Forms.GroupBox teamBox;
-        private System.Windows.Forms.RadioButton homePlayer11;
         private System.Windows.Forms.RadioButton homePlayer10;
         private System.Windows.Forms.RadioButton homePlayer9;
         private System.Windows.Forms.RadioButton homePlayer8;
@@ -922,7 +1175,6 @@ namespace Randomizer
         private System.Windows.Forms.RadioButton homePlayer3;
         private System.Windows.Forms.RadioButton homePlayer2;
         private System.Windows.Forms.RadioButton homePlayer1;
-        private System.Windows.Forms.RadioButton awayPlayer11;
         private System.Windows.Forms.RadioButton awayPlayer10;
         private System.Windows.Forms.RadioButton awayPlayer9;
         private System.Windows.Forms.RadioButton awayPlayer8;
@@ -949,23 +1201,14 @@ namespace Randomizer
         private System.Windows.Forms.RadioButton radioButton23;
         private System.Windows.Forms.Button randomizeButton;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.FlowLayoutPanel participantNamePanel;
+        private System.Windows.Forms.FlowLayoutPanel participantPanel1;
         private System.Windows.Forms.TextBox participantTextBox1;
-        private System.Windows.Forms.TextBox participantTextBox2;
         private System.Windows.Forms.TextBox participantTextBox3;
         private System.Windows.Forms.TextBox participantTextBox4;
         private System.Windows.Forms.TextBox participantTextBox5;
         private System.Windows.Forms.TextBox participantTextBox6;
         private System.Windows.Forms.TextBox participantTextBox7;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.TextBox measureTextBox1;
-        private System.Windows.Forms.TextBox measureTextBox2;
-        private System.Windows.Forms.TextBox measureTextBox3;
-        private System.Windows.Forms.TextBox measureTextBox4;
-        private System.Windows.Forms.TextBox measureTextBox5;
-        private System.Windows.Forms.TextBox measureTextBox6;
-        private System.Windows.Forms.TextBox measureTextBox7;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RadioButton radioButton36;
         private System.Windows.Forms.ComboBox playerEditComboBox;
@@ -980,6 +1223,38 @@ namespace Randomizer
         private System.Windows.Forms.TextBox awayTeamTextBox;
         private System.Windows.Forms.Label homeTeamLabel;
         private System.Windows.Forms.Label awayTeamLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button green1;
+        private System.Windows.Forms.Button bank1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TextBox participantTextBox2;
+        private System.Windows.Forms.FlowLayoutPanel participantPanel2;
+        private System.Windows.Forms.FlowLayoutPanel participantPanel3;
+        private System.Windows.Forms.FlowLayoutPanel participantPanel4;
+        private System.Windows.Forms.FlowLayoutPanel participantPanel5;
+        private System.Windows.Forms.FlowLayoutPanel participantPanel6;
+        private System.Windows.Forms.FlowLayoutPanel participantPanel7;
+        private System.Windows.Forms.FlowLayoutPanel participantsPanel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button14;
 
     }
 }
