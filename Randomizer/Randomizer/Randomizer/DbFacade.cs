@@ -91,23 +91,11 @@ namespace Randomizer
             return p;
         }
 
-        public List<Participant> GetOwners()
-        {
-            var owners = new List<Participant>();
-            //var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
-            //var ownersTable = sql.GetData();
-            //foreach (var owner in ownersTable)
-            //{
-            //    owners.Add(new Participant() { Name = owner.Name }); //TODO: Make the SQL extract join Owners with Participants to get the P.Name
-            //}
-            return owners;
-        }
-
         public List<Participant> GetParticipants()
         {
             OpenConn();
             var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT ParticipantId, Name FROM Participant";
+            cmd.CommandText = "SELECT ParticipantId, Name FROM Participants";
 
             var participants = new List<Participant>();
             var reader = cmd.ExecuteReader();
@@ -132,6 +120,27 @@ namespace Randomizer
             foreach (var player in playersAndOwners.Keys)
             {
                 SavePlayer(player, gameName);
+            }
+            foreach (KeyValuePair<string, string> playerOwner in playersAndOwners)
+            {
+                OpenConn();
+                var cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "MapPlayerToOwner";
+
+                SqlParameter matchId = new SqlParameter("@MatchId", SqlDbType.VarChar);
+                cmd.Parameters.Add(matchId);
+                cmd.Parameters["@MatchId"].Value = gameName;
+
+                SqlParameter playerName = new SqlParameter("@playerName", SqlDbType.VarChar);
+                cmd.Parameters.Add(playerName);
+                cmd.Parameters["@playerName"].Value = playerOwner.Key;
+
+                SqlParameter ownerName = new SqlParameter("@ownerName", SqlDbType.VarChar);
+                cmd.Parameters.Add(ownerName);
+                cmd.Parameters["@ownerName"].Value = playerOwner.Value;
+
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -188,8 +197,10 @@ namespace Randomizer
             return participantsAndTheirGraph;
         }
 
-        public void LogRandomizingOutcome(Dictionary<string, string> randomizerOutcome)
+        public void LogRandomizingOutcome(string gameName, Dictionary<string, string> randomizerOutcome, int gameMinute)
         {
+            //The randomizerOutcome contains <loserName, measures> and should be mapped to dbo.Graph 
+            //as (MatchId, ParticipantId, GameMinute, Measure)
             var str = "";
         }
 

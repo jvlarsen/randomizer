@@ -64,7 +64,14 @@ CREATE TABLE Graph (
 	ParticipantId INT FOREIGN KEY REFERENCES Participants (ParticipantId),
 	GameMinute INT,
 	MeasureZips INT,
-	EventNumber INT)
+	EventNumber INT
+	)
+
+CREATE TABLE Owners (
+	MatchId VARCHAR(100),
+	ParticipantId INT FOREIGN KEY REFERENCES Participants (ParticipantId),
+	PlayerId INT FOREIGN KEY REFERENCES Players (PlayerId)
+	)
 
 CREATE PROCEDURE [dbo].[CalculateGraph]
 @MatchId VARCHAR(100)
@@ -84,6 +91,20 @@ AS
 		SELECT @LatestEvent = MAX(EventNumber) FROM Graph
 
 		DELETE Graph WHERE EventNumber = @LatestEvent
+	END
+GO
+
+CREATE PROCEDURE [dbo].[MapPlayerToOwner]
+@MatchId VARCHAR(100),
+@PlayerName VARCHAR(100),
+@OwnerName VARCHAR(100)
+AS
+	BEGIN
+		DECLARE @playerId INT, @ownerId INT
+		SELECT @playerId = PlayerId FROM Players WHERE Name = @PlayerName
+		SELECT @ownerId = ParticipantId FROM Participants WHERE Name = @OwnerName
+
+		INSERT INTO Owners (MatchId, ParticipantId, PlayerId) VALUES (@MatchId, @ownerId, @playerId)
 	END
 GO
 

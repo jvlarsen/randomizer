@@ -39,12 +39,20 @@ namespace Randomizer
             if (ValidateInput(playerSelected, eventFired))
             {
                 //returned Dictionary<string, string> with <loserName, measure>
-                randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners);
+                var gameMinute = this.progressBar.Value;
+                randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners, this.gameNameLabel.Text, gameMinute);
             }
 
             foreach (var loser in randomizerOutcome.Keys)
             {
-                var currentParticipantTextBox = this.participantPanel1.Controls.OfType<TextBox>().First(x => x.Text == loser);
+                var flowLayoutPanels = this.participantsPanel.Controls.OfType<FlowLayoutPanel>();
+                foreach (var flPanel in flowLayoutPanels)
+                {
+                    BROKEN ON PURPOSE
+                        NEED TO FIND THE RIGHT ELEMENT HERE!
+                        var textBox = flPanel.Controls.OfType<TextBox>().First(x => x.Text == loser);
+                }
+                var currentParticipantTextBox = this.participantsPanel.Controls.OfType<FlowLayoutPanel>().First(x => x.Text == loser);
                 var index = currentParticipantTextBox.Text.Substring(18);
                 var currentMeasureTextBox = this.participantPanel3.Controls.OfType<TextBox>().First(x => x.Name == "measureTextBox" + index);
                 currentMeasureTextBox.Text = randomizerOutcome[loser];
@@ -217,7 +225,7 @@ namespace Randomizer
                 return;
             }
 
-            this.gameNameLabel.Text = homeTeam + " - " + awayTeam;
+            this.gameNameLabel.Text = homeTeam + "-" + awayTeam;
             this.homeTeamTextBox.Text = "";
             this.awayTeamTextBox.Text = "";
             engine.SaveNewGame(this.gameNameLabel.Text, DateTime.Now);

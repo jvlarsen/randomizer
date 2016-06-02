@@ -25,11 +25,11 @@ namespace Randomizer
             measures = dbFacade.GetMeasures();
         }
 
-        public Dictionary<string, string> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners)
+        public Dictionary<string, string> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, string gameName, int gameMinute)
         {
             Participant winner = dbFacade.GetOwnerFromPlayerName(triggerPlayerName);
             Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
-            List<Participant> owners = dbFacade.GetOwners();
+            List<Participant> owners = dbFacade.GetParticipants();
             owners.Remove(winner);
 
             Dictionary<string, string> randomizerOutcome = new Dictionary<string, string>();
@@ -68,7 +68,7 @@ namespace Randomizer
                     }
                     randomizerOutcome.Add(loser.Name, outcomeMeasure);
             }
-            dbFacade.LogRandomizingOutcome(randomizerOutcome);
+            dbFacade.LogRandomizingOutcome(gameName, randomizerOutcome, gameMinute);
             return randomizerOutcome;
         }
 
