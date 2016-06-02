@@ -267,12 +267,13 @@ namespace Randomizer
 
         private void CalculateGraph()
         {
+            ClearAllSeries();
             var matchId = "Frankrig-Rumænien"; // this.gameNameLabel.Text.Replace(" - ", "-");
             var bum = engine.CalculateGraph(matchId);
 
             for (int i = 0; i < bum.Keys.Count; i++)
             {
-                var minutesAndMeasures = bum[i + 1];
+                var minutesAndMeasures = bum.ElementAt(i).Value;
                 foreach (KeyValuePair<int, int> item in minutesAndMeasures)
                 {
                     chart1.Series[i].Points.AddXY(item.Key, item.Value);
@@ -283,6 +284,21 @@ namespace Randomizer
             chart1.Show();
             //chart1.DataBind();
             //reader.Close();
+        }
+
+        private void ClearAllSeries()
+        {
+            foreach (var series in chart1.Series)
+            {
+                if (series.Points.Count > 0)
+                    series.Points.Clear();
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            engine.UndoLatestEvent();
+            CalculateGraph();
         }
     }
 }

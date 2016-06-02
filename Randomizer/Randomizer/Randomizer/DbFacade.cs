@@ -184,8 +184,24 @@ namespace Randomizer
                 }
                 participantsAndTheirGraph[participantId].Add((int)reader["GameMinute"], (int)reader["CurrentTotal"]);
             }
-
+            CloseConn();
             return participantsAndTheirGraph;
+        }
+
+        public void LogRandomizingOutcome(Dictionary<string, string> randomizerOutcome)
+        {
+            var str = "";
+        }
+
+        public void UndoLatestEvent()
+        {
+            OpenConn();
+            var sProc = conn.CreateCommand();
+            sProc.CommandType = CommandType.StoredProcedure;
+            sProc.CommandText = "UndoLatest";
+
+            sProc.ExecuteNonQuery();
+            CloseConn();
         }
     }
 }

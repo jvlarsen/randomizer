@@ -137,6 +137,7 @@ namespace Randomizer
             this.graphTableAdapter = new Randomizer.RandomDbDataSetTableAdapters.GraphTableAdapter();
             this.randomDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.calculateGraphTableAdapter = new Randomizer.CalculateGraphPlayer1TableAdapters.CalculateGraphTableAdapter();
+            this.button15 = new System.Windows.Forms.Button();
             this.teamBox.SuspendLayout();
             this.eventBox.SuspendLayout();
             this.participantPanel1.SuspendLayout();
@@ -1203,10 +1204,21 @@ namespace Randomizer
             // 
             this.calculateGraphTableAdapter.ClearBeforeFill = true;
             // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(9, 942);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(291, 46);
+            this.button15.TabIndex = 29;
+            this.button15.Text = "button15";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // Form1
             // 
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1916, 1053);
+            this.Controls.Add(this.button15);
             this.Controls.Add(this.participantsPanel);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.dataGridView1);
@@ -1360,6 +1372,7 @@ namespace Randomizer
         private CalculateGraphPlayer1 calculateGraphPlayer1;
         private System.Windows.Forms.BindingSource randomDbDataSetBindingSource;
         private CalculateGraphPlayer1TableAdapters.CalculateGraphTableAdapter calculateGraphTableAdapter;
+        private System.Windows.Forms.Button button15;
 
     }
 }

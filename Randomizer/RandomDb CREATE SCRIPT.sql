@@ -63,8 +63,29 @@ CREATE TABLE Graph (
 	MatchId VARCHAR(100) FOREIGN KEY REFERENCES Matches (Description),
 	ParticipantId INT FOREIGN KEY REFERENCES Participants (ParticipantId),
 	GameMinute INT,
-	MeasureZips INT)
+	MeasureZips INT,
+	EventNumber INT)
 
+CREATE PROCEDURE [dbo].[CalculateGraph]
+@MatchId VARCHAR(100)
+AS
+	BEGIN
+	SELECT ParticipantId, GameMinute, MeasureZips, SUM(MeasureZips) OVER(PARTITION BY ParticipantId ORDER BY ParticipantId, GameMinute) AS CurrentTotal
+	FROM Graph
+	WHERE MatchId = @MatchId
+	GROUP BY ParticipantId, GameMinute, MeasureZips
+	END
+GO
+
+CREATE PROCEDURE [dbo].[UndoLatest]
+AS
+	BEGIN
+		DECLARE @LatestEvent INT
+		SELECT @LatestEvent = MAX(EventNumber) FROM Graph
+
+		DELETE Graph WHERE EventNumber = @LatestEvent
+	END
+GO
 
 --DROP TABLE Measures
 --DROP TABLE MatchLog

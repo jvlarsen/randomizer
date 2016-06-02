@@ -68,6 +68,7 @@ namespace Randomizer
                     }
                     randomizerOutcome.Add(loser.Name, outcomeMeasure);
             }
+            dbFacade.LogRandomizingOutcome(randomizerOutcome);
             return randomizerOutcome;
         }
 
@@ -77,8 +78,6 @@ namespace Randomizer
             var playersAndOwners = new Dictionary<string, string>();
             var random = new Random();
             var index = 0;
-            
-            //TODO: Implement a way to randomize the sorting of participants, to support bug 1
 
             for (int j = 0; j < 20; j++)
             {
@@ -133,19 +132,10 @@ namespace Randomizer
             return dbFacade.CalculateGraph(matchId);
         }
 
-        public void OpenConn()
+        public void UndoLatestEvent()
         {
-            dbFacade.OpenConn();
+            dbFacade.UndoLatestEvent();
         }
 
-        public void CloseConn()
-        {
-            dbFacade.CloseConn();
-        }
-
-        public SqlConnection GetConn()
-        {
-            return dbFacade.GetConn();
-        }
     }
 }
