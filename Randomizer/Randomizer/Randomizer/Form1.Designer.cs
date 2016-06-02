@@ -104,6 +104,8 @@ namespace Randomizer
             this.awayTeamLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.calculateGraphBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.calculateGraphPlayer1 = new Randomizer.CalculateGraphPlayer1();
             this.participantTextBox2 = new System.Windows.Forms.TextBox();
             this.participantPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
@@ -134,14 +136,14 @@ namespace Randomizer
             this.graphBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.graphTableAdapter = new Randomizer.RandomDbDataSetTableAdapters.GraphTableAdapter();
             this.randomDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.calculateGraphPlayer1 = new Randomizer.CalculateGraphPlayer1();
-            this.calculateGraphBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.calculateGraphTableAdapter = new Randomizer.CalculateGraphPlayer1TableAdapters.CalculateGraphTableAdapter();
             this.teamBox.SuspendLayout();
             this.eventBox.SuspendLayout();
             this.participantPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calculateGraphBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calculateGraphPlayer1)).BeginInit();
             this.participantPanel2.SuspendLayout();
             this.participantPanel3.SuspendLayout();
             this.participantPanel4.SuspendLayout();
@@ -152,8 +154,6 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.randomDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graphBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.randomDbDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calculateGraphPlayer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calculateGraphBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // teamBox
@@ -867,7 +867,6 @@ namespace Randomizer
             // 
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.DataSource = this.calculateGraphBindingSource;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(966, 46);
@@ -913,6 +912,16 @@ namespace Randomizer
             this.chart1.Size = new System.Drawing.Size(916, 446);
             this.chart1.TabIndex = 21;
             this.chart1.Text = "chart1";
+            // 
+            // calculateGraphBindingSource
+            // 
+            this.calculateGraphBindingSource.DataMember = "CalculateGraph";
+            this.calculateGraphBindingSource.DataSource = this.calculateGraphPlayer1;
+            // 
+            // calculateGraphPlayer1
+            // 
+            this.calculateGraphPlayer1.DataSetName = "CalculateGraphPlayer1";
+            this.calculateGraphPlayer1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // participantTextBox2
             // 
@@ -1190,16 +1199,6 @@ namespace Randomizer
             this.randomDbDataSetBindingSource.DataSource = this.randomDbDataSet;
             this.randomDbDataSetBindingSource.Position = 0;
             // 
-            // calculateGraphPlayer1
-            // 
-            this.calculateGraphPlayer1.DataSetName = "CalculateGraphPlayer1";
-            this.calculateGraphPlayer1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // calculateGraphBindingSource
-            // 
-            this.calculateGraphBindingSource.DataMember = "CalculateGraph";
-            this.calculateGraphBindingSource.DataSource = this.calculateGraphPlayer1;
-            // 
             // calculateGraphTableAdapter
             // 
             this.calculateGraphTableAdapter.ClearBeforeFill = true;
@@ -1238,6 +1237,8 @@ namespace Randomizer
             this.participantPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calculateGraphBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calculateGraphPlayer1)).EndInit();
             this.participantPanel2.ResumeLayout(false);
             this.participantPanel2.PerformLayout();
             this.participantPanel3.ResumeLayout(false);
@@ -1254,8 +1255,6 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.randomDbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.graphBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.randomDbDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calculateGraphPlayer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calculateGraphBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

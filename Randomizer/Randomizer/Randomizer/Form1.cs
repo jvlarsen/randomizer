@@ -270,9 +270,17 @@ namespace Randomizer
             var matchId = "Frankrig-Rumænien"; // this.gameNameLabel.Text.Replace(" - ", "-");
             var bum = engine.CalculateGraph(matchId);
 
-            
+            for (int i = 0; i < bum.Keys.Count; i++)
+            {
+                var minutesAndMeasures = bum[i + 1];
+                foreach (KeyValuePair<int, int> item in minutesAndMeasures)
+                {
+                    chart1.Series[i].Points.AddXY(item.Key, item.Value);
+                }
+            }
 
-
+            chart1.Visible = true;
+            chart1.Show();
             //chart1.DataBind();
             //reader.Close();
         }

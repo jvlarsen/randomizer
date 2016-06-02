@@ -180,6 +180,7 @@ namespace Randomizer
                 if (!participantsAndTheirGraph.Keys.Contains(participantId))
                 {
                     participantsAndTheirGraph.Add(participantId, new Dictionary<int, int>());
+                    participantsAndTheirGraph[participantId].Add(0, 0);
                 }
                 participantsAndTheirGraph[participantId].Add((int)reader["GameMinute"], (int)reader["CurrentTotal"]);
             }
