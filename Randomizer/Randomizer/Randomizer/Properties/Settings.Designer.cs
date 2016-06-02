@@ -32,5 +32,15 @@ namespace Randomizer.Properties {
                 return ((string)(this["RandomDbConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=JVLHOME\\SQLEXPRESS;Initial Catalog=RandomDb;Integrated Security=True")]
+        public string RandomDbConnectionString1 {
+            get {
+                return ((string)(this["RandomDbConnectionString1"]));
+            }
+        }
     }
 }

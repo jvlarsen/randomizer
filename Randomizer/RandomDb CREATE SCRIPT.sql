@@ -45,7 +45,8 @@ CREATE TABLE MatchLog
 	Description VARCHAR(100) REFERENCES dbo.Matches (Description),
 	PlayerId INT REFERENCES dbo.Players (PlayerId),
 	ParticipantId INT REFERENCES dbo.Participants (ParticipantId),
-	EventName VARCHAR(20) REFERENCES dbo.Events (EventName)
+	EventName VARCHAR(20) REFERENCES dbo.Events (EventName),
+	PlayClock INT
 )
 
 CREATE TABLE Measures
@@ -57,6 +58,14 @@ CREATE TABLE Measures
 	Walter INT
 )
 
+
+CREATE TABLE Graph (
+	MatchId VARCHAR(100) FOREIGN KEY REFERENCES Matches (Description),
+	ParticipantId INT FOREIGN KEY REFERENCES Participants (ParticipantId),
+	GameMinute INT,
+	MeasureZips INT)
+
+
 --DROP TABLE Measures
 --DROP TABLE MatchLog
 --DROP TABLE Matches
@@ -65,3 +74,4 @@ CREATE TABLE Measures
 --DROP TABLE Players
 --DROP TABLE Teams
 --DROP TABLE Participants
+--DROP TABLE Graph

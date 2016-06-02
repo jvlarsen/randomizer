@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Media;
 using System.Drawing;
+using System.Data.SqlClient;
 
 namespace Randomizer
 {
@@ -101,10 +102,6 @@ namespace Randomizer
         {
             var shuffledList = new Dictionary<string, string>();
 
-
-
-
-
             return shuffledList;
         }
 
@@ -131,5 +128,24 @@ namespace Randomizer
             dbFacade.SaveNewGame(gameName, gameDate);
         }
 
+        public Dictionary<int, Dictionary<int, int>> CalculateGraph(string matchId)
+        {
+            return dbFacade.CalculateGraph(matchId);
+        }
+
+        public void OpenConn()
+        {
+            dbFacade.OpenConn();
+        }
+
+        public void CloseConn()
+        {
+            dbFacade.CloseConn();
+        }
+
+        public SqlConnection GetConn()
+        {
+            return dbFacade.GetConn();
+        }
     }
 }

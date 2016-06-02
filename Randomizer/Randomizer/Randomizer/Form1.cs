@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Randomizer.Entities;
+using System.Data.SqlClient;
 
 namespace Randomizer
 {
@@ -26,6 +27,7 @@ namespace Randomizer
             engine = new RandomizerEngine();
             PlayerRadiosInit();
             playersAndOwners = new Dictionary<string, string>();
+            CalculateGraph();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -255,6 +257,24 @@ namespace Randomizer
         private void ClearInfoLabel()
         {
             SetInfoLabelText("", 0); //Use this to keep manipulation of the backColor in one place.
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'randomDbDataSet.Graph' table. You can move, or remove it, as needed.
+            this.graphTableAdapter.Fill(this.randomDbDataSet.Graph);
+        }
+
+        private void CalculateGraph()
+        {
+            var matchId = "Frankrig-Rumænien"; // this.gameNameLabel.Text.Replace(" - ", "-");
+            var bum = engine.CalculateGraph(matchId);
+
+            
+
+
+            //chart1.DataBind();
+            //reader.Close();
         }
     }
 }

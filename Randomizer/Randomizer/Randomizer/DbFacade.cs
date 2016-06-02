@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Data;
 
 namespace Randomizer
 {
@@ -18,7 +19,7 @@ namespace Randomizer
 
         private DbFacade()
         { 
-            connectionString = @"Data Source=JVL\SQLEXPRESS;Initial Catalog=RandomDb;Integrated Security=True";
+            connectionString = @"Data Source=JVLHOME\SQLEXPRESS;Initial Catalog=RandomDb;Integrated Security=True";
             conn = new SqlConnection(connectionString);
             GetMeasures();
         }
@@ -33,12 +34,18 @@ namespace Randomizer
 
         public void OpenConn()
         {
-            conn.Open();
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
         }
 
         public void CloseConn()
         {
             conn.Close();
+        }
+
+        public SqlConnection GetConn()
+        {
+            return conn;
         }
 
         public List<Event> GetEvents()
@@ -151,5 +158,33 @@ namespace Randomizer
             CloseConn();
         }
 
+        public Dictionary<int, Dictionary<int, int>> CalculateGraph(string matchId)
+        {
+            var participantsAndTheirGraph = new Dictionary<int, Dictionary<int, int>>();
+            OpenConn();
+            var sProc = conn.CreateCommand();
+            sProc.CommandType = CommandType.StoredProcedure;
+            sProc.CommandText = "CalculateGraph";
+
+            SqlParameter currentMatchId = new SqlParameter("@matchId", SqlDbType.VarChar);
+
+            sProc.Parameters.Add(currentMatchId);
+
+            sProc.Parameters["@matchId"].Value = matchId;
+
+            SqlDataReader reader = sProc.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var participantId = (int)reader["ParticipantId"];
+                if (!participantsAndTheirGraph.Keys.Contains(participantId))
+                {
+                    participantsAndTheirGraph.Add(participantId, new Dictionary<int, int>());
+                }
+                participantsAndTheirGraph[participantId].Add((int)reader["GameMinute"], (int)reader["CurrentTotal"]);
+            }
+
+            return participantsAndTheirGraph;
+        }
     }
 }
