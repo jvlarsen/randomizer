@@ -16,9 +16,13 @@ namespace Randomizer
         private SqlConnection conn;
         private static DbFacade dbFacade;
         public List<Measure> measures;
+        public List<Participant> participants;
 
         private DbFacade()
         { 
+            //Should make a manual insert of all Participants, Events and Measures.
+            //Or make sure to always remember to do it manually in SSMS before putting the Randomizer to user
+
             connectionString = @"Data Source=JVLHOME\SQLEXPRESS;Initial Catalog=RandomDb;Integrated Security=True";
             conn = new SqlConnection(connectionString);
             GetMeasures();
@@ -84,20 +88,42 @@ namespace Randomizer
             return measures;
         }
 
-        public Participant GetOwnerFromPlayerName(string playerName)
+        public Participant GetOwnerFromPlayerName(string playerName, string matchId)
         {
-            //var sql = new RandomDbDataSetTableAdapters.OwnersTableAdapter();
-            var p = new Participant("Faccio");
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetOwnerFromPlayer";
+
+            var matchParam = new SqlParameter("@matchId", SqlDbType.VarChar);
+            matchParam.Value = matchId;
+            cmd.Parameters.Add(matchParam);
+
+            var playerParam = new SqlParameter("@playerName", SqlDbType.VarChar);
+            playerParam.Value = playerName;
+            cmd.Parameters.Add(playerParam);
+
+            var reader = cmd.ExecuteReader();
+            Participant p = null;
+
+            if (reader.Read())
+            {
+                p = new Participant((string)reader["Name"]);
+            }
+            CloseConn();
             return p;
         }
 
         public List<Participant> GetParticipants()
         {
+            if (participants != null)
+                return participants;
+
+            participants = new List<Participant>();
             OpenConn();
             var cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT ParticipantId, Name FROM Participants";
 
-            var participants = new List<Participant>();
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -121,9 +147,10 @@ namespace Randomizer
             {
                 SavePlayer(player, gameName);
             }
+            OpenConn();
             foreach (KeyValuePair<string, string> playerOwner in playersAndOwners)
             {
-                OpenConn();
+                
                 var cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "MapPlayerToOwner";
@@ -142,6 +169,7 @@ namespace Randomizer
 
                 cmd.ExecuteNonQuery();
             }
+            CloseConn();
         }
 
         public void SaveParticipants(Dictionary<string, Color> participantNames)
@@ -191,17 +219,55 @@ namespace Randomizer
                     participantsAndTheirGraph.Add(participantId, new Dictionary<int, int>());
                     participantsAndTheirGraph[participantId].Add(0, 0);
                 }
-                participantsAndTheirGraph[participantId].Add((int)reader["GameMinute"], (int)reader["CurrentTotal"]);
+
+                participantsAndTheirGraph[participantId][(int)reader["CurrentTotal"]] = (int)reader["GameMinute"];
+                
             }
             CloseConn();
             return participantsAndTheirGraph;
         }
 
-        public void LogRandomizingOutcome(string gameName, Dictionary<string, string> randomizerOutcome, int gameMinute)
+        public void LogRandomizingOutcome(string gameName, Dictionary<string, int> randomizerOutcome, int gameMinute)
         {
             //The randomizerOutcome contains <loserName, measures> and should be mapped to dbo.Graph 
             //as (MatchId, ParticipantId, GameMinute, Measure)
-            var str = "";
+            OpenConn();
+
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT MAX(ISNULL(EventNumber,0)) + 1 AS EventNumber FROM Graph";
+            var reader = cmd.ExecuteReader();
+            reader.Read();
+            var eventNumber = (int)reader["EventNumber"];
+
+            foreach (KeyValuePair<string, int> outcome in randomizerOutcome)
+            {
+                cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "LogRandomizingOutcomeToGraph";
+
+                var matchIdParam = new SqlParameter("@matchId", SqlDbType.VarChar);
+                matchIdParam.Value = gameName;
+                cmd.Parameters.Add(matchIdParam);
+
+                var loserParam = new SqlParameter("@ownerName", SqlDbType.VarChar);
+                loserParam.Value = outcome.Key;
+                cmd.Parameters.Add(loserParam);
+
+                var zipsParam = new SqlParameter("@zips", SqlDbType.Int);
+                zipsParam.Value = outcome.Value;
+                cmd.Parameters.Add(zipsParam);
+
+                var timeParam = new SqlParameter("@Time", SqlDbType.Int);
+                timeParam.Value = gameMinute;
+                cmd.Parameters.Add(timeParam);
+
+                var eventParam = new SqlParameter("@EventNumber", SqlDbType.Int);
+                eventParam.Value = eventNumber;
+                cmd.Parameters.Add(eventParam);
+
+                cmd.ExecuteNonQuery();
+            }
+            CloseConn();
         }
 
         public void UndoLatestEvent()
@@ -213,6 +279,14 @@ namespace Randomizer
 
             sProc.ExecuteNonQuery();
             CloseConn();
+        }
+
+        public enum Measures
+        {
+            Small = 1,
+            Medium = 3,
+            Large = 6,
+            Walter = 11
         }
     }
 }

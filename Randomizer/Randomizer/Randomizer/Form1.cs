@@ -19,7 +19,6 @@ namespace Randomizer
         Dictionary<string, Color> participants;
         Dictionary<string, Color> players;
         Dictionary<string, string> playersAndOwners;
-        int currentGamId;
 
         public Form1()
         {
@@ -34,7 +33,7 @@ namespace Randomizer
         {
             var playerSelected = GetTriggerPlayer();
             var eventFired = GetEvent();
-            var randomizerOutcome = new Dictionary<string, string>();
+            var randomizerOutcome = new Dictionary<string, int>();
 
             if (ValidateInput(playerSelected, eventFired))
             {
@@ -43,20 +42,30 @@ namespace Randomizer
                 randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners, this.gameNameLabel.Text, gameMinute);
             }
 
-            foreach (var loser in randomizerOutcome.Keys)
+            foreach (KeyValuePair<string, int> loserZips in randomizerOutcome)
             {
-                var flowLayoutPanels = this.participantsPanel.Controls.OfType<FlowLayoutPanel>();
-                foreach (var flPanel in flowLayoutPanels)
-                {
-                    BROKEN ON PURPOSE
-                        NEED TO FIND THE RIGHT ELEMENT HERE!
-                        var textBox = flPanel.Controls.OfType<TextBox>().First(x => x.Text == loser);
-                }
-                var currentParticipantTextBox = this.participantsPanel.Controls.OfType<FlowLayoutPanel>().First(x => x.Text == loser);
-                var index = currentParticipantTextBox.Text.Substring(18);
-                var currentMeasureTextBox = this.participantPanel3.Controls.OfType<TextBox>().First(x => x.Name == "measureTextBox" + index);
-                currentMeasureTextBox.Text = randomizerOutcome[loser];
+                if (loserZips.Key.ToLower().Equals("faccio"))
+                    this.labelFaccio.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals("leffo"))
+                    this.labelLeffo.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals("nosser"))
+                    this.labelNosser.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals("tarzan"))
+                    this.labelTarzan.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals("tennedz"))
+                    this.labelTennedz.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals("trusser"))
+                    this.labelTrusser.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals("aallex"))
+                    this.labelAallex.Text = loserZips.Value.ToString();
+
+                //var currentParticipantTextBox = this.participantsPanel.Controls.OfType<FlowLayoutPanel>().First(x => x.Text == loser);
+                //var index = currentParticipantTextBox.Text.Substring(18);
+                //var currentMeasureTextBox = this.participantPanel3.Controls.OfType<TextBox>().First(x => x.Name == "measureTextBox" + index);
+                //currentMeasureTextBox.Text = randomizerOutcome[loser];
             }
+
+            CalculateGraph();
         }
 
         private bool ValidateInput(string player, string eventFired)
@@ -92,7 +101,7 @@ namespace Randomizer
         private string GetTriggerPlayer()
         {
             var selected = "";
-            selected = teamBox.Controls.OfType<RadioButton>().First(x => x.Checked).Name;
+            selected = teamBox.Controls.OfType<RadioButton>().First(x => x.Checked).Text;
 
             return selected;
         }
@@ -276,7 +285,7 @@ namespace Randomizer
         private void CalculateGraph()
         {
             ClearAllSeries();
-            var matchId = "Frankrig-Rumænien"; // this.gameNameLabel.Text.Replace(" - ", "-");
+            var matchId = this.gameNameLabel.Text.Replace(" - ", "-");
             var bum = engine.CalculateGraph(matchId);
 
             for (int i = 0; i < bum.Keys.Count; i++)
@@ -284,14 +293,12 @@ namespace Randomizer
                 var minutesAndMeasures = bum.ElementAt(i).Value;
                 foreach (KeyValuePair<int, int> item in minutesAndMeasures)
                 {
-                    chart1.Series[i].Points.AddXY(item.Key, item.Value);
+                    chart1.Series[i].Points.AddXY(item.Value, item.Key);
                 }
             }
 
             chart1.Visible = true;
             chart1.Show();
-            //chart1.DataBind();
-            //reader.Close();
         }
 
         private void ClearAllSeries()

@@ -25,21 +25,28 @@ namespace Randomizer
             measures = dbFacade.GetMeasures();
         }
 
-        public Dictionary<string, string> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, string gameName, int gameMinute)
+        public Dictionary<string, int> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, string gameName, int gameMinute)
         {
-            Participant winner = dbFacade.GetOwnerFromPlayerName(triggerPlayerName);
+            Participant winner = dbFacade.GetOwnerFromPlayerName(triggerPlayerName, gameName);
             Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
             List<Participant> owners = dbFacade.GetParticipants();
-            owners.Remove(winner);
-
-            Dictionary<string, string> randomizerOutcome = new Dictionary<string, string>();
+            var winnersIndex = owners.IndexOf(owners.First(x => x.Name == winner.Name));
+            if (eventFired.Measure.Name.Substring(0, 3).ToLower().Equals("own"))
+            {
+                owners = new List<Participant>() { owners[winnersIndex] };
+            }
+            else
+            {
+                owners.RemoveAt(winnersIndex);
+            }
+            Dictionary<string, int> randomizerOutcome = new Dictionary<string, int>();
 
             var soundPlayer = new SoundPlayer(eventFired.SoundUrl);
             soundPlayer.Play();
 
             var random = new Random();
             int outcomeIndex = 0;
-            var outcomeMeasure = "";
+            var outcomeMeasure = 0;
 
             var smallRangeTop = eventFired.Measure.Small;
             var mediumRangeTop = eventFired.Measure.Medium + smallRangeTop;
@@ -52,19 +59,19 @@ namespace Randomizer
 
                     if (1 <= outcomeIndex && outcomeIndex <= smallRangeTop)
                     {
-                        outcomeMeasure = "Small";
+                        outcomeMeasure = 1;
                     }
                     else if (smallRangeTop < outcomeIndex && outcomeIndex <= mediumRangeTop)
                     {
-                        outcomeMeasure = "Memmel";
+                        outcomeMeasure = 3;
                     }
                     else if (mediumRangeTop < outcomeIndex && outcomeIndex <= largeRangeTop)
                     {
-                        outcomeMeasure = "Large";
+                        outcomeMeasure = 6;
                     }
                     else if (largeRangeTop < outcomeIndex && outcomeIndex <= walterRangeTop)
                     {
-                        outcomeMeasure = "Walter";
+                        outcomeMeasure = 11;
                     }
                     randomizerOutcome.Add(loser.Name, outcomeMeasure);
             }
@@ -79,7 +86,7 @@ namespace Randomizer
             var random = new Random();
             var index = 0;
 
-            for (int j = 0; j < 20; j++)
+            for (int j = 0; j < 21; j++)
             {
                 var currentParticipant = participants.ElementAt(j % participants.Count);
                 if (players.Count == 1)
@@ -104,9 +111,9 @@ namespace Randomizer
             return shuffledList;
         }
 
-        private Participant GetOwnerFromPlayerName(string triggerPlayerName)
+        private Participant GetOwnerFromPlayerName(string triggerPlayerName, string gameName)
         {
-            dbFacade.GetOwnerFromPlayerName(triggerPlayerName);
+            dbFacade.GetOwnerFromPlayerName(triggerPlayerName, gameName);
             var p = new Participant("Jesper");
 
             return p;
@@ -115,11 +122,6 @@ namespace Randomizer
         public void SaveParticipants(Dictionary<string, Color> participantNames)
         {
             dbFacade.SaveParticipants(participantNames);
-        }
-
-        public void SaveDistribution(Dictionary<string, string> playersAndOwners, string gameName)
-        {
-            dbFacade.SaveDistribution(playersAndOwners, gameName);
         }
 
         public void SaveNewGame(string gameName, DateTime gameDate)

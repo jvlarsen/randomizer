@@ -19,7 +19,7 @@ CREATE TABLE Matches
 	Home VARCHAR(100),
 	Away VARCHAR(100),
 	Result VARCHAR(5),
-	Created DATETIME
+	Created DATETIME DEFAULT GETDATE()
 )
 
 CREATE TABLE Players
@@ -72,6 +72,7 @@ CREATE TABLE Owners (
 	ParticipantId INT FOREIGN KEY REFERENCES Participants (ParticipantId),
 	PlayerId INT FOREIGN KEY REFERENCES Players (PlayerId)
 	)
+GO
 
 CREATE PROCEDURE [dbo].[CalculateGraph]
 @MatchId VARCHAR(100)
@@ -108,12 +109,61 @@ AS
 	END
 GO
 
+CREATE PROCEDURE [dbo].[GetOwnerFromPlayer]
+@MatchId VARCHAR(100),
+@PlayerName VARCHAR(100)
+AS
+	BEGIN		
+		SELECT P.ParticipantId, P.Name
+		FROM Participants P
+		INNER JOIN Owners O ON P.ParticipantId = O.ParticipantId
+		INNER JOIN Players PL ON PL.PlayerId = O.PlayerId AND PL.GameName = O.MatchId
+		WHERE PL.Name = @PlayerName AND O.MatchId = @MatchId
+	END
+GO
+
+CREATE PROCEDURE [dbo].[LogRandomizingOutcomeToGraph]
+@MatchId VARCHAR(100),
+@OwnerName VARCHAR(100),
+@Zips INT,
+@Time INT,
+@EventNumber INT
+AS
+	BEGIN
+		DECLARE @ParticipantId INT
+		SELECT @ParticipantId = P.ParticipantId
+		FROM Owners O INNER JOIN Participants P ON O.ParticipantId = P.ParticipantId
+		WHERE O.MatchId = @MatchId AND P.Name = @OwnerName
+
+		INSERT INTO Graph (MatchId, ParticipantId, MeasureZips, GameMinute, EventNumber)
+		VALUES (@MatchId, @ParticipantId, @Zips, @Time, @EventNumber)
+	END
+GO
+
+EXEC LogRandomizingOutcomeToGraph '1-2', 'Tarzan', 7, 28
+
+delete graph
+delete Owners
+delete Players
+delete matches
+select * from graph
+
+select * from Participants
+
 --DROP TABLE Measures
 --DROP TABLE MatchLog
---DROP TABLE Matches
---DROP TABLE Events
+--DROP TABLE Graph
 --DROP TABLE Owners
 --DROP TABLE Players
+--DROP TABLE Matches
+--DROP TABLE Events
+
+
 --DROP TABLE Teams
 --DROP TABLE Participants
---DROP TABLE Graph
+
+--DROP PROCEDURE CalculateGraph
+--DROP PROCEDURE UndoLatest
+--DROP PROCEDURE MapPlayerToOwner
+--DROP PROCEDURE GetOwnerFromPlayer
+--DROP PROCEDURE LogRandomizingOutcomeToGraph

@@ -35,7 +35,7 @@ INSERT INTO Matches (Description, Home, Away, Created) VALUES ('Frankrig-Rumænie
 INSERT INTO Matches (Description, Home, Away, Created) VALUES ('Albanien-Schweiz', 'Albanien', 'Schweiz', '2016-06-11')
 INSERT INTO Matches (Description, Home, Away, Created) VALUES ('Wales-Slovakiet', 'Wales', 'Slovakiet', '2016-06-11')
 
-
+delete graph
 INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 1, 10, 5, 1)
 INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 2, 15, 5, 2)
 INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 3, 10, 12, 1)
@@ -58,32 +58,10 @@ INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber)
 INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 5, 48, 5, 7)
 INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 2, 65, 5, 8)
 INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 3, 68, 5, 9)
-INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 1, 78, 12, 10)
+INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 4, 78, 12, 10)
 INSERT INTO Graph (MatchId, ParticipantId, GameMinute, MeasureZips, EventNumber) VALUES ('Frankrig-Rumænien', 2, 78, 5, 10)
 
-select * from matches
-
-select * from Participants
-
-select * from Graph
 
 
 
-select * from Graph
 
-SELECT ParticipantId, GameMinute, SUM(MeasureZips) OVER(ORDER BY ParticipantId, GameMinute)
-FROM Graph
-
-drop procedure CalculateGraph
-
-CREATE PROCEDURE CalculateGraph
-@matchId VARCHAR(100)
-AS
-BEGIN
-SELECT ParticipantId, GameMinute, SUM(MeasureZips) OVER(ORDER BY ParticipantId, GameMinute) AS CurrentTotal
-FROM Graph
-WHERE MatchId = @matchId
-END
-
-
-exec CalculateGraph 'Frankrig-Rumænien'

@@ -40,6 +40,7 @@ namespace Randomizer
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.teamBox = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.awayPlayer10 = new System.Windows.Forms.RadioButton();
             this.homePlayer10 = new System.Windows.Forms.RadioButton();
@@ -80,7 +81,7 @@ namespace Randomizer
             this.button2 = new System.Windows.Forms.Button();
             this.participantPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.participantTextBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelFaccio = new System.Windows.Forms.Label();
             this.green1 = new System.Windows.Forms.Button();
             this.bank1 = new System.Windows.Forms.Button();
             this.participantTextBox3 = new System.Windows.Forms.TextBox();
@@ -108,27 +109,27 @@ namespace Randomizer
             this.calculateGraphPlayer1 = new Randomizer.CalculateGraphPlayer1();
             this.participantTextBox2 = new System.Windows.Forms.TextBox();
             this.participantPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelLeffo = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.participantPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelNosser = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.participantPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelTarzan = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.participantPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelTennedz = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.participantPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelTrusser = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.participantPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelAallex = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.participantsPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -159,6 +160,7 @@ namespace Randomizer
             // 
             // teamBox
             // 
+            this.teamBox.Controls.Add(this.radioButton1);
             this.teamBox.Controls.Add(this.label1);
             this.teamBox.Controls.Add(this.awayPlayer10);
             this.teamBox.Controls.Add(this.homePlayer10);
@@ -186,6 +188,17 @@ namespace Randomizer
             this.teamBox.TabIndex = 0;
             this.teamBox.TabStop = false;
             this.teamBox.Text = "TeamBox";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(96, 260);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(63, 17);
+            this.radioButton1.TabIndex = 23;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Referee";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -635,7 +648,7 @@ namespace Randomizer
             // participantPanel1
             // 
             this.participantPanel1.Controls.Add(this.participantTextBox1);
-            this.participantPanel1.Controls.Add(this.label2);
+            this.participantPanel1.Controls.Add(this.labelFaccio);
             this.participantPanel1.Controls.Add(this.green1);
             this.participantPanel1.Controls.Add(this.bank1);
             this.participantPanel1.Location = new System.Drawing.Point(3, 3);
@@ -651,86 +664,85 @@ namespace Randomizer
             this.participantTextBox1.Name = "participantTextBox1";
             this.participantTextBox1.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox1.TabIndex = 0;
-            this.participantTextBox1.Text = "Faccio";
+            this.participantTextBox1.Text = "FACCIO";
             // 
-            // label2
+            // labelFaccio
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(109, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.label2.Size = new System.Drawing.Size(41, 29);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Walter!";
+            this.labelFaccio.AutoSize = true;
+            this.labelFaccio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelFaccio.Location = new System.Drawing.Point(109, 0);
+            this.labelFaccio.Name = "labelFaccio";
+            this.labelFaccio.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.labelFaccio.Size = new System.Drawing.Size(0, 29);
+            this.labelFaccio.TabIndex = 9;
             // 
             // green1
             // 
             this.green1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.green1.Location = new System.Drawing.Point(156, 3);
+            this.green1.Location = new System.Drawing.Point(115, 3);
             this.green1.Name = "green1";
-            this.green1.Size = new System.Drawing.Size(36, 23);
+            this.green1.Size = new System.Drawing.Size(69, 23);
             this.green1.TabIndex = 7;
             this.green1.UseVisualStyleBackColor = false;
             // 
             // bank1
             // 
             this.bank1.BackColor = System.Drawing.Color.Red;
-            this.bank1.Location = new System.Drawing.Point(198, 3);
+            this.bank1.Location = new System.Drawing.Point(190, 3);
             this.bank1.Name = "bank1";
-            this.bank1.Size = new System.Drawing.Size(37, 23);
+            this.bank1.Size = new System.Drawing.Size(64, 23);
             this.bank1.TabIndex = 8;
             this.bank1.UseVisualStyleBackColor = false;
             // 
             // participantTextBox3
             // 
             this.participantTextBox3.BackColor = System.Drawing.Color.DarkRed;
-            this.participantTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.participantTextBox3.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox3.Name = "participantTextBox3";
             this.participantTextBox3.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox3.TabIndex = 2;
-            this.participantTextBox3.Text = "Nosser";
+            this.participantTextBox3.Text = "NOSSER";
             // 
             // participantTextBox4
             // 
             this.participantTextBox4.BackColor = System.Drawing.Color.YellowGreen;
-            this.participantTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.participantTextBox4.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox4.Name = "participantTextBox4";
             this.participantTextBox4.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox4.TabIndex = 3;
-            this.participantTextBox4.Text = "Tarzan";
+            this.participantTextBox4.Text = "TARZAN";
             // 
             // participantTextBox5
             // 
             this.participantTextBox5.BackColor = System.Drawing.Color.Turquoise;
-            this.participantTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.participantTextBox5.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox5.Name = "participantTextBox5";
             this.participantTextBox5.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox5.TabIndex = 4;
-            this.participantTextBox5.Text = "Tennedz";
+            this.participantTextBox5.Text = "TENNEDZ";
             // 
             // participantTextBox6
             // 
             this.participantTextBox6.BackColor = System.Drawing.Color.Blue;
-            this.participantTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.participantTextBox6.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox6.Name = "participantTextBox6";
             this.participantTextBox6.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox6.TabIndex = 5;
-            this.participantTextBox6.Text = "Trusser";
+            this.participantTextBox6.Text = "TRUSSER";
             // 
             // participantTextBox7
             // 
             this.participantTextBox7.BackColor = System.Drawing.Color.Orange;
-            this.participantTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participantTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.participantTextBox7.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox7.Name = "participantTextBox7";
             this.participantTextBox7.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox7.TabIndex = 6;
-            this.participantTextBox7.Text = "Aallex";
+            this.participantTextBox7.Text = "AALLEX";
             // 
             // progressBar
             // 
@@ -872,37 +884,57 @@ namespace Randomizer
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(966, 46);
             this.chart1.Name = "chart1";
+            series1.BackImage = "D:\\Arbejde\\randomizer\\scoreboard.jpg";
+            series1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
+            series1.BorderWidth = 5;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Label = "Player 1";
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = System.Drawing.Color.DimGray;
             series1.Legend = "Legend1";
-            series1.Name = "Player 1";
-            series1.XValueMember = "GameMinute";
-            series1.YValueMembers = "CurrentTotal";
+            series1.Name = "FACCIO";
+            series2.BorderWidth = 5;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = System.Drawing.Color.Violet;
             series2.Legend = "Legend1";
-            series2.Name = "Series2";
+            series2.Name = "LEFFO";
+            series3.BorderWidth = 5;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.IsValueShownAsLabel = true;
+            series3.LabelForeColor = System.Drawing.Color.DarkRed;
             series3.Legend = "Legend1";
-            series3.Name = "Series3";
+            series3.Name = "NOSSER";
+            series4.BorderWidth = 5;
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.IsValueShownAsLabel = true;
+            series4.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             series4.Legend = "Legend1";
-            series4.Name = "Series4";
+            series4.Name = "TARZAN";
+            series5.BorderWidth = 5;
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.IsValueShownAsLabel = true;
+            series5.LabelForeColor = System.Drawing.Color.Aqua;
             series5.Legend = "Legend1";
-            series5.Name = "Series5";
+            series5.Name = "TENNEDZ";
+            series6.BorderWidth = 5;
             series6.ChartArea = "ChartArea1";
             series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.IsValueShownAsLabel = true;
+            series6.LabelForeColor = System.Drawing.Color.Blue;
             series6.Legend = "Legend1";
-            series6.Name = "Series6";
+            series6.Name = "TRUSSER";
+            series7.BorderWidth = 5;
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.IsValueShownAsLabel = true;
+            series7.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             series7.Legend = "Legend1";
-            series7.Name = "Series7";
+            series7.Name = "AALLEX";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
@@ -927,17 +959,17 @@ namespace Randomizer
             // participantTextBox2
             // 
             this.participantTextBox2.BackColor = System.Drawing.Color.MediumOrchid;
-            this.participantTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.participantTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.participantTextBox2.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox2.Name = "participantTextBox2";
             this.participantTextBox2.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox2.TabIndex = 1;
-            this.participantTextBox2.Text = "Leffo";
+            this.participantTextBox2.Text = "LEFFO";
             // 
             // participantPanel2
             // 
             this.participantPanel2.Controls.Add(this.participantTextBox2);
-            this.participantPanel2.Controls.Add(this.label3);
+            this.participantPanel2.Controls.Add(this.labelLeffo);
             this.participantPanel2.Controls.Add(this.button1);
             this.participantPanel2.Controls.Add(this.button4);
             this.participantPanel2.Location = new System.Drawing.Point(3, 39);
@@ -945,29 +977,29 @@ namespace Randomizer
             this.participantPanel2.Size = new System.Drawing.Size(300, 30);
             this.participantPanel2.TabIndex = 22;
             // 
-            // label3
+            // labelLeffo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(109, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 13);
-            this.label3.TabIndex = 2;
+            this.labelLeffo.AutoSize = true;
+            this.labelLeffo.Location = new System.Drawing.Point(109, 0);
+            this.labelLeffo.Name = "labelLeffo";
+            this.labelLeffo.Size = new System.Drawing.Size(0, 13);
+            this.labelLeffo.TabIndex = 5;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button1.Location = new System.Drawing.Point(115, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 23);
+            this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(158, 3);
+            this.button4.Location = new System.Drawing.Point(190, 3);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(37, 23);
+            this.button4.Size = new System.Drawing.Size(63, 23);
             this.button4.TabIndex = 4;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
@@ -975,7 +1007,7 @@ namespace Randomizer
             // participantPanel3
             // 
             this.participantPanel3.Controls.Add(this.participantTextBox3);
-            this.participantPanel3.Controls.Add(this.label4);
+            this.participantPanel3.Controls.Add(this.labelNosser);
             this.participantPanel3.Controls.Add(this.button5);
             this.participantPanel3.Controls.Add(this.button10);
             this.participantPanel3.Location = new System.Drawing.Point(3, 75);
@@ -983,21 +1015,20 @@ namespace Randomizer
             this.participantPanel3.Size = new System.Drawing.Size(300, 30);
             this.participantPanel3.TabIndex = 23;
             // 
-            // label4
+            // labelNosser
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(109, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
+            this.labelNosser.AutoSize = true;
+            this.labelNosser.Location = new System.Drawing.Point(109, 0);
+            this.labelNosser.Name = "labelNosser";
+            this.labelNosser.Size = new System.Drawing.Size(0, 13);
+            this.labelNosser.TabIndex = 3;
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button5.Location = new System.Drawing.Point(150, 3);
+            this.button5.Location = new System.Drawing.Point(115, 3);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(37, 23);
+            this.button5.Size = new System.Drawing.Size(69, 23);
             this.button5.TabIndex = 5;
             this.button5.Text = "button5";
             this.button5.UseVisualStyleBackColor = false;
@@ -1005,16 +1036,16 @@ namespace Randomizer
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Red;
-            this.button10.Location = new System.Drawing.Point(193, 3);
+            this.button10.Location = new System.Drawing.Point(190, 3);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(37, 23);
+            this.button10.Size = new System.Drawing.Size(63, 23);
             this.button10.TabIndex = 10;
             this.button10.UseVisualStyleBackColor = false;
             // 
             // participantPanel4
             // 
             this.participantPanel4.Controls.Add(this.participantTextBox4);
-            this.participantPanel4.Controls.Add(this.label5);
+            this.participantPanel4.Controls.Add(this.labelTarzan);
             this.participantPanel4.Controls.Add(this.button6);
             this.participantPanel4.Controls.Add(this.button11);
             this.participantPanel4.Location = new System.Drawing.Point(3, 111);
@@ -1022,21 +1053,20 @@ namespace Randomizer
             this.participantPanel4.Size = new System.Drawing.Size(300, 30);
             this.participantPanel4.TabIndex = 24;
             // 
-            // label5
+            // labelTarzan
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(109, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "label5";
+            this.labelTarzan.AutoSize = true;
+            this.labelTarzan.Location = new System.Drawing.Point(109, 0);
+            this.labelTarzan.Name = "labelTarzan";
+            this.labelTarzan.Size = new System.Drawing.Size(0, 13);
+            this.labelTarzan.TabIndex = 4;
             // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button6.Location = new System.Drawing.Point(150, 3);
+            this.button6.Location = new System.Drawing.Point(115, 3);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(37, 23);
+            this.button6.Size = new System.Drawing.Size(69, 23);
             this.button6.TabIndex = 6;
             this.button6.Text = "button6";
             this.button6.UseVisualStyleBackColor = false;
@@ -1044,16 +1074,16 @@ namespace Randomizer
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.Red;
-            this.button11.Location = new System.Drawing.Point(193, 3);
+            this.button11.Location = new System.Drawing.Point(190, 3);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(37, 23);
+            this.button11.Size = new System.Drawing.Size(64, 23);
             this.button11.TabIndex = 11;
             this.button11.UseVisualStyleBackColor = false;
             // 
             // participantPanel5
             // 
             this.participantPanel5.Controls.Add(this.participantTextBox5);
-            this.participantPanel5.Controls.Add(this.label6);
+            this.participantPanel5.Controls.Add(this.labelTennedz);
             this.participantPanel5.Controls.Add(this.button7);
             this.participantPanel5.Controls.Add(this.button12);
             this.participantPanel5.Location = new System.Drawing.Point(3, 147);
@@ -1061,21 +1091,20 @@ namespace Randomizer
             this.participantPanel5.Size = new System.Drawing.Size(300, 30);
             this.participantPanel5.TabIndex = 25;
             // 
-            // label6
+            // labelTennedz
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(109, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "label6";
+            this.labelTennedz.AutoSize = true;
+            this.labelTennedz.Location = new System.Drawing.Point(109, 0);
+            this.labelTennedz.Name = "labelTennedz";
+            this.labelTennedz.Size = new System.Drawing.Size(0, 13);
+            this.labelTennedz.TabIndex = 5;
             // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button7.Location = new System.Drawing.Point(150, 3);
+            this.button7.Location = new System.Drawing.Point(115, 3);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(37, 23);
+            this.button7.Size = new System.Drawing.Size(69, 23);
             this.button7.TabIndex = 7;
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = false;
@@ -1083,16 +1112,16 @@ namespace Randomizer
             // button12
             // 
             this.button12.BackColor = System.Drawing.Color.Red;
-            this.button12.Location = new System.Drawing.Point(193, 3);
+            this.button12.Location = new System.Drawing.Point(190, 3);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(37, 23);
+            this.button12.Size = new System.Drawing.Size(64, 23);
             this.button12.TabIndex = 12;
             this.button12.UseVisualStyleBackColor = false;
             // 
             // participantPanel6
             // 
             this.participantPanel6.Controls.Add(this.participantTextBox6);
-            this.participantPanel6.Controls.Add(this.label7);
+            this.participantPanel6.Controls.Add(this.labelTrusser);
             this.participantPanel6.Controls.Add(this.button8);
             this.participantPanel6.Controls.Add(this.button13);
             this.participantPanel6.Location = new System.Drawing.Point(3, 183);
@@ -1100,21 +1129,20 @@ namespace Randomizer
             this.participantPanel6.Size = new System.Drawing.Size(300, 30);
             this.participantPanel6.TabIndex = 26;
             // 
-            // label7
+            // labelTrusser
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(109, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "label7";
+            this.labelTrusser.AutoSize = true;
+            this.labelTrusser.Location = new System.Drawing.Point(109, 0);
+            this.labelTrusser.Name = "labelTrusser";
+            this.labelTrusser.Size = new System.Drawing.Size(0, 13);
+            this.labelTrusser.TabIndex = 6;
             // 
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button8.Location = new System.Drawing.Point(150, 3);
+            this.button8.Location = new System.Drawing.Point(115, 3);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(37, 23);
+            this.button8.Size = new System.Drawing.Size(69, 23);
             this.button8.TabIndex = 8;
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = false;
@@ -1122,16 +1150,16 @@ namespace Randomizer
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.Red;
-            this.button13.Location = new System.Drawing.Point(193, 3);
+            this.button13.Location = new System.Drawing.Point(190, 3);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(37, 23);
+            this.button13.Size = new System.Drawing.Size(64, 23);
             this.button13.TabIndex = 13;
             this.button13.UseVisualStyleBackColor = false;
             // 
             // participantPanel7
             // 
             this.participantPanel7.Controls.Add(this.participantTextBox7);
-            this.participantPanel7.Controls.Add(this.label8);
+            this.participantPanel7.Controls.Add(this.labelAallex);
             this.participantPanel7.Controls.Add(this.button9);
             this.participantPanel7.Controls.Add(this.button14);
             this.participantPanel7.Location = new System.Drawing.Point(3, 219);
@@ -1139,21 +1167,20 @@ namespace Randomizer
             this.participantPanel7.Size = new System.Drawing.Size(300, 30);
             this.participantPanel7.TabIndex = 27;
             // 
-            // label8
+            // labelAallex
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(109, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "label8";
+            this.labelAallex.AutoSize = true;
+            this.labelAallex.Location = new System.Drawing.Point(109, 0);
+            this.labelAallex.Name = "labelAallex";
+            this.labelAallex.Size = new System.Drawing.Size(0, 13);
+            this.labelAallex.TabIndex = 7;
             // 
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button9.Location = new System.Drawing.Point(150, 3);
+            this.button9.Location = new System.Drawing.Point(115, 3);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(37, 23);
+            this.button9.Size = new System.Drawing.Size(69, 23);
             this.button9.TabIndex = 9;
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = false;
@@ -1161,9 +1188,9 @@ namespace Randomizer
             // button14
             // 
             this.button14.BackColor = System.Drawing.Color.Red;
-            this.button14.Location = new System.Drawing.Point(193, 3);
+            this.button14.Location = new System.Drawing.Point(190, 3);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(37, 23);
+            this.button14.Size = new System.Drawing.Size(64, 23);
             this.button14.TabIndex = 14;
             this.button14.UseVisualStyleBackColor = false;
             // 
@@ -1346,23 +1373,22 @@ namespace Randomizer
         private System.Windows.Forms.FlowLayoutPanel participantPanel6;
         private System.Windows.Forms.FlowLayoutPanel participantPanel7;
         private System.Windows.Forms.FlowLayoutPanel participantsPanel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelFaccio;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelNosser;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelTarzan;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelTennedz;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelTrusser;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelAallex;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button14;
         private RandomDbDataSet randomDbDataSet;
@@ -1373,6 +1399,8 @@ namespace Randomizer
         private System.Windows.Forms.BindingSource randomDbDataSetBindingSource;
         private CalculateGraphPlayer1TableAdapters.CalculateGraphTableAdapter calculateGraphTableAdapter;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label labelLeffo;
 
     }
 }
