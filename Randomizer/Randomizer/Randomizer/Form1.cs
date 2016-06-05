@@ -35,12 +35,13 @@ namespace Randomizer
             var playerSelected = GetTriggerPlayer();
             var eventFired = GetEvent();
             var randomizerOutcome = new Dictionary<string, int>();
+            var matchId = int.Parse(this.matchIdLabel.Text);
 
             if (ValidateInput(playerSelected, eventFired))
             {
                 //returned Dictionary<string, string> with <loserName, measure>
                 var gameMinute = this.progressBar.Value;
-                randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners, this.gameNameLabel.Text, gameMinute);
+                randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners, matchId, gameMinute);
             }
 
             foreach (KeyValuePair<string, int> loserZips in randomizerOutcome)
@@ -104,7 +105,7 @@ namespace Randomizer
             var saveGames = engine.GetSaveGames();
             for (int i = 0; i < saveGames.Count; i++)
             {
-                this.loadGameComboBox.Items.Add(new SaveGame(saveGames[i]));
+                this.loadGameComboBox.Items.Add(saveGames[i]);
             }
         }
 
@@ -205,7 +206,7 @@ namespace Randomizer
 
             if (participants.Count > 0)
             {
-                playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>(), this.gameNameLabel.Text);
+                playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>(), int.Parse(this.matchIdLabel.Text));
                 engine.SaveParticipants(participants);
             }
             else
@@ -247,8 +248,9 @@ namespace Randomizer
             this.gameNameLabel.Text = homeTeam + "-" + awayTeam;
             this.homeTeamTextBox.Text = "";
             this.awayTeamTextBox.Text = "";
-            engine.SaveNewGame(this.gameNameLabel.Text, DateTime.Now);
+            var matchId = engine.SaveNewGame(this.gameNameLabel.Text, DateTime.Now);
             this.teamDistributionButton.Enabled = true;
+            this.matchIdLabel.Text = matchId.ToString();
         }
 
         #endregion
@@ -257,7 +259,7 @@ namespace Randomizer
         {
             foreach (var player in playersAndOwners.Keys)
             {
-                this.teamBox.Controls.OfType<RadioButton>().First(x => x.Text == player).BackColor = participants[playersAndOwners[player]];
+                this.teamBox.Controls.OfType<RadioButton>().First(x => x.Text == player).BackColor = participants[playersAndOwners[player].ToUpper()];
             }
         }
 
@@ -295,19 +297,24 @@ namespace Randomizer
         private void CalculateGraph(string eventName)
         {
             ClearAllSeries();
-            var matchId = this.gameNameLabel.Text;
-            var calculatedPoints = engine.CalculateGraph(matchId);
 
-            for (int i = 0; i < calculatedPoints.Keys.Count; i++)
+            int matchId; 
+            var matchIdSet = int.TryParse(this.matchIdLabel.Text, out matchId);
+
+            if (matchIdSet)
             {
-                var minutesAndMeasures = calculatedPoints.ElementAt(i).Value;
-                foreach (KeyValuePair<int, int> item in minutesAndMeasures)
-                {
-                    chart1.Series[i].Points.AddXY(item.Value, item.Key);
-                }
-                chart1.Series[i].Points.Last().AxisLabel = eventName;
-            }
+                var calculatedPoints = engine.CalculateGraph(matchId);
 
+                for (int i = 0; i < calculatedPoints.Keys.Count; i++)
+                {
+                    var minutesAndMeasures = calculatedPoints.ElementAt(i).Value;
+                    foreach (KeyValuePair<int, int> item in minutesAndMeasures)
+                    {
+                        chart1.Series[i].Points.AddXY(item.Value, item.Key);
+                    }
+                    chart1.Series[i].Points.Last().AxisLabel = eventName;
+                }
+            }
             chart1.Visible = true;
             chart1.Show();
         }
@@ -377,9 +384,14 @@ namespace Randomizer
             }
             var saveGame = (SaveGame)loadGameComboBox.SelectedItem;
 
+            participants = GetParticipantsFromUI();
             LoadPlayersFromSaveGame(saveGame);
             LoadAndSetOwnerColorsOnPlayers(saveGame);
-
+            var playersAndOwners = GetPlayersAndOwners(saveGame);
+            UpdatePlayerColorsFromOwners(playersAndOwners);
+            matchIdLabel.Text = saveGame.MatchId.ToString();
+            CalculateGraph("");
+            progressBar.Value = saveGame.LatestEvent;
         }
 
         private void LoadPlayersFromSaveGame(SaveGame saveGame)
@@ -459,9 +471,9 @@ namespace Randomizer
             }
         }
 
-        private void GetBackColorFromParticipant(Participant owner)
+        private Dictionary<string, string> GetPlayersAndOwners(SaveGame saveGame)
         {
-
+            return engine.GetPlayersAndOwners(saveGame);
         }
 
         private void LoadAndSetOwnerColorsOnPlayers(SaveGame saveGame)

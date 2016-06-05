@@ -7,18 +7,14 @@ CREATE TABLE Participants
 	Name VARCHAR(100),
 	Red INT,
 	Green INT,
-	Blue INT
-)
-
-CREATE TABLE Teams
-(
-	TeamName VARCHAR(100) PRIMARY KEY,
-	JerseyColor VARCHAR(10)
+	Blue INT,
+	MatchId INT REFERENCES Matches (MatchId)
 )
 
 CREATE TABLE Matches
 (
-	Description VARCHAR(100) PRIMARY KEY,
+	MatchId INT IDENTITY(1,1) PRIMARY KEY,
+	TeamNames VARCHAR(100),
 	Created DATETIME DEFAULT GETDATE()
 )
 
@@ -27,8 +23,7 @@ CREATE TABLE Players
 	PlayerId INT IDENTITY PRIMARY KEY,
 	Name VARCHAR(100),
 	Number INT,
-	TeamName VARCHAR(100) REFERENCES dbo.Teams (TeamName),
-	GameName VARCHAR(100) REFERENCES dbo.Matches (Description),
+	MatchId INT REFERENCES dbo.Matches (MatchId),
 	PlayerIndex INT
 )
 
@@ -37,17 +32,6 @@ CREATE TABLE Events
 	EventName VARCHAR(20) PRIMARY KEY,
 	Measure VARCHAR(20),
 	SoundClipUrl VARCHAR(300) DEFAULT ''
-)
---ALTER TABLE Events ADD CONSTRAINT DefaultSoundClipUrlEmpty DEFAULT '' FOR SoundClipUrl
-
-CREATE TABLE MatchLog
-(
-	LogId INT IDENTITY,
-	Description VARCHAR(100) REFERENCES dbo.Matches (Description),
-	PlayerId INT REFERENCES dbo.Players (PlayerId),
-	ParticipantId INT REFERENCES dbo.Participants (ParticipantId),
-	EventName VARCHAR(20) REFERENCES dbo.Events (EventName),
-	PlayClock INT
 )
 
 CREATE TABLE Measures
@@ -59,24 +43,23 @@ CREATE TABLE Measures
 	Walter INT
 )
 
-
 CREATE TABLE Graph (
-	MatchId VARCHAR(100) FOREIGN KEY REFERENCES Matches (Description),
+	MatchId INT FOREIGN KEY REFERENCES Matches (MatchId),
 	ParticipantId INT FOREIGN KEY REFERENCES Participants (ParticipantId),
 	GameMinute INT,
 	MeasureZips INT,
 	EventNumber INT
-	)
+)
 
 CREATE TABLE Owners (
-	MatchId VARCHAR(100),
+	MatchId INT REFERENCES Matches (MatchId),
 	ParticipantId INT FOREIGN KEY REFERENCES Participants (ParticipantId),
 	PlayerId INT FOREIGN KEY REFERENCES Players (PlayerId)
 	)
 GO
 
 CREATE PROCEDURE [dbo].[CalculateGraph]
-@MatchId VARCHAR(100)
+@MatchId INT
 AS
 	BEGIN
 	SELECT ParticipantId, GameMinute, MeasureZips, SUM(MeasureZips) OVER(PARTITION BY ParticipantId ORDER BY ParticipantId, GameMinute) AS CurrentTotal
@@ -97,34 +80,34 @@ AS
 GO
 
 CREATE PROCEDURE [dbo].[MapPlayerToOwner]
-@MatchId VARCHAR(100),
+@MatchId INT,
 @PlayerName VARCHAR(100),
 @OwnerName VARCHAR(100)
 AS
 	BEGIN
 		DECLARE @playerId INT, @ownerId INT
-		SELECT @playerId = PlayerId FROM Players WHERE Name = @PlayerName
-		SELECT @ownerId = ParticipantId FROM Participants WHERE Name = @OwnerName
+		SELECT @playerId = PlayerId FROM Players WHERE Name = @PlayerName AND MatchId = @MatchId
+		SELECT @ownerId = ParticipantId FROM Participants WHERE Name = @OwnerName AND MatchId = @MatchId
 
 		INSERT INTO Owners (MatchId, ParticipantId, PlayerId) VALUES (@MatchId, @ownerId, @playerId)
 	END
 GO
 
-CREATE PROCEDURE [dbo].[GetOwnerFromPlayer]
-@MatchId VARCHAR(100),
+CREATE PROCEDURE [dbo].[GetOwnerFromPlayerAndGame]
+@MatchId INT,
 @PlayerName VARCHAR(100)
 AS
 	BEGIN		
 		SELECT P.ParticipantId, P.Name
 		FROM Participants P
 		INNER JOIN Owners O ON P.ParticipantId = O.ParticipantId
-		INNER JOIN Players PL ON PL.PlayerId = O.PlayerId AND PL.GameName = O.MatchId
+		INNER JOIN Players PL ON PL.PlayerId = O.PlayerId AND PL.MatchId = O.MatchId
 		WHERE PL.Name = @PlayerName AND O.MatchId = @MatchId
 	END
 GO
 
 CREATE PROCEDURE [dbo].[LogRandomizingOutcomeToGraph]
-@MatchId VARCHAR(100),
+@MatchId INT,
 @OwnerName VARCHAR(100),
 @Zips INT,
 @Time INT,
@@ -141,15 +124,42 @@ AS
 	END
 GO
 
-EXEC LogRandomizingOutcomeToGraph '1-2', 'Tarzan', 7, 28, 4
+CREATE PROCEDURE [dbo].[GetPlayersAndOwners]
+@MatchId INT
+AS
+	BEGIN
+		SELECT PL.Name AS PlayerName, PL.PlayerIndex, PA.Name AS OwnerName
+		FROM Players PL INNER JOIN Owners O ON PL.PlayerId = O.PlayerId
+		INNER JOIN Participants PA ON O.ParticipantId = PA.ParticipantId
+		INNER JOIN Matches M ON O.MatchId = M.MatchId
+		WHERE M.MatchId = @MatchId
+	END
+GO
 
-delete graph
-delete Owners
-delete Players
-delete matches
-select * from graph
+CREATE PROCEDURE [dbo].[GetOldGames]
+AS
+	BEGIN
+		SELECT M.MatchId, M.TeamNames, M.Created, ISNULL(MAX(EventNumber),0) AS LatestEvent
+		FROM Matches M LEFT JOIN Graph G ON M.MatchId = G.MatchId
+		GROUP BY M.MatchId, M.TeamNames, M.Created
+	END
+GO
 
-select * from Participants
+--select top 5 * from owners
+--select top 5 * from Participants
+--select top 5 * from Players
+
+--ALTER TABLE Matches ADD MatchId INT
+
+--delete graph
+--delete Owners
+--delete Players
+--delete matches
+--select * from graph
+
+--select * from matches
+
+--select * from Participants
 
 --DROP TABLE Measures
 --DROP TABLE MatchLog
@@ -158,8 +168,6 @@ select * from Participants
 --DROP TABLE Players
 --DROP TABLE Matches
 --DROP TABLE Events
-
-
 --DROP TABLE Teams
 --DROP TABLE Participants
 
@@ -168,9 +176,9 @@ select * from Participants
 --DROP PROCEDURE MapPlayerToOwner
 --DROP PROCEDURE GetOwnerFromPlayer
 --DROP PROCEDURE LogRandomizingOutcomeToGraph
+--DROP PROCEDURE GetPlayersAndOwners
 
 
+--select * from graph where matchid = 'e-q'
 
-select * from graph where matchid = 'e-q'
-
-select * from participants
+--select * from participants

@@ -138,6 +138,7 @@ namespace Randomizer
             this.randomDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.calculateGraphTableAdapter = new Randomizer.CalculateGraphPlayer1TableAdapters.CalculateGraphTableAdapter();
             this.button15 = new System.Windows.Forms.Button();
+            this.matchIdLabel = new System.Windows.Forms.Label();
             this.teamBox.SuspendLayout();
             this.eventBox.SuspendLayout();
             this.participantPanel1.SuspendLayout();
@@ -1266,10 +1267,19 @@ namespace Randomizer
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
+            // matchIdLabel
+            // 
+            this.matchIdLabel.AutoSize = true;
+            this.matchIdLabel.Location = new System.Drawing.Point(452, 54);
+            this.matchIdLabel.Name = "matchIdLabel";
+            this.matchIdLabel.Size = new System.Drawing.Size(0, 13);
+            this.matchIdLabel.TabIndex = 30;
+            // 
             // Form1
             // 
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1916, 1053);
+            this.Controls.Add(this.matchIdLabel);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.participantsPanel);
             this.Controls.Add(this.chart1);
@@ -1425,6 +1435,7 @@ namespace Randomizer
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.RadioButton refereePlayer;
         private System.Windows.Forms.Label labelLeffo;
+        private System.Windows.Forms.Label matchIdLabel;
 
     }
 }

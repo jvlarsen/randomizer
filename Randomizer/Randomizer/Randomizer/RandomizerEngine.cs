@@ -25,9 +25,9 @@ namespace Randomizer
             measures = dbFacade.GetMeasures();
         }
 
-        public Dictionary<string, int> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, string gameName, int gameMinute)
+        public Dictionary<string, int> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, int matchId, int gameMinute)
         {
-            Participant winner = dbFacade.GetOwnerFromPlayerName(triggerPlayerName, gameName);
+            Participant winner = dbFacade.GetOwnerFromPlayerName(triggerPlayerName, matchId);
             Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
             List<Participant> owners = dbFacade.GetParticipants();
             var winnersIndex = owners.IndexOf(owners.First(x => x.Name == winner.Name));
@@ -75,11 +75,11 @@ namespace Randomizer
                     }
                     randomizerOutcome.Add(loser.Name, outcomeMeasure);
             }
-            dbFacade.LogRandomizingOutcome(gameName, randomizerOutcome, gameMinute);
+            dbFacade.LogRandomizingOutcome(matchId, randomizerOutcome, gameMinute);
             return randomizerOutcome;
         }
 
-        public Dictionary<string, string> DistributeTeams(List<string> players, List<string> participants, string gameName)
+        public Dictionary<string, string> DistributeTeams(List<string> players, List<string> participants, int matchId)
         {
             var countParticipants = participants.Count;
             var playersAndOwners = new Dictionary<string, string>();
@@ -100,7 +100,7 @@ namespace Randomizer
                 players.Remove(selectedPlayer);
             }
 
-            dbFacade.SaveDistribution(playersAndOwners, gameName);
+            dbFacade.SaveDistribution(playersAndOwners, matchId);
             return playersAndOwners;
         }
 
@@ -111,25 +111,26 @@ namespace Randomizer
             return shuffledList;
         }
 
-        private Participant GetOwnerFromPlayerName(string triggerPlayerName, string gameName)
-        {
-            dbFacade.GetOwnerFromPlayerName(triggerPlayerName, gameName);
-            var p = new Participant("Jesper");
+        //private Participant GetOwnerFromPlayerName(string triggerPlayerName, int matchId)
+        //{
+        //    //NOT USED
+        //    dbFacade.GetOwnerFromPlayerName(triggerPlayerName, matchId);
+        //    var p = new Participant("Jesper");
 
-            return p;
-        }
+        //    return p;
+        //}
 
         public void SaveParticipants(Dictionary<string, Color> participantNames)
         {
             dbFacade.SaveParticipants(participantNames);
         }
 
-        public void SaveNewGame(string gameName, DateTime gameDate)
+        public int SaveNewGame(string teamNames, DateTime gameDate)
         {
-            dbFacade.SaveNewGame(gameName, gameDate);
+            return dbFacade.SaveNewGame(teamNames, gameDate);
         }
 
-        public Dictionary<int, Dictionary<int, int>> CalculateGraph(string matchId)
+        public Dictionary<int, Dictionary<int, int>> CalculateGraph(int matchId)
         {
             return dbFacade.CalculateGraph(matchId);
         }
@@ -139,7 +140,7 @@ namespace Randomizer
             dbFacade.UndoLatestEvent();
         }
 
-        public List<string> GetSaveGames()
+        public List<SaveGame> GetSaveGames()
         {
             return dbFacade.GetSaveGames();
         }
@@ -147,6 +148,11 @@ namespace Randomizer
         public List<Player> LoadPlayersFromSaveGame(SaveGame saveGame)
         {
             return dbFacade.LoadPlayersFromSaveGame(saveGame);
+        }
+
+        public Dictionary<string, string> GetPlayersAndOwners(SaveGame saveGame)
+        {
+            return dbFacade.GetPlayersAndOwners(saveGame);
         }
     }
 }

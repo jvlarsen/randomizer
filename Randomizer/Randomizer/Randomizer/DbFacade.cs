@@ -88,14 +88,14 @@ namespace Randomizer
             return measures;
         }
 
-        public Participant GetOwnerFromPlayerName(string playerName, string matchId)
+        public Participant GetOwnerFromPlayerName(string playerName, int matchId)
         {
             OpenConn();
             var cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetOwnerFromPlayer";
 
-            var matchParam = new SqlParameter("@matchId", SqlDbType.VarChar);
+            var matchParam = new SqlParameter("@matchId", SqlDbType.Int);
             matchParam.Value = matchId;
             cmd.Parameters.Add(matchParam);
 
@@ -128,7 +128,6 @@ namespace Randomizer
             }
             CloseConn();
 
-
             return participants;
         }
 
@@ -138,11 +137,11 @@ namespace Randomizer
             return participants.First(x => x.Name == participantName);
         }
 
-        public void SaveDistribution(Dictionary<string, string> playersAndOwners, string gameName)
+        public void SaveDistribution(Dictionary<string, string> playersAndOwners, int matchId)
         {
             for (int i = 0; i < playersAndOwners.Keys.Count; i++)
             {
-                SavePlayer(playersAndOwners.ElementAt(i).Key, gameName, i);
+                SavePlayer(playersAndOwners.ElementAt(i).Key, matchId, i);
             }
             OpenConn();
             foreach (KeyValuePair<string, string> playerOwner in playersAndOwners)
@@ -152,9 +151,9 @@ namespace Randomizer
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "MapPlayerToOwner";
 
-                SqlParameter matchId = new SqlParameter("@MatchId", SqlDbType.VarChar);
-                cmd.Parameters.Add(matchId);
-                cmd.Parameters["@MatchId"].Value = gameName;
+                SqlParameter matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+                matchIdParam.Value = matchId;
+                cmd.Parameters.Add(matchIdParam);
 
                 SqlParameter playerName = new SqlParameter("@playerName", SqlDbType.VarChar);
                 cmd.Parameters.Add(playerName);
@@ -178,91 +177,144 @@ namespace Randomizer
 
         }
 
-        public void SavePlayer(string playerName, string gameName, int playerIndex)
+        public void SavePlayer(string playerName, int matchId, int playerIndex)
         {
             OpenConn();
             var cmd = conn.CreateCommand();
-            cmd.CommandText = "INSERT INTO Players (Name, GameName, PlayerIndex) VALUES (\'" + playerName + "\', " + "\'" + gameName + "\', " + playerIndex + ")";
+            cmd.CommandText = "INSERT INTO Players (Name, MatchId, PlayerIndex) VALUES (\'" + playerName + "\', " + matchId + ", " + playerIndex + ")";
             cmd.ExecuteNonQuery();
             CloseConn();
         }
 
-        public void SaveNewGame(string gameName, DateTime gameDate)
+        public int SaveNewGame(string teamNames, DateTime gameDate)
         {
             OpenConn();
             var cmd = conn.CreateCommand();
-            cmd.CommandText = "INSERT INTO Matches (Description, Created) VALUES (\'" + gameName + "\', \'" + String.Format("{0:yyyy-MM-dd}", gameDate) + "\')";
+            cmd.CommandText = "INSERT INTO Matches (TeamNames, Created) VALUES (\'" + teamNames + "\', \'" + String.Format("{0:yyyy-MM-dd}", gameDate) + "\')";
             cmd.ExecuteNonQuery();
-            CloseConn();
-        }
 
-        public List<string> GetSaveGames()
-        {
-            var saveGames = new List<string>();
-            OpenConn();
-            var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT Description, Created FROM Matches ORDER BY Created DESC";
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT MAX(ISNULL(MatchId,1)) AS MatchId FROM Matches";
             var reader = cmd.ExecuteReader();
+            reader.Read();
+            var matchId = (int)reader["MatchId"];
+            CloseConn();
 
+            return matchId;
+        }
+
+        public List<SaveGame> GetSaveGames()
+        {
+            var saveGames = new List<SaveGame>();
+            OpenConn();
+            //var cmd = conn.CreateCommand();
+            //cmd.CommandText = "SELECT MatchId, TeamNames, Created FROM Matches ORDER BY Created DESC";
+            //var reader = cmd.ExecuteReader();
+
+            var cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetOldGames";
+
+            var reader = cmd.ExecuteReader();
+            //M.MatchId, M.TeamNames, M.Created, MAX(EventNumber) AS LatestEvent
             while (reader.Read())
             {
+                var matchId = (int)reader["MatchId"];
                 var gameDate = (DateTime)reader["Created"];
-                var matchItem = reader["Description"] + " (" + gameDate.ToShortDateString() + ")";
-                saveGames.Add(matchItem);
+                var matchItem = reader["TeamNames"] + " (" + gameDate.ToShortDateString() + ")";
+                var latestEvent = (int)reader["LatestEvent"];
+                var saveGame = new SaveGame(matchId);
+                saveGame.TeamNames = matchItem;
+                saveGame.GameDate = gameDate;
+                saveGame.LatestEvent = latestEvent;
+                saveGames.Add(saveGame);
             }
             CloseConn();
             return saveGames;
         }
 
         public List<Player> LoadPlayersFromSaveGame(SaveGame saveGame)
-        {
+        {//Jeg skal ende med en liste af Players, der alle har deres Name, PlayerIndex og Participant sat.
+            //Det kan hentes i én SP.
+
+
             var playersFromSaveGame = new List<Player>();
             OpenConn();
             var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT Name, Color, PlayerIndex FROM Players WHERE GameName = '" + saveGame.MatchId + "'";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetPlayersAndOwners";
+
+            var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+            matchIdParam.Value = saveGame.MatchId;
+            cmd.Parameters.Add(matchIdParam);
+
             var reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                var playerName = (string)reader["Name"];
-                var owner = GetOwnerFromPlayerAndGame(saveGame, playerName);
-                playersFromSaveGame.Add(new Player(playerName, (string)reader["Color"], (int)reader["PlayerIndex"]));
+                var playerName = (string)reader["PlayerName"];
+                var owner = new Participant((string)reader["Ownername"]);
+                var playerToAdd = new Player(playerName, (int)reader["PlayerIndex"]);
+                playerToAdd.Owner = owner;
+                playersFromSaveGame.Add(playerToAdd);
             }
             CloseConn();
             return playersFromSaveGame;
         }
 
-        private Participant GetOwnerFromPlayerAndGame(SaveGame saveGame, string playerName)
+        //private Participant GetOwnerFromPlayerAndGame(SaveGame saveGame, string playerName)
+        //{
+        //    OpenConn();
+        //    var cmd = conn.CreateCommand();
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.CommandText = "GetOwnerFromPlayerAndGame";
+
+        //    var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+        //    matchIdParam.Value = saveGame.MatchId;
+        //    cmd.Parameters.Add(matchIdParam);
+
+        //    var playerNameParam = new SqlParameter("@PlayerName", SqlDbType.VarChar);
+        //    playerNameParam.Value = playerName;
+        //    cmd.Parameters.Add(playerNameParam);
+
+        //    var reader = cmd.ExecuteReader();
+
+        //    Participant owner = null;
+        //    while (reader.Read())
+        //    {
+        //        owner = new Participant((string)reader["Name"]);
+        //        var red = (int)reader["Red"];
+        //        var green = (int)reader["Green"];
+        //        var blue = (int)reader["Blue"];
+        //        owner.BackColor = Color.FromArgb(red, green, blue);
+        //    }
+        //    CloseConn();
+        //    return owner;
+        //}
+
+        public Dictionary<string, string> GetPlayersAndOwners(SaveGame saveGame)
         {
+            var playersAndOwners = new Dictionary<string, string>();
             OpenConn();
             var cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetOwnerFromPlayerAndGame";
+            cmd.CommandText = "GetPlayersAndOwners";
 
-            var gameNameParam = new SqlParameter("@GameName", SqlDbType.VarChar);
-            gameNameParam.Value = saveGame.MatchId;
-            cmd.Parameters.Add(gameNameParam);
-
-            var playerNameParam = new SqlParameter("@PlayerName", SqlDbType.VarChar);
-            playerNameParam.Value = playerName;
-            cmd.Parameters.Add(playerNameParam);
+            var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+            matchIdParam.Value = saveGame.MatchId;
+            cmd.Parameters.Add(matchIdParam);
 
             var reader = cmd.ExecuteReader();
 
-            Participant owner= null;
             while (reader.Read())
             {
-                owner = new Participant((string)reader["Name"]);
-                var red = (int)reader["Red"];
-                var green = (int)reader["Green"];
-                var blue = (int)reader["Blue"];
-                owner.BackColor = Color.FromArgb(red, green, blue);
+                playersAndOwners.Add((string)reader["PlayerName"], (string)reader["OwnerName"]);
             }
             CloseConn();
-            return owner;
+            return playersAndOwners;
         }
 
-        public Dictionary<int, Dictionary<int, int>> CalculateGraph(string matchId)
+        public Dictionary<int, Dictionary<int, int>> CalculateGraph(int matchId)
         {
             var participantsAndTheirGraph = new Dictionary<int, Dictionary<int, int>>();
             OpenConn();
@@ -270,11 +322,9 @@ namespace Randomizer
             sProc.CommandType = CommandType.StoredProcedure;
             sProc.CommandText = "CalculateGraph";
 
-            SqlParameter currentMatchId = new SqlParameter("@matchId", SqlDbType.VarChar);
-
-            sProc.Parameters.Add(currentMatchId);
-
-            sProc.Parameters["@matchId"].Value = matchId;
+            var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+            matchIdParam.Value = matchId;
+            sProc.Parameters.Add(matchIdParam);            
 
             SqlDataReader reader = sProc.ExecuteReader();
 
@@ -294,14 +344,14 @@ namespace Randomizer
             return participantsAndTheirGraph;
         }
 
-        public void LogRandomizingOutcome(string gameName, Dictionary<string, int> randomizerOutcome, int gameMinute)
+        public void LogRandomizingOutcome(int matchId, Dictionary<string, int> randomizerOutcome, int gameMinute)
         {
             //The randomizerOutcome contains <loserName, measures> and should be mapped to dbo.Graph 
             //as (MatchId, ParticipantId, GameMinute, Measure)
             OpenConn();
 
             var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT MAX(ISNULL(EventNumber,0)) + 1 AS EventNumber FROM Graph";
+            cmd.CommandText = "SELECT ISNULL(MAX(EventNumber),0) + 1 AS EventNumber FROM Graph";
             var reader = cmd.ExecuteReader();
             reader.Read();
             var eventNumber = (int)reader["EventNumber"];
@@ -314,8 +364,8 @@ namespace Randomizer
                 sProc.CommandType = CommandType.StoredProcedure;
                 sProc.CommandText = "LogRandomizingOutcomeToGraph";
 
-                var matchIdParam = new SqlParameter("@matchId", SqlDbType.VarChar);
-                matchIdParam.Value = gameName;
+                var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+                matchIdParam.Value = matchId;
                 sProc.Parameters.Add(matchIdParam);
 
                 var loserParam = new SqlParameter("@ownerName", SqlDbType.VarChar);
