@@ -139,5 +139,14 @@ namespace Randomizer
             dbFacade.UndoLatestEvent();
         }
 
+        public List<string> GetSaveGames()
+        {
+            return dbFacade.GetSaveGames();
+        }
+
+        public List<Player> LoadPlayersFromSaveGame(SaveGame saveGame)
+        {
+            return dbFacade.LoadPlayersFromSaveGame(saveGame);
+        }
     }
 }

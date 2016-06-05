@@ -4,7 +4,10 @@ use RandomDb
 CREATE TABLE Participants
 (
 	ParticipantId INT IDENTITY PRIMARY KEY,
-	Name VARCHAR(100)
+	Name VARCHAR(100),
+	Red INT,
+	Green INT,
+	Blue INT
 )
 
 CREATE TABLE Teams
@@ -16,9 +19,6 @@ CREATE TABLE Teams
 CREATE TABLE Matches
 (
 	Description VARCHAR(100) PRIMARY KEY,
-	Home VARCHAR(100),
-	Away VARCHAR(100),
-	Result VARCHAR(5),
 	Created DATETIME DEFAULT GETDATE()
 )
 
@@ -28,7 +28,8 @@ CREATE TABLE Players
 	Name VARCHAR(100),
 	Number INT,
 	TeamName VARCHAR(100) REFERENCES dbo.Teams (TeamName),
-	GameName VARCHAR(100) REFERENCES dbo.Matches (Description)
+	GameName VARCHAR(100) REFERENCES dbo.Matches (Description),
+	PlayerIndex INT
 )
 
 CREATE TABLE Events
@@ -140,7 +141,7 @@ AS
 	END
 GO
 
-EXEC LogRandomizingOutcomeToGraph '1-2', 'Tarzan', 7, 28
+EXEC LogRandomizingOutcomeToGraph '1-2', 'Tarzan', 7, 28, 4
 
 delete graph
 delete Owners
@@ -167,3 +168,9 @@ select * from Participants
 --DROP PROCEDURE MapPlayerToOwner
 --DROP PROCEDURE GetOwnerFromPlayer
 --DROP PROCEDURE LogRandomizingOutcomeToGraph
+
+
+
+select * from graph where matchid = 'e-q'
+
+select * from participants

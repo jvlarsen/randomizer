@@ -56,6 +56,7 @@
     <Compile Include="Entities\Measure.cs" />
     <Compile Include="Entities\Participant.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\SaveGame.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

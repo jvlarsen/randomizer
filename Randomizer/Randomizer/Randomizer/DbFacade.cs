@@ -116,9 +116,6 @@ namespace Randomizer
 
         public List<Participant> GetParticipants()
         {
-            if (participants != null)
-                return participants;
-
             participants = new List<Participant>();
             OpenConn();
             var cmd = conn.CreateCommand();
@@ -130,6 +127,8 @@ namespace Randomizer
                 participants.Add(new Participant((string)reader["Name"]));
             }
             CloseConn();
+
+
             return participants;
         }
 
@@ -141,11 +140,9 @@ namespace Randomizer
 
         public void SaveDistribution(Dictionary<string, string> playersAndOwners, string gameName)
         {
-            //TODO: Make the mapping here from playersAndOwners to find database records representing the entities Player and Participant and map them in the table Owners
-
-            foreach (var player in playersAndOwners.Keys)
+            for (int i = 0; i < playersAndOwners.Keys.Count; i++)
             {
-                SavePlayer(player, gameName);
+                SavePlayer(playersAndOwners.ElementAt(i).Key, gameName, i);
             }
             OpenConn();
             foreach (KeyValuePair<string, string> playerOwner in playersAndOwners)
@@ -174,14 +171,18 @@ namespace Randomizer
 
         public void SaveParticipants(Dictionary<string, Color> participantNames)
         {
+            //TODO: Ville være fedt at kunne lave deltagerne generiske og mappe på participantId og deres positioner.
+            //Vil bl.a. kræve at labels omdøbes og mappes til player1 -> labelDrinkOk1 osv.
+            var buM = participantNames.ElementAt(0).Value.ToArgb();
+            var newBum = Color.FromArgb(buM);
 
         }
 
-        public void SavePlayer(string playerName, string gameName)
+        public void SavePlayer(string playerName, string gameName, int playerIndex)
         {
             OpenConn();
             var cmd = conn.CreateCommand();
-            cmd.CommandText = "INSERT INTO Players (Name, GameName) VALUES (\'" + playerName + "\', " + "\'" + gameName + "\')";
+            cmd.CommandText = "INSERT INTO Players (Name, GameName, PlayerIndex) VALUES (\'" + playerName + "\', " + "\'" + gameName + "\', " + playerIndex + ")";
             cmd.ExecuteNonQuery();
             CloseConn();
         }
@@ -193,6 +194,72 @@ namespace Randomizer
             cmd.CommandText = "INSERT INTO Matches (Description, Created) VALUES (\'" + gameName + "\', \'" + String.Format("{0:yyyy-MM-dd}", gameDate) + "\')";
             cmd.ExecuteNonQuery();
             CloseConn();
+        }
+
+        public List<string> GetSaveGames()
+        {
+            var saveGames = new List<string>();
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT Description, Created FROM Matches ORDER BY Created DESC";
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var gameDate = (DateTime)reader["Created"];
+                var matchItem = reader["Description"] + " (" + gameDate.ToShortDateString() + ")";
+                saveGames.Add(matchItem);
+            }
+            CloseConn();
+            return saveGames;
+        }
+
+        public List<Player> LoadPlayersFromSaveGame(SaveGame saveGame)
+        {
+            var playersFromSaveGame = new List<Player>();
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT Name, Color, PlayerIndex FROM Players WHERE GameName = '" + saveGame.MatchId + "'";
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var playerName = (string)reader["Name"];
+                var owner = GetOwnerFromPlayerAndGame(saveGame, playerName);
+                playersFromSaveGame.Add(new Player(playerName, (string)reader["Color"], (int)reader["PlayerIndex"]));
+            }
+            CloseConn();
+            return playersFromSaveGame;
+        }
+
+        private Participant GetOwnerFromPlayerAndGame(SaveGame saveGame, string playerName)
+        {
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetOwnerFromPlayerAndGame";
+
+            var gameNameParam = new SqlParameter("@GameName", SqlDbType.VarChar);
+            gameNameParam.Value = saveGame.MatchId;
+            cmd.Parameters.Add(gameNameParam);
+
+            var playerNameParam = new SqlParameter("@PlayerName", SqlDbType.VarChar);
+            playerNameParam.Value = playerName;
+            cmd.Parameters.Add(playerNameParam);
+
+            var reader = cmd.ExecuteReader();
+
+            Participant owner= null;
+            while (reader.Read())
+            {
+                owner = new Participant((string)reader["Name"]);
+                var red = (int)reader["Red"];
+                var green = (int)reader["Green"];
+                var blue = (int)reader["Blue"];
+                owner.BackColor = Color.FromArgb(red, green, blue);
+            }
+            CloseConn();
+            return owner;
         }
 
         public Dictionary<int, Dictionary<int, int>> CalculateGraph(string matchId)
@@ -238,36 +305,38 @@ namespace Randomizer
             var reader = cmd.ExecuteReader();
             reader.Read();
             var eventNumber = (int)reader["EventNumber"];
+            CloseConn();
 
             foreach (KeyValuePair<string, int> outcome in randomizerOutcome)
             {
-                cmd = conn.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "LogRandomizingOutcomeToGraph";
+                OpenConn();
+                var sProc = conn.CreateCommand();
+                sProc.CommandType = CommandType.StoredProcedure;
+                sProc.CommandText = "LogRandomizingOutcomeToGraph";
 
                 var matchIdParam = new SqlParameter("@matchId", SqlDbType.VarChar);
                 matchIdParam.Value = gameName;
-                cmd.Parameters.Add(matchIdParam);
+                sProc.Parameters.Add(matchIdParam);
 
                 var loserParam = new SqlParameter("@ownerName", SqlDbType.VarChar);
                 loserParam.Value = outcome.Key;
-                cmd.Parameters.Add(loserParam);
+                sProc.Parameters.Add(loserParam);
 
                 var zipsParam = new SqlParameter("@zips", SqlDbType.Int);
                 zipsParam.Value = outcome.Value;
-                cmd.Parameters.Add(zipsParam);
+                sProc.Parameters.Add(zipsParam);
 
                 var timeParam = new SqlParameter("@Time", SqlDbType.Int);
                 timeParam.Value = gameMinute;
-                cmd.Parameters.Add(timeParam);
+                sProc.Parameters.Add(timeParam);
 
                 var eventParam = new SqlParameter("@EventNumber", SqlDbType.Int);
                 eventParam.Value = eventNumber;
-                cmd.Parameters.Add(eventParam);
+                sProc.Parameters.Add(eventParam);
 
-                cmd.ExecuteNonQuery();
+                sProc.ExecuteNonQuery();
+                CloseConn();
             }
-            CloseConn();
         }
 
         public void UndoLatestEvent()

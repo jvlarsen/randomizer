@@ -40,8 +40,7 @@ namespace Randomizer
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.teamBox = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.refereePlayer = new System.Windows.Forms.RadioButton();
             this.awayPlayer10 = new System.Windows.Forms.RadioButton();
             this.homePlayer10 = new System.Windows.Forms.RadioButton();
             this.homePlayer9 = new System.Windows.Forms.RadioButton();
@@ -82,7 +81,7 @@ namespace Randomizer
             this.participantPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.participantTextBox1 = new System.Windows.Forms.TextBox();
             this.labelFaccio = new System.Windows.Forms.Label();
-            this.green1 = new System.Windows.Forms.Button();
+            this.player1drinkOk = new System.Windows.Forms.Button();
             this.bank1 = new System.Windows.Forms.Button();
             this.participantTextBox3 = new System.Windows.Forms.TextBox();
             this.participantTextBox4 = new System.Windows.Forms.TextBox();
@@ -97,7 +96,7 @@ namespace Randomizer
             this.homeTeamTextBox = new System.Windows.Forms.TextBox();
             this.loadGameComboBox = new System.Windows.Forms.ComboBox();
             this.createNewGameButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.loadGameButton = new System.Windows.Forms.Button();
             this.gameNameLabel = new System.Windows.Forms.Label();
             this.infoLabel = new System.Windows.Forms.Label();
             this.awayTeamTextBox = new System.Windows.Forms.TextBox();
@@ -110,27 +109,27 @@ namespace Randomizer
             this.participantTextBox2 = new System.Windows.Forms.TextBox();
             this.participantPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelLeffo = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.player2DrinkOk = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.participantPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelNosser = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.player3DrinkOk = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.participantPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelTarzan = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.player4DrinkOk = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.participantPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelTennedz = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.player5DrinkOk = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.participantPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelTrusser = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
+            this.player6DrinkOk = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.participantPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelAallex = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
+            this.player7DrinkOk = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.participantsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.randomDbDataSet = new Randomizer.RandomDbDataSet();
@@ -160,8 +159,7 @@ namespace Randomizer
             // 
             // teamBox
             // 
-            this.teamBox.Controls.Add(this.radioButton1);
-            this.teamBox.Controls.Add(this.label1);
+            this.teamBox.Controls.Add(this.refereePlayer);
             this.teamBox.Controls.Add(this.awayPlayer10);
             this.teamBox.Controls.Add(this.homePlayer10);
             this.teamBox.Controls.Add(this.homePlayer9);
@@ -189,32 +187,25 @@ namespace Randomizer
             this.teamBox.TabStop = false;
             this.teamBox.Text = "TeamBox";
             // 
-            // radioButton1
+            // refereePlayer
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(96, 260);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(63, 17);
-            this.radioButton1.TabIndex = 23;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Referee";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(106, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "6/10";
+            this.refereePlayer.AutoSize = true;
+            this.refereePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.refereePlayer.Location = new System.Drawing.Point(96, 260);
+            this.refereePlayer.Name = "refereePlayer";
+            this.refereePlayer.Size = new System.Drawing.Size(77, 21);
+            this.refereePlayer.TabIndex = 23;
+            this.refereePlayer.TabStop = true;
+            this.refereePlayer.Text = "Referee";
+            this.refereePlayer.UseVisualStyleBackColor = true;
             // 
             // awayPlayer10
             // 
             this.awayPlayer10.AutoSize = true;
+            this.awayPlayer10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer10.Location = new System.Drawing.Point(175, 235);
             this.awayPlayer10.Name = "awayPlayer10";
-            this.awayPlayer10.Size = new System.Drawing.Size(96, 17);
+            this.awayPlayer10.Size = new System.Drawing.Size(119, 21);
             this.awayPlayer10.TabIndex = 20;
             this.awayPlayer10.TabStop = true;
             this.awayPlayer10.Text = "Away Team 10";
@@ -223,9 +214,10 @@ namespace Randomizer
             // homePlayer10
             // 
             this.homePlayer10.AutoSize = true;
+            this.homePlayer10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer10.Location = new System.Drawing.Point(7, 236);
             this.homePlayer10.Name = "homePlayer10";
-            this.homePlayer10.Size = new System.Drawing.Size(98, 17);
+            this.homePlayer10.Size = new System.Drawing.Size(123, 21);
             this.homePlayer10.TabIndex = 9;
             this.homePlayer10.TabStop = true;
             this.homePlayer10.Text = "Home Team 10";
@@ -234,9 +226,10 @@ namespace Randomizer
             // homePlayer9
             // 
             this.homePlayer9.AutoSize = true;
+            this.homePlayer9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer9.Location = new System.Drawing.Point(7, 212);
             this.homePlayer9.Name = "homePlayer9";
-            this.homePlayer9.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer9.Size = new System.Drawing.Size(115, 21);
             this.homePlayer9.TabIndex = 8;
             this.homePlayer9.TabStop = true;
             this.homePlayer9.Text = "Home Team 9";
@@ -245,9 +238,10 @@ namespace Randomizer
             // awayPlayer9
             // 
             this.awayPlayer9.AutoSize = true;
+            this.awayPlayer9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer9.Location = new System.Drawing.Point(175, 212);
             this.awayPlayer9.Name = "awayPlayer9";
-            this.awayPlayer9.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer9.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer9.TabIndex = 19;
             this.awayPlayer9.TabStop = true;
             this.awayPlayer9.Text = "Away Team 9";
@@ -256,9 +250,10 @@ namespace Randomizer
             // homePlayer8
             // 
             this.homePlayer8.AutoSize = true;
+            this.homePlayer8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer8.Location = new System.Drawing.Point(7, 188);
             this.homePlayer8.Name = "homePlayer8";
-            this.homePlayer8.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer8.Size = new System.Drawing.Size(115, 21);
             this.homePlayer8.TabIndex = 7;
             this.homePlayer8.TabStop = true;
             this.homePlayer8.Text = "Home Team 8";
@@ -267,9 +262,10 @@ namespace Randomizer
             // awayPlayer8
             // 
             this.awayPlayer8.AutoSize = true;
+            this.awayPlayer8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer8.Location = new System.Drawing.Point(175, 188);
             this.awayPlayer8.Name = "awayPlayer8";
-            this.awayPlayer8.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer8.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer8.TabIndex = 18;
             this.awayPlayer8.TabStop = true;
             this.awayPlayer8.Text = "Away Team 8";
@@ -278,9 +274,10 @@ namespace Randomizer
             // awayPlayer5
             // 
             this.awayPlayer5.AutoSize = true;
+            this.awayPlayer5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer5.Location = new System.Drawing.Point(175, 116);
             this.awayPlayer5.Name = "awayPlayer5";
-            this.awayPlayer5.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer5.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer5.TabIndex = 15;
             this.awayPlayer5.TabStop = true;
             this.awayPlayer5.Text = "Away Team 5";
@@ -289,9 +286,10 @@ namespace Randomizer
             // awayPlayer7
             // 
             this.awayPlayer7.AutoSize = true;
+            this.awayPlayer7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer7.Location = new System.Drawing.Point(175, 164);
             this.awayPlayer7.Name = "awayPlayer7";
-            this.awayPlayer7.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer7.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer7.TabIndex = 17;
             this.awayPlayer7.TabStop = true;
             this.awayPlayer7.Text = "Away Team 7";
@@ -300,9 +298,10 @@ namespace Randomizer
             // awayPlayer6
             // 
             this.awayPlayer6.AutoSize = true;
+            this.awayPlayer6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer6.Location = new System.Drawing.Point(175, 140);
             this.awayPlayer6.Name = "awayPlayer6";
-            this.awayPlayer6.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer6.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer6.TabIndex = 16;
             this.awayPlayer6.TabStop = true;
             this.awayPlayer6.Text = "Away Team 6";
@@ -311,9 +310,10 @@ namespace Randomizer
             // homePlayer7
             // 
             this.homePlayer7.AutoSize = true;
+            this.homePlayer7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer7.Location = new System.Drawing.Point(7, 164);
             this.homePlayer7.Name = "homePlayer7";
-            this.homePlayer7.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer7.Size = new System.Drawing.Size(115, 21);
             this.homePlayer7.TabIndex = 6;
             this.homePlayer7.TabStop = true;
             this.homePlayer7.Text = "Home Team 7";
@@ -322,9 +322,10 @@ namespace Randomizer
             // homePlayer6
             // 
             this.homePlayer6.AutoSize = true;
+            this.homePlayer6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer6.Location = new System.Drawing.Point(7, 140);
             this.homePlayer6.Name = "homePlayer6";
-            this.homePlayer6.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer6.Size = new System.Drawing.Size(115, 21);
             this.homePlayer6.TabIndex = 5;
             this.homePlayer6.TabStop = true;
             this.homePlayer6.Text = "Home Team 6";
@@ -333,9 +334,10 @@ namespace Randomizer
             // homePlayer5
             // 
             this.homePlayer5.AutoSize = true;
+            this.homePlayer5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer5.Location = new System.Drawing.Point(7, 116);
             this.homePlayer5.Name = "homePlayer5";
-            this.homePlayer5.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer5.Size = new System.Drawing.Size(115, 21);
             this.homePlayer5.TabIndex = 4;
             this.homePlayer5.TabStop = true;
             this.homePlayer5.Text = "Home Team 5";
@@ -344,9 +346,10 @@ namespace Randomizer
             // awayPlayer4
             // 
             this.awayPlayer4.AutoSize = true;
+            this.awayPlayer4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer4.Location = new System.Drawing.Point(175, 92);
             this.awayPlayer4.Name = "awayPlayer4";
-            this.awayPlayer4.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer4.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer4.TabIndex = 14;
             this.awayPlayer4.TabStop = true;
             this.awayPlayer4.Text = "Away Team 4";
@@ -355,9 +358,10 @@ namespace Randomizer
             // homePlayer4
             // 
             this.homePlayer4.AutoSize = true;
+            this.homePlayer4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer4.Location = new System.Drawing.Point(7, 92);
             this.homePlayer4.Name = "homePlayer4";
-            this.homePlayer4.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer4.Size = new System.Drawing.Size(115, 21);
             this.homePlayer4.TabIndex = 3;
             this.homePlayer4.TabStop = true;
             this.homePlayer4.Text = "Home Team 4";
@@ -366,9 +370,10 @@ namespace Randomizer
             // awayPlayer3
             // 
             this.awayPlayer3.AutoSize = true;
+            this.awayPlayer3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer3.Location = new System.Drawing.Point(175, 68);
             this.awayPlayer3.Name = "awayPlayer3";
-            this.awayPlayer3.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer3.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer3.TabIndex = 13;
             this.awayPlayer3.TabStop = true;
             this.awayPlayer3.Text = "Away Team 3";
@@ -377,9 +382,10 @@ namespace Randomizer
             // homePlayer3
             // 
             this.homePlayer3.AutoSize = true;
+            this.homePlayer3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer3.Location = new System.Drawing.Point(7, 68);
             this.homePlayer3.Name = "homePlayer3";
-            this.homePlayer3.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer3.Size = new System.Drawing.Size(115, 21);
             this.homePlayer3.TabIndex = 2;
             this.homePlayer3.TabStop = true;
             this.homePlayer3.Text = "Home Team 3";
@@ -388,9 +394,10 @@ namespace Randomizer
             // awayPlayer2
             // 
             this.awayPlayer2.AutoSize = true;
+            this.awayPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer2.Location = new System.Drawing.Point(175, 44);
             this.awayPlayer2.Name = "awayPlayer2";
-            this.awayPlayer2.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer2.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer2.TabIndex = 12;
             this.awayPlayer2.TabStop = true;
             this.awayPlayer2.Text = "Away Team 2";
@@ -399,9 +406,10 @@ namespace Randomizer
             // awayPlayer1
             // 
             this.awayPlayer1.AutoSize = true;
+            this.awayPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.awayPlayer1.Location = new System.Drawing.Point(175, 20);
             this.awayPlayer1.Name = "awayPlayer1";
-            this.awayPlayer1.Size = new System.Drawing.Size(90, 17);
+            this.awayPlayer1.Size = new System.Drawing.Size(111, 21);
             this.awayPlayer1.TabIndex = 11;
             this.awayPlayer1.TabStop = true;
             this.awayPlayer1.Text = "Away Team 1";
@@ -410,9 +418,10 @@ namespace Randomizer
             // homePlayer2
             // 
             this.homePlayer2.AutoSize = true;
+            this.homePlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer2.Location = new System.Drawing.Point(7, 44);
             this.homePlayer2.Name = "homePlayer2";
-            this.homePlayer2.Size = new System.Drawing.Size(92, 17);
+            this.homePlayer2.Size = new System.Drawing.Size(115, 21);
             this.homePlayer2.TabIndex = 1;
             this.homePlayer2.TabStop = true;
             this.homePlayer2.Text = "Home Team 2";
@@ -421,10 +430,10 @@ namespace Randomizer
             // homePlayer1
             // 
             this.homePlayer1.AutoSize = true;
-            this.homePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.homePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.homePlayer1.Location = new System.Drawing.Point(7, 20);
             this.homePlayer1.Name = "homePlayer1";
-            this.homePlayer1.Size = new System.Drawing.Size(127, 24);
+            this.homePlayer1.Size = new System.Drawing.Size(115, 21);
             this.homePlayer1.TabIndex = 0;
             this.homePlayer1.TabStop = true;
             this.homePlayer1.Text = "Home Team 1";
@@ -448,7 +457,7 @@ namespace Randomizer
             this.eventBox.Controls.Add(this.radioButton23);
             this.eventBox.Location = new System.Drawing.Point(399, 105);
             this.eventBox.Name = "eventBox";
-            this.eventBox.Size = new System.Drawing.Size(199, 384);
+            this.eventBox.Size = new System.Drawing.Size(450, 384);
             this.eventBox.TabIndex = 1;
             this.eventBox.TabStop = false;
             this.eventBox.Text = "groupBox4";
@@ -459,10 +468,10 @@ namespace Randomizer
             this.radioButton36.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton36.Location = new System.Drawing.Point(7, 332);
             this.radioButton36.Name = "radioButton36";
-            this.radioButton36.Size = new System.Drawing.Size(108, 29);
+            this.radioButton36.Size = new System.Drawing.Size(107, 29);
             this.radioButton36.TabIndex = 13;
             this.radioButton36.TabStop = true;
-            this.radioButton36.Text = "Red card";
+            this.radioButton36.Text = "Rødt kort";
             this.radioButton36.UseVisualStyleBackColor = true;
             // 
             // radioButton35
@@ -471,10 +480,10 @@ namespace Randomizer
             this.radioButton35.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton35.Location = new System.Drawing.Point(7, 307);
             this.radioButton35.Name = "radioButton35";
-            this.radioButton35.Size = new System.Drawing.Size(162, 29);
+            this.radioButton35.Size = new System.Drawing.Size(151, 29);
             this.radioButton35.TabIndex = 12;
             this.radioButton35.TabStop = true;
-            this.radioButton35.Text = "Penalty missed";
+            this.radioButton35.Text = "Brændt straffe";
             this.radioButton35.UseVisualStyleBackColor = true;
             // 
             // radioButton34
@@ -483,10 +492,10 @@ namespace Randomizer
             this.radioButton34.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(4)));
             this.radioButton34.Location = new System.Drawing.Point(7, 284);
             this.radioButton34.Name = "radioButton34";
-            this.radioButton34.Size = new System.Drawing.Size(113, 29);
+            this.radioButton34.Size = new System.Drawing.Size(100, 29);
             this.radioButton34.TabIndex = 11;
             this.radioButton34.TabStop = true;
-            this.radioButton34.Text = "Own goal";
+            this.radioButton34.Text = "Selvmål";
             this.radioButton34.UseVisualStyleBackColor = true;
             // 
             // radioButton33
@@ -495,10 +504,10 @@ namespace Randomizer
             this.radioButton33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton33.Location = new System.Drawing.Point(7, 260);
             this.radioButton33.Name = "radioButton33";
-            this.radioButton33.Size = new System.Drawing.Size(132, 29);
+            this.radioButton33.Size = new System.Drawing.Size(126, 29);
             this.radioButton33.TabIndex = 10;
             this.radioButton33.TabStop = true;
-            this.radioButton33.Text = "Substitution";
+            this.radioButton33.Text = "Udskiftning";
             this.radioButton33.UseVisualStyleBackColor = true;
             // 
             // radioButton32
@@ -507,10 +516,10 @@ namespace Randomizer
             this.radioButton32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton32.Location = new System.Drawing.Point(7, 236);
             this.radioButton32.Name = "radioButton32";
-            this.radioButton32.Size = new System.Drawing.Size(130, 29);
+            this.radioButton32.Size = new System.Drawing.Size(102, 29);
             this.radioButton32.TabIndex = 9;
             this.radioButton32.TabStop = true;
-            this.radioButton32.Text = "Yellow card";
+            this.radioButton32.Text = "Gult kort";
             this.radioButton32.UseVisualStyleBackColor = true;
             // 
             // radioButton31
@@ -519,10 +528,10 @@ namespace Randomizer
             this.radioButton31.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton31.Location = new System.Drawing.Point(7, 212);
             this.radioButton31.Name = "radioButton31";
-            this.radioButton31.Size = new System.Drawing.Size(189, 29);
+            this.radioButton31.Size = new System.Drawing.Size(150, 29);
             this.radioButton31.TabIndex = 8;
             this.radioButton31.TabStop = true;
-            this.radioButton31.Text = "Penalty committed";
+            this.radioButton31.Text = "Begået straffe";
             this.radioButton31.UseVisualStyleBackColor = true;
             // 
             // radioButton30
@@ -531,10 +540,10 @@ namespace Randomizer
             this.radioButton30.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton30.Location = new System.Drawing.Point(7, 188);
             this.radioButton30.Name = "radioButton30";
-            this.radioButton30.Size = new System.Drawing.Size(151, 29);
+            this.radioButton30.Size = new System.Drawing.Size(223, 29);
             this.radioButton30.TabIndex = 7;
             this.radioButton30.TabStop = true;
-            this.radioButton30.Text = "Shot off target";
+            this.radioButton30.Text = "Skud udenfor rammen";
             this.radioButton30.UseVisualStyleBackColor = true;
             // 
             // radioButton29
@@ -543,10 +552,10 @@ namespace Randomizer
             this.radioButton29.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton29.Location = new System.Drawing.Point(7, 164);
             this.radioButton29.Name = "radioButton29";
-            this.radioButton29.Size = new System.Drawing.Size(162, 29);
+            this.radioButton29.Size = new System.Drawing.Size(165, 29);
             this.radioButton29.TabIndex = 6;
             this.radioButton29.TabStop = true;
-            this.radioButton29.Text = "Foul committed";
+            this.radioButton29.Text = "Frispark begået";
             this.radioButton29.UseVisualStyleBackColor = true;
             // 
             // radioButton28
@@ -579,10 +588,10 @@ namespace Randomizer
             this.radioButton26.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton26.Location = new System.Drawing.Point(7, 92);
             this.radioButton26.Name = "radioButton26";
-            this.radioButton26.Size = new System.Drawing.Size(143, 29);
+            this.radioButton26.Size = new System.Drawing.Size(135, 29);
             this.radioButton26.TabIndex = 3;
             this.radioButton26.TabStop = true;
-            this.radioButton26.Text = "Corner taken";
+            this.radioButton26.Text = "Hjørne taget";
             this.radioButton26.UseVisualStyleBackColor = true;
             // 
             // radioButton25
@@ -591,10 +600,10 @@ namespace Randomizer
             this.radioButton25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton25.Location = new System.Drawing.Point(7, 68);
             this.radioButton25.Name = "radioButton25";
-            this.radioButton25.Size = new System.Drawing.Size(152, 29);
+            this.radioButton25.Size = new System.Drawing.Size(227, 29);
             this.radioButton25.TabIndex = 2;
             this.radioButton25.TabStop = true;
-            this.radioButton25.Text = "Shot on target";
+            this.radioButton25.Text = "Skud indenfor rammen";
             this.radioButton25.UseVisualStyleBackColor = true;
             // 
             // radioButton24
@@ -615,10 +624,10 @@ namespace Randomizer
             this.radioButton23.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton23.Location = new System.Drawing.Point(7, 20);
             this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(104, 29);
+            this.radioButton23.Size = new System.Drawing.Size(90, 29);
             this.radioButton23.TabIndex = 0;
             this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "GOAL!!!";
+            this.radioButton23.Text = "MÅL!!!";
             this.radioButton23.UseVisualStyleBackColor = true;
             // 
             // randomizeButton
@@ -649,7 +658,7 @@ namespace Randomizer
             // 
             this.participantPanel1.Controls.Add(this.participantTextBox1);
             this.participantPanel1.Controls.Add(this.labelFaccio);
-            this.participantPanel1.Controls.Add(this.green1);
+            this.participantPanel1.Controls.Add(this.player1drinkOk);
             this.participantPanel1.Controls.Add(this.bank1);
             this.participantPanel1.Location = new System.Drawing.Point(3, 3);
             this.participantPanel1.Name = "participantPanel1";
@@ -676,14 +685,16 @@ namespace Randomizer
             this.labelFaccio.Size = new System.Drawing.Size(0, 29);
             this.labelFaccio.TabIndex = 9;
             // 
-            // green1
+            // player1drinkOk
             // 
-            this.green1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.green1.Location = new System.Drawing.Point(115, 3);
-            this.green1.Name = "green1";
-            this.green1.Size = new System.Drawing.Size(69, 23);
-            this.green1.TabIndex = 7;
-            this.green1.UseVisualStyleBackColor = false;
+            this.player1drinkOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.player1drinkOk.Location = new System.Drawing.Point(115, 3);
+            this.player1drinkOk.Name = "player1drinkOk";
+            this.player1drinkOk.Size = new System.Drawing.Size(69, 23);
+            this.player1drinkOk.TabIndex = 7;
+            this.player1drinkOk.Text = "SKÅL!";
+            this.player1drinkOk.UseVisualStyleBackColor = false;
+            this.player1drinkOk.Click += new System.EventHandler(this.player1DrinkOk_Click);
             // 
             // bank1
             // 
@@ -747,9 +758,10 @@ namespace Randomizer
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(966, 492);
-            this.progressBar.Maximum = 45;
+            this.progressBar.Maximum = 600;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(916, 24);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 5;
             // 
             // timer1
@@ -814,15 +826,16 @@ namespace Randomizer
             this.createNewGameButton.UseVisualStyleBackColor = true;
             this.createNewGameButton.Click += new System.EventHandler(this.createNewGameButton_Click);
             // 
-            // button3
+            // loadGameButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.button3.Location = new System.Drawing.Point(327, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 33);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Indlæs kamp";
-            this.button3.UseVisualStyleBackColor = true;
+            this.loadGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.loadGameButton.Location = new System.Drawing.Point(327, 5);
+            this.loadGameButton.Name = "loadGameButton";
+            this.loadGameButton.Size = new System.Drawing.Size(118, 33);
+            this.loadGameButton.TabIndex = 14;
+            this.loadGameButton.Text = "Indlæs kamp";
+            this.loadGameButton.UseVisualStyleBackColor = true;
+            this.loadGameButton.Click += new System.EventHandler(this.loadGameButton_Click);
             // 
             // gameNameLabel
             // 
@@ -884,11 +897,11 @@ namespace Randomizer
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(966, 46);
             this.chart1.Name = "chart1";
-            series1.BackImage = "D:\\Arbejde\\randomizer\\scoreboard.jpg";
             series1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
             series1.BorderWidth = 5;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.Gray;
             series1.IsValueShownAsLabel = true;
             series1.LabelForeColor = System.Drawing.Color.DimGray;
             series1.Legend = "Legend1";
@@ -896,6 +909,7 @@ namespace Randomizer
             series2.BorderWidth = 5;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Fuchsia;
             series2.IsValueShownAsLabel = true;
             series2.LabelForeColor = System.Drawing.Color.Violet;
             series2.Legend = "Legend1";
@@ -903,6 +917,7 @@ namespace Randomizer
             series3.BorderWidth = 5;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             series3.IsValueShownAsLabel = true;
             series3.LabelForeColor = System.Drawing.Color.DarkRed;
             series3.Legend = "Legend1";
@@ -910,6 +925,7 @@ namespace Randomizer
             series4.BorderWidth = 5;
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             series4.IsValueShownAsLabel = true;
             series4.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             series4.Legend = "Legend1";
@@ -917,6 +933,7 @@ namespace Randomizer
             series5.BorderWidth = 5;
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Color = System.Drawing.Color.Aqua;
             series5.IsValueShownAsLabel = true;
             series5.LabelForeColor = System.Drawing.Color.Aqua;
             series5.Legend = "Legend1";
@@ -924,6 +941,7 @@ namespace Randomizer
             series6.BorderWidth = 5;
             series6.ChartArea = "ChartArea1";
             series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = System.Drawing.Color.Blue;
             series6.IsValueShownAsLabel = true;
             series6.LabelForeColor = System.Drawing.Color.Blue;
             series6.Legend = "Legend1";
@@ -931,6 +949,7 @@ namespace Randomizer
             series7.BorderWidth = 5;
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             series7.IsValueShownAsLabel = true;
             series7.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             series7.Legend = "Legend1";
@@ -970,7 +989,7 @@ namespace Randomizer
             // 
             this.participantPanel2.Controls.Add(this.participantTextBox2);
             this.participantPanel2.Controls.Add(this.labelLeffo);
-            this.participantPanel2.Controls.Add(this.button1);
+            this.participantPanel2.Controls.Add(this.player2DrinkOk);
             this.participantPanel2.Controls.Add(this.button4);
             this.participantPanel2.Location = new System.Drawing.Point(3, 39);
             this.participantPanel2.Name = "participantPanel2";
@@ -985,15 +1004,16 @@ namespace Randomizer
             this.labelLeffo.Size = new System.Drawing.Size(0, 13);
             this.labelLeffo.TabIndex = 5;
             // 
-            // button1
+            // player2DrinkOk
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.Location = new System.Drawing.Point(115, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.player2DrinkOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.player2DrinkOk.Location = new System.Drawing.Point(115, 3);
+            this.player2DrinkOk.Name = "player2DrinkOk";
+            this.player2DrinkOk.Size = new System.Drawing.Size(69, 23);
+            this.player2DrinkOk.TabIndex = 3;
+            this.player2DrinkOk.Text = "SKÅL!";
+            this.player2DrinkOk.UseVisualStyleBackColor = false;
+            this.player2DrinkOk.Click += new System.EventHandler(this.player2DrinkOk_Click);
             // 
             // button4
             // 
@@ -1008,7 +1028,7 @@ namespace Randomizer
             // 
             this.participantPanel3.Controls.Add(this.participantTextBox3);
             this.participantPanel3.Controls.Add(this.labelNosser);
-            this.participantPanel3.Controls.Add(this.button5);
+            this.participantPanel3.Controls.Add(this.player3DrinkOk);
             this.participantPanel3.Controls.Add(this.button10);
             this.participantPanel3.Location = new System.Drawing.Point(3, 75);
             this.participantPanel3.Name = "participantPanel3";
@@ -1023,15 +1043,16 @@ namespace Randomizer
             this.labelNosser.Size = new System.Drawing.Size(0, 13);
             this.labelNosser.TabIndex = 3;
             // 
-            // button5
+            // player3DrinkOk
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button5.Location = new System.Drawing.Point(115, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(69, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = false;
+            this.player3DrinkOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.player3DrinkOk.Location = new System.Drawing.Point(115, 3);
+            this.player3DrinkOk.Name = "player3DrinkOk";
+            this.player3DrinkOk.Size = new System.Drawing.Size(69, 23);
+            this.player3DrinkOk.TabIndex = 5;
+            this.player3DrinkOk.Text = "SKÅL!";
+            this.player3DrinkOk.UseVisualStyleBackColor = false;
+            this.player3DrinkOk.Click += new System.EventHandler(this.player3DrinkOk_Click);
             // 
             // button10
             // 
@@ -1046,7 +1067,7 @@ namespace Randomizer
             // 
             this.participantPanel4.Controls.Add(this.participantTextBox4);
             this.participantPanel4.Controls.Add(this.labelTarzan);
-            this.participantPanel4.Controls.Add(this.button6);
+            this.participantPanel4.Controls.Add(this.player4DrinkOk);
             this.participantPanel4.Controls.Add(this.button11);
             this.participantPanel4.Location = new System.Drawing.Point(3, 111);
             this.participantPanel4.Name = "participantPanel4";
@@ -1061,15 +1082,16 @@ namespace Randomizer
             this.labelTarzan.Size = new System.Drawing.Size(0, 13);
             this.labelTarzan.TabIndex = 4;
             // 
-            // button6
+            // player4DrinkOk
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button6.Location = new System.Drawing.Point(115, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(69, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = false;
+            this.player4DrinkOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.player4DrinkOk.Location = new System.Drawing.Point(115, 3);
+            this.player4DrinkOk.Name = "player4DrinkOk";
+            this.player4DrinkOk.Size = new System.Drawing.Size(69, 23);
+            this.player4DrinkOk.TabIndex = 6;
+            this.player4DrinkOk.Text = "SKÅL!";
+            this.player4DrinkOk.UseVisualStyleBackColor = false;
+            this.player4DrinkOk.Click += new System.EventHandler(this.player4DrinkOk_Click);
             // 
             // button11
             // 
@@ -1084,7 +1106,7 @@ namespace Randomizer
             // 
             this.participantPanel5.Controls.Add(this.participantTextBox5);
             this.participantPanel5.Controls.Add(this.labelTennedz);
-            this.participantPanel5.Controls.Add(this.button7);
+            this.participantPanel5.Controls.Add(this.player5DrinkOk);
             this.participantPanel5.Controls.Add(this.button12);
             this.participantPanel5.Location = new System.Drawing.Point(3, 147);
             this.participantPanel5.Name = "participantPanel5";
@@ -1099,15 +1121,16 @@ namespace Randomizer
             this.labelTennedz.Size = new System.Drawing.Size(0, 13);
             this.labelTennedz.TabIndex = 5;
             // 
-            // button7
+            // player5DrinkOk
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button7.Location = new System.Drawing.Point(115, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(69, 23);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = false;
+            this.player5DrinkOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.player5DrinkOk.Location = new System.Drawing.Point(115, 3);
+            this.player5DrinkOk.Name = "player5DrinkOk";
+            this.player5DrinkOk.Size = new System.Drawing.Size(69, 23);
+            this.player5DrinkOk.TabIndex = 7;
+            this.player5DrinkOk.Text = "SKÅL!";
+            this.player5DrinkOk.UseVisualStyleBackColor = false;
+            this.player5DrinkOk.Click += new System.EventHandler(this.player5DrinkOk_Click);
             // 
             // button12
             // 
@@ -1122,7 +1145,7 @@ namespace Randomizer
             // 
             this.participantPanel6.Controls.Add(this.participantTextBox6);
             this.participantPanel6.Controls.Add(this.labelTrusser);
-            this.participantPanel6.Controls.Add(this.button8);
+            this.participantPanel6.Controls.Add(this.player6DrinkOk);
             this.participantPanel6.Controls.Add(this.button13);
             this.participantPanel6.Location = new System.Drawing.Point(3, 183);
             this.participantPanel6.Name = "participantPanel6";
@@ -1137,15 +1160,16 @@ namespace Randomizer
             this.labelTrusser.Size = new System.Drawing.Size(0, 13);
             this.labelTrusser.TabIndex = 6;
             // 
-            // button8
+            // player6DrinkOk
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button8.Location = new System.Drawing.Point(115, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(69, 23);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = false;
+            this.player6DrinkOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.player6DrinkOk.Location = new System.Drawing.Point(115, 3);
+            this.player6DrinkOk.Name = "player6DrinkOk";
+            this.player6DrinkOk.Size = new System.Drawing.Size(69, 23);
+            this.player6DrinkOk.TabIndex = 8;
+            this.player6DrinkOk.Text = "SKÅL!";
+            this.player6DrinkOk.UseVisualStyleBackColor = false;
+            this.player6DrinkOk.Click += new System.EventHandler(this.player6DrinkOk_Click);
             // 
             // button13
             // 
@@ -1160,7 +1184,7 @@ namespace Randomizer
             // 
             this.participantPanel7.Controls.Add(this.participantTextBox7);
             this.participantPanel7.Controls.Add(this.labelAallex);
-            this.participantPanel7.Controls.Add(this.button9);
+            this.participantPanel7.Controls.Add(this.player7DrinkOk);
             this.participantPanel7.Controls.Add(this.button14);
             this.participantPanel7.Location = new System.Drawing.Point(3, 219);
             this.participantPanel7.Name = "participantPanel7";
@@ -1175,15 +1199,16 @@ namespace Randomizer
             this.labelAallex.Size = new System.Drawing.Size(0, 13);
             this.labelAallex.TabIndex = 7;
             // 
-            // button9
+            // player7DrinkOk
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button9.Location = new System.Drawing.Point(115, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(69, 23);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "button9";
-            this.button9.UseVisualStyleBackColor = false;
+            this.player7DrinkOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.player7DrinkOk.Location = new System.Drawing.Point(115, 3);
+            this.player7DrinkOk.Name = "player7DrinkOk";
+            this.player7DrinkOk.Size = new System.Drawing.Size(69, 23);
+            this.player7DrinkOk.TabIndex = 9;
+            this.player7DrinkOk.Text = "SKÅL!";
+            this.player7DrinkOk.UseVisualStyleBackColor = false;
+            this.player7DrinkOk.Click += new System.EventHandler(this.player7DrinkOk_Click);
             // 
             // button14
             // 
@@ -1254,7 +1279,7 @@ namespace Randomizer
             this.Controls.Add(this.awayTeamTextBox);
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.gameNameLabel);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.loadGameButton);
             this.Controls.Add(this.createNewGameButton);
             this.Controls.Add(this.loadGameComboBox);
             this.Controls.Add(this.homeTeamTextBox);
@@ -1354,15 +1379,14 @@ namespace Randomizer
         private System.Windows.Forms.TextBox homeTeamTextBox;
         private System.Windows.Forms.ComboBox loadGameComboBox;
         private System.Windows.Forms.Button createNewGameButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button loadGameButton;
         private System.Windows.Forms.Label gameNameLabel;
         private System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.TextBox awayTeamTextBox;
         private System.Windows.Forms.Label homeTeamLabel;
         private System.Windows.Forms.Label awayTeamLabel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button green1;
+        private System.Windows.Forms.Button player1drinkOk;
         private System.Windows.Forms.Button bank1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TextBox participantTextBox2;
@@ -1374,22 +1398,22 @@ namespace Randomizer
         private System.Windows.Forms.FlowLayoutPanel participantPanel7;
         private System.Windows.Forms.FlowLayoutPanel participantsPanel;
         private System.Windows.Forms.Label labelFaccio;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button player2DrinkOk;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label labelNosser;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button player3DrinkOk;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label labelTarzan;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button player4DrinkOk;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label labelTennedz;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button player5DrinkOk;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label labelTrusser;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button player6DrinkOk;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Label labelAallex;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button player7DrinkOk;
         private System.Windows.Forms.Button button14;
         private RandomDbDataSet randomDbDataSet;
         private System.Windows.Forms.BindingSource graphBindingSource;
@@ -1399,7 +1423,7 @@ namespace Randomizer
         private System.Windows.Forms.BindingSource randomDbDataSetBindingSource;
         private CalculateGraphPlayer1TableAdapters.CalculateGraphTableAdapter calculateGraphTableAdapter;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton refereePlayer;
         private System.Windows.Forms.Label labelLeffo;
 
     }

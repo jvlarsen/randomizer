@@ -26,7 +26,8 @@ namespace Randomizer
             engine = new RandomizerEngine();
             PlayerRadiosInit();
             playersAndOwners = new Dictionary<string, string>();
-            CalculateGraph();
+            CalculateGraph("");
+            LoadOldGames();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,7 +66,7 @@ namespace Randomizer
                 //currentMeasureTextBox.Text = randomizerOutcome[loser];
             }
 
-            CalculateGraph();
+            CalculateGraph(eventFired);
         }
 
         private bool ValidateInput(string player, string eventFired)
@@ -95,6 +96,15 @@ namespace Randomizer
             for (int i = 1; i < 12; i++)
             {
                 this.playerEditComboBox.Items.Add(new ComboItem("Away Team " + i, rdoBtn + (i + 11)));
+            }
+        }
+
+        private void LoadOldGames()
+        {
+            var saveGames = engine.GetSaveGames();
+            for (int i = 0; i < saveGames.Count; i++)
+            {
+                this.loadGameComboBox.Items.Add(new SaveGame(saveGames[i]));
             }
         }
 
@@ -180,7 +190,7 @@ namespace Randomizer
                 return;
             }
 
-            participants = GetParticipants();
+            participants = GetParticipantsFromUI();
 
             foreach (var participantTextBox in this.participantsPanel.Controls.OfType<TextBox>())
             {
@@ -207,7 +217,7 @@ namespace Randomizer
             this.teamDistributionButton.Enabled = false;
         }
 
-        private Dictionary<string, Color> GetParticipants()
+        private Dictionary<string, Color> GetParticipantsFromUI()
         {
             var enteredParticipants = new Dictionary<string, Color>();
             foreach (var currPanel in this.participantsPanel.Controls.OfType<FlowLayoutPanel>())
@@ -282,19 +292,20 @@ namespace Randomizer
             this.graphTableAdapter.Fill(this.randomDbDataSet.Graph);
         }
 
-        private void CalculateGraph()
+        private void CalculateGraph(string eventName)
         {
             ClearAllSeries();
-            var matchId = this.gameNameLabel.Text.Replace(" - ", "-");
-            var bum = engine.CalculateGraph(matchId);
+            var matchId = this.gameNameLabel.Text;
+            var calculatedPoints = engine.CalculateGraph(matchId);
 
-            for (int i = 0; i < bum.Keys.Count; i++)
+            for (int i = 0; i < calculatedPoints.Keys.Count; i++)
             {
-                var minutesAndMeasures = bum.ElementAt(i).Value;
+                var minutesAndMeasures = calculatedPoints.ElementAt(i).Value;
                 foreach (KeyValuePair<int, int> item in minutesAndMeasures)
                 {
                     chart1.Series[i].Points.AddXY(item.Value, item.Key);
                 }
+                chart1.Series[i].Points.Last().AxisLabel = eventName;
             }
 
             chart1.Visible = true;
@@ -313,7 +324,151 @@ namespace Randomizer
         private void button15_Click(object sender, EventArgs e)
         {
             engine.UndoLatestEvent();
-            CalculateGraph();
+            CalculateGraph("");
+        }
+
+        #region DrinkOkClick Handlers
+        private void player1DrinkOk_Click(object sender, EventArgs e)
+        {
+            this.labelFaccio.Text = "";
+        }
+
+        private void player2DrinkOk_Click(object sender, EventArgs e)
+        {
+            this.labelLeffo.Text = "";
+        }
+
+        private void player3DrinkOk_Click(object sender, EventArgs e)
+        {
+            this.labelNosser.Text = "";
+        }
+
+        private void player4DrinkOk_Click(object sender, EventArgs e)
+        {
+            this.labelTarzan.Text = "";
+        }
+
+        private void player5DrinkOk_Click(object sender, EventArgs e)
+        {
+            this.labelTennedz.Text = "";
+        }
+
+        private void player6DrinkOk_Click(object sender, EventArgs e)
+        {
+            this.labelTrusser.Text = "";
+        }
+
+        private void player7DrinkOk_Click(object sender, EventArgs e)
+        {
+            this.labelAallex.Text = "";
+        }
+        #endregion
+
+        private void loadGameButton_Click(object sender, EventArgs e)
+        {
+            if (loadGameComboBox.SelectedItem == null)
+            {
+                this.infoLabel.Text = "Vælg en kamp fra listen.";
+                return;
+            }
+            else
+            {
+                this.infoLabel.Text = "";
+            }
+            var saveGame = (SaveGame)loadGameComboBox.SelectedItem;
+
+            LoadPlayersFromSaveGame(saveGame);
+            LoadAndSetOwnerColorsOnPlayers(saveGame);
+
+        }
+
+        private void LoadPlayersFromSaveGame(SaveGame saveGame)
+        {
+            var players = engine.LoadPlayersFromSaveGame(saveGame);
+            var participantsFlowPanels = participantsPanel.Controls.OfType<FlowLayoutPanel>();
+            //var player1Color = participantsFlowPanels.First().Controls.OfType<FlowLayoutPanel>().First(x => x.)
+            foreach (var player in players)
+            {
+                switch (player.PlayerIndex)
+                {
+                    case (0):
+                        homePlayer1.Text = player.Name;
+                        homePlayer1.BackColor = player.Owner.BackColor;
+                        break;
+                    case (1):
+                        homePlayer2.Text = player.Name;
+                        break;
+                    case (2):
+                        homePlayer3.Text = player.Name;
+                        break;
+                    case (3):
+                        homePlayer4.Text = player.Name;
+                        break;
+                    case (4):
+                        homePlayer5.Text = player.Name;
+                        break;
+                    case (5):
+                        homePlayer6.Text = player.Name;
+                        break;
+                    case (6):
+                        homePlayer7.Text = player.Name;
+                        break;
+                    case (7):
+                        homePlayer8.Text = player.Name;
+                        break;
+                    case (8):
+                        homePlayer9.Text = player.Name;
+                        break;
+                    case (9):
+                        homePlayer10.Text = player.Name;
+                        break;
+                    case (10):
+                        awayPlayer1.Text = player.Name;
+                        break;
+                    case (11):
+                        awayPlayer2.Text = player.Name;
+                        break;
+                    case (12):
+                        awayPlayer3.Text = player.Name;
+                        break;
+                    case (13):
+                        awayPlayer4.Text = player.Name;
+                        break;
+                    case (14):
+                        awayPlayer5.Text = player.Name;
+                        break;
+                    case (15):
+                        awayPlayer6.Text = player.Name;
+                        break;
+                    case (16):
+                        awayPlayer7.Text = player.Name;
+                        break;
+                    case (17):
+                        awayPlayer8.Text = player.Name;
+                        break;
+                    case (18):
+                        awayPlayer9.Text = player.Name;
+                        break;
+                    case (19):
+                        awayPlayer10.Text = player.Name;
+                        break;
+                    case (20):
+                        refereePlayer.Text = player.Name;
+                        break;
+                }
+            }
+        }
+
+        private void GetBackColorFromParticipant(Participant owner)
+        {
+
+        }
+
+        private void LoadAndSetOwnerColorsOnPlayers(SaveGame saveGame)
+        {
+
+            
+
         }
     }
 }
