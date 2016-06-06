@@ -314,9 +314,9 @@ namespace Randomizer
             return playersAndOwners;
         }
 
-        public Dictionary<int, Dictionary<int, int>> CalculateGraph(int matchId)
+        public Dictionary<int, List<GraphPoint>> CalculateGraph(int matchId)
         {
-            var participantsAndTheirGraph = new Dictionary<int, Dictionary<int, int>>();
+            var participantsAndTheirGraph = new Dictionary<int, List<GraphPoint>>();
             OpenConn();
             var sProc = conn.CreateCommand();
             sProc.CommandType = CommandType.StoredProcedure;
@@ -333,18 +333,18 @@ namespace Randomizer
                 var participantId = (int)reader["ParticipantId"];
                 if (!participantsAndTheirGraph.Keys.Contains(participantId))
                 {
-                    participantsAndTheirGraph.Add(participantId, new Dictionary<int, int>());
-                    participantsAndTheirGraph[participantId].Add(0, 0);
+                    participantsAndTheirGraph.Add(participantId, new List<GraphPoint>());
+                    participantsAndTheirGraph[participantId].Add(new GraphPoint(0, 0, ""));
                 }
 
-                participantsAndTheirGraph[participantId][(int)reader["CurrentTotal"]] = (int)reader["GameMinute"];
+                participantsAndTheirGraph[participantId].Add(new GraphPoint((int)reader["GameMinute"], (int)reader["CurrentTotal"], (string)reader["EventText"]));
                 
             }
             CloseConn();
             return participantsAndTheirGraph;
         }
 
-        public void LogRandomizingOutcome(int matchId, Dictionary<string, int> randomizerOutcome, int gameMinute)
+        public void LogRandomizingOutcome(int matchId, Dictionary<string, Randomizer.RandomizerEngine.MeasureName> randomizerOutcome, int gameMinute, Event eventFired)
         {
             //The randomizerOutcome contains <loserName, measures> and should be mapped to dbo.Graph 
             //as (MatchId, ParticipantId, GameMinute, Measure)
@@ -357,7 +357,7 @@ namespace Randomizer
             var eventNumber = (int)reader["EventNumber"];
             CloseConn();
 
-            foreach (KeyValuePair<string, int> outcome in randomizerOutcome)
+            foreach (KeyValuePair<string, Randomizer.RandomizerEngine.MeasureName> outcome in randomizerOutcome)
             {
                 OpenConn();
                 var sProc = conn.CreateCommand();
@@ -373,16 +373,20 @@ namespace Randomizer
                 sProc.Parameters.Add(loserParam);
 
                 var zipsParam = new SqlParameter("@zips", SqlDbType.Int);
-                zipsParam.Value = outcome.Value;
+                zipsParam.Value = (int)outcome.Value;
                 sProc.Parameters.Add(zipsParam);
 
                 var timeParam = new SqlParameter("@Time", SqlDbType.Int);
                 timeParam.Value = gameMinute;
                 sProc.Parameters.Add(timeParam);
 
-                var eventParam = new SqlParameter("@EventNumber", SqlDbType.Int);
-                eventParam.Value = eventNumber;
-                sProc.Parameters.Add(eventParam);
+                var eventNumberParam = new SqlParameter("@EventNumber", SqlDbType.Int);
+                eventNumberParam.Value = eventNumber;
+                sProc.Parameters.Add(eventNumberParam);
+
+                var eventTextParam = new SqlParameter("@EventText", SqlDbType.VarChar);
+                eventTextParam.Value = eventFired.Name;
+                sProc.Parameters.Add(eventTextParam);
 
                 sProc.ExecuteNonQuery();
                 CloseConn();

@@ -25,7 +25,7 @@ namespace Randomizer
             measures = dbFacade.GetMeasures();
         }
 
-        public Dictionary<string, int> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, int matchId, int gameMinute)
+        public Dictionary<string, MeasureName> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, int matchId, int gameMinute)
         {
             Participant winner = dbFacade.GetOwnerFromPlayerName(triggerPlayerName, matchId);
             Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
@@ -39,14 +39,14 @@ namespace Randomizer
             {
                 owners.RemoveAt(winnersIndex);
             }
-            Dictionary<string, int> randomizerOutcome = new Dictionary<string, int>();
+            Dictionary<string, MeasureName> randomizerOutcome = new Dictionary<string, MeasureName>();
 
             var soundPlayer = new SoundPlayer(eventFired.SoundUrl);
             soundPlayer.Play();
 
             var random = new Random();
             int outcomeIndex = 0;
-            var outcomeMeasure = 0;
+            MeasureName outcomeMeasure = MeasureName.Lille;
 
             var smallRangeTop = eventFired.Measure.Small;
             var mediumRangeTop = eventFired.Measure.Medium + smallRangeTop;
@@ -59,24 +59,32 @@ namespace Randomizer
 
                     if (1 <= outcomeIndex && outcomeIndex <= smallRangeTop)
                     {
-                        outcomeMeasure = 1;
+                        outcomeMeasure = MeasureName.Lille;
                     }
                     else if (smallRangeTop < outcomeIndex && outcomeIndex <= mediumRangeTop)
                     {
-                        outcomeMeasure = 3;
+                        outcomeMeasure = MeasureName.Memmel;
                     }
                     else if (mediumRangeTop < outcomeIndex && outcomeIndex <= largeRangeTop)
                     {
-                        outcomeMeasure = 6;
+                        outcomeMeasure = MeasureName.Stor;
                     }
                     else if (largeRangeTop < outcomeIndex && outcomeIndex <= walterRangeTop)
                     {
-                        outcomeMeasure = 11;
+                        outcomeMeasure = MeasureName.Walter;
                     }
                     randomizerOutcome.Add(loser.Name, outcomeMeasure);
             }
-            dbFacade.LogRandomizingOutcome(matchId, randomizerOutcome, gameMinute);
+            dbFacade.LogRandomizingOutcome(matchId, randomizerOutcome, gameMinute, eventFired);
             return randomizerOutcome;
+        }
+
+        public enum MeasureName
+        {
+            Lille = 1,
+            Memmel = 3,
+            Stor = 6,
+            Walter = 11
         }
 
         public Dictionary<string, string> DistributeTeams(List<string> players, List<string> participants, int matchId)
@@ -130,7 +138,7 @@ namespace Randomizer
             return dbFacade.SaveNewGame(teamNames, gameDate);
         }
 
-        public Dictionary<int, Dictionary<int, int>> CalculateGraph(int matchId)
+        public Dictionary<int, List<GraphPoint>> CalculateGraph(int matchId)
         {
             return dbFacade.CalculateGraph(matchId);
         }

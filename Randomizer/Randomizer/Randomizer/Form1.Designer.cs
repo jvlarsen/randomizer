@@ -30,15 +30,15 @@ namespace Randomizer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series36 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series41 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series42 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.teamBox = new System.Windows.Forms.GroupBox();
             this.refereePlayer = new System.Windows.Forms.RadioButton();
             this.awayPlayer10 = new System.Windows.Forms.RadioButton();
@@ -82,7 +82,7 @@ namespace Randomizer
             this.participantTextBox1 = new System.Windows.Forms.TextBox();
             this.labelFaccio = new System.Windows.Forms.Label();
             this.player1drinkOk = new System.Windows.Forms.Button();
-            this.bank1 = new System.Windows.Forms.Button();
+            this.bankButton1 = new System.Windows.Forms.Button();
             this.participantTextBox3 = new System.Windows.Forms.TextBox();
             this.participantTextBox4 = new System.Windows.Forms.TextBox();
             this.participantTextBox5 = new System.Windows.Forms.TextBox();
@@ -102,7 +102,6 @@ namespace Randomizer
             this.awayTeamTextBox = new System.Windows.Forms.TextBox();
             this.homeTeamLabel = new System.Windows.Forms.Label();
             this.awayTeamLabel = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.calculateGraphBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.calculateGraphPlayer1 = new Randomizer.CalculateGraphPlayer1();
@@ -110,11 +109,11 @@ namespace Randomizer
             this.participantPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelLeffo = new System.Windows.Forms.Label();
             this.player2DrinkOk = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.bankButton2 = new System.Windows.Forms.Button();
             this.participantPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelNosser = new System.Windows.Forms.Label();
             this.player3DrinkOk = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.bankButton3 = new System.Windows.Forms.Button();
             this.participantPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelTarzan = new System.Windows.Forms.Label();
             this.player4DrinkOk = new System.Windows.Forms.Button();
@@ -139,10 +138,23 @@ namespace Randomizer
             this.calculateGraphTableAdapter = new Randomizer.CalculateGraphPlayer1TableAdapters.CalculateGraphTableAdapter();
             this.button15 = new System.Windows.Forms.Button();
             this.matchIdLabel = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.bankPlayer1 = new System.Windows.Forms.Label();
+            this.bankPlayer2 = new System.Windows.Forms.Label();
+            this.bankPlayer3 = new System.Windows.Forms.Label();
+            this.bankPlayer4 = new System.Windows.Forms.Label();
+            this.bankPlayer5 = new System.Windows.Forms.Label();
+            this.bankPlayer6 = new System.Windows.Forms.Label();
+            this.bankPlayer7 = new System.Windows.Forms.Label();
             this.teamBox.SuspendLayout();
             this.eventBox.SuspendLayout();
             this.participantPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calculateGraphBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calculateGraphPlayer1)).BeginInit();
@@ -184,7 +196,7 @@ namespace Randomizer
             this.teamBox.Location = new System.Drawing.Point(12, 105);
             this.teamBox.Name = "teamBox";
             this.teamBox.Size = new System.Drawing.Size(341, 283);
-            this.teamBox.TabIndex = 0;
+            this.teamBox.TabIndex = 5;
             this.teamBox.TabStop = false;
             this.teamBox.Text = "TeamBox";
             // 
@@ -459,7 +471,7 @@ namespace Randomizer
             this.eventBox.Location = new System.Drawing.Point(399, 105);
             this.eventBox.Name = "eventBox";
             this.eventBox.Size = new System.Drawing.Size(450, 384);
-            this.eventBox.TabIndex = 1;
+            this.eventBox.TabIndex = 6;
             this.eventBox.TabStop = false;
             this.eventBox.Text = "groupBox4";
             // 
@@ -647,11 +659,11 @@ namespace Randomizer
             // 
             this.button2.BackColor = System.Drawing.Color.Green;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button2.Location = new System.Drawing.Point(655, 13);
+            this.button2.Location = new System.Drawing.Point(966, 533);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(245, 41);
             this.button2.TabIndex = 3;
-            this.button2.Text = "START HALVLEG";
+            this.button2.Text = "START TIDEN";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -660,7 +672,7 @@ namespace Randomizer
             this.participantPanel1.Controls.Add(this.participantTextBox1);
             this.participantPanel1.Controls.Add(this.labelFaccio);
             this.participantPanel1.Controls.Add(this.player1drinkOk);
-            this.participantPanel1.Controls.Add(this.bank1);
+            this.participantPanel1.Controls.Add(this.bankButton1);
             this.participantPanel1.Location = new System.Drawing.Point(3, 3);
             this.participantPanel1.Name = "participantPanel1";
             this.participantPanel1.Size = new System.Drawing.Size(300, 30);
@@ -697,14 +709,15 @@ namespace Randomizer
             this.player1drinkOk.UseVisualStyleBackColor = false;
             this.player1drinkOk.Click += new System.EventHandler(this.player1DrinkOk_Click);
             // 
-            // bank1
+            // bankButton1
             // 
-            this.bank1.BackColor = System.Drawing.Color.Red;
-            this.bank1.Location = new System.Drawing.Point(190, 3);
-            this.bank1.Name = "bank1";
-            this.bank1.Size = new System.Drawing.Size(64, 23);
-            this.bank1.TabIndex = 8;
-            this.bank1.UseVisualStyleBackColor = false;
+            this.bankButton1.BackColor = System.Drawing.Color.Red;
+            this.bankButton1.Location = new System.Drawing.Point(190, 3);
+            this.bankButton1.Name = "bankButton1";
+            this.bankButton1.Size = new System.Drawing.Size(64, 23);
+            this.bankButton1.TabIndex = 8;
+            this.bankButton1.UseVisualStyleBackColor = false;
+            this.bankButton1.Click += new System.EventHandler(this.bankButton1_Click);
             // 
             // participantTextBox3
             // 
@@ -713,7 +726,7 @@ namespace Randomizer
             this.participantTextBox3.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox3.Name = "participantTextBox3";
             this.participantTextBox3.Size = new System.Drawing.Size(100, 23);
-            this.participantTextBox3.TabIndex = 2;
+            this.participantTextBox3.TabIndex = 0;
             this.participantTextBox3.Text = "NOSSER";
             // 
             // participantTextBox4
@@ -723,7 +736,7 @@ namespace Randomizer
             this.participantTextBox4.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox4.Name = "participantTextBox4";
             this.participantTextBox4.Size = new System.Drawing.Size(100, 23);
-            this.participantTextBox4.TabIndex = 3;
+            this.participantTextBox4.TabIndex = 0;
             this.participantTextBox4.Text = "TARZAN";
             // 
             // participantTextBox5
@@ -733,7 +746,7 @@ namespace Randomizer
             this.participantTextBox5.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox5.Name = "participantTextBox5";
             this.participantTextBox5.Size = new System.Drawing.Size(100, 23);
-            this.participantTextBox5.TabIndex = 4;
+            this.participantTextBox5.TabIndex = 0;
             this.participantTextBox5.Text = "TENNEDZ";
             // 
             // participantTextBox6
@@ -743,7 +756,7 @@ namespace Randomizer
             this.participantTextBox6.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox6.Name = "participantTextBox6";
             this.participantTextBox6.Size = new System.Drawing.Size(100, 23);
-            this.participantTextBox6.TabIndex = 5;
+            this.participantTextBox6.TabIndex = 0;
             this.participantTextBox6.Text = "TRUSSER";
             // 
             // participantTextBox7
@@ -753,13 +766,13 @@ namespace Randomizer
             this.participantTextBox7.Location = new System.Drawing.Point(3, 3);
             this.participantTextBox7.Name = "participantTextBox7";
             this.participantTextBox7.Size = new System.Drawing.Size(100, 23);
-            this.participantTextBox7.TabIndex = 6;
+            this.participantTextBox7.TabIndex = 0;
             this.participantTextBox7.Text = "AALLEX";
             // 
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(966, 492);
-            this.progressBar.Maximum = 600;
+            this.progressBar.Maximum = 1200;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(916, 24);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -776,7 +789,7 @@ namespace Randomizer
             this.playerEditComboBox.Location = new System.Drawing.Point(12, 394);
             this.playerEditComboBox.Name = "playerEditComboBox";
             this.playerEditComboBox.Size = new System.Drawing.Size(169, 33);
-            this.playerEditComboBox.TabIndex = 7;
+            this.playerEditComboBox.TabIndex = 3;
             // 
             // richTextBox1
             // 
@@ -784,7 +797,7 @@ namespace Randomizer
             this.richTextBox1.Location = new System.Drawing.Point(187, 394);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(166, 33);
-            this.richTextBox1.TabIndex = 8;
+            this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextButton1_TextChanged);
             // 
@@ -805,7 +818,7 @@ namespace Randomizer
             this.homeTeamTextBox.Location = new System.Drawing.Point(9, 54);
             this.homeTeamTextBox.Name = "homeTeamTextBox";
             this.homeTeamTextBox.Size = new System.Drawing.Size(139, 30);
-            this.homeTeamTextBox.TabIndex = 10;
+            this.homeTeamTextBox.TabIndex = 0;
             // 
             // loadGameComboBox
             // 
@@ -822,7 +835,7 @@ namespace Randomizer
             this.createNewGameButton.Location = new System.Drawing.Point(327, 54);
             this.createNewGameButton.Name = "createNewGameButton";
             this.createNewGameButton.Size = new System.Drawing.Size(118, 30);
-            this.createNewGameButton.TabIndex = 12;
+            this.createNewGameButton.TabIndex = 2;
             this.createNewGameButton.Text = "Ny kamp";
             this.createNewGameButton.UseVisualStyleBackColor = true;
             this.createNewGameButton.Click += new System.EventHandler(this.createNewGameButton_Click);
@@ -862,7 +875,7 @@ namespace Randomizer
             this.awayTeamTextBox.Location = new System.Drawing.Point(167, 54);
             this.awayTeamTextBox.Name = "awayTeamTextBox";
             this.awayTeamTextBox.Size = new System.Drawing.Size(145, 30);
-            this.awayTeamTextBox.TabIndex = 11;
+            this.awayTeamTextBox.TabIndex = 1;
             // 
             // homeTeamLabel
             // 
@@ -882,86 +895,78 @@ namespace Randomizer
             this.awayTeamLabel.TabIndex = 19;
             this.awayTeamLabel.Text = "Away Team";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(655, 523);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 20;
-            // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(966, 46);
             this.chart1.Name = "chart1";
-            series1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
-            series1.BorderWidth = 5;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.Gray;
-            series1.IsValueShownAsLabel = true;
-            series1.LabelForeColor = System.Drawing.Color.DimGray;
-            series1.Legend = "Legend1";
-            series1.Name = "FACCIO";
-            series2.BorderWidth = 5;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.Fuchsia;
-            series2.IsValueShownAsLabel = true;
-            series2.LabelForeColor = System.Drawing.Color.Violet;
-            series2.Legend = "Legend1";
-            series2.Name = "LEFFO";
-            series3.BorderWidth = 5;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series3.IsValueShownAsLabel = true;
-            series3.LabelForeColor = System.Drawing.Color.DarkRed;
-            series3.Legend = "Legend1";
-            series3.Name = "NOSSER";
-            series4.BorderWidth = 5;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series4.IsValueShownAsLabel = true;
-            series4.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series4.Legend = "Legend1";
-            series4.Name = "TARZAN";
-            series5.BorderWidth = 5;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Color = System.Drawing.Color.Aqua;
-            series5.IsValueShownAsLabel = true;
-            series5.LabelForeColor = System.Drawing.Color.Aqua;
-            series5.Legend = "Legend1";
-            series5.Name = "TENNEDZ";
-            series6.BorderWidth = 5;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Blue;
-            series6.IsValueShownAsLabel = true;
-            series6.LabelForeColor = System.Drawing.Color.Blue;
-            series6.Legend = "Legend1";
-            series6.Name = "TRUSSER";
-            series7.BorderWidth = 5;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            series7.IsValueShownAsLabel = true;
-            series7.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            series7.Legend = "Legend1";
-            series7.Name = "AALLEX";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
-            this.chart1.Series.Add(series7);
+            series36.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
+            series36.BorderWidth = 5;
+            series36.ChartArea = "ChartArea1";
+            series36.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series36.Color = System.Drawing.Color.Gray;
+            series36.IsValueShownAsLabel = true;
+            series36.LabelForeColor = System.Drawing.Color.DimGray;
+            series36.Legend = "Legend1";
+            series36.Name = "FACCIO";
+            series37.BorderWidth = 5;
+            series37.ChartArea = "ChartArea1";
+            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series37.Color = System.Drawing.Color.Fuchsia;
+            series37.IsValueShownAsLabel = true;
+            series37.LabelForeColor = System.Drawing.Color.Violet;
+            series37.Legend = "Legend1";
+            series37.Name = "LEFFO";
+            series38.BorderWidth = 5;
+            series38.ChartArea = "ChartArea1";
+            series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series38.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series38.IsValueShownAsLabel = true;
+            series38.LabelForeColor = System.Drawing.Color.DarkRed;
+            series38.Legend = "Legend1";
+            series38.Name = "NOSSER";
+            series39.BorderWidth = 5;
+            series39.ChartArea = "ChartArea1";
+            series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series39.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series39.IsValueShownAsLabel = true;
+            series39.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series39.Legend = "Legend1";
+            series39.Name = "TARZAN";
+            series40.BorderWidth = 5;
+            series40.ChartArea = "ChartArea1";
+            series40.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series40.Color = System.Drawing.Color.Aqua;
+            series40.IsValueShownAsLabel = true;
+            series40.LabelForeColor = System.Drawing.Color.Aqua;
+            series40.Legend = "Legend1";
+            series40.Name = "TENNEDZ";
+            series41.BorderWidth = 5;
+            series41.ChartArea = "ChartArea1";
+            series41.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series41.Color = System.Drawing.Color.Blue;
+            series41.IsValueShownAsLabel = true;
+            series41.LabelForeColor = System.Drawing.Color.Blue;
+            series41.Legend = "Legend1";
+            series41.Name = "TRUSSER";
+            series42.BorderWidth = 5;
+            series42.ChartArea = "ChartArea1";
+            series42.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series42.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            series42.IsValueShownAsLabel = true;
+            series42.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            series42.Legend = "Legend1";
+            series42.Name = "AALLEX";
+            this.chart1.Series.Add(series36);
+            this.chart1.Series.Add(series37);
+            this.chart1.Series.Add(series38);
+            this.chart1.Series.Add(series39);
+            this.chart1.Series.Add(series40);
+            this.chart1.Series.Add(series41);
+            this.chart1.Series.Add(series42);
             this.chart1.Size = new System.Drawing.Size(916, 446);
             this.chart1.TabIndex = 21;
             this.chart1.Text = "chart1";
@@ -991,7 +996,7 @@ namespace Randomizer
             this.participantPanel2.Controls.Add(this.participantTextBox2);
             this.participantPanel2.Controls.Add(this.labelLeffo);
             this.participantPanel2.Controls.Add(this.player2DrinkOk);
-            this.participantPanel2.Controls.Add(this.button4);
+            this.participantPanel2.Controls.Add(this.bankButton2);
             this.participantPanel2.Location = new System.Drawing.Point(3, 39);
             this.participantPanel2.Name = "participantPanel2";
             this.participantPanel2.Size = new System.Drawing.Size(300, 30);
@@ -1016,21 +1021,22 @@ namespace Randomizer
             this.player2DrinkOk.UseVisualStyleBackColor = false;
             this.player2DrinkOk.Click += new System.EventHandler(this.player2DrinkOk_Click);
             // 
-            // button4
+            // bankButton2
             // 
-            this.button4.Location = new System.Drawing.Point(190, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(63, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bankButton2.Location = new System.Drawing.Point(190, 3);
+            this.bankButton2.Name = "bankButton2";
+            this.bankButton2.Size = new System.Drawing.Size(63, 23);
+            this.bankButton2.TabIndex = 4;
+            this.bankButton2.Text = "button4";
+            this.bankButton2.UseVisualStyleBackColor = true;
+            this.bankButton2.Click += new System.EventHandler(this.bankButton2_Click);
             // 
             // participantPanel3
             // 
             this.participantPanel3.Controls.Add(this.participantTextBox3);
             this.participantPanel3.Controls.Add(this.labelNosser);
             this.participantPanel3.Controls.Add(this.player3DrinkOk);
-            this.participantPanel3.Controls.Add(this.button10);
+            this.participantPanel3.Controls.Add(this.bankButton3);
             this.participantPanel3.Location = new System.Drawing.Point(3, 75);
             this.participantPanel3.Name = "participantPanel3";
             this.participantPanel3.Size = new System.Drawing.Size(300, 30);
@@ -1055,14 +1061,15 @@ namespace Randomizer
             this.player3DrinkOk.UseVisualStyleBackColor = false;
             this.player3DrinkOk.Click += new System.EventHandler(this.player3DrinkOk_Click);
             // 
-            // button10
+            // bankButton3
             // 
-            this.button10.BackColor = System.Drawing.Color.Red;
-            this.button10.Location = new System.Drawing.Point(190, 3);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(63, 23);
-            this.button10.TabIndex = 10;
-            this.button10.UseVisualStyleBackColor = false;
+            this.bankButton3.BackColor = System.Drawing.Color.Red;
+            this.bankButton3.Location = new System.Drawing.Point(190, 3);
+            this.bankButton3.Name = "bankButton3";
+            this.bankButton3.Size = new System.Drawing.Size(63, 23);
+            this.bankButton3.TabIndex = 10;
+            this.bankButton3.UseVisualStyleBackColor = false;
+            this.bankButton3.Click += new System.EventHandler(this.bankButton3_Click);
             // 
             // participantPanel4
             // 
@@ -1102,6 +1109,7 @@ namespace Randomizer
             this.button11.Size = new System.Drawing.Size(64, 23);
             this.button11.TabIndex = 11;
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // participantPanel5
             // 
@@ -1141,6 +1149,7 @@ namespace Randomizer
             this.button12.Size = new System.Drawing.Size(64, 23);
             this.button12.TabIndex = 12;
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // participantPanel6
             // 
@@ -1180,6 +1189,7 @@ namespace Randomizer
             this.button13.Size = new System.Drawing.Size(64, 23);
             this.button13.TabIndex = 13;
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // participantPanel7
             // 
@@ -1219,6 +1229,7 @@ namespace Randomizer
             this.button14.Size = new System.Drawing.Size(64, 23);
             this.button14.TabIndex = 14;
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // participantsPanel
             // 
@@ -1259,12 +1270,14 @@ namespace Randomizer
             // 
             // button15
             // 
+            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.button15.Location = new System.Drawing.Point(9, 942);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(291, 46);
             this.button15.TabIndex = 29;
-            this.button15.Text = "button15";
-            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Text = "Fortryd seneste";
+            this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // matchIdLabel
@@ -1275,15 +1288,161 @@ namespace Randomizer
             this.matchIdLabel.Size = new System.Drawing.Size(0, 13);
             this.matchIdLabel.TabIndex = 30;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.DimGray;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.textBox1.Location = new System.Drawing.Point(413, 751);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 10;
+            this.textBox1.Text = "FACCIO";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.MediumOrchid;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.textBox2.Location = new System.Drawing.Point(413, 780);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 23);
+            this.textBox2.TabIndex = 6;
+            this.textBox2.Text = "LEFFO";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.DarkRed;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.textBox3.Location = new System.Drawing.Point(413, 809);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 23);
+            this.textBox3.TabIndex = 11;
+            this.textBox3.Text = "NOSSER";
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.YellowGreen;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.textBox4.Location = new System.Drawing.Point(413, 838);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 23);
+            this.textBox4.TabIndex = 12;
+            this.textBox4.Text = "TARZAN";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.Turquoise;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.textBox5.Location = new System.Drawing.Point(413, 867);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 23);
+            this.textBox5.TabIndex = 13;
+            this.textBox5.Text = "TENNEDZ";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.Blue;
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.textBox6.Location = new System.Drawing.Point(413, 896);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 23);
+            this.textBox6.TabIndex = 14;
+            this.textBox6.Text = "TRUSSER";
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.Orange;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.textBox7.Location = new System.Drawing.Point(413, 925);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 23);
+            this.textBox7.TabIndex = 15;
+            this.textBox7.Text = "AALLEX";
+            // 
+            // bankPlayer1
+            // 
+            this.bankPlayer1.AutoSize = true;
+            this.bankPlayer1.Location = new System.Drawing.Point(520, 760);
+            this.bankPlayer1.Name = "bankPlayer1";
+            this.bankPlayer1.Size = new System.Drawing.Size(13, 13);
+            this.bankPlayer1.TabIndex = 31;
+            this.bankPlayer1.Text = "5";
+            // 
+            // bankPlayer2
+            // 
+            this.bankPlayer2.AutoSize = true;
+            this.bankPlayer2.Location = new System.Drawing.Point(519, 790);
+            this.bankPlayer2.Name = "bankPlayer2";
+            this.bankPlayer2.Size = new System.Drawing.Size(13, 13);
+            this.bankPlayer2.TabIndex = 32;
+            this.bankPlayer2.Text = "0";
+            // 
+            // bankPlayer3
+            // 
+            this.bankPlayer3.AutoSize = true;
+            this.bankPlayer3.Location = new System.Drawing.Point(519, 819);
+            this.bankPlayer3.Name = "bankPlayer3";
+            this.bankPlayer3.Size = new System.Drawing.Size(19, 13);
+            this.bankPlayer3.TabIndex = 33;
+            this.bankPlayer3.Text = "21";
+            // 
+            // bankPlayer4
+            // 
+            this.bankPlayer4.AutoSize = true;
+            this.bankPlayer4.Location = new System.Drawing.Point(519, 848);
+            this.bankPlayer4.Name = "bankPlayer4";
+            this.bankPlayer4.Size = new System.Drawing.Size(13, 13);
+            this.bankPlayer4.TabIndex = 34;
+            this.bankPlayer4.Text = "8";
+            // 
+            // bankPlayer5
+            // 
+            this.bankPlayer5.AutoSize = true;
+            this.bankPlayer5.Location = new System.Drawing.Point(519, 877);
+            this.bankPlayer5.Name = "bankPlayer5";
+            this.bankPlayer5.Size = new System.Drawing.Size(19, 13);
+            this.bankPlayer5.TabIndex = 35;
+            this.bankPlayer5.Text = "11";
+            // 
+            // bankPlayer6
+            // 
+            this.bankPlayer6.AutoSize = true;
+            this.bankPlayer6.Location = new System.Drawing.Point(519, 906);
+            this.bankPlayer6.Name = "bankPlayer6";
+            this.bankPlayer6.Size = new System.Drawing.Size(19, 13);
+            this.bankPlayer6.TabIndex = 36;
+            this.bankPlayer6.Text = "16";
+            // 
+            // bankPlayer7
+            // 
+            this.bankPlayer7.AutoSize = true;
+            this.bankPlayer7.Location = new System.Drawing.Point(519, 935);
+            this.bankPlayer7.Name = "bankPlayer7";
+            this.bankPlayer7.Size = new System.Drawing.Size(19, 13);
+            this.bankPlayer7.TabIndex = 37;
+            this.bankPlayer7.Text = "12";
+            // 
             // Form1
             // 
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1916, 1053);
+            this.Controls.Add(this.bankPlayer7);
+            this.Controls.Add(this.bankPlayer6);
+            this.Controls.Add(this.bankPlayer5);
+            this.Controls.Add(this.bankPlayer4);
+            this.Controls.Add(this.bankPlayer3);
+            this.Controls.Add(this.bankPlayer2);
+            this.Controls.Add(this.bankPlayer1);
             this.Controls.Add(this.matchIdLabel);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.participantsPanel);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.awayTeamLabel);
             this.Controls.Add(this.homeTeamLabel);
             this.Controls.Add(this.awayTeamTextBox);
@@ -1309,7 +1468,6 @@ namespace Randomizer
             this.eventBox.PerformLayout();
             this.participantPanel1.ResumeLayout(false);
             this.participantPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calculateGraphBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calculateGraphPlayer1)).EndInit();
@@ -1395,9 +1553,8 @@ namespace Randomizer
         private System.Windows.Forms.TextBox awayTeamTextBox;
         private System.Windows.Forms.Label homeTeamLabel;
         private System.Windows.Forms.Label awayTeamLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button player1drinkOk;
-        private System.Windows.Forms.Button bank1;
+        private System.Windows.Forms.Button bankButton1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TextBox participantTextBox2;
         private System.Windows.Forms.FlowLayoutPanel participantPanel2;
@@ -1409,10 +1566,10 @@ namespace Randomizer
         private System.Windows.Forms.FlowLayoutPanel participantsPanel;
         private System.Windows.Forms.Label labelFaccio;
         private System.Windows.Forms.Button player2DrinkOk;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button bankButton2;
         private System.Windows.Forms.Label labelNosser;
         private System.Windows.Forms.Button player3DrinkOk;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button bankButton3;
         private System.Windows.Forms.Label labelTarzan;
         private System.Windows.Forms.Button player4DrinkOk;
         private System.Windows.Forms.Button button11;
@@ -1436,6 +1593,20 @@ namespace Randomizer
         private System.Windows.Forms.RadioButton refereePlayer;
         private System.Windows.Forms.Label labelLeffo;
         private System.Windows.Forms.Label matchIdLabel;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label bankPlayer1;
+        private System.Windows.Forms.Label bankPlayer2;
+        private System.Windows.Forms.Label bankPlayer3;
+        private System.Windows.Forms.Label bankPlayer4;
+        private System.Windows.Forms.Label bankPlayer5;
+        private System.Windows.Forms.Label bankPlayer6;
+        private System.Windows.Forms.Label bankPlayer7;
 
     }
 }

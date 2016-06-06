@@ -34,17 +34,17 @@ namespace Randomizer
         {
             var playerSelected = GetTriggerPlayer();
             var eventFired = GetEvent();
-            var randomizerOutcome = new Dictionary<string, int>();
+            var randomizerOutcome = new Dictionary<string, Randomizer.RandomizerEngine.MeasureName>();
             var matchId = int.Parse(this.matchIdLabel.Text);
 
             if (ValidateInput(playerSelected, eventFired))
             {
                 //returned Dictionary<string, string> with <loserName, measure>
-                var gameMinute = this.progressBar.Value;
+                var gameMinute = this.progressBar.Value/60;
                 randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners, matchId, gameMinute);
             }
 
-            foreach (KeyValuePair<string, int> loserZips in randomizerOutcome)
+            foreach (KeyValuePair<string, Randomizer.RandomizerEngine.MeasureName> loserZips in randomizerOutcome)
             {
                 if (loserZips.Key.ToLower().Equals("faccio"))
                     this.labelFaccio.Text = loserZips.Value.ToString();
@@ -136,15 +136,15 @@ namespace Randomizer
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (button2.Text == "START HALVLEG")
+            if (button2.Text == "START TIDEN")
             {
-                button2.Text = "STOP HALVLEG";
+                button2.Text = "STOP TIDEN";
                 button2.BackColor = Color.Red;
                 TimerInit();
             }
             else
             {
-                button2.Text = "START HALVLEG";
+                button2.Text = "START TIDEN";
                 button2.BackColor = Color.Green;
                 TimerStop();
             }
@@ -152,14 +152,7 @@ namespace Randomizer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (progressBar.Value != 45)
-            {
                 progressBar.Value++;
-            }
-            else
-            {
-                timer1.Stop();
-            }
         }
 
         private void richTextButton1_TextChanged(object sender, EventArgs e)
@@ -305,14 +298,15 @@ namespace Randomizer
             {
                 var calculatedPoints = engine.CalculateGraph(matchId);
 
-                for (int i = 0; i < calculatedPoints.Keys.Count; i++)
+                for (int i = 0; i < calculatedPoints.Keys.Count; i++) //Iterates the participants
                 {
                     var minutesAndMeasures = calculatedPoints.ElementAt(i).Value;
-                    foreach (KeyValuePair<int, int> item in minutesAndMeasures)
+
+                    for (int j = 0; j < minutesAndMeasures.Count; j++)
                     {
-                        chart1.Series[i].Points.AddXY(item.Value, item.Key);
+                        var index = chart1.Series[i].Points.AddXY(minutesAndMeasures[j].XPoint, minutesAndMeasures[j].YPoint);
+                        chart1.Series[i].Points[index].AxisLabel = minutesAndMeasures[j].EventName;
                     }
-                    chart1.Series[i].Points.Last().AxisLabel = eventName;
                 }
             }
             chart1.Visible = true;
@@ -391,7 +385,7 @@ namespace Randomizer
             UpdatePlayerColorsFromOwners(playersAndOwners);
             matchIdLabel.Text = saveGame.MatchId.ToString();
             CalculateGraph("");
-            progressBar.Value = saveGame.LatestEvent;
+            progressBar.Value = saveGame.LatestEvent*60;
         }
 
         private void LoadPlayersFromSaveGame(SaveGame saveGame)
@@ -481,6 +475,114 @@ namespace Randomizer
 
             
 
+        }
+
+        private void bankButton1_Click(object sender, EventArgs e)
+        {
+            int drinksToTransfer = 0;
+            var measureText = labelFaccio.Text;
+            drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            int currentBank = 0;
+            int.TryParse(bankPlayer1.Text, out currentBank);
+            var newBank = drinksToTransfer + currentBank;
+            this.bankPlayer1.Text = newBank.ToString();
+            this.labelFaccio.Text = "";
+        }
+
+        private void bankButton2_Click(object sender, EventArgs e)
+        {
+            int drinksToTransfer = 0;
+            var measureText = labelLeffo.Text;
+            drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            int currentBank = 0;
+            int.TryParse(bankPlayer2.Text, out currentBank);
+            var newBank = drinksToTransfer + currentBank;
+            this.bankPlayer2.Text = newBank.ToString();
+            this.labelLeffo.Text = "";
+        }
+
+        private void bankButton3_Click(object sender, EventArgs e)
+        {
+            int drinksToTransfer = 0;
+            var measureText = labelNosser.Text;
+            drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            int currentBank = 0;
+            int.TryParse(bankPlayer3.Text, out currentBank);
+            var newBank = drinksToTransfer + currentBank;
+            this.bankPlayer3.Text = newBank.ToString();
+            this.labelNosser.Text = "";
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            int drinksToTransfer = 0;
+            var measureText = labelTarzan.Text;
+            drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            int currentBank = 0;
+            int.TryParse(bankPlayer4.Text, out currentBank);
+            var newBank = drinksToTransfer + currentBank;
+            this.bankPlayer4.Text = newBank.ToString();
+            this.labelTarzan.Text = "";
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            //Tennedz
+            int drinksToTransfer = 0;
+            var measureText = labelTennedz.Text;
+            drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            int currentBank = 0;
+            int.TryParse(bankPlayer5.Text, out currentBank);
+            var newBank = drinksToTransfer + currentBank;
+            this.bankPlayer5.Text = newBank.ToString();
+            this.labelTennedz.Text = "";
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //Trusser
+            int drinksToTransfer = 0;
+            var measureText = labelTrusser.Text;
+            drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            int currentBank = 0;
+            int.TryParse(bankPlayer6.Text, out currentBank);
+            var newBank = drinksToTransfer + currentBank;
+            this.bankPlayer6.Text = newBank.ToString();
+            this.labelTrusser.Text = "";
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //AAllex
+            int drinksToTransfer = 0;
+            var measureText = labelAallex.Text;
+            drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            int currentBank = 0;
+            int.TryParse(bankPlayer7.Text, out currentBank);
+            var newBank = drinksToTransfer + currentBank;
+            this.bankPlayer7.Text = newBank.ToString();
+            this.labelAallex.Text = "";
+        }
+
+        private int ParseLabelTextToDrinkSize(string measureText)
+        {
+            if (string.Compare(measureText, "lille", true) == 0)
+            {
+                return 1;
+            }
+            else if (string.Compare(measureText, "mellem", true) == 0)
+            {
+                return 3;
+            }
+            else if (string.Compare(measureText, "stor", true) == 0)
+            {
+                return 6;
+            }
+            else if (string.Compare(measureText, "walter", true) == 0)
+            {
+                return 11;
+            }
+            return 0;
         }
     }
 }

@@ -177,6 +177,7 @@ GO
 --DROP PROCEDURE GetOwnerFromPlayer
 --DROP PROCEDURE LogRandomizingOutcomeToGraph
 --DROP PROCEDURE GetPlayersAndOwners
+--DROP PROCEDURE GetOldGames
 
 
 --select * from graph where matchid = 'e-q'

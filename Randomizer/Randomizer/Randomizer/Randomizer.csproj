@@ -53,6 +53,7 @@
     <Compile Include="DbFacade.cs" />
     <Compile Include="Entities\ComboItem.cs" />
     <Compile Include="Entities\Event.cs" />
+    <Compile Include="Entities\GraphPoint.cs" />
     <Compile Include="Entities\Measure.cs" />
     <Compile Include="Entities\Participant.cs" />
     <Compile Include="Entities\Player.cs" />
