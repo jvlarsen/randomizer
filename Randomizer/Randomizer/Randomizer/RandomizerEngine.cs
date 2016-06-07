@@ -27,17 +27,20 @@ namespace Randomizer
 
         public Dictionary<string, MeasureName> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, int matchId, int gameMinute)
         {
-            Participant winner = dbFacade.GetOwnerFromPlayerName(triggerPlayerName, matchId);
+            Participant ownerOfTriggerPlayer = dbFacade.GetOwnerFromPlayerName(triggerPlayerName, matchId);
             Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
-            List<Participant> owners = dbFacade.GetParticipants();
-            var winnersIndex = owners.IndexOf(owners.First(x => x.Name == winner.Name));
+            List<Participant> losers = dbFacade.GetParticipants(matchId);
+            List<Participant> winners = new List<Participant>();
+            var winnersIndex = losers.IndexOf(losers.First(x => x.Name == ownerOfTriggerPlayer.Name));
             if (eventFired.Measure.Name.Substring(0, 3).ToLower().Equals("own"))
             {
-                owners = new List<Participant>() { owners[winnersIndex] };
+                winners = losers.Where(x => x.Name != ownerOfTriggerPlayer.Name).ToList();
+                losers = new List<Participant>() { losers[winnersIndex] };      // Egen                   
             }
             else
             {
-                owners.RemoveAt(winnersIndex);
+                winners.Add(losers.ElementAt(winnersIndex));
+                losers.RemoveAt(winnersIndex); //Andre
             }
             Dictionary<string, MeasureName> randomizerOutcome = new Dictionary<string, MeasureName>();
 
@@ -53,9 +56,9 @@ namespace Randomizer
             var largeRangeTop = eventFired.Measure.Large + mediumRangeTop;
             var walterRangeTop = eventFired.Measure.Walter + largeRangeTop;
 
-            foreach (var loser in owners)
-            {
-                outcomeIndex = random.Next(1, 101);
+            foreach (var loser in losers)            {
+                
+                    outcomeIndex = random.Next(1, 101);
 
                     if (1 <= outcomeIndex && outcomeIndex <= smallRangeTop)
                     {
@@ -73,8 +76,15 @@ namespace Randomizer
                     {
                         outcomeMeasure = MeasureName.Walter;
                     }
-                    randomizerOutcome.Add(loser.Name, outcomeMeasure);
+                
+                randomizerOutcome.Add(loser.Name, outcomeMeasure);
             }
+            foreach (var winningParticipant in winners)
+            {
+                randomizerOutcome.Add(winningParticipant.Name, 0);
+            }
+
+
             dbFacade.LogRandomizingOutcome(matchId, randomizerOutcome, gameMinute, eventFired);
             return randomizerOutcome;
         }
@@ -93,10 +103,11 @@ namespace Randomizer
             var playersAndOwners = new Dictionary<string, string>();
             var random = new Random();
             var index = 0;
+            var startIndex = random.Next(countParticipants);
 
             for (int j = 0; j < 21; j++)
             {
-                var currentParticipant = participants.ElementAt(j % participants.Count);
+                var currentParticipant = participants.ElementAt((j+startIndex) % (participants.Count));
                 if (players.Count == 1)
                     index = 0;
                 else
@@ -119,18 +130,9 @@ namespace Randomizer
             return shuffledList;
         }
 
-        //private Participant GetOwnerFromPlayerName(string triggerPlayerName, int matchId)
-        //{
-        //    //NOT USED
-        //    dbFacade.GetOwnerFromPlayerName(triggerPlayerName, matchId);
-        //    var p = new Participant("Jesper");
-
-        //    return p;
-        //}
-
-        public void SaveParticipants(Dictionary<string, Color> participantNames)
+        public void SaveParticipants(Dictionary<string, Color> participantNames, int matchId)
         {
-            dbFacade.SaveParticipants(participantNames);
+            dbFacade.SaveParticipants(participantNames, matchId);
         }
 
         public int SaveNewGame(string teamNames, DateTime gameDate)
@@ -153,9 +155,19 @@ namespace Randomizer
             return dbFacade.GetSaveGames();
         }
 
+        public List<Measure> GetMeasures()
+        {
+            return dbFacade.GetMeasures();
+        }
+
         public List<Player> LoadPlayersFromSaveGame(SaveGame saveGame)
         {
             return dbFacade.LoadPlayersFromSaveGame(saveGame);
+        }
+
+        public Dictionary<string, Color> LoadParticipantsFromMatchId(int matchId)
+        {
+            return dbFacade.LoadParticipantsFromMatchId(matchId);
         }
 
         public Dictionary<string, string> GetPlayersAndOwners(SaveGame saveGame)

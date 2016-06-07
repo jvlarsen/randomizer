@@ -93,7 +93,7 @@ namespace Randomizer
             OpenConn();
             var cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetOwnerFromPlayer";
+            cmd.CommandText = "GetOwnerFromPlayerAndGame";
 
             var matchParam = new SqlParameter("@matchId", SqlDbType.Int);
             matchParam.Value = matchId;
@@ -114,12 +114,12 @@ namespace Randomizer
             return p;
         }
 
-        public List<Participant> GetParticipants()
+        public List<Participant> GetParticipants(int matchId)
         {
             participants = new List<Participant>();
             OpenConn();
             var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT ParticipantId, Name FROM Participants";
+            cmd.CommandText = "SELECT ParticipantId, Name FROM Participants WHERE MatchId = " + matchId;
 
             var reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -131,11 +131,11 @@ namespace Randomizer
             return participants;
         }
 
-        public Participant GetParticipantFromName(string participantName)
-        {
-            var participants = GetParticipants();
-            return participants.First(x => x.Name == participantName);
-        }
+        //public Participant GetParticipantFromName(string participantName)
+        //{
+        //    var participants = GetParticipants(matchId);
+        //    return participants.First(x => x.Name == participantName);
+        //}
 
         public void SaveDistribution(Dictionary<string, string> playersAndOwners, int matchId)
         {
@@ -168,13 +168,36 @@ namespace Randomizer
             CloseConn();
         }
 
-        public void SaveParticipants(Dictionary<string, Color> participantNames)
+        public void SaveParticipants(Dictionary<string, Color> participantNames, int matchId)
         {
             //TODO: Ville være fedt at kunne lave deltagerne generiske og mappe på participantId og deres positioner.
             //Vil bl.a. kræve at labels omdøbes og mappes til player1 -> labelDrinkOk1 osv.
             var buM = participantNames.ElementAt(0).Value.ToArgb();
             var newBum = Color.FromArgb(buM);
 
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SaveParticipants";
+            
+            var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+            matchIdParam.Value = matchId;
+
+            var participantNameParam = new SqlParameter("@Name", SqlDbType.VarChar);
+            var participantColorParam = new SqlParameter("@Color", SqlDbType.Int);
+
+            foreach (KeyValuePair<string, Color> item in participantNames)
+            {
+                OpenConn();
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(matchIdParam);
+                participantNameParam.Value = item.Key;
+                participantColorParam.Value = item.Value.ToArgb();
+                cmd.Parameters.Add(participantNameParam);
+                cmd.Parameters.Add(participantColorParam);
+                cmd.ExecuteNonQuery();
+                CloseConn();
+            }
         }
 
         public void SavePlayer(string playerName, int matchId, int playerIndex)
@@ -240,15 +263,15 @@ namespace Randomizer
 
             var playersFromSaveGame = new List<Player>();
             OpenConn();
-            var cmd = conn.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetPlayersAndOwners";
+            var cmd1 = conn.CreateCommand();
+            cmd1.CommandType = CommandType.StoredProcedure;
+            cmd1.CommandText = "GetPlayersAndOwners";
 
             var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
             matchIdParam.Value = saveGame.MatchId;
-            cmd.Parameters.Add(matchIdParam);
+            cmd1.Parameters.Add(matchIdParam);
 
-            var reader = cmd.ExecuteReader();
+            var reader = cmd1.ExecuteReader();
 
             while (reader.Read())
             {
@@ -260,6 +283,31 @@ namespace Randomizer
             }
             CloseConn();
             return playersFromSaveGame;
+        }
+
+        public Dictionary<string, Color> LoadParticipantsFromMatchId(int matchId)
+        {
+            var participantsAndColors = new Dictionary<string, Color>();
+
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetParticipantsFromMatchId";
+
+            var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+            matchIdParam.Value = matchId;
+            cmd.Parameters.Add(matchIdParam);
+
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var name = (string)reader["Name"];
+                var colorArgb = (int)reader["Color"];
+                var color = Color.FromArgb(colorArgb);
+                participantsAndColors.Add(name, color);
+            }
+            CloseConn();
+            return participantsAndColors;
         }
 
         //private Participant GetOwnerFromPlayerAndGame(SaveGame saveGame, string playerName)

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Randomizer.Entities;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace Randomizer
 {
@@ -28,6 +29,7 @@ namespace Randomizer
             playersAndOwners = new Dictionary<string, string>();
             CalculateGraph("");
             LoadOldGames();
+            InitWithdrawalMeasureCombo();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,39 +37,39 @@ namespace Randomizer
             var playerSelected = GetTriggerPlayer();
             var eventFired = GetEvent();
             var randomizerOutcome = new Dictionary<string, Randomizer.RandomizerEngine.MeasureName>();
+            
+            if (String.IsNullOrEmpty(this.matchIdLabel.Text))
+                return;
+
             var matchId = int.Parse(this.matchIdLabel.Text);
 
             if (ValidateInput(playerSelected, eventFired))
             {
                 //returned Dictionary<string, string> with <loserName, measure>
-                var gameMinute = this.progressBar.Value/60;
+                int gameMinute = (this.progressBar.Value/60)+1;
                 randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners, matchId, gameMinute);
             }
 
             foreach (KeyValuePair<string, Randomizer.RandomizerEngine.MeasureName> loserZips in randomizerOutcome)
             {
-                if (loserZips.Key.ToLower().Equals("faccio"))
-                    this.labelFaccio.Text = loserZips.Value.ToString();
-                else if (loserZips.Key.ToLower().Equals("leffo"))
-                    this.labelLeffo.Text = loserZips.Value.ToString();
-                else if (loserZips.Key.ToLower().Equals("nosser"))
-                    this.labelNosser.Text = loserZips.Value.ToString();
-                else if (loserZips.Key.ToLower().Equals("tarzan"))
-                    this.labelTarzan.Text = loserZips.Value.ToString();
-                else if (loserZips.Key.ToLower().Equals("tennedz"))
-                    this.labelTennedz.Text = loserZips.Value.ToString();
-                else if (loserZips.Key.ToLower().Equals("trusser"))
-                    this.labelTrusser.Text = loserZips.Value.ToString();
-                else if (loserZips.Key.ToLower().Equals("aallex"))
-                    this.labelAallex.Text = loserZips.Value.ToString();
-
-                //var currentParticipantTextBox = this.participantsPanel.Controls.OfType<FlowLayoutPanel>().First(x => x.Text == loser);
-                //var index = currentParticipantTextBox.Text.Substring(18);
-                //var currentMeasureTextBox = this.participantPanel3.Controls.OfType<TextBox>().First(x => x.Name == "measureTextBox" + index);
-                //currentMeasureTextBox.Text = randomizerOutcome[loser];
+                if (loserZips.Key.ToLower().Equals(participantTextBox1.Text.ToLower()))
+                    this.labelDrinkPlayer1.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals(participantTextBox2.Text.ToLower()))
+                    this.labelDrinkPlayer2.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals(participantTextBox3.Text.ToLower()))
+                    this.labelDrinkPlayer3.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals(participantTextBox4.Text.ToLower()))
+                    this.labelDrinkPlayer4.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals(participantTextBox5.Text.ToLower()))
+                    this.labelDrinkPlayer5.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals(participantTextBox6.Text.ToLower()))
+                    this.labelDrinkPlayer6.Text = loserZips.Value.ToString();
+                else if (loserZips.Key.ToLower().Equals(participantTextBox7.Text.ToLower()))
+                    this.labelDrinkPlayer7.Text = loserZips.Value.ToString();
             }
 
             CalculateGraph(eventFired);
+            UpdateLeaderBoard();
         }
 
         private bool ValidateInput(string player, string eventFired)
@@ -92,12 +94,26 @@ namespace Randomizer
             var rdoBtn = "radioButton";
             for (int i = 1; i < 12; i++)
             {
-                this.playerEditComboBox.Items.Add(new ComboItem("Home Team " + i, rdoBtn + i));
+                this.playerEditComboBox.Items.Add(new ComboItem("Home Player " + i, rdoBtn + i));
             }
             for (int i = 1; i < 12; i++)
             {
-                this.playerEditComboBox.Items.Add(new ComboItem("Away Team " + i, rdoBtn + (i + 11)));
+                this.playerEditComboBox.Items.Add(new ComboItem("Away Player " + i, rdoBtn + (i + 11)));
             }
+        }
+
+        private void InitWithdrawalMeasureCombo()
+        {
+            withdrawalMeasureCombo.Items.Add(DbFacade.Measures.Small);
+            withdrawalMeasureCombo.Items.Add(DbFacade.Measures.Medium);
+            withdrawalMeasureCombo.Items.Add(DbFacade.Measures.Large);
+            withdrawalMeasureCombo.Items.Add(DbFacade.Measures.Walter);
+        }
+
+        private void InitWithdrawalParticipantCombo(Dictionary<string, Color> participants)
+        {
+            withdrawalParticipantCombo.Items.Clear();
+            withdrawalParticipantCombo.Items.AddRange(participants.Keys.ToArray());
         }
 
         private void LoadOldGames()
@@ -112,7 +128,16 @@ namespace Randomizer
         private string GetTriggerPlayer()
         {
             var selected = "";
-            selected = teamBox.Controls.OfType<RadioButton>().First(x => x.Checked).Text;
+            try
+            {
+                selected = teamBox.Controls.OfType<RadioButton>().First(x => x.Checked).Text;
+                infoLabel.Text = "";
+            }
+            catch (Exception)
+            {
+                infoLabel.Text = "Vælg en spiller";
+            }
+            
 
             return selected;
         }
@@ -162,7 +187,7 @@ namespace Randomizer
             {
                 var playerAffectedValue = playerAffected.Presentation;
                 playerAffectedValue = string.IsNullOrEmpty(playerAffectedValue) ? "" : playerAffectedValue;
-                var updateRadio = teamBox.Controls.OfType<RadioButton>().First(x => x.Name == playerAffectedValue);
+                var updateRadio = teamBox.Controls.OfType<RadioButton>().First(x => x.Name.ToLower() == playerAffectedValue.Replace(" ", "").ToLower());
                 updateRadio.Text = this.richTextBox1.Text;
             }
         }
@@ -185,22 +210,22 @@ namespace Randomizer
             }
 
             participants = GetParticipantsFromUI();
+            var matchId = int.Parse(this.matchIdLabel.Text);
 
             foreach (var participantTextBox in this.participantsPanel.Controls.OfType<TextBox>())
             {
                 if (!string.IsNullOrEmpty(participantTextBox.Text))
                     participants.Add(participantTextBox.Text, participantTextBox.BackColor);
             }
-
+            engine.SaveParticipants(participants, matchId);
             foreach (var playerRadio in this.teamBox.Controls.OfType<RadioButton>())
             {
                 players.Add(playerRadio.Text, Color.White);
             }
 
             if (participants.Count > 0)
-            {
-                playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>(), int.Parse(this.matchIdLabel.Text));
-                engine.SaveParticipants(participants);
+            {                
+                playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>(), matchId);
             }
             else
             {
@@ -208,6 +233,7 @@ namespace Randomizer
                 return;
             }
             UpdatePlayerColorsFromOwners(playersAndOwners);
+            InitWithdrawalParticipantCombo(participants);
             this.teamDistributionButton.Enabled = false;
         }
 
@@ -252,7 +278,38 @@ namespace Randomizer
         {
             foreach (var player in playersAndOwners.Keys)
             {
-                this.teamBox.Controls.OfType<RadioButton>().First(x => x.Text == player).BackColor = participants[playersAndOwners[player].ToUpper()];
+                this.teamBox.Controls.OfType<RadioButton>().First(x => x.Text == player).BackColor = participants[playersAndOwners[player]];
+            }
+        }
+
+        private void UpdateLeaderBoard()
+        {
+            foreach (var series in chart1.Series)
+            {
+                int lastY = 0;
+                try
+                {
+                    lastY = Convert.ToInt32(series.Points.Last().YValues.Last());
+                }
+                catch (Exception)
+                {
+                    lastY = 0;
+                }
+                
+                if (series.Name == "player1")
+                    player1Total.Text = participantTextBox1.Text + ": " + lastY;
+                else if (series.Name == "player2")
+                    player3Total.Text = participantTextBox2.Text + ": " + lastY;
+                else if (series.Name == "player3")
+                    player4Total.Text = participantTextBox3.Text + ": " + lastY;
+                else if (series.Name == "player4")
+                    player5Total.Text = participantTextBox4.Text + ": " + lastY;
+                else if (series.Name == "player5")
+                    player6Total.Text = participantTextBox5.Text + ": " + lastY;
+                else if (series.Name == "player6")
+                    player2Total.Text = participantTextBox6.Text + ": " + lastY;
+                else if (series.Name == "player7")
+                    player7Total.Text = participantTextBox7.Text + ": " + lastY;
             }
         }
 
@@ -331,37 +388,37 @@ namespace Randomizer
         #region DrinkOkClick Handlers
         private void player1DrinkOk_Click(object sender, EventArgs e)
         {
-            this.labelFaccio.Text = "";
+            this.labelDrinkPlayer1.Text = "";
         }
 
         private void player2DrinkOk_Click(object sender, EventArgs e)
         {
-            this.labelLeffo.Text = "";
+            this.labelDrinkPlayer2.Text = "";
         }
 
         private void player3DrinkOk_Click(object sender, EventArgs e)
         {
-            this.labelNosser.Text = "";
+            this.labelDrinkPlayer3.Text = "";
         }
 
         private void player4DrinkOk_Click(object sender, EventArgs e)
         {
-            this.labelTarzan.Text = "";
+            this.labelDrinkPlayer4.Text = "";
         }
 
         private void player5DrinkOk_Click(object sender, EventArgs e)
         {
-            this.labelTennedz.Text = "";
+            this.labelDrinkPlayer5.Text = "";
         }
 
         private void player6DrinkOk_Click(object sender, EventArgs e)
         {
-            this.labelTrusser.Text = "";
+            this.labelDrinkPlayer6.Text = "";
         }
 
         private void player7DrinkOk_Click(object sender, EventArgs e)
         {
-            this.labelAallex.Text = "";
+            this.labelDrinkPlayer7.Text = "";
         }
         #endregion
 
@@ -378,21 +435,20 @@ namespace Randomizer
             }
             var saveGame = (SaveGame)loadGameComboBox.SelectedItem;
 
-            participants = GetParticipantsFromUI();
+            participants = engine.LoadParticipantsFromMatchId(saveGame.MatchId);
             LoadPlayersFromSaveGame(saveGame);
-            LoadAndSetOwnerColorsOnPlayers(saveGame);
             var playersAndOwners = GetPlayersAndOwners(saveGame);
             UpdatePlayerColorsFromOwners(playersAndOwners);
             matchIdLabel.Text = saveGame.MatchId.ToString();
             CalculateGraph("");
             progressBar.Value = saveGame.LatestEvent*60;
+            InitWithdrawalParticipantCombo(participants);
         }
 
         private void LoadPlayersFromSaveGame(SaveGame saveGame)
         {
             var players = engine.LoadPlayersFromSaveGame(saveGame);
             var participantsFlowPanels = participantsPanel.Controls.OfType<FlowLayoutPanel>();
-            //var player1Color = participantsFlowPanels.First().Controls.OfType<FlowLayoutPanel>().First(x => x.)
             foreach (var player in players)
             {
                 switch (player.PlayerIndex)
@@ -470,99 +526,94 @@ namespace Randomizer
             return engine.GetPlayersAndOwners(saveGame);
         }
 
-        private void LoadAndSetOwnerColorsOnPlayers(SaveGame saveGame)
-        {
-
-            
-
-        }
-
+        #region Send to bank
         private void bankButton1_Click(object sender, EventArgs e)
         {
             int drinksToTransfer = 0;
-            var measureText = labelFaccio.Text;
+            var measureText = labelDrinkPlayer1.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
             int currentBank = 0;
             int.TryParse(bankPlayer1.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
             this.bankPlayer1.Text = newBank.ToString();
-            this.labelFaccio.Text = "";
+            this.labelDrinkPlayer1.Text = "";
         }
 
         private void bankButton2_Click(object sender, EventArgs e)
         {
             int drinksToTransfer = 0;
-            var measureText = labelLeffo.Text;
+            var measureText = labelDrinkPlayer2.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
             int currentBank = 0;
             int.TryParse(bankPlayer2.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
             this.bankPlayer2.Text = newBank.ToString();
-            this.labelLeffo.Text = "";
+            this.labelDrinkPlayer2.Text = "";
         }
 
         private void bankButton3_Click(object sender, EventArgs e)
         {
             int drinksToTransfer = 0;
-            var measureText = labelNosser.Text;
+            var measureText = labelDrinkPlayer3.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
             int currentBank = 0;
             int.TryParse(bankPlayer3.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
             this.bankPlayer3.Text = newBank.ToString();
-            this.labelNosser.Text = "";
+            this.labelDrinkPlayer3.Text = "";
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             int drinksToTransfer = 0;
-            var measureText = labelTarzan.Text;
+            var measureText = labelDrinkPlayer4.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
             int currentBank = 0;
             int.TryParse(bankPlayer4.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
             this.bankPlayer4.Text = newBank.ToString();
-            this.labelTarzan.Text = "";
+            this.labelDrinkPlayer4.Text = "";
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
             //Tennedz
             int drinksToTransfer = 0;
-            var measureText = labelTennedz.Text;
+            var measureText = labelDrinkPlayer5.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
             int currentBank = 0;
             int.TryParse(bankPlayer5.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
             this.bankPlayer5.Text = newBank.ToString();
-            this.labelTennedz.Text = "";
+            this.labelDrinkPlayer5.Text = "";
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             //Trusser
             int drinksToTransfer = 0;
-            var measureText = labelTrusser.Text;
+            var measureText = labelDrinkPlayer6.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
             int currentBank = 0;
             int.TryParse(bankPlayer6.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
             this.bankPlayer6.Text = newBank.ToString();
-            this.labelTrusser.Text = "";
+            this.labelDrinkPlayer6.Text = "";
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             //AAllex
             int drinksToTransfer = 0;
-            var measureText = labelAallex.Text;
+            var measureText = labelDrinkPlayer7.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
             int currentBank = 0;
             int.TryParse(bankPlayer7.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
             this.bankPlayer7.Text = newBank.ToString();
-            this.labelAallex.Text = "";
+            this.labelDrinkPlayer7.Text = "";
         }
+        #endregion
 
         private int ParseLabelTextToDrinkSize(string measureText)
         {
@@ -570,7 +621,7 @@ namespace Randomizer
             {
                 return 1;
             }
-            else if (string.Compare(measureText, "mellem", true) == 0)
+            else if (string.Compare(measureText, "memmel", true) == 0)
             {
                 return 3;
             }
@@ -583,6 +634,54 @@ namespace Randomizer
                 return 11;
             }
             return 0;
+        }
+
+        private void withdrawalButton_Click(object sender, EventArgs e)
+        {
+            if (withdrawalParticipantCombo.SelectedItem == null || withdrawalMeasureCombo.SelectedItem == null)
+            {
+                infoLabel.Text = "Vælg en deltager OG en størrelse.";
+                return;
+            }
+            infoLabel.Text = "";
+            var selectedParticipant = withdrawalParticipantCombo.SelectedItem;
+            var selectedMeasure = (DbFacade.Measures)withdrawalMeasureCombo.SelectedItem;
+
+            if (selectedParticipant.ToString().Equals(participantTextBox1.Text))
+            {
+                int newBank = int.Parse(bankPlayer1.Text) - (int)selectedMeasure;
+                bankPlayer1.Text = newBank < 0 ? "0" : newBank.ToString();
+            }
+            else if (selectedParticipant.ToString().Equals(participantTextBox2.Text))
+            {
+                int newBank = int.Parse(bankPlayer2.Text) - (int)selectedMeasure;
+                bankPlayer2.Text = newBank < 0 ? "0" : newBank.ToString();
+            }
+            else if (selectedParticipant.ToString().Equals(participantTextBox3.Text))
+            {
+                int newBank = int.Parse(bankPlayer3.Text) - (int)selectedMeasure;
+                bankPlayer3.Text = newBank < 0 ? "0" : newBank.ToString();
+            }
+            else if (selectedParticipant.ToString().Equals(participantTextBox4.Text))
+            {
+                int newBank = int.Parse(bankPlayer4.Text) - (int)selectedMeasure;
+                bankPlayer4.Text = newBank < 0 ? "0" : newBank.ToString();
+            }
+            else if (selectedParticipant.ToString().Equals(participantTextBox5.Text))
+            {
+                int newBank = int.Parse(bankPlayer5.Text) - (int)selectedMeasure;
+                bankPlayer5.Text = newBank < 0 ? "0" : newBank.ToString();
+            }
+            else if (selectedParticipant.ToString().Equals(participantTextBox6.Text))
+            {
+                int newBank = int.Parse(bankPlayer6.Text) - (int)selectedMeasure;
+                bankPlayer6.Text = newBank < 0 ? "0" : newBank.ToString();
+            }
+            else if (selectedParticipant.ToString().Equals(participantTextBox7.Text))
+            {
+                int newBank = int.Parse(bankPlayer7.Text) - (int)selectedMeasure;
+                bankPlayer7.Text = newBank < 0 ? "0" : newBank.ToString();
+            }
         }
     }
 }

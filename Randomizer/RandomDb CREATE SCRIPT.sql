@@ -48,7 +48,8 @@ CREATE TABLE Graph (
 	ParticipantId INT FOREIGN KEY REFERENCES Participants (ParticipantId),
 	GameMinute INT,
 	MeasureZips INT,
-	EventNumber INT
+	EventNumber INT,
+	EventText VARCHAR(20)
 )
 
 CREATE TABLE Owners (
@@ -62,10 +63,11 @@ CREATE PROCEDURE [dbo].[CalculateGraph]
 @MatchId INT
 AS
 	BEGIN
-	SELECT ParticipantId, GameMinute, MeasureZips, SUM(MeasureZips) OVER(PARTITION BY ParticipantId ORDER BY ParticipantId, GameMinute) AS CurrentTotal
+	SELECT ParticipantId, GameMinute, MeasureZips, EventText, SUM(MeasureZips) OVER(PARTITION BY ParticipantId ORDER BY ParticipantId, GameMinute) AS CurrentTotal
 	FROM Graph
 	WHERE MatchId = @MatchId
-	GROUP BY ParticipantId, GameMinute, MeasureZips
+	AND ParticipantId IS NOT NULL
+	GROUP BY ParticipantId, GameMinute, MeasureZips, EventText
 	END
 GO
 
@@ -111,7 +113,8 @@ CREATE PROCEDURE [dbo].[LogRandomizingOutcomeToGraph]
 @OwnerName VARCHAR(100),
 @Zips INT,
 @Time INT,
-@EventNumber INT
+@EventNumber INT,
+@EventText VARCHAR(20)
 AS
 	BEGIN
 		DECLARE @ParticipantId INT
@@ -119,8 +122,8 @@ AS
 		FROM Owners O INNER JOIN Participants P ON O.ParticipantId = P.ParticipantId
 		WHERE O.MatchId = @MatchId AND P.Name = @OwnerName
 
-		INSERT INTO Graph (MatchId, ParticipantId, MeasureZips, GameMinute, EventNumber)
-		VALUES (@MatchId, @ParticipantId, @Zips, @Time, @EventNumber)
+		INSERT INTO Graph (MatchId, ParticipantId, MeasureZips, GameMinute, EventNumber, EventText)
+		VALUES (@MatchId, @ParticipantId, @Zips, @Time, @EventNumber, @EventText)
 	END
 GO
 
@@ -161,15 +164,14 @@ GO
 
 --select * from Participants
 
---DROP TABLE Measures
---DROP TABLE MatchLog
---DROP TABLE Graph
---DROP TABLE Owners
---DROP TABLE Players
---DROP TABLE Matches
---DROP TABLE Events
---DROP TABLE Teams
---DROP TABLE Participants
+DROP TABLE Measures
+DROP TABLE MatchLog
+DROP TABLE Graph
+DROP TABLE Owners
+DROP TABLE Players
+DROP TABLE Matches
+DROP TABLE Events
+DROP TABLE Participants
 
 --DROP PROCEDURE CalculateGraph
 --DROP PROCEDURE UndoLatest
@@ -183,3 +185,12 @@ GO
 --select * from graph where matchid = 'e-q'
 
 --select * from participants
+
+
+	SELECT ParticipantId, GameMinute, MeasureZips, EventText, SUM(MeasureZips) OVER(PARTITION BY ParticipantId ORDER BY ParticipantId, GameMinute) AS CurrentTotal
+	FROM Graph
+	WHERE MatchId = 6
+	GROUP BY ParticipantId, GameMinute, MeasureZips, EventText
+
+
+	select * from matches
