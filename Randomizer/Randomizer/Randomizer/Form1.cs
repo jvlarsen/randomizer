@@ -18,15 +18,15 @@ namespace Randomizer
     {
         RandomizerEngine engine;
         Dictionary<string, Color> participants;
-        Dictionary<string, Color> players;
-        Dictionary<string, string> playersAndOwners;
+        List<Player> players;
+        Dictionary<Player, string> playersAndOwners;
 
         public Form1()
         {
             InitializeComponent();
             engine = new RandomizerEngine();
             PlayerRadiosInit();
-            playersAndOwners = new Dictionary<string, string>();
+            playersAndOwners = new Dictionary<Player, string>();
             CalculateGraph("");
             LoadOldGames();
             InitWithdrawalMeasureCombo();
@@ -41,13 +41,13 @@ namespace Randomizer
             if (String.IsNullOrEmpty(this.matchIdLabel.Text))
                 return;
 
-            var matchId = int.Parse(this.matchIdLabel.Text);
+            var matchId = GetMatchId();
 
             if (ValidateInput(playerSelected, eventFired))
             {
                 //returned Dictionary<string, string> with <loserName, measure>
                 int gameMinute = (this.progressBar.Value/60)+1;
-                randomizerOutcome = engine.Randomize(playerSelected, eventFired, playersAndOwners, matchId, gameMinute);
+                randomizerOutcome = engine.Randomize(playerSelected, eventFired, matchId, gameMinute);
             }
 
             foreach (KeyValuePair<string, Randomizer.RandomizerEngine.MeasureName> loserZips in randomizerOutcome)
@@ -72,6 +72,13 @@ namespace Randomizer
             UpdateLeaderBoard();
         }
 
+        private int GetMatchId()
+        {
+            var matchId = 0;
+            int.TryParse(matchIdLabel.Text, out matchId);
+            return matchId;
+        }
+
         private bool ValidateInput(string player, string eventFired)
         {
             return !(string.IsNullOrEmpty(player) || (string.IsNullOrEmpty(eventFired)));
@@ -92,11 +99,11 @@ namespace Randomizer
         private void PlayerRadiosInit()
         {
             var rdoBtn = "radioButton";
-            for (int i = 1; i < 12; i++)
+            for (int i = 1; i < 11; i++)
             {
                 this.playerEditComboBox.Items.Add(new ComboItem("Home Player " + i, rdoBtn + i));
             }
-            for (int i = 1; i < 12; i++)
+            for (int i = 1; i < 11; i++)
             {
                 this.playerEditComboBox.Items.Add(new ComboItem("Away Player " + i, rdoBtn + (i + 11)));
             }
@@ -189,7 +196,9 @@ namespace Randomizer
                 playerAffectedValue = string.IsNullOrEmpty(playerAffectedValue) ? "" : playerAffectedValue;
                 var updateRadio = teamBox.Controls.OfType<RadioButton>().First(x => x.Name.ToLower() == playerAffectedValue.Replace(" ", "").ToLower());
                 updateRadio.Text = this.richTextBox1.Text;
+                engine.UpdatePlayerName(updateRadio.Text, updateRadio.Name, GetMatchId());
             }
+            
         }
 
         private void submitNewPlayerName(object sender, EventArgs e)
@@ -201,7 +210,7 @@ namespace Randomizer
         {
             ClearInfoLabel();
             participants = new Dictionary<string, Color>();
-            players = new Dictionary<string, Color>();
+            players = new List<Player>();
 
             if (string.IsNullOrEmpty(this.gameNameLabel.Text))
             {
@@ -210,7 +219,7 @@ namespace Randomizer
             }
 
             participants = GetParticipantsFromUI();
-            var matchId = int.Parse(this.matchIdLabel.Text);
+            var matchId = GetMatchId();
 
             foreach (var participantTextBox in this.participantsPanel.Controls.OfType<TextBox>())
             {
@@ -220,12 +229,12 @@ namespace Randomizer
             engine.SaveParticipants(participants, matchId);
             foreach (var playerRadio in this.teamBox.Controls.OfType<RadioButton>())
             {
-                players.Add(playerRadio.Text, Color.White);
+                players.Add(new Player { Name = playerRadio.Text, radioColor = Color.White, radioButton = playerRadio.Name });
             }
 
             if (participants.Count > 0)
             {                
-                playersAndOwners = engine.DistributeTeams(players.Keys.ToList<string>(), participants.Keys.ToList<string>(), matchId);
+                playersAndOwners = engine.DistributeTeams(players, participants.Keys.ToList<string>(), matchId);
             }
             else
             {
@@ -274,11 +283,11 @@ namespace Randomizer
 
         #endregion
 
-        private void UpdatePlayerColorsFromOwners(Dictionary<string, string> playersAndOwners)
+        private void UpdatePlayerColorsFromOwners(Dictionary<Player, string> playersAndOwners)
         {
             foreach (var player in playersAndOwners.Keys)
             {
-                this.teamBox.Controls.OfType<RadioButton>().First(x => x.Text == player).BackColor = participants[playersAndOwners[player]];
+                this.teamBox.Controls.OfType<RadioButton>().First(x => x.Text == player.Name).BackColor = participants[playersAndOwners[player]];
             }
         }
 
@@ -299,15 +308,15 @@ namespace Randomizer
                 if (series.Name == "player1")
                     player1Total.Text = participantTextBox1.Text + ": " + lastY;
                 else if (series.Name == "player2")
-                    player3Total.Text = participantTextBox2.Text + ": " + lastY;
+                    player2Total.Text = participantTextBox2.Text + ": " + lastY;
                 else if (series.Name == "player3")
-                    player4Total.Text = participantTextBox3.Text + ": " + lastY;
+                    player3Total.Text = participantTextBox3.Text + ": " + lastY;
                 else if (series.Name == "player4")
-                    player5Total.Text = participantTextBox4.Text + ": " + lastY;
+                    player4Total.Text = participantTextBox4.Text + ": " + lastY;
                 else if (series.Name == "player5")
-                    player6Total.Text = participantTextBox5.Text + ": " + lastY;
+                    player5Total.Text = participantTextBox5.Text + ": " + lastY;
                 else if (series.Name == "player6")
-                    player2Total.Text = participantTextBox6.Text + ": " + lastY;
+                    player6Total.Text = participantTextBox6.Text + ": " + lastY;
                 else if (series.Name == "player7")
                     player7Total.Text = participantTextBox7.Text + ": " + lastY;
             }
@@ -348,24 +357,21 @@ namespace Randomizer
         {
             ClearAllSeries();
 
-            int matchId; 
-            var matchIdSet = int.TryParse(this.matchIdLabel.Text, out matchId);
+            var matchId = GetMatchId();
 
-            if (matchIdSet)
+            var calculatedPoints = engine.CalculateGraph(matchId);
+
+            for (int i = 0; i < calculatedPoints.Keys.Count; i++) //Iterates the participants
             {
-                var calculatedPoints = engine.CalculateGraph(matchId);
+                var minutesAndMeasures = calculatedPoints.ElementAt(i).Value;
 
-                for (int i = 0; i < calculatedPoints.Keys.Count; i++) //Iterates the participants
+                for (int j = 0; j < minutesAndMeasures.Count; j++)
                 {
-                    var minutesAndMeasures = calculatedPoints.ElementAt(i).Value;
-
-                    for (int j = 0; j < minutesAndMeasures.Count; j++)
-                    {
-                        var index = chart1.Series[i].Points.AddXY(minutesAndMeasures[j].XPoint, minutesAndMeasures[j].YPoint);
-                        chart1.Series[i].Points[index].AxisLabel = minutesAndMeasures[j].EventName;
-                    }
+                    var index = chart1.Series[i].Points.AddXY(minutesAndMeasures[j].XPoint, minutesAndMeasures[j].YPoint);
+                    chart1.Series[i].Points[index].AxisLabel = minutesAndMeasures[j].EventName;
                 }
             }
+            
             chart1.Visible = true;
             chart1.Show();
         }
@@ -521,7 +527,7 @@ namespace Randomizer
             }
         }
 
-        private Dictionary<string, string> GetPlayersAndOwners(SaveGame saveGame)
+        private Dictionary<Player, string> GetPlayersAndOwners(SaveGame saveGame)
         {
             return engine.GetPlayersAndOwners(saveGame);
         }

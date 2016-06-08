@@ -11,14 +11,16 @@ namespace Randomizer.Entities
         public string Name { get; set; }
         public Measure Measure { get; set; }
         public string SoundUrl { get; set; }
+        public string RefereeSoundUrl { get; set; }
 
         public Event() { }
 
-        public Event(string name, Measure measure, string soundUrl)
+        public Event(string name, Measure measure, string soundUrl, string refereeSoundUrl)
         {
             Name = name;
             Measure = measure;
             SoundUrl = soundUrl;
+            RefereeSoundUrl = refereeSoundUrl;
         }
     }
 }

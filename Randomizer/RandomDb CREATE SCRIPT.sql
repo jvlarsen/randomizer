@@ -1,21 +1,18 @@
 use RandomDb
 
-
-CREATE TABLE Participants
-(
-	ParticipantId INT IDENTITY PRIMARY KEY,
-	Name VARCHAR(100),
-	Red INT,
-	Green INT,
-	Blue INT,
-	MatchId INT REFERENCES Matches (MatchId)
-)
-
 CREATE TABLE Matches
 (
 	MatchId INT IDENTITY(1,1) PRIMARY KEY,
 	TeamNames VARCHAR(100),
 	Created DATETIME DEFAULT GETDATE()
+)
+
+CREATE TABLE Participants
+(
+	ParticipantId INT IDENTITY PRIMARY KEY,
+	Name VARCHAR(100),
+	Color INT,
+	MatchId INT REFERENCES Matches (MatchId)
 )
 
 CREATE TABLE Players
@@ -24,14 +21,16 @@ CREATE TABLE Players
 	Name VARCHAR(100),
 	Number INT,
 	MatchId INT REFERENCES dbo.Matches (MatchId),
-	PlayerIndex INT
+	PlayerIndex INT,
+	RadioButton VARCHAR(50)
 )
 
 CREATE TABLE Events
 (
-	EventName VARCHAR(20) PRIMARY KEY,
+	EventName VARCHAR(50) PRIMARY KEY,
 	Measure VARCHAR(20),
-	SoundClipUrl VARCHAR(300) DEFAULT ''
+	SoundClipUrl VARCHAR(300) DEFAULT '',
+	RefereeSoundClip VARCHAR(300) DEFAULT ''
 )
 
 CREATE TABLE Measures
@@ -148,49 +147,66 @@ AS
 	END
 GO
 
---select top 5 * from owners
---select top 5 * from Participants
---select top 5 * from Players
+CREATE PROCEDURE [dbo].[SaveParticipants]
+@MatchId INT,
+@Name VARCHAR(100),
+@Color INT
+AS
+	BEGIN
+		INSERT INTO Participants (Name, Color, MatchId)
+		VALUES (@Name, @Color, @MatchId)
+	END
+GO
 
---ALTER TABLE Matches ADD MatchId INT
+CREATE PROCEDURE GetParticipantsFromMatchId
+@MatchId INT
+AS
+	BEGIN
+		SELECT Name, Color FROM Participants WHERE MatchId = @MatchId
+	END
+GO
 
---delete graph
---delete Owners
---delete Players
---delete matches
---select * from graph
+--DROP PROCEDURE UpdatePlayerName
+CREATE PROCEDURE [dbo].[UpdatePlayerName]
+@NewPlayerName VARCHAR(100),
+@RadioButton VARCHAR(50),
+@MatchId INT
+AS
+	BEGIN
+		UPDATE Players SET Name = @NewPlayerName WHERE RadioButton = @RadioButton AND MatchId = @MatchId
+	END
+GO
 
---select * from matches
-
---select * from Participants
-
-DROP TABLE Measures
-DROP TABLE MatchLog
-DROP TABLE Graph
-DROP TABLE Owners
-DROP TABLE Players
-DROP TABLE Matches
-DROP TABLE Events
-DROP TABLE Participants
+--DROP TABLE Measures
+--DROP TABLE Graph
+--DROP TABLE Owners
+--DROP TABLE Players
+--DROP TABLE Events
+--DROP TABLE Participants
+--DROP TABLE Matches
 
 --DROP PROCEDURE CalculateGraph
 --DROP PROCEDURE UndoLatest
 --DROP PROCEDURE MapPlayerToOwner
---DROP PROCEDURE GetOwnerFromPlayer
+--DROP PROCEDURE GetOwnerFromPlayerAndGame
 --DROP PROCEDURE LogRandomizingOutcomeToGraph
 --DROP PROCEDURE GetPlayersAndOwners
 --DROP PROCEDURE GetOldGames
+--DROP PROCEDURE SaveParticipants
 
 
---select * from graph where matchid = 'e-q'
+exec CalculateGraph 1
 
---select * from participants
+select * from Participants
+
+select * from owners
+select * from Events
+
+select * from graph where matchid = 15
+
+exec GetPlayersAndOwners 15
 
 
-	SELECT ParticipantId, GameMinute, MeasureZips, EventText, SUM(MeasureZips) OVER(PARTITION BY ParticipantId ORDER BY ParticipantId, GameMinute) AS CurrentTotal
-	FROM Graph
-	WHERE MatchId = 6
-	GROUP BY ParticipantId, GameMinute, MeasureZips, EventText
+select * from measures
 
-
-	select * from matches
+select * from players where matchid = 31

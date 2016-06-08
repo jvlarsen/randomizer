@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Media;
 using System.Drawing;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Randomizer
 {
@@ -25,7 +26,7 @@ namespace Randomizer
             measures = dbFacade.GetMeasures();
         }
 
-        public Dictionary<string, MeasureName> Randomize(string triggerPlayerName, string eventNameFired, Dictionary<string, string> playersAndOwners, int matchId, int gameMinute)
+        public Dictionary<string, MeasureName> Randomize(string triggerPlayerName, string eventNameFired, int matchId, int gameMinute)
         {
             Participant ownerOfTriggerPlayer = dbFacade.GetOwnerFromPlayerName(triggerPlayerName, matchId);
             Event eventFired = events.FirstOrDefault(x => x.Name.ToLower() == eventNameFired.ToLower());
@@ -44,7 +45,15 @@ namespace Randomizer
             }
             Dictionary<string, MeasureName> randomizerOutcome = new Dictionary<string, MeasureName>();
 
-            var soundPlayer = new SoundPlayer(eventFired.SoundUrl);
+            SoundPlayer soundPlayer;
+            if (triggerPlayerName.Equals("Referee"))
+            {
+                soundPlayer = new SoundPlayer(eventFired.RefereeSoundUrl);
+            }
+            else
+            {
+                soundPlayer = new SoundPlayer(eventFired.SoundUrl);
+            }
             soundPlayer.Play();
 
             var random = new Random();
@@ -97,10 +106,10 @@ namespace Randomizer
             Walter = 11
         }
 
-        public Dictionary<string, string> DistributeTeams(List<string> players, List<string> participants, int matchId)
+        public Dictionary<Player, string> DistributeTeams(List<Player> players, List<string> participants, int matchId)
         {
             var countParticipants = participants.Count;
-            var playersAndOwners = new Dictionary<string, string>();
+            var playersAndOwners = new Dictionary<Player, string>();
             var random = new Random();
             var index = 0;
             var startIndex = random.Next(countParticipants);
@@ -111,7 +120,7 @@ namespace Randomizer
                 if (players.Count == 1)
                     index = 0;
                 else
-                { 
+                {
                     index = random.Next(players.Count - 1);
                 }
                 var selectedPlayer = players.ElementAt(index);
@@ -128,6 +137,11 @@ namespace Randomizer
             var shuffledList = new Dictionary<string, string>();
 
             return shuffledList;
+        }
+
+        public void UpdatePlayerName(string name, string radioButton, int matchId)
+        {
+            dbFacade.UpdatePlayerName(name, radioButton, matchId);
         }
 
         public void SaveParticipants(Dictionary<string, Color> participantNames, int matchId)
@@ -170,7 +184,7 @@ namespace Randomizer
             return dbFacade.LoadParticipantsFromMatchId(matchId);
         }
 
-        public Dictionary<string, string> GetPlayersAndOwners(SaveGame saveGame)
+        public Dictionary<Player, string> GetPlayersAndOwners(SaveGame saveGame)
         {
             return dbFacade.GetPlayersAndOwners(saveGame);
         }

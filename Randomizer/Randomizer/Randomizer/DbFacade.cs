@@ -64,7 +64,7 @@ namespace Randomizer
             while (reader.Read())
             {
                 var currentMeasure = measures.First(x => x.Name == (string)reader["Measure"]);
-                events.Add(new Event((string)reader["EventName"], currentMeasure, (string)reader["SoundClipUrl"]));
+                events.Add(new Event((string)reader["EventName"], currentMeasure, (string)reader["SoundClipUrl"], (string)reader["RefereeSoundClip"]));
             }
             reader.Close();
             CloseConn();
@@ -137,14 +137,14 @@ namespace Randomizer
         //    return participants.First(x => x.Name == participantName);
         //}
 
-        public void SaveDistribution(Dictionary<string, string> playersAndOwners, int matchId)
+        public void SaveDistribution(Dictionary<Player, string> playersAndOwners, int matchId)
         {
             for (int i = 0; i < playersAndOwners.Keys.Count; i++)
             {
-                SavePlayer(playersAndOwners.ElementAt(i).Key, matchId, i);
+                SavePlayer(playersAndOwners.Keys.ElementAt(i), matchId);
             }
             OpenConn();
-            foreach (KeyValuePair<string, string> playerOwner in playersAndOwners)
+            foreach (KeyValuePair<Player, string> playerOwner in playersAndOwners)
             {
                 
                 var cmd = conn.CreateCommand();
@@ -157,7 +157,7 @@ namespace Randomizer
 
                 SqlParameter playerName = new SqlParameter("@playerName", SqlDbType.VarChar);
                 cmd.Parameters.Add(playerName);
-                cmd.Parameters["@playerName"].Value = playerOwner.Key;
+                cmd.Parameters["@playerName"].Value = playerOwner.Key.Name;
 
                 SqlParameter ownerName = new SqlParameter("@ownerName", SqlDbType.VarChar);
                 cmd.Parameters.Add(ownerName);
@@ -200,11 +200,34 @@ namespace Randomizer
             }
         }
 
-        public void SavePlayer(string playerName, int matchId, int playerIndex)
+        public void SavePlayer(Player player, int matchId)
         {
             OpenConn();
             var cmd = conn.CreateCommand();
-            cmd.CommandText = "INSERT INTO Players (Name, MatchId, PlayerIndex) VALUES (\'" + playerName + "\', " + matchId + ", " + playerIndex + ")";
+            cmd.CommandText = "INSERT INTO Players (Name, MatchId, PlayerIndex, RadioButton) VALUES (\'" + player.Name + "\', " + matchId + ", " + player.PlayerIndex + ", '" + player.radioButton + "')";
+            cmd.ExecuteNonQuery();
+            CloseConn();
+        }
+
+        public void UpdatePlayerName(string name, string radioButton, int matchId)
+        {
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "UpdatePlayerName";
+
+            var playerNameParam = new SqlParameter("@NewPlayerName", SqlDbType.VarChar);
+            playerNameParam.Value = name;
+            cmd.Parameters.Add(playerNameParam);
+
+            var radioButtonParam = new SqlParameter("@RadioButton", SqlDbType.VarChar);
+            radioButtonParam.Value = radioButton;
+            cmd.Parameters.Add(radioButtonParam);
+
+            var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+            matchIdParam.Value = matchId;
+            cmd.Parameters.Add(matchIdParam);
+
             cmd.ExecuteNonQuery();
             CloseConn();
         }
@@ -340,9 +363,9 @@ namespace Randomizer
         //    return owner;
         //}
 
-        public Dictionary<string, string> GetPlayersAndOwners(SaveGame saveGame)
+        public Dictionary<Player, string> GetPlayersAndOwners(SaveGame saveGame)
         {
-            var playersAndOwners = new Dictionary<string, string>();
+            var playersAndOwners = new Dictionary<Player, string>();
             OpenConn();
             var cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -356,7 +379,7 @@ namespace Randomizer
 
             while (reader.Read())
             {
-                playersAndOwners.Add((string)reader["PlayerName"], (string)reader["OwnerName"]);
+                playersAndOwners.Add(new Player { Name = (string)reader["PlayerName"] }, (string)reader["OwnerName"]);
             }
             CloseConn();
             return playersAndOwners;

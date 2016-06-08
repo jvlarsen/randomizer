@@ -485,10 +485,10 @@ namespace Randomizer
             this.radioButton36.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton36.Location = new System.Drawing.Point(7, 332);
             this.radioButton36.Name = "radioButton36";
-            this.radioButton36.Size = new System.Drawing.Size(107, 29);
+            this.radioButton36.Size = new System.Drawing.Size(185, 29);
             this.radioButton36.TabIndex = 13;
             this.radioButton36.TabStop = true;
-            this.radioButton36.Text = "Rødt kort";
+            this.radioButton36.Text = "Rødt kort / Skadet";
             this.radioButton36.UseVisualStyleBackColor = true;
             // 
             // radioButton35
@@ -509,10 +509,10 @@ namespace Randomizer
             this.radioButton34.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(4)));
             this.radioButton34.Location = new System.Drawing.Point(7, 284);
             this.radioButton34.Name = "radioButton34";
-            this.radioButton34.Size = new System.Drawing.Size(100, 29);
+            this.radioButton34.Size = new System.Drawing.Size(256, 29);
             this.radioButton34.TabIndex = 11;
             this.radioButton34.TabStop = true;
-            this.radioButton34.Text = "Selvmål";
+            this.radioButton34.Text = "Selvmål / Rammes af bold";
             this.radioButton34.UseVisualStyleBackColor = true;
             // 
             // radioButton33
@@ -521,10 +521,10 @@ namespace Randomizer
             this.radioButton33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton33.Location = new System.Drawing.Point(7, 260);
             this.radioButton33.Name = "radioButton33";
-            this.radioButton33.Size = new System.Drawing.Size(126, 29);
+            this.radioButton33.Size = new System.Drawing.Size(197, 29);
             this.radioButton33.TabIndex = 10;
             this.radioButton33.TabStop = true;
-            this.radioButton33.Text = "Udskiftning";
+            this.radioButton33.Text = "Udskiftning / Falder";
             this.radioButton33.UseVisualStyleBackColor = true;
             // 
             // radioButton32
@@ -533,10 +533,10 @@ namespace Randomizer
             this.radioButton32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton32.Location = new System.Drawing.Point(7, 236);
             this.radioButton32.Name = "radioButton32";
-            this.radioButton32.Size = new System.Drawing.Size(102, 29);
+            this.radioButton32.Size = new System.Drawing.Size(177, 29);
             this.radioButton32.TabIndex = 9;
             this.radioButton32.TabStop = true;
-            this.radioButton32.Text = "Gult kort";
+            this.radioButton32.Text = "Gult kort / 2H 3-4";
             this.radioButton32.UseVisualStyleBackColor = true;
             // 
             // radioButton31
@@ -545,10 +545,10 @@ namespace Randomizer
             this.radioButton31.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton31.Location = new System.Drawing.Point(7, 212);
             this.radioButton31.Name = "radioButton31";
-            this.radioButton31.Size = new System.Drawing.Size(150, 29);
+            this.radioButton31.Size = new System.Drawing.Size(426, 29);
             this.radioButton31.TabIndex = 8;
             this.radioButton31.TabStop = true;
-            this.radioButton31.Text = "Begået straffe";
+            this.radioButton31.Text = "Begået straffe / Konfererer med meddommere";
             this.radioButton31.UseVisualStyleBackColor = true;
             // 
             // radioButton30
@@ -581,10 +581,10 @@ namespace Randomizer
             this.radioButton28.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton28.Location = new System.Drawing.Point(7, 140);
             this.radioButton28.Name = "radioButton28";
-            this.radioButton28.Size = new System.Drawing.Size(92, 29);
+            this.radioButton28.Size = new System.Drawing.Size(180, 29);
             this.radioButton28.TabIndex = 5;
             this.radioButton28.TabStop = true;
-            this.radioButton28.Text = "Offside";
+            this.radioButton28.Text = "Offside / 1H 2min";
             this.radioButton28.UseVisualStyleBackColor = true;
             // 
             // radioButton27
@@ -605,10 +605,10 @@ namespace Randomizer
             this.radioButton26.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton26.Location = new System.Drawing.Point(7, 92);
             this.radioButton26.Name = "radioButton26";
-            this.radioButton26.Size = new System.Drawing.Size(135, 29);
+            this.radioButton26.Size = new System.Drawing.Size(416, 29);
             this.radioButton26.TabIndex = 3;
             this.radioButton26.TabStop = true;
-            this.radioButton26.Text = "Hjørne taget";
+            this.radioButton26.Text = "Hjørne taget / 1H 0-1min / 2H 0-2min / 2H 5+";
             this.radioButton26.UseVisualStyleBackColor = true;
             // 
             // radioButton25
@@ -617,10 +617,10 @@ namespace Randomizer
             this.radioButton25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton25.Location = new System.Drawing.Point(7, 68);
             this.radioButton25.Name = "radioButton25";
-            this.radioButton25.Size = new System.Drawing.Size(227, 29);
+            this.radioButton25.Size = new System.Drawing.Size(375, 29);
             this.radioButton25.TabIndex = 2;
             this.radioButton25.TabStop = true;
-            this.radioButton25.Text = "Skud indenfor rammen";
+            this.radioButton25.Text = "Skud på mål / 1H 3+ / Dikterer placering";
             this.radioButton25.UseVisualStyleBackColor = true;
             // 
             // radioButton24
@@ -629,10 +629,10 @@ namespace Randomizer
             this.radioButton24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton24.Location = new System.Drawing.Point(7, 44);
             this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(83, 29);
+            this.radioButton24.Size = new System.Drawing.Size(394, 29);
             this.radioButton24.TabIndex = 1;
             this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "Assist";
+            this.radioButton24.Text = "Assist / Skiller folk / Reprimande uden kort";
             this.radioButton24.UseVisualStyleBackColor = true;
             // 
             // radioButton23
@@ -641,10 +641,10 @@ namespace Randomizer
             this.radioButton23.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton23.Location = new System.Drawing.Point(7, 20);
             this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(90, 29);
+            this.radioButton23.Size = new System.Drawing.Size(295, 29);
             this.radioButton23.TabIndex = 0;
             this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "MÅL!!!";
+            this.radioButton23.Text = "MÅL!!! / Korrekt annulleret mål";
             this.radioButton23.UseVisualStyleBackColor = true;
             // 
             // randomizeButton
@@ -1389,7 +1389,7 @@ namespace Randomizer
             this.player3Total.Name = "player3Total";
             this.player3Total.Size = new System.Drawing.Size(132, 25);
             this.player3Total.TabIndex = 39;
-            this.player3Total.Text = "Player 2 Total";
+            this.player3Total.Text = "Player 3 Total";
             // 
             // player4Total
             // 
@@ -1400,7 +1400,7 @@ namespace Randomizer
             this.player4Total.Name = "player4Total";
             this.player4Total.Size = new System.Drawing.Size(132, 25);
             this.player4Total.TabIndex = 40;
-            this.player4Total.Text = "Player 2 Total";
+            this.player4Total.Text = "Player 4 Total";
             // 
             // player5Total
             // 
@@ -1411,7 +1411,7 @@ namespace Randomizer
             this.player5Total.Name = "player5Total";
             this.player5Total.Size = new System.Drawing.Size(132, 25);
             this.player5Total.TabIndex = 41;
-            this.player5Total.Text = "Player 2 Total";
+            this.player5Total.Text = "Player 5 Total";
             // 
             // player6Total
             // 
@@ -1423,7 +1423,7 @@ namespace Randomizer
             this.player6Total.Name = "player6Total";
             this.player6Total.Size = new System.Drawing.Size(132, 25);
             this.player6Total.TabIndex = 42;
-            this.player6Total.Text = "Player 2 Total";
+            this.player6Total.Text = "Player 6 Total";
             // 
             // player2Total
             // 
@@ -1445,7 +1445,7 @@ namespace Randomizer
             this.player7Total.Name = "player7Total";
             this.player7Total.Size = new System.Drawing.Size(132, 25);
             this.player7Total.TabIndex = 44;
-            this.player7Total.Text = "Player 2 Total";
+            this.player7Total.Text = "Player 7 Total";
             // 
             // totalHeaderLabel
             // 
