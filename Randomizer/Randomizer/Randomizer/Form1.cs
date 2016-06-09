@@ -30,6 +30,7 @@ namespace Randomizer
             CalculateGraph("");
             LoadOldGames();
             InitWithdrawalMeasureCombo();
+            PlayOpeningTheme();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,6 +71,12 @@ namespace Randomizer
 
             CalculateGraph(eventFired);
             UpdateLeaderBoard();
+        }
+
+        private void PlayOpeningTheme()
+        {
+            var soundPlayer = new SoundPlayer("D:\\Arbejde\\randomizer\\Randomizer\\RandomizerSounds\\olympics.wav");
+            soundPlayer.Play();
         }
 
         private int GetMatchId()
@@ -287,7 +294,9 @@ namespace Randomizer
         {
             foreach (var player in playersAndOwners.Keys)
             {
-                this.teamBox.Controls.OfType<RadioButton>().First(x => x.Text == player.Name).BackColor = participants[playersAndOwners[player]];
+                var affectedRadio = this.teamBox.Controls.OfType<RadioButton>().First(x => x.Name == player.radioButton);
+                affectedRadio.BackColor = participants[playersAndOwners[player]];
+                affectedRadio.Text = player.Name;
             }
         }
 
@@ -371,7 +380,6 @@ namespace Randomizer
                     chart1.Series[i].Points[index].AxisLabel = minutesAndMeasures[j].EventName;
                 }
             }
-            
             chart1.Visible = true;
             chart1.Show();
         }
@@ -447,7 +455,7 @@ namespace Randomizer
             UpdatePlayerColorsFromOwners(playersAndOwners);
             matchIdLabel.Text = saveGame.MatchId.ToString();
             CalculateGraph("");
-            progressBar.Value = saveGame.LatestEvent*60;
+            progressBar.Value = saveGame.ProgressBarValue*60;
             InitWithdrawalParticipantCombo(participants);
         }
 
@@ -655,39 +663,46 @@ namespace Randomizer
 
             if (selectedParticipant.ToString().Equals(participantTextBox1.Text))
             {
-                int newBank = int.Parse(bankPlayer1.Text) - (int)selectedMeasure;
+                int newBank = GetNewBank(bankPlayer1.Text, (int)selectedMeasure);
                 bankPlayer1.Text = newBank < 0 ? "0" : newBank.ToString();
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox2.Text))
             {
-                int newBank = int.Parse(bankPlayer2.Text) - (int)selectedMeasure;
+                int newBank = GetNewBank(bankPlayer2.Text, (int)selectedMeasure);
                 bankPlayer2.Text = newBank < 0 ? "0" : newBank.ToString();
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox3.Text))
             {
-                int newBank = int.Parse(bankPlayer3.Text) - (int)selectedMeasure;
+                int newBank = GetNewBank(bankPlayer3.Text, (int)selectedMeasure);
                 bankPlayer3.Text = newBank < 0 ? "0" : newBank.ToString();
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox4.Text))
             {
-                int newBank = int.Parse(bankPlayer4.Text) - (int)selectedMeasure;
+                int newBank = GetNewBank(bankPlayer4.Text, (int)selectedMeasure);
                 bankPlayer4.Text = newBank < 0 ? "0" : newBank.ToString();
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox5.Text))
             {
-                int newBank = int.Parse(bankPlayer5.Text) - (int)selectedMeasure;
+                int newBank = GetNewBank(bankPlayer5.Text, (int)selectedMeasure);
                 bankPlayer5.Text = newBank < 0 ? "0" : newBank.ToString();
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox6.Text))
             {
-                int newBank = int.Parse(bankPlayer6.Text) - (int)selectedMeasure;
+                int newBank = GetNewBank(bankPlayer6.Text, (int)selectedMeasure);
                 bankPlayer6.Text = newBank < 0 ? "0" : newBank.ToString();
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox7.Text))
             {
-                int newBank = int.Parse(bankPlayer7.Text) - (int)selectedMeasure;
+                int newBank = GetNewBank(bankPlayer7.Text, (int)selectedMeasure);
                 bankPlayer7.Text = newBank < 0 ? "0" : newBank.ToString();
             }
+        }
+
+        private int GetNewBank(string currentBank, int selectedMeasure)
+        {
+            var currentBankInt = 0;
+            var numericBank = int.TryParse(currentBank, out currentBankInt) ? currentBankInt : 0;
+            return numericBank - selectedMeasure < 0 ? 0 : numericBank - selectedMeasure;
         }
     }
 }

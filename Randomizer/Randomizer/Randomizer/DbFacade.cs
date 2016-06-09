@@ -269,10 +269,12 @@ namespace Randomizer
                 var gameDate = (DateTime)reader["Created"];
                 var matchItem = reader["TeamNames"] + " (" + gameDate.ToShortDateString() + ")";
                 var latestEvent = (int)reader["LatestEvent"];
+                var progressBarValue = (int)reader["ProgressBarValue"];
                 var saveGame = new SaveGame(matchId);
                 saveGame.TeamNames = matchItem;
                 saveGame.GameDate = gameDate;
                 saveGame.LatestEvent = latestEvent;
+                saveGame.ProgressBarValue = progressBarValue;
                 saveGames.Add(saveGame);
             }
             CloseConn();
@@ -379,7 +381,7 @@ namespace Randomizer
 
             while (reader.Read())
             {
-                playersAndOwners.Add(new Player { Name = (string)reader["PlayerName"] }, (string)reader["OwnerName"]);
+                playersAndOwners.Add(new Player { Name = (string)reader["PlayerName"], radioButton = (string)reader["RadioButton"] }, (string)reader["OwnerName"]);
             }
             CloseConn();
             return playersAndOwners;

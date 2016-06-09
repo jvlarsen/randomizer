@@ -130,7 +130,7 @@ CREATE PROCEDURE [dbo].[GetPlayersAndOwners]
 @MatchId INT
 AS
 	BEGIN
-		SELECT PL.Name AS PlayerName, PL.PlayerIndex, PA.Name AS OwnerName
+		SELECT PL.Name AS PlayerName, PL.PlayerIndex, PA.Name AS OwnerName, PL.RadioButton
 		FROM Players PL INNER JOIN Owners O ON PL.PlayerId = O.PlayerId
 		INNER JOIN Participants PA ON O.ParticipantId = PA.ParticipantId
 		INNER JOIN Matches M ON O.MatchId = M.MatchId
@@ -141,7 +141,7 @@ GO
 CREATE PROCEDURE [dbo].[GetOldGames]
 AS
 	BEGIN
-		SELECT M.MatchId, M.TeamNames, M.Created, ISNULL(MAX(EventNumber),0) AS LatestEvent
+		SELECT M.MatchId, M.TeamNames, M.Created, ISNULL(MAX(EventNumber),0) AS LatestEvent, ISNULL(MAX(GameMinute),0) AS ProgressBarValue
 		FROM Matches M LEFT JOIN Graph G ON M.MatchId = G.MatchId
 		GROUP BY M.MatchId, M.TeamNames, M.Created
 	END

@@ -925,7 +925,6 @@ namespace Randomizer
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Color = System.Drawing.Color.Gray;
-            series1.IsValueShownAsLabel = true;
             series1.LabelForeColor = System.Drawing.Color.DimGray;
             series1.Legend = "Legend1";
             series1.Name = "player1";
@@ -933,7 +932,6 @@ namespace Randomizer
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Color = System.Drawing.Color.Fuchsia;
-            series2.IsValueShownAsLabel = true;
             series2.LabelForeColor = System.Drawing.Color.Violet;
             series2.Legend = "Legend1";
             series2.Name = "player2";
@@ -941,7 +939,6 @@ namespace Randomizer
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series3.IsValueShownAsLabel = true;
             series3.LabelForeColor = System.Drawing.Color.DarkRed;
             series3.Legend = "Legend1";
             series3.Name = "player3";
@@ -949,7 +946,6 @@ namespace Randomizer
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series4.IsValueShownAsLabel = true;
             series4.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             series4.Legend = "Legend1";
             series4.Name = "player4";
@@ -957,7 +953,6 @@ namespace Randomizer
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series5.Color = System.Drawing.Color.Aqua;
-            series5.IsValueShownAsLabel = true;
             series5.LabelForeColor = System.Drawing.Color.Aqua;
             series5.Legend = "Legend1";
             series5.Name = "player5";
@@ -965,7 +960,6 @@ namespace Randomizer
             series6.ChartArea = "ChartArea1";
             series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series6.Color = System.Drawing.Color.Blue;
-            series6.IsValueShownAsLabel = true;
             series6.LabelForeColor = System.Drawing.Color.Blue;
             series6.Legend = "Legend1";
             series6.Name = "player6";
@@ -973,7 +967,6 @@ namespace Randomizer
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series7.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            series7.IsValueShownAsLabel = true;
             series7.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             series7.Legend = "Legend1";
             series7.Name = "player7";
