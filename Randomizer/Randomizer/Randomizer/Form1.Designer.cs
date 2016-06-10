@@ -40,7 +40,6 @@ namespace Randomizer
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.teamBox = new System.Windows.Forms.GroupBox();
-            this.refereePlayer = new System.Windows.Forms.RadioButton();
             this.awayPlayer10 = new System.Windows.Forms.RadioButton();
             this.homePlayer10 = new System.Windows.Forms.RadioButton();
             this.homePlayer9 = new System.Windows.Forms.RadioButton();
@@ -176,7 +175,6 @@ namespace Randomizer
             // 
             // teamBox
             // 
-            this.teamBox.Controls.Add(this.refereePlayer);
             this.teamBox.Controls.Add(this.awayPlayer10);
             this.teamBox.Controls.Add(this.homePlayer10);
             this.teamBox.Controls.Add(this.homePlayer9);
@@ -203,18 +201,6 @@ namespace Randomizer
             this.teamBox.TabIndex = 5;
             this.teamBox.TabStop = false;
             this.teamBox.Text = "TeamBox";
-            // 
-            // refereePlayer
-            // 
-            this.refereePlayer.AutoSize = true;
-            this.refereePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.refereePlayer.Location = new System.Drawing.Point(155, 365);
-            this.refereePlayer.Name = "refereePlayer";
-            this.refereePlayer.Size = new System.Drawing.Size(98, 29);
-            this.refereePlayer.TabIndex = 23;
-            this.refereePlayer.TabStop = true;
-            this.refereePlayer.Text = "Referee";
-            this.refereePlayer.UseVisualStyleBackColor = true;
             // 
             // awayPlayer10
             // 
@@ -692,7 +678,6 @@ namespace Randomizer
             this.participantTextBox1.Name = "participantTextBox1";
             this.participantTextBox1.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox1.TabIndex = 0;
-            this.participantTextBox1.Text = "FACCIO";
             // 
             // labelDrinkPlayer1
             // 
@@ -742,7 +727,6 @@ namespace Randomizer
             this.participantTextBox3.Name = "participantTextBox3";
             this.participantTextBox3.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox3.TabIndex = 0;
-            this.participantTextBox3.Text = "NOSSER";
             // 
             // participantTextBox4
             // 
@@ -752,7 +736,6 @@ namespace Randomizer
             this.participantTextBox4.Name = "participantTextBox4";
             this.participantTextBox4.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox4.TabIndex = 0;
-            this.participantTextBox4.Text = "TARZAN";
             // 
             // participantTextBox5
             // 
@@ -762,7 +745,6 @@ namespace Randomizer
             this.participantTextBox5.Name = "participantTextBox5";
             this.participantTextBox5.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox5.TabIndex = 0;
-            this.participantTextBox5.Text = "TENNEDZ";
             // 
             // participantTextBox6
             // 
@@ -773,7 +755,6 @@ namespace Randomizer
             this.participantTextBox6.Name = "participantTextBox6";
             this.participantTextBox6.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox6.TabIndex = 0;
-            this.participantTextBox6.Text = "TRUSSER";
             // 
             // participantTextBox7
             // 
@@ -783,7 +764,6 @@ namespace Randomizer
             this.participantTextBox7.Name = "participantTextBox7";
             this.participantTextBox7.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox7.TabIndex = 0;
-            this.participantTextBox7.Text = "AALLEX";
             // 
             // progressBar
             // 
@@ -999,7 +979,6 @@ namespace Randomizer
             this.participantTextBox2.Name = "participantTextBox2";
             this.participantTextBox2.Size = new System.Drawing.Size(100, 23);
             this.participantTextBox2.TabIndex = 1;
-            this.participantTextBox2.Text = "LEFFO";
             // 
             // participantPanel2
             // 
@@ -1639,7 +1618,7 @@ namespace Randomizer
         private System.Windows.Forms.BindingSource randomDbDataSetBindingSource;
         private CalculateGraphPlayer1TableAdapters.CalculateGraphTableAdapter calculateGraphTableAdapter;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.RadioButton refereePlayer;
+        //private System.Windows.Forms.RadioButton refereePlayer;
         private System.Windows.Forms.Label matchIdLabel;
         private System.Windows.Forms.TextBox bankPlayer1;
         private System.Windows.Forms.TextBox labelDrinkPlayer1;

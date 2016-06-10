@@ -528,9 +528,9 @@ namespace Randomizer
                     case (19):
                         awayPlayer10.Text = player.Name;
                         break;
-                    case (20):
-                        refereePlayer.Text = player.Name;
-                        break;
+                    //case (20):
+                    //    refereePlayer.Text = player.Name;
+                    //    break;
                 }
             }
         }
