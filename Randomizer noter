@@ -22,10 +22,10 @@ Events kunne visuelt repræsenteres på grafen, evt. som en lodret linie med ang
 Mötley Crue - Doctor Feelgood "he's the real doctor feelgood, he's the one that makes you feel alright"
 
 
-CRITICAL Grafen skal tildele et punkt for alle Participants ved alle handlinger for at følge udviklingen.
-BLOCKER! Bug med øverste spillere får flest skal fixes
+	FIXED - CRITICAL Grafen skal tildele et punkt for alle Participants ved alle handlinger for at følge udviklingen.
+	FIXED BLOCKER! Bug med øverste spillere får flest skal fixes
 MAJOR Hæve i banken: Dropdown med spillere -> dropdown med Measures -> FJERN KNAP => banken tælles ned
-CRITICAL Vis hele tiden hvad hver enkelt er oppe på, da grafen bliver kludret
+	FIXED CRITICAL Vis hele tiden hvad hver enkelt er oppe på, da grafen bliver kludret
 NICE TO HAVE Ventetid mellem farvelægning af hver Player ved Distribution
 
 
@@ -44,3 +44,11 @@ Dikterer dødbold/indkast anden placering - ANDRE 1
 2h lægger 0-2 ANDRE 1
 2h lægger 3-4 EGEN 1
 2h lægger 5+ ANDRE 2
+
+
+
+TO DO:
+Når der tildeles en Walter, hvis den ryger i banken, skal der opdateres en counter, som viser hvor mange Walters, der skyldes.
+- Når der skylles en Walter, skal denne counter tælles ned.
+
+Flyt rundt på elementerne. Grafen og totalen er de fede elementer. Tænk over hvilke elementer/knapper der kun bruges få/én gang/(e)

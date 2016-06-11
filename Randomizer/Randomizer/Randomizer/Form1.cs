@@ -297,6 +297,11 @@ namespace Randomizer
                 var affectedRadio = this.teamBox.Controls.OfType<RadioButton>().First(x => x.Name == player.radioButton);
                 affectedRadio.BackColor = participants[playersAndOwners[player]];
                 affectedRadio.Text = player.Name;
+                var radioColorArgb = affectedRadio.BackColor.ToArgb();
+                if (radioColorArgb == Color.DimGray.ToArgb() || radioColorArgb == Color.DarkRed.ToArgb() || radioColorArgb == Color.MediumOrchid.ToArgb())
+                {
+                    affectedRadio.ForeColor = Color.White;
+                }
             }
         }
 
