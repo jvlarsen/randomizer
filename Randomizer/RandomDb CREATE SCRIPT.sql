@@ -198,6 +198,8 @@ AS
 			VALUES (@MatchId, @CurrentParticipant, @GameMinute, 0, @EventNumber)
 			FETCH NEXT FROM ParticipantCursor INTO @CurrentParticipant
 		END
+		CLOSE participantCursor
+		DEALLOCATE participantCursor
 	END
 GO
 
@@ -219,6 +221,7 @@ SELECT MatchId, Participant
 --DROP PROCEDURE GetPlayersAndOwners
 --DROP PROCEDURE GetOldGames
 --DROP PROCEDURE SaveParticipants
+--DROP PROCEDURE RegisterNothing
 
 
 exec CalculateGraph 1

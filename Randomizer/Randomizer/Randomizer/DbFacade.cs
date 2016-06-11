@@ -253,9 +253,6 @@ namespace Randomizer
         {
             var saveGames = new List<SaveGame>();
             OpenConn();
-            //var cmd = conn.CreateCommand();
-            //cmd.CommandText = "SELECT MatchId, TeamNames, Created FROM Matches ORDER BY Created DESC";
-            //var reader = cmd.ExecuteReader();
 
             var cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -334,36 +331,6 @@ namespace Randomizer
             CloseConn();
             return participantsAndColors;
         }
-
-        //private Participant GetOwnerFromPlayerAndGame(SaveGame saveGame, string playerName)
-        //{
-        //    OpenConn();
-        //    var cmd = conn.CreateCommand();
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.CommandText = "GetOwnerFromPlayerAndGame";
-
-        //    var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
-        //    matchIdParam.Value = saveGame.MatchId;
-        //    cmd.Parameters.Add(matchIdParam);
-
-        //    var playerNameParam = new SqlParameter("@PlayerName", SqlDbType.VarChar);
-        //    playerNameParam.Value = playerName;
-        //    cmd.Parameters.Add(playerNameParam);
-
-        //    var reader = cmd.ExecuteReader();
-
-        //    Participant owner = null;
-        //    while (reader.Read())
-        //    {
-        //        owner = new Participant((string)reader["Name"]);
-        //        var red = (int)reader["Red"];
-        //        var green = (int)reader["Green"];
-        //        var blue = (int)reader["Blue"];
-        //        owner.BackColor = Color.FromArgb(red, green, blue);
-        //    }
-        //    CloseConn();
-        //    return owner;
-        //}
 
         public Dictionary<Player, string> GetPlayersAndOwners(SaveGame saveGame)
         {

@@ -194,7 +194,7 @@ namespace Randomizer
                 progressBar.Value++;
             if (progressBar.Value % 60 == 0)
             {
-                RegisterNothing(progressBar.Value);
+                RegisterNothing((int)progressBar.Value/60);
                 CalculateGraph("");
             }
         }
@@ -543,9 +543,9 @@ namespace Randomizer
                     case (19):
                         awayPlayer10.Text = player.Name;
                         break;
-                    //case (20):
-                    //    refereePlayer.Text = player.Name;
-                    //    break;
+                    case (20):
+                        refereePlayer.Text = player.Name;
+                        break;
                 }
             }
         }
@@ -561,6 +561,10 @@ namespace Randomizer
             int drinksToTransfer = 0;
             var measureText = labelDrinkPlayer1.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            if (drinksToTransfer == 11)
+            {
+                UpdateWalterLabel(player1WalterLabel, 1);
+            }
             int currentBank = 0;
             int.TryParse(bankPlayer1.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
@@ -573,6 +577,10 @@ namespace Randomizer
             int drinksToTransfer = 0;
             var measureText = labelDrinkPlayer2.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            if (drinksToTransfer == 11)
+            {
+                UpdateWalterLabel(player2WalterLabel, 1);
+            }
             int currentBank = 0;
             int.TryParse(bankPlayer2.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
@@ -585,6 +593,10 @@ namespace Randomizer
             int drinksToTransfer = 0;
             var measureText = labelDrinkPlayer3.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            if (drinksToTransfer == 11)
+            {
+                UpdateWalterLabel(player3WalterLabel, 1);
+            }
             int currentBank = 0;
             int.TryParse(bankPlayer3.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
@@ -597,6 +609,10 @@ namespace Randomizer
             int drinksToTransfer = 0;
             var measureText = labelDrinkPlayer4.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            if (drinksToTransfer == 11)
+            {
+                UpdateWalterLabel(player4WalterLabel, 1);
+            }
             int currentBank = 0;
             int.TryParse(bankPlayer4.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
@@ -610,6 +626,10 @@ namespace Randomizer
             int drinksToTransfer = 0;
             var measureText = labelDrinkPlayer5.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            if (drinksToTransfer == 11)
+            {
+                UpdateWalterLabel(player5WalterLabel, 1);
+            }
             int currentBank = 0;
             int.TryParse(bankPlayer5.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
@@ -623,6 +643,10 @@ namespace Randomizer
             int drinksToTransfer = 0;
             var measureText = labelDrinkPlayer6.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            if (drinksToTransfer == 11)
+            {
+                UpdateWalterLabel(player6WalterLabel, 1);
+            }
             int currentBank = 0;
             int.TryParse(bankPlayer6.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
@@ -636,6 +660,10 @@ namespace Randomizer
             int drinksToTransfer = 0;
             var measureText = labelDrinkPlayer7.Text;
             drinksToTransfer = ParseLabelTextToDrinkSize(measureText);
+            if (drinksToTransfer == 11)
+            {
+                UpdateWalterLabel(player7WalterLabel, 1);
+            }
             int currentBank = 0;
             int.TryParse(bankPlayer7.Text, out currentBank);
             var newBank = drinksToTransfer + currentBank;
@@ -680,36 +708,65 @@ namespace Randomizer
             {
                 int newBank = GetNewBank(bankPlayer1.Text, (int)selectedMeasure);
                 bankPlayer1.Text = newBank < 0 ? "0" : newBank.ToString();
+
+                if ((int)selectedMeasure == 11)
+                {
+                    UpdateWalterLabel(player1WalterLabel, -1);
+                }
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox2.Text))
             {
                 int newBank = GetNewBank(bankPlayer2.Text, (int)selectedMeasure);
                 bankPlayer2.Text = newBank < 0 ? "0" : newBank.ToString();
+                if ((int)selectedMeasure == 11)
+                {
+                    UpdateWalterLabel(player2WalterLabel, -1);
+                }
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox3.Text))
             {
                 int newBank = GetNewBank(bankPlayer3.Text, (int)selectedMeasure);
                 bankPlayer3.Text = newBank < 0 ? "0" : newBank.ToString();
+                if ((int)selectedMeasure == 11)
+                {
+                    UpdateWalterLabel(player3WalterLabel, -1);
+                }
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox4.Text))
             {
                 int newBank = GetNewBank(bankPlayer4.Text, (int)selectedMeasure);
                 bankPlayer4.Text = newBank < 0 ? "0" : newBank.ToString();
+                if ((int)selectedMeasure == 11)
+                {
+                    UpdateWalterLabel(player4WalterLabel, -1);
+                }
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox5.Text))
             {
                 int newBank = GetNewBank(bankPlayer5.Text, (int)selectedMeasure);
                 bankPlayer5.Text = newBank < 0 ? "0" : newBank.ToString();
+                if ((int)selectedMeasure == 11)
+                {
+                    UpdateWalterLabel(player5WalterLabel, -1);
+                }
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox6.Text))
             {
                 int newBank = GetNewBank(bankPlayer6.Text, (int)selectedMeasure);
                 bankPlayer6.Text = newBank < 0 ? "0" : newBank.ToString();
+                if ((int)selectedMeasure == 11)
+                {
+                    UpdateWalterLabel(player6WalterLabel, -1);
+                }
             }
             else if (selectedParticipant.ToString().Equals(participantTextBox7.Text))
             {
                 int newBank = GetNewBank(bankPlayer7.Text, (int)selectedMeasure);
                 bankPlayer7.Text = newBank < 0 ? "0" : newBank.ToString();
+                if ((int)selectedMeasure == 11)
+                {
+                    UpdateWalterLabel(player7WalterLabel, -1);
+                }
             }
         }
 
@@ -718,6 +775,19 @@ namespace Randomizer
             var currentBankInt = 0;
             var numericBank = int.TryParse(currentBank, out currentBankInt) ? currentBankInt : 0;
             return numericBank - selectedMeasure < 0 ? 0 : numericBank - selectedMeasure;
+        }
+
+        private void UpdateWalterLabel(Label walterlabel, int addCount)
+        {
+            int newWalterInt = 0;
+            var numericWalter = int.TryParse(walterlabel.Text, out newWalterInt);
+            newWalterInt += addCount;
+            if (newWalterInt < 0) 
+            {
+                newWalterInt = 0;
+            }
+                
+            walterlabel.Text = "" + newWalterInt;
         }
     }
 }

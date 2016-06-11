@@ -114,7 +114,7 @@ namespace Randomizer
             var index = 0;
             var startIndex = random.Next(countParticipants);
 
-            for (int j = 0; j < 20; j++)
+            for (int j = 0; j < 21; j++)
             {
                 var currentParticipant = participants.ElementAt((j+startIndex) % (participants.Count));
                 if (players.Count == 1)

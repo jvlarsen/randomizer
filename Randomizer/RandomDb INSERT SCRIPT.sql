@@ -17,14 +17,16 @@ INSERT INTO dbo.Events (EventName, Measure, SoundClipUrl, RefereeSoundClip) VALU
 INSERT INTO dbo.Events (EventName, Measure, SoundClipUrl, RefereeSoundClip) VALUES ('Rødt kort / Skadet', 'Own_3', 'D:\Arbejde\randomizer\Randomizer\RandomizerSounds\REDCARD_turn_out_the_lights.wav', 'D:\Arbejde\randomizer\Randomizer\RandomizerSounds\refinjury.wav')
 
 
-INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_1', 50, 30, 15, 5)
-INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_2', 30, 30, 25, 15)
-INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_3', 15, 25, 35, 25)
-INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_1', 40, 30, 20, 10)
-INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_2', 20, 30, 30, 20)
-INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_3', 15, 25, 30, 30)
-
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_1', 50, 30, 15, 5)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_2', 30, 30, 25, 15)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Other_3', 15, 25, 35, 25)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_1', 40, 30, 20, 10)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_2', 20, 30, 30, 20)
+INSERT INTO Measures (Measure, Small, Medium, Large, Walter) VALUES ('Own_3', 15, 25, 30, 30)
 
 select * from measures
 select * from events
+
+
+delete measures
 
