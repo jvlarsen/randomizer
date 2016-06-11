@@ -159,6 +159,11 @@ namespace Randomizer
             return dbFacade.CalculateGraph(matchId);
         }
 
+        public void RegisterNothing(int matchId, int gameMinute)
+        {
+            dbFacade.RegisterNothing(matchId, gameMinute);
+        }
+
         public void UndoLatestEvent()
         {
             dbFacade.UndoLatestEvent();

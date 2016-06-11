@@ -177,6 +177,32 @@ AS
 	END
 GO
 
+CREATE PROCEDURE RegisterNothing
+@MatchId INT,
+@GameMinute INT
+AS
+	BEGIN
+		DECLARE @CurrentParticipant INT
+		DECLARE @EventNumber INT
+		SELECT @EventNumber = ISNULL(MAX(EventNumber),0) + 1 FROM Graph WHERE MatchId = @MatchId
+
+		DECLARE participantCursor CURSOR FOR
+			SELECT DISTINCT(ParticipantId) FROM Graph WHERE MatchId = @MatchId
+
+		OPEN participantCursor
+		FETCH NEXT FROM participantCursor INTO @CurrentParticipant
+
+		WHILE @@FETCH_STATUS = 0
+		BEGIN
+			INSERT INTO Graph (MatchId, ParticipantId, gameMinute, MeasureZips, EventNumber)
+			VALUES (@MatchId, @CurrentParticipant, @GameMinute, 0, @EventNumber)
+			FETCH NEXT FROM ParticipantCursor INTO @CurrentParticipant
+		END
+	END
+GO
+
+SELECT MatchId, Participant
+
 --DROP TABLE Measures
 --DROP TABLE Graph
 --DROP TABLE Owners

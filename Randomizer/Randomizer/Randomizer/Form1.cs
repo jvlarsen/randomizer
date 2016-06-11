@@ -192,6 +192,11 @@ namespace Randomizer
         private void timer1_Tick(object sender, EventArgs e)
         {
                 progressBar.Value++;
+            if (progressBar.Value % 60 == 0)
+            {
+                RegisterNothing(progressBar.Value);
+                CalculateGraph("");
+            }
         }
 
         private void richTextButton1_TextChanged(object sender, EventArgs e)
@@ -387,6 +392,11 @@ namespace Randomizer
             }
             chart1.Visible = true;
             chart1.Show();
+        }
+
+        private void RegisterNothing(int gameMinute)
+        {
+            engine.RegisterNothing(GetMatchId(), gameMinute);
         }
 
         private void ClearAllSeries()

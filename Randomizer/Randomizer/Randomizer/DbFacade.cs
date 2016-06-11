@@ -417,6 +417,24 @@ namespace Randomizer
             return participantsAndTheirGraph;
         }
 
+        public void RegisterNothing(int matchId, int gameMinute)
+        {
+            OpenConn();
+            var cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "RegisterNothing";
+
+            var matchIdParam = new SqlParameter("@MatchId", SqlDbType.Int);
+            matchIdParam.Value = matchId;
+            cmd.Parameters.Add(matchIdParam); 
+
+            var gameMinuteParam = new SqlParameter("@GameMinute", SqlDbType.Int);
+            gameMinuteParam.Value = gameMinute;
+            cmd.Parameters.Add(gameMinuteParam);
+
+            cmd.ExecuteNonQuery();
+        }
+
         public void LogRandomizingOutcome(int matchId, Dictionary<string, Randomizer.RandomizerEngine.MeasureName> randomizerOutcome, int gameMinute, Event eventFired)
         {
             //The randomizerOutcome contains <loserName, measures> and should be mapped to dbo.Graph 
